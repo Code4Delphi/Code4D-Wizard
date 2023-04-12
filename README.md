@@ -44,9 +44,6 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 ‌
 
 # 🔎 Preview resources Code4D-Wizard
-
-‌
-
 ### * Menus add in MainMenu IDE
 
 ![Menus-Add-in-MainMenu-IDE-Delphi.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Menus-Add-in-MainMenu-IDE-Delphi.png)
@@ -62,9 +59,7 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 - **Find in Files**: Searches the units, with several configuration options, and can search not only in .pas files but also in .dfm, . fmx and in .dpr and .dproj. Another interesting point is that when displaying the search result, it marks the words found in green to make identification easier, in addition to showing a totalizer with the number of occurrences of the searched text and the number of files that have them.
   ![Find-in-files.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Find-in-files.png)
 
-![Find-in-files-Messages.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Find-in-files-Messages.png)
-
-‌
+  ![Find-in-files-Messages.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Find-in-files-Messages.png)
 
 - **Replace in Files**: Makes the alteration of texts in the units, with several option of configurations, and it can make the replace not only in .pas files but also in .dfm, . fmx and in .dpr and .dproj. Another interesting point is that when displaying the result of the changes, it shows a totalizer with the number of occurrences of the text changed and the number of files that have them.
 - **Default Files In Opening Project**: This feature allows you to inform which units or forms are automatically opened as soon as the project is opened in the IDE.
