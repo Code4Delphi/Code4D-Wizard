@@ -7,13 +7,13 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 # 📞 Contact
 
 <p align="left">
-  <a href="https://t.me/Code4Delphi" target="_blank">
+  <a href="https://t.me/Code4DelphiDevs" target="_blank">
     <img src="https://img.shields.io/badge/Telegram:-Join%20Channel-blue">
   </a>
-  &nbsp;
+  <!--&nbsp;
   <a href="https://www.youtube.com/@code4delphi" target="_blank">
     <img src="https://img.shields.io/badge/YouTube:-Join%20Channel-red">
-  </a>  
+  </a> --> 
   &nbsp;
   <a href="mailto:contato@code4delphi.com.br" target="_blank">
     <img src="https://img.shields.io/badge/E--mail-contato%40code4delphi.com.br-yellowgreen">
