@@ -109,4 +109,10 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 
 #### **ToolBar Branch:**
 
-- In this ToolBar it is possible to visualize the current Git branch that the project is in. If you are in Branch Master or Main, the text will turn red, alerting the programmer to change the Branch
+- In this ToolBar it is possible to visualize the current Git branch that the project is in. If you are in Branch Master or Main, the text will turn red, alerting the programmer to change the Branch.
+
+
+‌
+# 📥Download Wizard Source Code?
+
+To have access to the Wizard's source code, and to our course, where you'll learn everything about Open Tools API, just click on the following link: [Download source code and access Open Tools API course](https://go.hotmart.com/U81331747Y?dp=1 "‌View course information")
