@@ -1,7 +1,7 @@
 #  Code4D-Wizard - Wizard for Delphi IDE
 <p align="center">
-  <a href="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/C4D-Logo.png">
-    <img alt="Horse" height="100" src="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/c4d-logo-100x100.png">
+  <a href="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/C4D-Logo.png">
+    <img alt="Horse" height="100" src="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/c4d-logo-100x100.png">
   </a>  
 </p>
 Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It adds to the Delphi IDE several features to improve our development efficiency, speed and productivity. This Wizard was developed using the OTA (Open Tools API)
@@ -32,19 +32,19 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 
 2 - In your Delphi, access the menu Component > Install Packages...
 
-![Component-InstallPackages.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Component-InstallPackages.png)
+![Component-InstallPackages.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Component-InstallPackages.png)
 
 3 - Click in button "Add..."
 
-![Form-Install-Packages-Button-ADD.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Form-Install-Packages-Button-ADD.png)
+![Form-Install-Packages-Button-ADD.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Form-Install-Packages-Button-ADD.png)
 
 4 - Select the C4DWizard.bpl file
 
-![Package-C4D-Wizard-Installed.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Package-C4D-Wizard-Installed.png)
+![Package-C4D-Wizard-Installed.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Package-C4D-Wizard-Installed.png)
 
 5- The Code4D item will be added to the IDE's MainMenu
 
-![Code4D-item-added-to-MainMenu.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Code4D-item-added-to-MainMenu.png)
+![Code4D-item-added-to-MainMenu.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Code4D-item-added-to-MainMenu.png)
 
 ‌
 
@@ -52,27 +52,27 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 
 ### * Menus add in MainMenu IDE
 
-![Menus-Add-in-MainMenu-IDE-Delphi.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Menus-Add-in-MainMenu-IDE-Delphi.png)
+![Menus-Add-in-MainMenu-IDE-Delphi.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Menus-Add-in-MainMenu-IDE-Delphi.png)
 
 - **Open External Path**: Lets you add items for quick access to resources external to the IDE. How to access files, folders, web links and even CMD commands to perform one or more functions in Windows CMD. Can be configured shortcut keys, and even a logo for each item
-  ![Open-External.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Open-External.png)
+  ![Open-External.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Open-External.png)
 - **Uses Organization**: Allows you to organize the Uses of the Units, with various configurations, such as the possibility of leaving one Uses per line, sorting uses in alphabetical order, grouping uses by namespaces, breaking lines between namespaces. In addition to making it possible to organize by scope, that is, by the current unit, by open units, project group or project units, and showing a Log with the Units that were orphaned.
 
-  ![Uses-Organization.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Uses-Organization.png)
+  ![Uses-Organization.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Uses-Organization.png)
 - **Reopen File History**: Opens a screen, where a history is listed, with all project groups and projects previously opened in the IDE. Enabling the marking of project group or projects as favorites, so that they are shown in prominence. Various information is also presented, such as the date of the last opening and closing, and the possibility of creating a nickname for the item. It is also possible to separate by groups, and search by different filters, including opening dates. On this screen, it is also possible to access various resources of the projects or project group, such as automatically opening the Github Desktop with the project already selected, opening the project in the remote repository, opening the project file in the Windows explorer, among many other resources.
-  ![Reopen.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Reopen.png)
+  ![Reopen.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Reopen.png)
 - **Translate Text**: Allows texts to be translated between several languages, WITHOUT using any credentials or passwords. If you have any text selected in the IDE's editor at the time the screen is called, the selected text will be loaded onto the screen for translation.
-  ![Translate.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Translate.png)
+  ![Translate.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Translate.png)
 - **Indent Text Selected**: This feature serves to indent the selected code, taking into account some characters, such as := (two equal points), this feature will indent the fonts, aligning the := (two equal points)
 - **Find in Files**: Searches the units, with several configuration options, and can search not only in .pas files but also in .dfm, . fmx and in .dpr and .dproj. Another interesting point is that when displaying the search result, it marks the words found in green to make identification easier, in addition to showing a totalizer with the number of occurrences of the searched text and the number of files that have them.
-  ![Find-in-files.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Find-in-files.png)
+  ![Find-in-files.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Find-in-files.png)
 
-  ![Find-in-files-Messages.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Find-in-files-Messages.png)
+  ![Find-in-files-Messages.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Find-in-files-Messages.png)
 
 - **Replace in Files**: Makes the alteration of texts in the units, with several option of configurations, and it can make the replace not only in .pas files but also in .dfm, . fmx and in .dpr and .dproj. Another interesting point is that when displaying the result of the changes, it shows a totalizer with the number of occurrences of the text changed and the number of files that have them.
-  ![Replace-in-files.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Replace-in-files.png)
+  ![Replace-in-files.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Replace-in-files.png)
 - **Default Files In Opening Project**: This feature allows you to inform which units or forms are automatically opened as soon as the project is opened in the IDE.
-  ![Default-Files-In-Opening-Project.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Default-Files-In-Opening-Project.png)
+  ![Default-Files-In-Opening-Project.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Default-Files-In-Opening-Project.png)
 - **Settings**: It has some settings related to the Wizard, such as the possibility of informing shortcuts for MainMenu items.
 
   With the option "**Before compiling, check if binary is not running**" checked, always before compiling or building the project, it will be checked if it is not already running, if so, a question will be displayed alerting that the program be closed beforehand, so as not to waste time waiting for the compilation without being able to finish it.
@@ -80,9 +80,9 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
   With the option "**Block the INSERT Key**" checked, it will not be possible to press the "Insert" key on the keyboard, thus not allowing the IDE to switch between "Insert" and "Overwrite", preventing the "Overwrite" feature from being unintentionally enabled.
   
   The "**Open Data Folder**" button, opens in the Windows explorer, the folder where the files used by the Code4D-Wizard are created and stored.  
-  ![Settings.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Settings.png)
+  ![Settings.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Settings.png)
 - **Backup/Restore Configs**: Allows you to export and import backup files with the Code4D-Wizard settings and data, so when you format your PC you don't ask for your data. In addition to enabling data sharing among other programmers on your team.
-  ![Backup.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/Backup.png)
+  ![Backup.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Backup.png)
 - **Open in GitHub Desktop**: Allows opening the current project directly on Github Desktop, with the project already open. It is possible to open it in other version management programs, just use the resources available in the Open External Path menu item
 - **View in Remote Repository**: Opens the remote repository of the Git project in the browser, it can be GitHub, Bitbucket, GitLab, etc.
 - **View Information Remote Repository**: Displays remote repository information of the project
@@ -94,13 +94,13 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 
 ### * PopupMenu do Project Manager
 
-![PopupMenu-Project-Manager.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/PopupMenu-Project-Manager.png)
+![PopupMenu-Project-Manager.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/PopupMenu-Project-Manager.png)
 
 ‌
 
 ### * ToolBars
 
-![ToolBars.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/ToolBars.png)
+![ToolBars.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/ToolBars.png)
 
 #### **ToolBar Build:**
 

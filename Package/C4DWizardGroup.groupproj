@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0E5E0CBD-0E07-40BD-B402-7F2154B662EB}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="C4DWizardDLL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C4DWizard.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="C4DWizardDLL">
+        <MSBuild Projects="C4DWizardDLL.dproj"/>
+    </Target>
+    <Target Name="C4DWizardDLL:Clean">
+        <MSBuild Projects="C4DWizardDLL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="C4DWizardDLL:Make">
+        <MSBuild Projects="C4DWizardDLL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="C4DWizard">
+        <MSBuild Projects="C4DWizard.dproj"/>
+    </Target>
+    <Target Name="C4DWizard:Clean">
+        <MSBuild Projects="C4DWizard.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="C4DWizard:Make">
+        <MSBuild Projects="C4DWizard.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="C4DWizardDLL;C4DWizard"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="C4DWizardDLL:Clean;C4DWizard:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="C4DWizardDLL:Make;C4DWizard:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
