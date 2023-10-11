@@ -190,7 +190,7 @@ begin
 
   FLabel := TLabel.Create(FToolBarBranch);
   FLabel.Parent := FToolBarBranch;
-  FLabel.AutoSize := False; //True;
+  FLabel.AutoSize := True; //False;
   FLabel.Width := 300;
   FLabel.Constraints.MinWidth := 50;
   FLabel.Constraints.MaxWidth := 300;
