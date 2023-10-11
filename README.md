@@ -46,7 +46,12 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 
 ![Code4D-item-added-to-MainMenu.png](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/Code4D-item-added-to-MainMenu.png)
 
-‌
+<br/>
+
+# 👨‍🎓 Treinamento completo sobre OTA / Complete OTA training
+[**Acessar treinamento / Access training**](https://hotmart.com/pt-br/marketplace/produtos/delphi-ota-open-tools-api/U81331747Y)
+
+<br/>‌
 
 # 🔎 Preview resources Code4D-Wizard
 
