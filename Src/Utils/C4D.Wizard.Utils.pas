@@ -76,6 +76,7 @@ type
     class function GetPathFileIniGroups: string;
     class function GetPathFileIniOpenExternal: string;
     class function GetPathImageOpenExternal(AGuid: string): string;
+    class function GetPathFileNotes: string;
     class function CreateIfNecessaryAndGetPathFolderTemp: string;
     class function GetGuidStr: string;
     class function GuidToFileName(const AGuid: string; const AExtension: string): string;
@@ -627,6 +628,11 @@ begin
   Result := Self.GetPathFolderRoot +
     TC4DConsts.C_OPEN_EXTERNAL_INI_PREFIX_IMG +
     Self.GuidToFileName(AGuid, '.' + TC4DExtensionsFiles.Bmp.Tostring);
+end;
+
+class function TC4DWizardUtils.GetPathFileNotes: string;
+begin
+  Result := Self.GetPathFolderRoot + TC4DConsts.C_FILE_RTF_NOTES;
 end;
 
 class function TC4DWizardUtils.CreateIfNecessaryAndGetPathFolderTemp: string;

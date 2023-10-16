@@ -390,7 +390,7 @@ class procedure TC4DWizardUtilsOTA.IDEThemingAll(AFormClass: TCustomFormClass; A
 var
   i: Integer;
   LIOTAIDEThemingServices250: IOTAIDEThemingServices250;
-  {$ENDIF}
+{$ENDIF}
 begin
   AForm.Constraints.MinHeight := AForm.Height;
   AForm.Constraints.MinWidth := AForm.Width;
@@ -422,9 +422,9 @@ const
   THEME_DARK = 'dark';
 begin
   {$IF CompilerVersion >= 32.0}
-  Result := Self.GetIOTAIDEThemingServices.ActiveTheme.ToLower.Equals(THEME_DARK);
+    Result := Self.GetIOTAIDEThemingServices.ActiveTheme.ToLower.Equals(THEME_DARK);
   {$ELSE}
-  Result := False;
+    Result := False;
   {$ENDIF}
 end;
 

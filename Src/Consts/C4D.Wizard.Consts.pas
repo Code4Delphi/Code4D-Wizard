@@ -33,6 +33,9 @@ type
     C_FILE_INI_GROUPS = 'groups.ini';
     C_FILE_INI_OPEN_EXTERNAL = 'open-external.ini';
 
+    //NAMES FILES .rtf
+    C_FILE_RTF_NOTES = 'notes.rtf';
+
     //ABOUT AND SPLASH
     C_ABOUT_TITLE = 'Code4Delphi Wizard';
     C_ABOUT_COPY_RIGHT = 'Copyright 2023 Code4Delphi Team';
