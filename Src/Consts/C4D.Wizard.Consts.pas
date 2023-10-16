@@ -94,6 +94,8 @@ type
     C_MENU_IDE_ABOUT_CAPTION = 'About Code4Delphi Wizard';
     C_MENU_IDE_FormatSource_NAME = 'C4DFormatSource1';
     C_MENU_IDE_FormatSource_CAPTION = 'Format Source';
+    C_MENU_IDE_NOTES_NAME = 'C4DWizarNotes1';
+    C_MENU_IDE_NOTES_CAPTION = 'Notes';
 
     //FILE .INI REOPEN
     C_REOPEN_INI_Favorite = 'Favorite';

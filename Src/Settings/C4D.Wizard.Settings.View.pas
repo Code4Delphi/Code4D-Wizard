@@ -43,6 +43,8 @@ type
     gBoxSettings: TGroupBox;
     ckBlockKeyInsert: TCheckBox;
     ckBeforeCompilingCheckRunning: TCheckBox;
+    ckShortcutNotesUse: TCheckBox;
+    edtShortcutNotes: THotKey;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnCloseClick(Sender: TObject);
@@ -110,8 +112,9 @@ begin
   edtShortcutIndent.Enabled := ckShortcutIndentUse.Checked;
   edtShortcutFindInFiles.Enabled := ckShortcutFindInFilesUse.Checked;
   edtShortcutReplaceFiles.Enabled := ckShortcutReplaceFilesUse.Checked;
-  edtShortcutGitHubDesktop.Enabled := ckShortcutGitHubDesktopUse.Checked;
+  edtShortcutNotes.Enabled := ckShortcutNotesUse.Checked;
   edtShortcutDefaultFilesInOpeningProject.Enabled := ckShortcutDefaultFilesInOpeningProjectUse.Checked;
+  edtShortcutGitHubDesktop.Enabled := ckShortcutGitHubDesktopUse.Checked;
 end;
 
 procedure TC4DWizardSettingsView.ReadConfigurationScreen;
@@ -129,10 +132,12 @@ begin
   edtShortcutFindInFiles.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutFindInFiles);
   ckShortcutReplaceFilesUse.Checked := C4DWizardSettingsModel.ShortcutReplaceFilesUse;
   edtShortcutReplaceFiles.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutReplaceFiles);
-  ckShortcutGitHubDesktopUse.Checked := C4DWizardSettingsModel.ShortcutGitHubDesktopUse;
-  edtShortcutGitHubDesktop.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutGitHubDesktop);
+  ckShortcutNotesUse.Checked := C4DWizardSettingsModel.ShortcutNotesUse;
+  edtShortcutNotes.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutNotes);
   ckShortcutDefaultFilesInOpeningProjectUse.Checked := C4DWizardSettingsModel.ShortcutDefaultFilesInOpeningProjectUse;
   edtShortcutDefaultFilesInOpeningProject.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutDefaultFilesInOpeningProject);
+  ckShortcutGitHubDesktopUse.Checked := C4DWizardSettingsModel.ShortcutGitHubDesktopUse;
+  edtShortcutGitHubDesktop.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutGitHubDesktop);
   ckBlockKeyInsert.Checked := C4DWizardSettingsModel.BlockKeyInsert;
   ckBeforeCompilingCheckRunning.Checked := C4DWizardSettingsModel.BeforeCompilingCheckRunning;
 end;
@@ -152,10 +157,12 @@ begin
     .ShortcutFindInFiles(ShortCutToText(edtShortcutFindInFiles.HotKey))
     .ShortcutReplaceFilesUse(ckShortcutReplaceFilesUse.Checked)
     .ShortcutReplaceFiles(ShortCutToText(edtShortcutReplaceFiles.HotKey))
-    .ShortcutGitHubDesktopUse(ckShortcutGitHubDesktopUse.Checked)
-    .ShortcutGitHubDesktop(ShortCutToText(edtShortcutGitHubDesktop.HotKey))
+    .ShortcutNotesUse(ckShortcutNotesUse.Checked)
+    .ShortcutNotes(ShortCutToText(edtShortcutNotes.HotKey))
     .ShortcutDefaultFilesInOpeningProjectUse(ckShortcutDefaultFilesInOpeningProjectUse.Checked)
     .ShortcutDefaultFilesInOpeningProject(ShortCutToText(edtShortcutDefaultFilesInOpeningProject.HotKey))
+    .ShortcutGitHubDesktopUse(ckShortcutGitHubDesktopUse.Checked)
+    .ShortcutGitHubDesktop(ShortCutToText(edtShortcutGitHubDesktop.HotKey))
     .BlockKeyInsert(ckBlockKeyInsert.Checked)
     .BeforeCompilingCheckRunning(ckBeforeCompilingCheckRunning.Checked)
     .WriteIniFile;

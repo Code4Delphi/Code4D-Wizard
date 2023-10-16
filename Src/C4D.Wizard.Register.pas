@@ -18,7 +18,8 @@ uses
   C4D.Wizard.Messages.Custom.Groups.OTA,
   C4D.Wizard.IDE.EditServicesNotifier,
   C4D.Wizard.IDE.CompileNotifier,
-  C4D.Wizard.IDE.ShortCut.KeyboardBinding;
+  C4D.Wizard.IDE.ShortCut.KeyboardBinding,
+  C4D.Wizard.Notes.View;
 
 {$IFDEF C4D_WIZARD_DLL}
 function RegisterDLL(const BorlandIDEServices: IBorlandIDEServices;
@@ -40,6 +41,7 @@ begin
   C4D.Wizard.Messages.Custom.Groups.OTA.RegisterSelf;
   C4D.Wizard.IDE.EditServicesNotifier.RegisterSelf;
   C4D.Wizard.IDE.CompileNotifier.RegisterSelf;
+  C4D.Wizard.Notes.View.RegisterSelf;
 end;
 
 {$IFDEF C4D_WIZARD_DLL}

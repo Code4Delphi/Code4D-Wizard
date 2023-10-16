@@ -128,6 +128,7 @@ contains
   C4D.Wizard.IDE.PopupMenuDesigner.ComponentSel in '..\Src\IDE\PopupMenuDesigner\C4D.Wizard.IDE.PopupMenuDesigner.ComponentSel.pas',
   C4D.Wizard.IDE.ShortCut.KeyboardBinding in '..\Src\IDE\ShortCut\C4D.Wizard.IDE.ShortCut.KeyboardBinding.pas',
   C4D.Wizard.UsesOrganization.ListOfUses in '..\Src\UsesOrganization\C4D.Wizard.UsesOrganization.ListOfUses.pas',
-  C4D.Wizard.FormatSource.View in '..\Src\FormatSource\C4D.Wizard.FormatSource.View.pas' {C4DWizardFormatSourceView};
+  C4D.Wizard.FormatSource.View in '..\Src\FormatSource\C4D.Wizard.FormatSource.View.pas' {C4DWizardFormatSourceView},
+  C4D.Wizard.Notes.View in '..\Src\Notes\C4D.Wizard.Notes.View.pas' {C4DWizardNotesView};
 
 end.

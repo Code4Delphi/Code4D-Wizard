@@ -18,11 +18,12 @@ type
     procedure CreateMenuCode4DelphiInIDEMenu;
     function CreateSubMenu(AName: string; ACaption: string; AOnClick: TNotifyEvent; AImgIndex: Integer = -1; AShortCutStr: string = ''): TMenuItem;
     function GetShortcutUsesOrganization: string;
-    function GetShortcutReopenFileHistoryUse: string;
+    function GetShortcutReopenFileHistory: string;
     function GetShortcutOpenInGitHubDesktop: string;
     function GetShortcutTranslateText: string;
     function GetShortcutIndent: string;
     function GetShortcutReplace: string;
+    function GetShortcutNotes: string;
     function GetShortcutFind: string;
     function GetShortcutDefaultFilesInOpeningProject: string;
   protected
@@ -82,7 +83,7 @@ begin
     TC4DConsts.C_MENU_IDE_REOPEN_CAPTION,
     TC4DWizardIDEMainMenuClicks.ReopenClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexFolderOpen,
-    Self.GetShortcutReopenFileHistoryUse);
+    Self.GetShortcutReopenFileHistory);
 
   Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_TRANSLATE_NAME,
     TC4DConsts.C_MENU_IDE_TRANSLATE_CAPTION,
@@ -112,6 +113,12 @@ begin
     TC4DWizardIDEMainMenuClicks.ReplaceClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexReplace,
     Self.GetShortcutReplace);
+
+  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_NOTES_NAME,
+    TC4DConsts.C_MENU_IDE_NOTES_CAPTION,
+    TC4DWizardIDEMainMenuClicks.NotesClick,
+    TC4DWizardIDEImageListMain.GetInstance.ImgIndexNotes,
+    Self.GetShortcutNotes);
 
   Self.CreateSubMenu('C4DSeparator50', '-', nil);
   Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_DefaultFilesInOpeningProject_NAME,
@@ -219,7 +226,7 @@ begin
     Result := C4DWizardSettingsModel.ShortcutUsesOrganization.Trim;
 end;
 
-function TC4DWizardIDEMainMenu.GetShortcutReopenFileHistoryUse: string;
+function TC4DWizardIDEMainMenu.GetShortcutReopenFileHistory: string;
 begin
   Result := '';
   if(C4DWizardSettingsModel.ShortcutReopenFileHistoryUse)and(not C4DWizardSettingsModel.ShortcutReopenFileHistory.Trim.IsEmpty)then
@@ -259,6 +266,13 @@ begin
   Result := '';
   if(C4DWizardSettingsModel.ShortcutReplaceFilesUse)and(not C4DWizardSettingsModel.ShortcutReplaceFiles.Trim.IsEmpty)then
     Result := C4DWizardSettingsModel.ShortcutReplaceFiles.Trim;
+end;
+
+function TC4DWizardIDEMainMenu.GetShortcutNotes: string;
+begin
+  Result := '';
+  if(C4DWizardSettingsModel.ShortcutNotesUse)and(not C4DWizardSettingsModel.ShortcutNotes.Trim.IsEmpty)then
+    Result := C4DWizardSettingsModel.ShortcutNotes.Trim;
 end;
 
 function TC4DWizardIDEMainMenu.GetShortcutDefaultFilesInOpeningProject: string;

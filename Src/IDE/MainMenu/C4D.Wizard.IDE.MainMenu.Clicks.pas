@@ -20,6 +20,7 @@ type
     class procedure FormatSourceClick(Sender: TObject);
     class procedure FindClick(Sender: TObject);
     class procedure ReplaceClick(Sender: TObject);
+    class procedure NotesClick(Sender: TObject);
     class procedure DefaultFilesInOpeningProjectClick(Sender: TObject);
     class procedure BackupExportClick(Sender: TObject);
     class procedure BackupImportClick(Sender: TObject);
@@ -36,10 +37,10 @@ type
 implementation
 
 uses
+  C4D.Wizard.Reopen.Controller,
   C4D.Wizard.Reopen.View,
   C4D.Wizard.Settings.View,
   C4D.Wizard.UsesOrganization.View,
-  C4D.Wizard.Reopen.Controller,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA,
   C4D.Wizard.Translate.View,
@@ -50,7 +51,8 @@ uses
   C4D.Wizard.Backup.Import.View,
   C4D.Wizard.View.About,
   C4D.Wizard.DefaultFilesInOpeningProject,
-  C4D.Wizard.FormatSource.View;
+  C4D.Wizard.FormatSource.View,
+  C4D.Wizard.Notes.View;
 
 class procedure TC4DWizardIDEMainMenuClicks.UsesOrganizationClick(Sender: TObject);
 var
@@ -123,6 +125,11 @@ begin
   finally
     FreeAndNil(C4DWizardReplaceFilesView);
   end;
+end;
+
+class procedure TC4DWizardIDEMainMenuClicks.NotesClick(Sender: TObject);
+begin
+  C4D.Wizard.Notes.View.C4DWizardNotesViewShowDockableForm;
 end;
 
 class procedure TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick(Sender: TObject);

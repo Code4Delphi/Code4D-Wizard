@@ -285,6 +285,10 @@
             <Form>C4DWizardFormatSourceView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Src\Notes\C4D.Wizard.Notes.View.pas">
+            <Form>C4DWizardNotesView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <RcItem Include="Img\C4D_Logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>C4D_Logo</ResourceId>
@@ -408,6 +412,10 @@
         <RcItem Include="Img\c4d_verify_document.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>c4d_verify_document</ResourceId>
+        </RcItem>
+        <RcItem Include="Img\c4d_notes.bmp">
+            <ResourceType>BITMAP</ResourceType>
+            <ResourceId>c4d_notes</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

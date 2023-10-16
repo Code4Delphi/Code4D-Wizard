@@ -138,6 +138,11 @@ type
     function ShortcutReplaceFiles: string; overload;
     function ShortcutReplaceFiles(Value: string): IC4DWizardSettingsModel; overload;
 
+    function ShortcutNotesUse: Boolean; overload;
+    function ShortcutNotesUse(Value: Boolean): IC4DWizardSettingsModel; overload;
+    function ShortcutNotes: string; overload;
+    function ShortcutNotes(Value: string): IC4DWizardSettingsModel; overload;
+
     function ShortcutGitHubDesktopUse: Boolean; overload;
     function ShortcutGitHubDesktopUse(Value: Boolean): IC4DWizardSettingsModel; overload;
     function ShortcutGitHubDesktop: string; overload;
