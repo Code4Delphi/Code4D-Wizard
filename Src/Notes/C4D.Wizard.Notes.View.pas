@@ -3,9 +3,22 @@ unit C4D.Wizard.Notes.View;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  DockForm, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Menus, System.ImageList, Vcl.ImgList;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  DockForm,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Vcl.ComCtrls,
+  Vcl.Menus,
+  System.ImageList,
+  Vcl.ImgList;
 
 type
   TC4DWizardNotesView = class(TDockableForm)
@@ -40,6 +53,8 @@ type
     btnSave: TButton;
     btnStrikethrough: TButton;
     Bevel1: TBevel;
+    btnFontSizeDecrease: TButton;
+    btnFontSizeIncrease: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnOpenClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
@@ -61,12 +76,16 @@ type
     procedure Copy1Click(Sender: TObject);
     procedure Paste1Click(Sender: TObject);
     procedure SelectAll1Click(Sender: TObject);
-    procedure FormHide(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnFontSizeDecreaseClick(Sender: TObject);
+    procedure btnFontSizeIncreaseClick(Sender: TObject);
   private
     procedure ReadFromFile;
     procedure WriteToFile;
     procedure ChangeAlignment(const AAlignment: TAlignment);
     procedure ChangeStyle(const AStyle: TFontStyle);
+    procedure ChangeFontSize(const AValue: Integer);
   public
     constructor Create(AOwner: TComponent); override;
   end;
@@ -119,21 +138,28 @@ begin
   DeskSection := Self.Name;
   AutoSave := True;
   SaveStateNecessary := True;
-  RichEdit.Lines.Clear;
+  //RichEdit.Lines.Clear;
+  TC4DWizardUtilsOTA.IDEThemingAll(TC4DWizardNotesView, Self);
 end;
 
 procedure TC4DWizardNotesView.FormShow(Sender: TObject);
 begin
-  TC4DWizardUtilsOTA.IDEThemingAll(TC4DWizardNotesView, Self);
   Self.Constraints.MinWidth := 300;
   Self.Constraints.MinHeight := 300;
+
   RichEdit.Font.Color := TC4DWizardUtilsOTA.ActiveThemeColorDefaul;
   Self.ReadFromFile;
 end;
 
-procedure TC4DWizardNotesView.FormHide(Sender: TObject);
+procedure TC4DWizardNotesView.FormActivate(Sender: TObject);
 begin
-  //Self.WriteToFile;
+  //RichEdit.Font.Color := TC4DWizardUtilsOTA.ActiveThemeColorDefaul;
+  //Self.ReadFromFile;
+end;
+
+procedure TC4DWizardNotesView.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Self.WriteToFile;
 end;
 
 procedure TC4DWizardNotesView.ReadFromFile;
@@ -253,6 +279,23 @@ end;
 procedure TC4DWizardNotesView.btnBoldClick(Sender: TObject);
 begin
   Self.ChangeStyle(fsBold);
+end;
+
+procedure TC4DWizardNotesView.btnFontSizeDecreaseClick(Sender: TObject);
+begin
+  Self.ChangeFontSize(-1);
+end;
+
+procedure TC4DWizardNotesView.btnFontSizeIncreaseClick(Sender: TObject);
+begin
+  Self.ChangeFontSize(+1);
+end;
+
+procedure TC4DWizardNotesView.ChangeFontSize(const AValue: Integer);
+begin
+  RichEdit.SelAttributes.Size := RichEdit.SelAttributes.Size + AValue;
+  cBoxSizeFont.Text := IntToStr(RichEdit.SelAttributes.Size);
+  RichEdit.SetFocus;
 end;
 
 procedure TC4DWizardNotesView.btnItalicClick(Sender: TObject);
