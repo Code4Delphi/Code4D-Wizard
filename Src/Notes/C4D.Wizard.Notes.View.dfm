@@ -51,7 +51,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
     Padding.Right = 2
     Padding.Bottom = 2
     TabOrder = 0
-    ExplicitTop = 555
     object Bevel2: TBevel
       AlignWithMargins = True
       Left = 277
@@ -364,7 +363,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
     Padding.Top = 2
     ParentBackground = False
     TabOrder = 1
-    ExplicitHeight = 551
     object RichEdit: TRichEdit
       Left = 0
       Top = 2
@@ -385,7 +383,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ScrollBars = ssVertical
       TabOrder = 0
       Zoom = 100
-      ExplicitHeight = 549
     end
   end
   object ImageList1: TImageList

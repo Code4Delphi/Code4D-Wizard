@@ -8,6 +8,7 @@ uses
   System.Classes,
   System.Math,
   System.DateUtils,
+  System.ImageList,
   Winapi.Windows,
   Vcl.Controls,
   Vcl.ExtCtrls,
@@ -17,6 +18,7 @@ uses
   Vcl.ComCtrls,
   Vcl.Menus,
   Vcl.Clipbrd,
+  Vcl.ImgList,
   DockForm,
   C4D.Wizard.Types,
   C4D.Wizard.Utils.ListView;
@@ -195,7 +197,7 @@ end;
 constructor TC4DWizardReopenView.Create(AOwner: TComponent);
 begin
   inherited;
-  DeskSection := Name;
+  DeskSection := Self.Name;
   AutoSave := True;
   SaveStateNecessary := True;
   Self.ConfButtonCreate;

@@ -20,7 +20,8 @@ uses
   Vcl.ExtCtrls,
   Vcl.ImgList,
   Vcl.Menus,
-  DockForm;
+  DockForm,
+  DeskUtil;
 
 type
   TC4DWizardNotesView = class(TDockableForm)
@@ -97,7 +98,6 @@ procedure C4DWizardNotesViewShowDockableForm;
 implementation
 
 uses
-  DeskUtil,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA;
 
@@ -133,7 +133,7 @@ end;
 constructor TC4DWizardNotesView.Create(AOwner: TComponent);
 begin
   inherited;
-  DeskSection := Name;
+  DeskSection := Self.Name;
   AutoSave := True;
   SaveStateNecessary := True;
   RichEdit.Lines.Clear;

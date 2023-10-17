@@ -114,7 +114,7 @@ object C4DWizardReopenView: TC4DWizardReopenView
         Left = 10
         Top = 15
         Width = 127
-        Height = 31
+        Height = 21
         Cursor = crHandPoint
         Margins.Left = 10
         Margins.Top = 15
