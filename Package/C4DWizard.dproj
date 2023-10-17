@@ -289,10 +289,6 @@
             <Form>C4DWizardNotesView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Src\Teste.pas">
-            <Form>Form1</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <RcItem Include="Img\C4D_Logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>C4D_Logo</ResourceId>

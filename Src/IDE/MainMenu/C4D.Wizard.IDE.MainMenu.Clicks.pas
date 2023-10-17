@@ -52,8 +52,7 @@ uses
   C4D.Wizard.View.About,
   C4D.Wizard.DefaultFilesInOpeningProject,
   C4D.Wizard.FormatSource.View,
-  C4D.Wizard.Notes.View,
-  Teste;
+  C4D.Wizard.Notes.View;
 
 class procedure TC4DWizardIDEMainMenuClicks.UsesOrganizationClick(Sender: TObject);
 var
@@ -130,8 +129,6 @@ end;
 
 class procedure TC4DWizardIDEMainMenuClicks.NotesClick(Sender: TObject);
 begin
-  Teste.C4DWizardReopenViewShowDockableForm;
-
   C4D.Wizard.Notes.View.C4DWizardNotesViewShowDockableForm;
 end;
 

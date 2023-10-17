@@ -3,87 +3,70 @@ unit C4D.Wizard.Notes.View;
 interface
 
 uses
-  System.SysUtils,
-  System.StrUtils,
-  System.Classes,
-  System.Math,
-  System.DateUtils,
-  System.ImageList,
-  Winapi.Windows,
-  Winapi.Messages,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  Vcl.StdCtrls,
-  Vcl.ComCtrls,
-  Vcl.ExtCtrls,
-  Vcl.ImgList,
-  Vcl.Menus,
-  DockForm,
-  DeskUtil;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  DockForm, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Menus, System.ImageList, Vcl.ImgList;
 
 type
   TC4DWizardNotesView = class(TDockableForm)
-    pnTop: TPanel;
-    pnBack: TPanel;
-    Bevel1: TBevel;
     ImageList1: TImageList;
-    btnColor: TButton;
     ColorDialog1: TColorDialog;
+    FontDialog1: TFontDialog;
+    PopupMenu1: TPopupMenu;
+    Cut1: TMenuItem;
+    Copy1: TMenuItem;
+    Paste1: TMenuItem;
+    SelectAll1: TMenuItem;
+    N2: TMenuItem;
+    BackgroundColor1: TMenuItem;
+    BackgroundSelectColor1: TMenuItem;
+    BackgroundeDefaultColor1: TMenuItem;
+    pnBack: TPanel;
     RichEdit: TRichEdit;
+    pnTop: TPanel;
+    Bevel2: TBevel;
+    Bevel3: TBevel;
+    btnColor: TButton;
     cBoxSizeFont: TComboBox;
     btnAlignmentLeft: TButton;
     btnAlignmentCenter: TButton;
     btnAlignmentRight: TButton;
-    Bevel2: TBevel;
     btnUnderline: TButton;
     btnItalic: TButton;
     btnBold: TButton;
-    FontDialog1: TFontDialog;
     btnFont: TButton;
-    Bevel3: TBevel;
     btnOpen: TButton;
     btnSaveAs: TButton;
     btnSave: TButton;
-    PopupMenu1: TPopupMenu;
-    BackgroundColor1: TMenuItem;
-    BackgroundSelectColor1: TMenuItem;
-    BackgroundeDefaultColor1: TMenuItem;
     btnStrikethrough: TButton;
-    SelectAll1: TMenuItem;
-    Cut1: TMenuItem;
-    Copy1: TMenuItem;
-    Paste1: TMenuItem;
-    N2: TMenuItem;
+    Bevel1: TBevel;
     procedure FormShow(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure btnOpenClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure btnSaveAsClick(Sender: TObject);
     procedure btnColorClick(Sender: TObject);
-    procedure cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
     procedure cBoxSizeFontClick(Sender: TObject);
+    procedure cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
+    procedure BackgroundSelectColor1Click(Sender: TObject);
+    procedure BackgroundeDefaultColor1Click(Sender: TObject);
+    procedure btnFontClick(Sender: TObject);
     procedure btnAlignmentLeftClick(Sender: TObject);
     procedure btnAlignmentCenterClick(Sender: TObject);
     procedure btnAlignmentRightClick(Sender: TObject);
     procedure btnBoldClick(Sender: TObject);
     procedure btnItalicClick(Sender: TObject);
     procedure btnUnderlineClick(Sender: TObject);
-    procedure btnFontClick(Sender: TObject);
-    procedure btnOpenClick(Sender: TObject);
-    procedure btnSaveAsClick(Sender: TObject);
-    procedure btnSaveClick(Sender: TObject);
-    procedure FormHide(Sender: TObject);
-    procedure BackgroundSelectColor1Click(Sender: TObject);
-    procedure BackgroundeDefaultColor1Click(Sender: TObject);
     procedure btnStrikethroughClick(Sender: TObject);
-    procedure SelectAll1Click(Sender: TObject);
     procedure Cut1Click(Sender: TObject);
     procedure Copy1Click(Sender: TObject);
     procedure Paste1Click(Sender: TObject);
+    procedure SelectAll1Click(Sender: TObject);
+    procedure FormHide(Sender: TObject);
   private
     procedure ReadFromFile;
     procedure WriteToFile;
-    procedure ChangeStyle(const AStyle: TFontStyle);
     procedure ChangeAlignment(const AAlignment: TAlignment);
+    procedure ChangeStyle(const AStyle: TFontStyle);
   public
     constructor Create(AOwner: TComponent); override;
   end;
@@ -98,6 +81,7 @@ procedure C4DWizardNotesViewShowDockableForm;
 implementation
 
 uses
+  DeskUtil,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA;
 
@@ -129,7 +113,6 @@ begin
   FocusWindow(C4DWizardNotesView);
 end;
 
-{ TC4DWizardNotesView }
 constructor TC4DWizardNotesView.Create(AOwner: TComponent);
 begin
   inherited;
@@ -137,11 +120,6 @@ begin
   AutoSave := True;
   SaveStateNecessary := True;
   RichEdit.Lines.Clear;
-end;
-
-procedure TC4DWizardNotesView.FormCreate(Sender: TObject);
-begin
-  //RichEdit.Lines.Clear;
 end;
 
 procedure TC4DWizardNotesView.FormShow(Sender: TObject);
@@ -268,32 +246,7 @@ begin
     RichEdit.SelAttributes.Size := FontDialog1.Font.Size;
     cBoxSizeFont.Text := IntToStr(FontDialog1.Font.size);
     RichEdit.SelAttributes.Style := FontDialog1.Font.Style;
-
-    btnBold.Default := fsbold in FontDialog1.Font.Style;
-    btnItalic.Default := fsItalic in FontDialog1.Font.Style;
-    btnUnderline.Default := fsUnderline in FontDialog1.Font.Style;
   end;
-  RichEdit.SetFocus;
-end;
-
-procedure TC4DWizardNotesView.btnAlignmentLeftClick(Sender: TObject);
-begin
-  Self.ChangeAlignment(taLeftJustify);
-end;
-
-procedure TC4DWizardNotesView.btnAlignmentCenterClick(Sender: TObject);
-begin
-  Self.ChangeAlignment(taCenter);
-end;
-
-procedure TC4DWizardNotesView.btnAlignmentRightClick(Sender: TObject);
-begin
-  Self.ChangeAlignment(taRightJustify);
-end;
-
-procedure TC4DWizardNotesView.ChangeAlignment(const AAlignment: TAlignment);
-begin
-  RichEdit.Paragraph.Alignment := AAlignment;
   RichEdit.SetFocus;
 end;
 
@@ -323,6 +276,27 @@ begin
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [AStyle]
   else
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [AStyle];
+  RichEdit.SetFocus;
+end;
+
+procedure TC4DWizardNotesView.btnAlignmentLeftClick(Sender: TObject);
+begin
+  Self.ChangeAlignment(taLeftJustify);
+end;
+
+procedure TC4DWizardNotesView.btnAlignmentCenterClick(Sender: TObject);
+begin
+  Self.ChangeAlignment(taCenter);
+end;
+
+procedure TC4DWizardNotesView.btnAlignmentRightClick(Sender: TObject);
+begin
+  Self.ChangeAlignment(taRightJustify);
+end;
+
+procedure TC4DWizardNotesView.ChangeAlignment(const AAlignment: TAlignment);
+begin
+  RichEdit.Paragraph.Alignment := AAlignment;
   RichEdit.SetFocus;
 end;
 

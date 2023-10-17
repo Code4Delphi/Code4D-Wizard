@@ -1,10 +1,9 @@
 object C4DWizardNotesView: TC4DWizardNotesView
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMaximize]
-  Caption = 'Notes'
+  Caption = 'C4DWizardNotesView'
   ClientHeight = 521
-  ClientWidth = 884
+  ClientWidth = 874
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,30 +13,65 @@ object C4DWizardNotesView: TC4DWizardNotesView
   KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
-  OnCreate = FormCreate
   OnHide = FormHide
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Bevel1: TBevel
-    AlignWithMargins = True
+  object pnBack: TPanel
     Left = 0
-    Top = 492
-    Width = 884
-    Height = 3
-    Margins.Left = 0
-    Margins.Top = 1
-    Margins.Right = 0
-    Margins.Bottom = 0
-    Align = alBottom
-    Shape = bsBottomLine
-    ExplicitTop = 480
-    ExplicitWidth = 705
+    Top = 0
+    Width = 874
+    Height = 495
+    Align = alClient
+    BevelOuter = bvNone
+    Padding.Top = 2
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 812
+    ExplicitHeight = 513
+    object Bevel1: TBevel
+      AlignWithMargins = True
+      Left = 0
+      Top = 492
+      Width = 874
+      Height = 3
+      Margins.Left = 0
+      Margins.Top = 1
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Align = alBottom
+      Shape = bsBottomLine
+      ExplicitTop = 480
+      ExplicitWidth = 705
+    end
+    object RichEdit: TRichEdit
+      Left = 0
+      Top = 2
+      Width = 874
+      Height = 489
+      Align = alClient
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = True
+      ParentFont = False
+      PopupMenu = PopupMenu1
+      ScrollBars = ssVertical
+      TabOrder = 0
+      Zoom = 100
+      ExplicitWidth = 812
+      ExplicitHeight = 507
+    end
   end
   object pnTop: TPanel
     Left = 0
     Top = 495
-    Width = 884
+    Width = 874
     Height = 26
     Margins.Left = 0
     Margins.Top = 0
@@ -50,7 +84,9 @@ object C4DWizardNotesView: TC4DWizardNotesView
     Padding.Top = 2
     Padding.Right = 2
     Padding.Bottom = 2
-    TabOrder = 0
+    TabOrder = 1
+    ExplicitTop = 513
+    ExplicitWidth = 812
     object Bevel2: TBevel
       AlignWithMargins = True
       Left = 277
@@ -351,38 +387,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 12
       OnClick = btnStrikethroughClick
-    end
-  end
-  object pnBack: TPanel
-    Left = 0
-    Top = 0
-    Width = 884
-    Height = 491
-    Align = alClient
-    BevelOuter = bvNone
-    Padding.Top = 2
-    ParentBackground = False
-    TabOrder = 1
-    object RichEdit: TRichEdit
-      Left = 0
-      Top = 2
-      Width = 884
-      Height = 489
-      Align = alClient
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      BorderStyle = bsNone
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentColor = True
-      ParentFont = False
-      PopupMenu = PopupMenu1
-      ScrollBars = ssVertical
-      TabOrder = 0
-      Zoom = 100
     end
   end
   object ImageList1: TImageList
