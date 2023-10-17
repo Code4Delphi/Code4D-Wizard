@@ -157,7 +157,6 @@ uses
 
 {$R *.dfm}
 
-
 const
   C_INDEX_SUBITEM_Nickname = 0;
   C_INDEX_SUBITEM_Name = 1;

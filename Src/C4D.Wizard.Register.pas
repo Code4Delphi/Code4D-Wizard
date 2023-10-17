@@ -19,7 +19,8 @@ uses
   C4D.Wizard.IDE.EditServicesNotifier,
   C4D.Wizard.IDE.CompileNotifier,
   C4D.Wizard.IDE.ShortCut.KeyboardBinding,
-  C4D.Wizard.Notes.View;
+  C4D.Wizard.Notes.View,
+  Teste;
 
 {$IFDEF C4D_WIZARD_DLL}
 function RegisterDLL(const BorlandIDEServices: IBorlandIDEServices;
@@ -42,6 +43,7 @@ begin
   C4D.Wizard.IDE.EditServicesNotifier.RegisterSelf;
   C4D.Wizard.IDE.CompileNotifier.RegisterSelf;
   C4D.Wizard.Notes.View.RegisterSelf;
+  Teste.RegisterSelf;
 end;
 
 {$IFDEF C4D_WIZARD_DLL}

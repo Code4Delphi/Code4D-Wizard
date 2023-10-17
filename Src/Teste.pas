@@ -1,103 +1,88 @@
-unit C4D.Wizard.Notes.View;
+unit Teste;
 
 interface
 
 uses
-  System.SysUtils,
-  System.StrUtils,
-  System.Classes,
-  System.Math,
-  System.DateUtils,
-  System.ImageList,
-  Winapi.Windows,
-  Winapi.Messages,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  Vcl.StdCtrls,
-  Vcl.ComCtrls,
-  Vcl.ExtCtrls,
-  Vcl.ImgList,
-  Vcl.Menus,
-  DockForm,
-  DeskUtil;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  DockForm, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Menus, System.ImageList, Vcl.ImgList;
 
 type
-  TC4DWizardNotesView = class(TDockableForm)
-    pnTop: TPanel;
-    pnBack: TPanel;
-    Bevel1: TBevel;
+  TForm1 = class(TDockableForm)
     ImageList1: TImageList;
-    btnColor: TButton;
     ColorDialog1: TColorDialog;
+    FontDialog1: TFontDialog;
+    PopupMenu1: TPopupMenu;
+    Cut1: TMenuItem;
+    Copy1: TMenuItem;
+    Paste1: TMenuItem;
+    SelectAll1: TMenuItem;
+    N2: TMenuItem;
+    BackgroundColor1: TMenuItem;
+    BackgroundSelectColor1: TMenuItem;
+    BackgroundeDefaultColor1: TMenuItem;
+    pnBack: TPanel;
     RichEdit: TRichEdit;
+    pnTop: TPanel;
+    Bevel2: TBevel;
+    Bevel3: TBevel;
+    btnColor: TButton;
     cBoxSizeFont: TComboBox;
     btnAlignmentLeft: TButton;
     btnAlignmentCenter: TButton;
     btnAlignmentRight: TButton;
-    Bevel2: TBevel;
     btnUnderline: TButton;
     btnItalic: TButton;
     btnBold: TButton;
-    FontDialog1: TFontDialog;
     btnFont: TButton;
-    Bevel3: TBevel;
     btnOpen: TButton;
     btnSaveAs: TButton;
     btnSave: TButton;
-    PopupMenu1: TPopupMenu;
-    BackgroundColor1: TMenuItem;
-    BackgroundSelectColor1: TMenuItem;
-    BackgroundeDefaultColor1: TMenuItem;
     btnStrikethrough: TButton;
-    SelectAll1: TMenuItem;
-    Cut1: TMenuItem;
-    Copy1: TMenuItem;
-    Paste1: TMenuItem;
-    N2: TMenuItem;
+    Bevel1: TBevel;
     procedure FormShow(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure btnOpenClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure btnSaveAsClick(Sender: TObject);
     procedure btnColorClick(Sender: TObject);
-    procedure cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
     procedure cBoxSizeFontClick(Sender: TObject);
+    procedure cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
+    procedure BackgroundSelectColor1Click(Sender: TObject);
+    procedure BackgroundeDefaultColor1Click(Sender: TObject);
+    procedure btnFontClick(Sender: TObject);
     procedure btnAlignmentLeftClick(Sender: TObject);
     procedure btnAlignmentCenterClick(Sender: TObject);
     procedure btnAlignmentRightClick(Sender: TObject);
     procedure btnBoldClick(Sender: TObject);
     procedure btnItalicClick(Sender: TObject);
     procedure btnUnderlineClick(Sender: TObject);
-    procedure btnFontClick(Sender: TObject);
-    procedure btnOpenClick(Sender: TObject);
-    procedure btnSaveAsClick(Sender: TObject);
-    procedure btnSaveClick(Sender: TObject);
-    procedure FormHide(Sender: TObject);
-    procedure BackgroundSelectColor1Click(Sender: TObject);
-    procedure BackgroundeDefaultColor1Click(Sender: TObject);
     procedure btnStrikethroughClick(Sender: TObject);
-    procedure SelectAll1Click(Sender: TObject);
     procedure Cut1Click(Sender: TObject);
     procedure Copy1Click(Sender: TObject);
     procedure Paste1Click(Sender: TObject);
+    procedure SelectAll1Click(Sender: TObject);
+    procedure FormHide(Sender: TObject);
   private
     procedure ReadFromFile;
     procedure WriteToFile;
-    procedure ChangeStyle(const AStyle: TFontStyle);
     procedure ChangeAlignment(const AAlignment: TAlignment);
+    procedure ChangeStyle(const AStyle: TFontStyle);
+    { Private declarations }
   public
     constructor Create(AOwner: TComponent); override;
   end;
 
 var
-  C4DWizardNotesView: TC4DWizardNotesView;
+  Form1: TForm1;
 
 procedure RegisterSelf;
 procedure Unregister;
-procedure C4DWizardNotesViewShowDockableForm;
+procedure C4DWizardReopenViewShowDockableForm;
 
 implementation
 
 uses
+  DeskUtil,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA;
 
@@ -105,32 +90,31 @@ uses
 
 procedure RegisterSelf;
 begin
-  if(not Assigned(C4DWizardNotesView))then
-    C4DWizardNotesView := TC4DWizardNotesView.Create(nil);
+  if(not Assigned(Form1))then
+    Form1 := TForm1.Create(nil);
 
   if(@RegisterFieldAddress <> nil)then
-    RegisterFieldAddress(C4DWizardNotesView.Name, @C4DWizardNotesView);
+    RegisterFieldAddress(Form1.Name, @Form1);
 
-  RegisterDesktopFormClass(TC4DWizardNotesView,
-    C4DWizardNotesView.Name,
-    C4DWizardNotesView.Name);
+  RegisterDesktopFormClass(TForm1,
+    Form1.Name,
+    Form1.Name);
 end;
 
 procedure Unregister;
 begin
   if(@UnRegisterFieldAddress <> nil)then
-    UnRegisterFieldAddress(@C4DWizardNotesView);
-  FreeAndNil(C4DWizardNotesView);
+    UnRegisterFieldAddress(@Form1);
+  FreeAndNil(Form1);
 end;
 
-procedure C4DWizardNotesViewShowDockableForm;
+procedure C4DWizardReopenViewShowDockableForm;
 begin
-  ShowDockableForm(C4DWizardNotesView);
-  FocusWindow(C4DWizardNotesView);
+  ShowDockableForm(Form1);
+  FocusWindow(Form1);
 end;
 
-{ TC4DWizardNotesView }
-constructor TC4DWizardNotesView.Create(AOwner: TComponent);
+constructor TForm1.Create(AOwner: TComponent);
 begin
   inherited;
   DeskSection := Self.Name;
@@ -139,37 +123,32 @@ begin
   RichEdit.Lines.Clear;
 end;
 
-procedure TC4DWizardNotesView.FormCreate(Sender: TObject);
+procedure TForm1.FormShow(Sender: TObject);
 begin
-  //RichEdit.Lines.Clear;
-end;
-
-procedure TC4DWizardNotesView.FormShow(Sender: TObject);
-begin
-  TC4DWizardUtilsOTA.IDEThemingAll(TC4DWizardNotesView, Self);
+  TC4DWizardUtilsOTA.IDEThemingAll(TForm1, Self);
   Self.Constraints.MinWidth := 300;
   Self.Constraints.MinHeight := 300;
   RichEdit.Font.Color := TC4DWizardUtilsOTA.ActiveThemeColorDefaul;
   Self.ReadFromFile;
 end;
 
-procedure TC4DWizardNotesView.FormHide(Sender: TObject);
+procedure TForm1.FormHide(Sender: TObject);
 begin
   //Self.WriteToFile;
 end;
 
-procedure TC4DWizardNotesView.ReadFromFile;
+procedure TForm1.ReadFromFile;
 begin
   if(FileExists(TC4DWizardUtils.GetPathFileNotes))then
     RichEdit.Lines.LoadFromFile(TC4DWizardUtils.GetPathFileNotes)
 end;
 
-procedure TC4DWizardNotesView.WriteToFile;
+procedure TForm1.WriteToFile;
 begin
   RichEdit.Lines.SaveToFile(TC4DWizardUtils.GetPathFileNotes);
 end;
 
-procedure TC4DWizardNotesView.btnOpenClick(Sender: TObject);
+procedure TForm1.btnOpenClick(Sender: TObject);
 var
   LOpenDialog: TOpenDialog;
 begin
@@ -188,12 +167,12 @@ begin
   end;
 end;
 
-procedure TC4DWizardNotesView.btnSaveClick(Sender: TObject);
+procedure TForm1.btnSaveClick(Sender: TObject);
 begin
   Self.WriteToFile;
 end;
 
-procedure TC4DWizardNotesView.btnSaveAsClick(Sender: TObject);
+procedure TForm1.btnSaveAsClick(Sender: TObject);
 var
  LSaveDialog: TSaveDialog;
 begin
@@ -219,14 +198,14 @@ begin
   end;
 end;
 
-procedure TC4DWizardNotesView.btnColorClick(Sender: TObject);
+procedure TForm1.btnColorClick(Sender: TObject);
 begin
   if(ColorDialog1.Execute)then
     RichEdit.SelAttributes.Color := ColorDialog1.Color;
   RichEdit.SetFocus;
 end;
 
-procedure TC4DWizardNotesView.cBoxSizeFontClick(Sender: TObject);
+procedure TForm1.cBoxSizeFontClick(Sender: TObject);
 var
   LSize: Integer;
 begin
@@ -235,26 +214,26 @@ begin
     RichEdit.SelAttributes.Size := LSize;
 end;
 
-procedure TC4DWizardNotesView.cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
+procedure TForm1.cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
 begin
   if not(CharInSet(Key, ['0'..'9', #8]))then
     key := #0;
 end;
 
-procedure TC4DWizardNotesView.BackgroundSelectColor1Click(Sender: TObject);
+procedure TForm1.BackgroundSelectColor1Click(Sender: TObject);
 begin
   if(ColorDialog1.Execute)then
     RichEdit.Color := ColorDialog1.Color;
   RichEdit.SetFocus;
 end;
 
-procedure TC4DWizardNotesView.BackgroundeDefaultColor1Click(Sender: TObject);
+procedure TForm1.BackgroundeDefaultColor1Click(Sender: TObject);
 begin
   RichEdit.ParentColor := True;
   RichEdit.SetFocus;
 end;
 
-procedure TC4DWizardNotesView.btnFontClick(Sender: TObject);
+procedure TForm1.btnFontClick(Sender: TObject);
 begin
   FontDialog1.Font.Color := RichEdit.SelAttributes.Color;
   FontDialog1.Font.Name := RichEdit.SelAttributes.Name;
@@ -276,48 +255,27 @@ begin
   RichEdit.SetFocus;
 end;
 
-procedure TC4DWizardNotesView.btnAlignmentLeftClick(Sender: TObject);
-begin
-  Self.ChangeAlignment(taLeftJustify);
-end;
-
-procedure TC4DWizardNotesView.btnAlignmentCenterClick(Sender: TObject);
-begin
-  Self.ChangeAlignment(taCenter);
-end;
-
-procedure TC4DWizardNotesView.btnAlignmentRightClick(Sender: TObject);
-begin
-  Self.ChangeAlignment(taRightJustify);
-end;
-
-procedure TC4DWizardNotesView.ChangeAlignment(const AAlignment: TAlignment);
-begin
-  RichEdit.Paragraph.Alignment := AAlignment;
-  RichEdit.SetFocus;
-end;
-
-procedure TC4DWizardNotesView.btnBoldClick(Sender: TObject);
+procedure TForm1.btnBoldClick(Sender: TObject);
 begin
   Self.ChangeStyle(fsBold);
 end;
 
-procedure TC4DWizardNotesView.btnItalicClick(Sender: TObject);
+procedure TForm1.btnItalicClick(Sender: TObject);
 begin
   Self.ChangeStyle(fsItalic);
 end;
 
-procedure TC4DWizardNotesView.btnUnderlineClick(Sender: TObject);
+procedure TForm1.btnUnderlineClick(Sender: TObject);
 begin
   Self.ChangeStyle(fsUnderline);
 end;
 
-procedure TC4DWizardNotesView.btnStrikethroughClick(Sender: TObject);
+procedure TForm1.btnStrikethroughClick(Sender: TObject);
 begin
   Self.ChangeStyle(fsStrikeOut);
 end;
 
-procedure TC4DWizardNotesView.ChangeStyle(const AStyle: TFontStyle);
+procedure TForm1.ChangeStyle(const AStyle: TFontStyle);
 begin
   if(AStyle in RichEdit.SelAttributes.Style)then
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [AStyle]
@@ -326,22 +284,43 @@ begin
   RichEdit.SetFocus;
 end;
 
-procedure TC4DWizardNotesView.Cut1Click(Sender: TObject);
+procedure TForm1.btnAlignmentLeftClick(Sender: TObject);
+begin
+  Self.ChangeAlignment(taLeftJustify);
+end;
+
+procedure TForm1.btnAlignmentCenterClick(Sender: TObject);
+begin
+  Self.ChangeAlignment(taCenter);
+end;
+
+procedure TForm1.btnAlignmentRightClick(Sender: TObject);
+begin
+  Self.ChangeAlignment(taRightJustify);
+end;
+
+procedure TForm1.ChangeAlignment(const AAlignment: TAlignment);
+begin
+  RichEdit.Paragraph.Alignment := AAlignment;
+  RichEdit.SetFocus;
+end;
+
+procedure TForm1.Cut1Click(Sender: TObject);
 begin
   RichEdit.CutToClipboard;
 end;
 
-procedure TC4DWizardNotesView.Copy1Click(Sender: TObject);
+procedure TForm1.Copy1Click(Sender: TObject);
 begin
   RichEdit.CopyToClipboard;
 end;
 
-procedure TC4DWizardNotesView.Paste1Click(Sender: TObject);
+procedure TForm1.Paste1Click(Sender: TObject);
 begin
   RichEdit.PasteFromClipboard;
 end;
 
-procedure TC4DWizardNotesView.SelectAll1Click(Sender: TObject);
+procedure TForm1.SelectAll1Click(Sender: TObject);
 begin
   RichEdit.SelectAll;
 end;
