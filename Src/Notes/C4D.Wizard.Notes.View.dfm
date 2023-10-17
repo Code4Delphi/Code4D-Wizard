@@ -3,7 +3,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
   Top = 0
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Notes'
-  ClientHeight = 581
+  ClientHeight = 521
   ClientWidth = 884
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,19 +14,15 @@ object C4DWizardNotesView: TC4DWizardNotesView
   KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
-  OnDeactivate = FormDeactivate
   OnHide = FormHide
-  OnMouseLeave = FormMouseLeave
   OnShow = FormShow
-  OnUnDock = FormUnDock
   PixelsPerInch = 96
   TextHeight = 13
   object Bevel1: TBevel
     AlignWithMargins = True
     Left = 0
-    Top = 552
+    Top = 492
     Width = 884
     Height = 3
     Margins.Left = 0
@@ -40,20 +36,25 @@ object C4DWizardNotesView: TC4DWizardNotesView
   end
   object pnTop: TPanel
     Left = 0
-    Top = 555
+    Top = 495
     Width = 884
     Height = 26
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
     Align = alBottom
     BevelEdges = [beLeft, beTop, beRight]
     BevelOuter = bvNone
-    Padding.Left = 2
+    Padding.Left = 3
     Padding.Top = 2
     Padding.Right = 2
     Padding.Bottom = 2
     TabOrder = 0
+    ExplicitTop = 555
     object Bevel2: TBevel
       AlignWithMargins = True
-      Left = 248
+      Left = 277
       Top = 2
       Width = 1
       Height = 22
@@ -63,11 +64,12 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       Shape = bsLeftLine
-      ExplicitLeft = 166
+      ExplicitLeft = 447
+      ExplicitTop = 0
     end
     object Bevel3: TBevel
       AlignWithMargins = True
-      Left = 78
+      Left = 79
       Top = 2
       Width = 1
       Height = 22
@@ -82,7 +84,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnColor: TButton
       AlignWithMargins = True
-      Left = 83
+      Left = 84
       Top = 2
       Width = 22
       Height = 22
@@ -100,11 +102,15 @@ object C4DWizardNotesView: TC4DWizardNotesView
       OnClick = btnColorClick
     end
     object cBoxSizeFont: TComboBox
-      Left = 133
+      AlignWithMargins = True
+      Left = 134
       Top = 2
       Width = 39
       Height = 21
       Cursor = crHandPoint
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Bottom = 0
       Align = alLeft
       DropDownCount = 15
       ItemIndex = 1
@@ -130,7 +136,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnAlignmentLeft: TButton
       AlignWithMargins = True
-      Left = 172
+      Left = 282
       Top = 2
       Width = 22
       Height = 22
@@ -150,7 +156,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnAlignmentCenter: TButton
       AlignWithMargins = True
-      Left = 197
+      Left = 307
       Top = 2
       Width = 22
       Height = 22
@@ -170,7 +176,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnAlignmentRight: TButton
       AlignWithMargins = True
-      Left = 222
+      Left = 332
       Top = 2
       Width = 22
       Height = 22
@@ -190,7 +196,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnUnderline: TButton
       AlignWithMargins = True
-      Left = 303
+      Left = 226
       Top = 2
       Width = 22
       Height = 22
@@ -211,7 +217,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnItalic: TButton
       AlignWithMargins = True
-      Left = 278
+      Left = 201
       Top = 2
       Width = 22
       Height = 22
@@ -231,7 +237,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnBold: TButton
       AlignWithMargins = True
-      Left = 253
+      Left = 176
       Top = 2
       Width = 22
       Height = 22
@@ -251,7 +257,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnFont: TButton
       AlignWithMargins = True
-      Left = 108
+      Left = 109
       Top = 2
       Width = 22
       Height = 22
@@ -272,7 +278,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnOpen: TButton
       AlignWithMargins = True
-      Left = 2
+      Left = 3
       Top = 2
       Width = 22
       Height = 22
@@ -291,7 +297,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnSaveAs: TButton
       AlignWithMargins = True
-      Left = 52
+      Left = 53
       Top = 2
       Width = 22
       Height = 22
@@ -310,7 +316,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnSave: TButton
       AlignWithMargins = True
-      Left = 27
+      Left = 28
       Top = 2
       Width = 22
       Height = 22
@@ -329,7 +335,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnStrikethrough: TButton
       AlignWithMargins = True
-      Left = 328
+      Left = 251
       Top = 2
       Width = 22
       Height = 22
@@ -352,17 +358,18 @@ object C4DWizardNotesView: TC4DWizardNotesView
     Left = 0
     Top = 0
     Width = 884
-    Height = 551
+    Height = 491
     Align = alClient
     BevelOuter = bvNone
     Padding.Top = 2
     ParentBackground = False
     TabOrder = 1
+    ExplicitHeight = 551
     object RichEdit: TRichEdit
       Left = 0
       Top = 2
       Width = 884
-      Height = 549
+      Height = 489
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -378,6 +385,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ScrollBars = ssVertical
       TabOrder = 0
       Zoom = 100
+      ExplicitHeight = 549
     end
   end
   object ImageList1: TImageList
@@ -935,6 +943,29 @@ object C4DWizardNotesView: TC4DWizardNotesView
   object PopupMenu1: TPopupMenu
     Left = 240
     Top = 248
+    object Cut1: TMenuItem
+      Caption = 'Cut'
+      ShortCut = 16472
+      OnClick = Cut1Click
+    end
+    object Copy1: TMenuItem
+      Caption = 'Copy'
+      ShortCut = 16451
+      OnClick = Copy1Click
+    end
+    object Paste1: TMenuItem
+      Caption = 'Paste'
+      ShortCut = 16470
+      OnClick = Paste1Click
+    end
+    object SelectAll1: TMenuItem
+      Caption = 'Select all'
+      ShortCut = 16449
+      OnClick = SelectAll1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
     object BackgroundColor1: TMenuItem
       Bitmap.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100

@@ -8,9 +8,9 @@ uses
   System.Classes,
   System.Math,
   System.DateUtils,
+  System.ImageList,
   Winapi.Windows,
   Winapi.Messages,
-  DockForm,
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
@@ -18,8 +18,9 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
-  System.ImageList,
-  Vcl.ImgList, Vcl.Menus;
+  Vcl.ImgList,
+  Vcl.Menus,
+  DockForm;
 
 type
   TC4DWizardNotesView = class(TDockableForm)
@@ -49,6 +50,11 @@ type
     BackgroundSelectColor1: TMenuItem;
     BackgroundeDefaultColor1: TMenuItem;
     btnStrikethrough: TButton;
+    SelectAll1: TMenuItem;
+    Cut1: TMenuItem;
+    Copy1: TMenuItem;
+    Paste1: TMenuItem;
+    N2: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnColorClick(Sender: TObject);
@@ -64,18 +70,19 @@ type
     procedure btnOpenClick(Sender: TObject);
     procedure btnSaveAsClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormHide(Sender: TObject);
-    procedure FormDeactivate(Sender: TObject);
-    procedure FormUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
-    procedure FormMouseLeave(Sender: TObject);
     procedure BackgroundSelectColor1Click(Sender: TObject);
     procedure BackgroundeDefaultColor1Click(Sender: TObject);
     procedure btnStrikethroughClick(Sender: TObject);
+    procedure SelectAll1Click(Sender: TObject);
+    procedure Cut1Click(Sender: TObject);
+    procedure Copy1Click(Sender: TObject);
+    procedure Paste1Click(Sender: TObject);
   private
     procedure ReadFromFile;
     procedure WriteToFile;
-
+    procedure ChangeStyle(const AStyle: TFontStyle);
+    procedure ChangeAlignment(const AAlignment: TAlignment);
   public
     constructor Create(AOwner: TComponent); override;
   end;
@@ -90,9 +97,9 @@ procedure C4DWizardNotesViewShowDockableForm;
 implementation
 
 uses
+  DeskUtil,
   C4D.Wizard.Utils,
-  C4D.Wizard.Utils.OTA,
-  DeskUtil;
+  C4D.Wizard.Utils.OTA;
 
 {$R *.dfm}
 
@@ -129,38 +136,12 @@ begin
   DeskSection := Name;
   AutoSave := True;
   SaveStateNecessary := True;
-end;
-
-procedure TC4DWizardNotesView.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  //TC4DWizardUtils.ShowMsg('Close');
-end;
-
-procedure TC4DWizardNotesView.FormHide(Sender: TObject);
-begin
-  //TC4DWizardUtils.ShowMsg('Hide');
-  Self.WriteToFile;
-end;
-
-procedure TC4DWizardNotesView.FormMouseLeave(Sender: TObject);
-begin
-  ///TC4DWizardUtils.ShowMsg('FormMouseLeave');
-end;
-
-procedure TC4DWizardNotesView.FormDeactivate(Sender: TObject);
-begin
-  ///RichEdit.Lines.Add(DateTimeToStr(Now))
-end;
-
-procedure TC4DWizardNotesView.FormUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
-begin
-  ///TC4DWizardUtils.ShowMsg('FormUnDock');
+  RichEdit.Lines.Clear;
 end;
 
 procedure TC4DWizardNotesView.FormCreate(Sender: TObject);
 begin
   RichEdit.Lines.Clear;
-  RichEdit.Font.Color := TC4DWizardUtilsOTA.ActiveThemeColorDefaul;
 end;
 
 procedure TC4DWizardNotesView.FormShow(Sender: TObject);
@@ -168,7 +149,13 @@ begin
   TC4DWizardUtilsOTA.IDEThemingAll(TC4DWizardNotesView, Self);
   Self.Constraints.MinWidth := 300;
   Self.Constraints.MinHeight := 300;
+  RichEdit.Font.Color := TC4DWizardUtilsOTA.ActiveThemeColorDefaul;
   Self.ReadFromFile;
+end;
+
+procedure TC4DWizardNotesView.FormHide(Sender: TObject);
+begin
+  Self.WriteToFile;
 end;
 
 procedure TC4DWizardNotesView.ReadFromFile;
@@ -246,7 +233,6 @@ begin
   LSize := StrToIntDef(cBoxSizeFont.Text, 0);
   if(LSize > 7)then
     RichEdit.SelAttributes.Size := LSize;
-  RichEdit.SetFocus;
 end;
 
 procedure TC4DWizardNotesView.cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
@@ -292,61 +278,72 @@ end;
 
 procedure TC4DWizardNotesView.btnAlignmentLeftClick(Sender: TObject);
 begin
-  RichEdit.Paragraph.Alignment := taLeftJustify;
-  RichEdit.SetFocus;
+  Self.ChangeAlignment(taLeftJustify);
 end;
 
 procedure TC4DWizardNotesView.btnAlignmentCenterClick(Sender: TObject);
 begin
-  RichEdit.Paragraph.Alignment := taCenter;
-  RichEdit.SetFocus;
+  Self.ChangeAlignment(taCenter);
 end;
 
 procedure TC4DWizardNotesView.btnAlignmentRightClick(Sender: TObject);
 begin
-  RichEdit.Paragraph.Alignment := taRightJustify;
+  Self.ChangeAlignment(taRightJustify);
+end;
+
+procedure TC4DWizardNotesView.ChangeAlignment(const AAlignment: TAlignment);
+begin
+  RichEdit.Paragraph.Alignment := AAlignment;
   RichEdit.SetFocus;
 end;
 
 procedure TC4DWizardNotesView.btnBoldClick(Sender: TObject);
 begin
-  if(fsBold in RichEdit.SelAttributes.Style)then
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsBold]
-  else
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsBold];
-
-  btnBold.Default := not btnBold.Default;
-  RichEdit.SetFocus;
+  Self.ChangeStyle(fsBold);
 end;
 
 procedure TC4DWizardNotesView.btnItalicClick(Sender: TObject);
 begin
-  if(fsItalic in RichEdit.SelAttributes.Style)then
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsItalic]
-  else
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsItalic];
-
-  RichEdit.SetFocus;
+  Self.ChangeStyle(fsItalic);
 end;
 
 procedure TC4DWizardNotesView.btnUnderlineClick(Sender: TObject);
 begin
-  if(fsUnderline in RichEdit.SelAttributes.Style)then
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsUnderline]
-  else
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsUnderline];
-
-  RichEdit.SetFocus;
+  Self.ChangeStyle(fsUnderline);
 end;
 
 procedure TC4DWizardNotesView.btnStrikethroughClick(Sender: TObject);
 begin
-  if(fsStrikeOut in RichEdit.SelAttributes.Style)then
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsStrikeOut]
-  else
-    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsStrikeOut];
+  Self.ChangeStyle(fsStrikeOut);
+end;
 
+procedure TC4DWizardNotesView.ChangeStyle(const AStyle: TFontStyle);
+begin
+  if(AStyle in RichEdit.SelAttributes.Style)then
+    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [AStyle]
+  else
+    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [AStyle];
   RichEdit.SetFocus;
+end;
+
+procedure TC4DWizardNotesView.Cut1Click(Sender: TObject);
+begin
+  RichEdit.CutToClipboard;
+end;
+
+procedure TC4DWizardNotesView.Copy1Click(Sender: TObject);
+begin
+  RichEdit.CopyToClipboard;
+end;
+
+procedure TC4DWizardNotesView.Paste1Click(Sender: TObject);
+begin
+  RichEdit.PasteFromClipboard;
+end;
+
+procedure TC4DWizardNotesView.SelectAll1Click(Sender: TObject);
+begin
+  RichEdit.SelectAll;
 end;
 
 initialization
