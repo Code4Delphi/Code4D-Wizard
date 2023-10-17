@@ -19,7 +19,7 @@ uses
   Vcl.ComCtrls,
   Vcl.ExtCtrls,
   System.ImageList,
-  Vcl.ImgList;
+  Vcl.ImgList, Vcl.Menus;
 
 type
   TC4DWizardNotesView = class(TDockableForm)
@@ -40,11 +40,15 @@ type
     btnBold: TButton;
     FontDialog1: TFontDialog;
     btnFont: TButton;
-    btnBackgroundColor: TButton;
     Bevel3: TBevel;
     btnOpen: TButton;
     btnSaveAs: TButton;
     btnSave: TButton;
+    PopupMenu1: TPopupMenu;
+    BackgroundColor1: TMenuItem;
+    BackgroundSelectColor1: TMenuItem;
+    BackgroundeDefaultColor1: TMenuItem;
+    btnStrikethrough: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnColorClick(Sender: TObject);
@@ -56,7 +60,6 @@ type
     procedure btnBoldClick(Sender: TObject);
     procedure btnItalicClick(Sender: TObject);
     procedure btnUnderlineClick(Sender: TObject);
-    procedure btnBackgroundColorClick(Sender: TObject);
     procedure btnFontClick(Sender: TObject);
     procedure btnOpenClick(Sender: TObject);
     procedure btnSaveAsClick(Sender: TObject);
@@ -66,6 +69,9 @@ type
     procedure FormDeactivate(Sender: TObject);
     procedure FormUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
     procedure FormMouseLeave(Sender: TObject);
+    procedure BackgroundSelectColor1Click(Sender: TObject);
+    procedure BackgroundeDefaultColor1Click(Sender: TObject);
+    procedure btnStrikethroughClick(Sender: TObject);
   private
     procedure ReadFromFile;
     procedure WriteToFile;
@@ -117,7 +123,6 @@ begin
 end;
 
 { TC4DWizardNotesView }
-
 constructor TC4DWizardNotesView.Create(AOwner: TComponent);
 begin
   inherited;
@@ -241,6 +246,7 @@ begin
   LSize := StrToIntDef(cBoxSizeFont.Text, 0);
   if(LSize > 7)then
     RichEdit.SelAttributes.Size := LSize;
+  RichEdit.SetFocus;
 end;
 
 procedure TC4DWizardNotesView.cBoxSizeFontKeyPress(Sender: TObject; var Key: Char);
@@ -249,20 +255,30 @@ begin
     key := #0;
 end;
 
-procedure TC4DWizardNotesView.btnBackgroundColorClick(Sender: TObject);
+procedure TC4DWizardNotesView.BackgroundSelectColor1Click(Sender: TObject);
 begin
   if(ColorDialog1.Execute)then
     RichEdit.Color := ColorDialog1.Color;
   RichEdit.SetFocus;
 end;
 
+procedure TC4DWizardNotesView.BackgroundeDefaultColor1Click(Sender: TObject);
+begin
+  RichEdit.ParentColor := True;
+  RichEdit.SetFocus;
+end;
+
 procedure TC4DWizardNotesView.btnFontClick(Sender: TObject);
 begin
+  FontDialog1.Font.Color := RichEdit.SelAttributes.Color;
+  FontDialog1.Font.Name := RichEdit.SelAttributes.Name;
+  FontDialog1.Font.Size := RichEdit.SelAttributes.Size;
+  FontDialog1.Font.Style := RichEdit.SelAttributes.Style;
+
   if(FontDialog1.Execute)then
   begin
     RichEdit.SelAttributes.Color := FontDialog1.Font.Color;
     RichEdit.SelAttributes.Name := FontDialog1.Font.Name;
-    //FontComboBox1.Text:=FontDialog1.Font.Name;
     RichEdit.SelAttributes.Size := FontDialog1.Font.Size;
     cBoxSizeFont.Text := IntToStr(FontDialog1.Font.size);
     RichEdit.SelAttributes.Style := FontDialog1.Font.Style;
@@ -294,7 +310,7 @@ end;
 
 procedure TC4DWizardNotesView.btnBoldClick(Sender: TObject);
 begin
-  if(btnBold.Default)then
+  if(fsBold in RichEdit.SelAttributes.Style)then
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsBold]
   else
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsBold];
@@ -305,23 +321,31 @@ end;
 
 procedure TC4DWizardNotesView.btnItalicClick(Sender: TObject);
 begin
-  if(btnItalic.Default)then
+  if(fsItalic in RichEdit.SelAttributes.Style)then
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsItalic]
   else
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsItalic];
 
-  btnItalic.Default := not btnItalic.Default;
   RichEdit.SetFocus;
 end;
 
 procedure TC4DWizardNotesView.btnUnderlineClick(Sender: TObject);
 begin
-  if(btnUnderline.Default)then
+  if(fsUnderline in RichEdit.SelAttributes.Style)then
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsUnderline]
   else
     RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsUnderline];
 
-  btnUnderline.Default := not btnUnderline.Default;
+  RichEdit.SetFocus;
+end;
+
+procedure TC4DWizardNotesView.btnStrikethroughClick(Sender: TObject);
+begin
+  if(fsStrikeOut in RichEdit.SelAttributes.Style)then
+    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style - [fsStrikeOut]
+  else
+    RichEdit.SelAttributes.Style := RichEdit.SelAttributes.Style + [fsStrikeOut];
+
   RichEdit.SetFocus;
 end;
 
