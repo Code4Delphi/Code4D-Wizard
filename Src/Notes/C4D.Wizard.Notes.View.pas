@@ -144,8 +144,8 @@ end;
 
 procedure TC4DWizardNotesView.FormShow(Sender: TObject);
 begin
-  Self.Constraints.MinWidth := 300;
-  Self.Constraints.MinHeight := 300;
+  Self.Constraints.MinWidth := 100;
+  Self.Constraints.MinHeight := 100;
 
   RichEdit.Font.Color := TC4DWizardUtilsOTA.ActiveThemeColorDefaul;
   Self.ReadFromFile;
@@ -293,9 +293,15 @@ end;
 
 procedure TC4DWizardNotesView.ChangeFontSize(const AValue: Integer);
 begin
-  RichEdit.SelAttributes.Size := RichEdit.SelAttributes.Size + AValue;
-  cBoxSizeFont.Text := IntToStr(RichEdit.SelAttributes.Size);
-  RichEdit.SetFocus;
+  try
+    if(RichEdit.SelAttributes.Size <= 7)then
+      Exit;
+
+    RichEdit.SelAttributes.Size := RichEdit.SelAttributes.Size + AValue;
+    cBoxSizeFont.Text := IntToStr(RichEdit.SelAttributes.Size);
+  finally
+    RichEdit.SetFocus;
+  end;
 end;
 
 procedure TC4DWizardNotesView.btnItalicClick(Sender: TObject);

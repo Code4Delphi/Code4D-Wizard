@@ -1,7 +1,8 @@
 object C4DWizardNotesView: TC4DWizardNotesView
   Left = 0
   Top = 0
-  Caption = 'C4DWizardNotesView'
+  Hint = 'Code4D-Wizard - Notes'
+  Caption = 'Notes'
   ClientHeight = 521
   ClientWidth = 874
   Color = clBtnFace
@@ -13,6 +14,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
   KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
+  ShowHint = True
   OnActivate = FormActivate
   OnClose = FormClose
   OnShow = FormShow
@@ -83,9 +85,11 @@ object C4DWizardNotesView: TC4DWizardNotesView
     Padding.Right = 2
     Padding.Bottom = 2
     TabOrder = 1
+    ExplicitLeft = -5
+    ExplicitTop = 494
     object Bevel2: TBevel
       AlignWithMargins = True
-      Left = 327
+      Left = 326
       Top = 2
       Width = 1
       Height = 22
@@ -95,8 +99,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       Shape = bsLeftLine
-      ExplicitLeft = 447
-      ExplicitTop = 0
+      ExplicitLeft = 325
     end
     object Bevel3: TBevel
       AlignWithMargins = True
@@ -110,8 +113,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       Shape = bsLeftLine
-      ExplicitLeft = 54
-      ExplicitTop = 0
     end
     object btnColor: TButton
       AlignWithMargins = True
@@ -131,12 +132,13 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 0
       OnClick = btnColorClick
+      ExplicitLeft = 83
     end
     object cBoxSizeFont: TComboBox
       AlignWithMargins = True
       Left = 134
       Top = 2
-      Width = 39
+      Width = 38
       Height = 21
       Cursor = crHandPoint
       Margins.Left = 0
@@ -164,10 +166,11 @@ object C4DWizardNotesView: TC4DWizardNotesView
         '48'
         '72'
         '96')
+      ExplicitLeft = 132
     end
     object btnAlignmentLeft: TButton
       AlignWithMargins = True
-      Left = 332
+      Left = 331
       Top = 2
       Width = 22
       Height = 22
@@ -178,17 +181,16 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       ImageIndex = 7
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
       OnClick = btnAlignmentLeftClick
-      ExplicitLeft = 282
+      ExplicitLeft = 329
     end
     object btnAlignmentCenter: TButton
       AlignWithMargins = True
-      Left = 357
+      Left = 356
       Top = 2
       Width = 22
       Height = 22
@@ -199,17 +201,16 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       ImageIndex = 8
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
       OnClick = btnAlignmentCenterClick
-      ExplicitLeft = 307
+      ExplicitLeft = 354
     end
     object btnAlignmentRight: TButton
       AlignWithMargins = True
-      Left = 382
+      Left = 381
       Top = 2
       Width = 22
       Height = 22
@@ -220,17 +221,16 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       ImageIndex = 9
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 4
       OnClick = btnAlignmentRightClick
-      ExplicitLeft = 332
+      ExplicitLeft = 379
     end
     object btnUnderline: TButton
       AlignWithMargins = True
-      Left = 276
+      Left = 275
       Top = 2
       Width = 22
       Height = 22
@@ -242,17 +242,16 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Align = alLeft
       ImageAlignment = iaCenter
       ImageIndex = 12
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 5
       OnClick = btnUnderlineClick
-      ExplicitLeft = 226
+      ExplicitLeft = 274
     end
     object btnItalic: TButton
       AlignWithMargins = True
-      Left = 251
+      Left = 250
       Top = 2
       Width = 22
       Height = 22
@@ -263,17 +262,16 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       ImageIndex = 11
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 6
       OnClick = btnItalicClick
-      ExplicitLeft = 201
+      ExplicitLeft = 249
     end
     object btnBold: TButton
       AlignWithMargins = True
-      Left = 226
+      Left = 225
       Top = 2
       Width = 22
       Height = 22
@@ -284,13 +282,12 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       ImageIndex = 10
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 7
       OnClick = btnBoldClick
-      ExplicitLeft = 176
+      ExplicitLeft = 224
     end
     object btnFont: TButton
       AlignWithMargins = True
@@ -306,12 +303,12 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Align = alLeft
       ImageAlignment = iaCenter
       ImageIndex = 6
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 8
       OnClick = btnFontClick
+      ExplicitLeft = 108
     end
     object btnOpen: TButton
       AlignWithMargins = True
@@ -372,7 +369,7 @@ object C4DWizardNotesView: TC4DWizardNotesView
     end
     object btnStrikethrough: TButton
       AlignWithMargins = True
-      Left = 301
+      Left = 300
       Top = 2
       Width = 22
       Height = 22
@@ -389,11 +386,11 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 12
       OnClick = btnStrikethroughClick
-      ExplicitLeft = 251
+      ExplicitLeft = 299
     end
     object btnFontSizeDecrease: TButton
       AlignWithMargins = True
-      Left = 176
+      Left = 175
       Top = 2
       Width = 22
       Height = 22
@@ -404,17 +401,16 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       ImageIndex = 14
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 13
       OnClick = btnFontSizeDecreaseClick
-      ExplicitTop = 3
+      ExplicitLeft = 169
     end
     object btnFontSizeIncrease: TButton
       AlignWithMargins = True
-      Left = 201
+      Left = 200
       Top = 2
       Width = 22
       Height = 22
@@ -425,13 +421,12 @@ object C4DWizardNotesView: TC4DWizardNotesView
       Margins.Bottom = 0
       Align = alLeft
       ImageIndex = 15
-      ImageMargins.Left = 1
       Images = ImageList1
       ParentShowHint = False
       ShowHint = True
       TabOrder = 14
       OnClick = btnFontSizeIncreaseClick
-      ExplicitTop = 3
+      ExplicitLeft = 194
     end
   end
   object ImageList1: TImageList
