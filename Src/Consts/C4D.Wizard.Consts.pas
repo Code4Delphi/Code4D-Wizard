@@ -8,7 +8,7 @@ uses
 type
   TC4DConsts = class
   public const
-    C_SEMANTIC_VERSION = '1.14.0';
+    C_SEMANTIC_VERSION = '1.15.0';
     C_NAME_FOLDER_GIT = '.git\';
     C_WIN_CONTROL_FOCU_NIL = nil;
     C_C4D_WIZARD_DPROJ = 'C4DWizard.dproj';
