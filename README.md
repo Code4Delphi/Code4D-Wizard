@@ -118,7 +118,12 @@ Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It
 
 
 ‌
-# 📥Download Wizard Source Code?
+# 💬 Contributions / Ideas / Bug Fixes
+To submit a pull request, follow these steps:
 
-To have access to the Wizard's source code, and to our course, where you'll learn everything about Open Tools API, just click on the following link: [Download source code and access Open Tools API course](https://go.hotmart.com/U81331747Y?dp=1 "‌View course information")
-
+1. Fork the project
+2. Create a new branch (`git checkout -b minha-nova-funcionalidade`)
+3. Make your changes
+4. Make the commit (`git commit -am 'Functionality or adjustment message'`)
+5. Push the branch (`git push origin Message about functionality or adjustment`)
+6. Open a pull request
