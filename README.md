@@ -127,3 +127,7 @@ To submit a pull request, follow these steps:
 4. Make the commit (`git commit -am 'Functionality or adjustment message'`)
 5. Push the branch (`git push origin Message about functionality or adjustment`)
 6. Open a pull request
+
+
+## ⚠️ License
+`Code4D-Wizard` is free and open-source wizard licensed under the [MIT License](https://github.com/Code4Delphi/Code4D-Wizard/blob/master/LICENSE).
