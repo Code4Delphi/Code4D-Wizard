@@ -373,7 +373,11 @@ begin
           .Trim
           .Replace(sLineBreak, '')
           .Replace('...(Editado)Restaurar original', '')
-          .Replace('...(Edited)Restore original', '');
+          .Replace('...(Edited)Restore original', '')
+          .Replace('Não foi possível carregar todos os resultados', '')
+          .Replace('Tente de novoTentando novamente...', '')
+          .Replace('Revisada por colaboradores', '')
+          .Replace('Esta tradução foi marcada como correta pelos usuários do Google Tradutor.Saiba mais', '');
 
         if(not Self.StringIsValid(LItem))then
           Continue;
