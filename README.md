@@ -4,7 +4,7 @@
     <img alt="Code4Delphi" height="100" src="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/c4d-logo-100x100.png">
   </a>  
 </p>
-Code4D-Wizard is a set of plugin tools designed to be used in the Delphi IDE. It adds to the Delphi IDE several features to improve our development efficiency, speed and productivity. This Wizard was developed using the OTA (Open Tools API)
+Code4D-Wizard is a wizard/plugin designed to be used in the Delphi IDE. It adds to the Delphi IDE several features and functionality to improve development efficiency, speed and productivity. This Wizard was developed using OTA (Open Tools API)
 
 # 📞 Contacts
 
