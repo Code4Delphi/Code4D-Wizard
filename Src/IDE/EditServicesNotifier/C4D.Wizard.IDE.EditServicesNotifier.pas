@@ -43,9 +43,7 @@ begin
   if(IndexNotifier < 0)then
   begin
     IndexNotifier := TC4DWizardUtilsOTA.GetIOTAEditorServices.AddNotifier(TC4DWizardIDEEditServicesNotifier.Create);
-    {$IFNDEF C4D_WIZARD_DLL}
     TC4DWizardIDEToolBarsRegister.ProcessWithThread;
-    {$ENDIF}
   end;
 end;
 
