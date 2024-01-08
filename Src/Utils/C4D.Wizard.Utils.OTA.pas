@@ -128,7 +128,7 @@ begin
   try
     try
       LBitmap.LoadFromResourceName(hInstance, AResourceName);
-      {$IF CompilerVersion >= 35} //Alexandria
+      {$IF CompilerVersion = 35} //Alexandria
         LMaskColor := clLime;
       {$ELSE}
         LMaskColor := LBitmap.TransparentColor;
@@ -156,7 +156,7 @@ begin
   try
     try
       LBitmap.LoadFromFile(AFilePath);
-      {$IF CompilerVersion >= 35} //Alexandria
+      {$IF CompilerVersion = 35} //Alexandria
         LMaskColor := clLime;
       {$ELSE}
         LMaskColor := LBitmap.TransparentColor;
