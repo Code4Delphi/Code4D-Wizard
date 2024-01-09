@@ -165,6 +165,7 @@ begin
   begin
     for i := Pred(FToolBarBuild.ButtonCount) DownTo 0 do
       FToolBarBuild.Buttons[i].Free;
+
     FreeAndNil(FToolBarBuild);
   end;
 end;
@@ -297,20 +298,14 @@ begin
   if(LIOTAProject = nil)then
     Exit;
 
-  if(ExtractFileName(LIOTAProject.FileName) = TC4DConsts.C_C4D_WIZARD_DPROJ)then
+  if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(LIOTAProject.FileName))then
     TC4DWizardUtils.ShowMsgAndAbort('It is not possible to build in project: ' + TC4DConsts.C_C4D_WIZARD_DPROJ);
 
   LCurrentBinaryPath := TC4DWizardUtilsOTA.GetBinaryPathCurrent;
   if(FileExists(LCurrentBinaryPath))then
-  begin
     if(TC4DWizardUtils.ProcessWindowsExists(ExtractFileName(LCurrentBinaryPath), LCurrentBinaryPath))then
-    begin
       if(not TC4DWizardUtils.ShowQuestion('The application is already running, do you wish to continue?'))then
         Exit;
-
-      //PostMessage(FindWindow(nil, PWideChar(LCurrentBinaryPath)), WM_QUIT, 0, 0);
-    end;
-  end;
 
   LBuildConfCurrent := LIOTAProject.CurrentConfiguration;
   try

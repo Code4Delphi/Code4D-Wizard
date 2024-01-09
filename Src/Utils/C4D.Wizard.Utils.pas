@@ -23,15 +23,11 @@ uses
 type
   TC4DWizardUtils = class
   private
-    class function ShowMsgInternal(
-      const AMsg: string;
-      const ADetails: string;
-      const AIcon: TC4DWizardIcon;
-      const AButtons: TC4DButtons;
-      const ABtnFocu: TC4DBtnFocu;
-      const AWinControlFocu: TWinControl): Boolean;
+    class function ShowMsgInternal(const AMsg, ADetails: string; const AIcon: TC4DWizardIcon;
+      const AButtons: TC4DButtons; const ABtnFocu: TC4DBtnFocu; const AWinControlFocu: TWinControl): Boolean;
     class function GetPathFromProcessID(const AProcessID: cardinal): string;
   public
+    class function FileNameIsC4DWizardDPROJ(const AFileName: string): Boolean;
     class procedure RemoveBlankSpaceInBegin(var AValue: string; const ACount: Integer);
     class function BlankSpaceInBegin(const AValue: string): Integer;
     class procedure WaitingScreenShow(const AMsg: string = '');
@@ -139,6 +135,11 @@ uses
 function PathRelativePathTo(pszPath: PChar; pszFrom: PChar; dwAttrFrom: DWORD; pszTo: PChar; dwAtrTo: DWORD): LongBool; stdcall; external 'shlwapi.dll' name 'PathRelativePathToW';
 function PathCanonicalize(lpszDst: PChar; lpszSrc: PChar): LongBool; stdcall; external 'shlwapi.dll' name 'PathCanonicalizeW';
 {$ENDREGION}
+
+class function TC4DWizardUtils.FileNameIsC4DWizardDPROJ(const AFileName: string): Boolean;
+begin
+  Result := ExtractFileName(AFileName) = TC4DConsts.C_C4D_WIZARD_DPROJ;
+end;
 
 class procedure TC4DWizardUtils.RemoveBlankSpaceInBegin(var AValue: string; const ACount: Integer);
 begin
@@ -892,12 +893,8 @@ end;
 
 {$REGION 'MessagesImplementation'}
 
-class function TC4DWizardUtils.ShowMsgInternal(const AMsg: string;
-  const ADetails: string;
-  const AIcon: TC4DWizardIcon;
-  const AButtons: TC4DButtons;
-  const ABtnFocu: TC4DBtnFocu;
-  const AWinControlFocu: TWinControl): Boolean;
+class function TC4DWizardUtils.ShowMsgInternal(const AMsg, ADetails: string; const AIcon: TC4DWizardIcon;
+  const AButtons: TC4DButtons; const ABtnFocu: TC4DBtnFocu; const AWinControlFocu: TWinControl): Boolean;
 begin
   Application.CreateForm(TC4DWizardViewDialog, C4DWizardViewDialog);
   try

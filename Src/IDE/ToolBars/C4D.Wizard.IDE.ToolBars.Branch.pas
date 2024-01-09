@@ -285,6 +285,6 @@ initialization
 
 finalization
   if(Assigned(C4DWizardIDEToolBarsBranch))then
-    C4DWizardIDEToolBarsBranch.Free;
+    FreeAndNil(C4DWizardIDEToolBarsBranch);
 
 end.

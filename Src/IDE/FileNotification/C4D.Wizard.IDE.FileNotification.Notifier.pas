@@ -34,6 +34,7 @@ procedure RegisterSelf;
 implementation
 
 uses
+  C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA,
   C4D.Wizard.Reopen.Model,
   C4D.Wizard.Reopen.SaveAs,
@@ -135,7 +136,7 @@ begin
   if(FExtension <> '.dproj')and(FExtension <> '.groupproj')then
     Exit;
 
-  if(ExtractFileName(FFileName) = TC4DConsts.C_C4D_WIZARD_DPROJ)then
+  if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(FFileName))then
     Exit;
 
   {$IFDEF RELEASE}
