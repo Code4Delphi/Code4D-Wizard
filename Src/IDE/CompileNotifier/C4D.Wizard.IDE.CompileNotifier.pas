@@ -59,7 +59,7 @@ begin
 
   LIOTAProject := TC4DWizardUtilsOTA.GetCurrentProject;
 
-  if(ExtractFileName(LIOTAProject.FileName) = TC4DConsts.C_C4D_WIZARD_DPROJ)then
+  if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(LIOTAProject.FileName))then
     Exit;
 
   LCurrentBinaryPath := TC4DWizardUtilsOTA.GetBinaryPathCurrent;

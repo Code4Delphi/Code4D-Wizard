@@ -89,8 +89,8 @@ end;
 
 procedure TC4DWizardIDEToolBarsBranch.SetVisibleInINI(AVisible: Boolean);
 begin
-  Self.GetIniFile.WriteBool(TC4DConsts.C_TOOL_BAR_BRANCH_NAME,
-    TC4DConsts.C_TOOL_BAR_BRANCH_INI_Visible,
+  Self.GetIniFile.WriteBool(TC4DConsts.TOOL_BAR_BRANCH_NAME,
+    TC4DConsts.TOOL_BAR_BRANCH_INI_Visible,
     AVisible);
   if(AVisible)then
     Self.ProcessRefreshCaptionLabel(True);
@@ -98,8 +98,8 @@ end;
 
 function TC4DWizardIDEToolBarsBranch.GetVisibleInINI: Boolean;
 begin
-  Result := Self.GetIniFile.ReadBool(TC4DConsts.C_TOOL_BAR_BRANCH_NAME,
-    TC4DConsts.C_TOOL_BAR_BRANCH_INI_Visible,
+  Result := Self.GetIniFile.ReadBool(TC4DConsts.TOOL_BAR_BRANCH_NAME,
+    TC4DConsts.TOOL_BAR_BRANCH_INI_Visible,
     True);
 end;
 
@@ -132,8 +132,8 @@ end;
 procedure TC4DWizardIDEToolBarsBranch.NewToolBarC4D;
 begin
   Self.RemoveToolBarC4D;
-  FToolBarBranch := FINTAServices.NewToolbar(TC4DConsts.C_TOOL_BAR_BRANCH_NAME,
-    TC4DConsts.C_TOOL_BAR_BRANCH_CAPTION,
+  FToolBarBranch := FINTAServices.NewToolbar(TC4DConsts.TOOL_BAR_BRANCH_NAME,
+    TC4DConsts.TOOL_BAR_BRANCH_CAPTION,
     Self.GetReferenceToolBar,
     True);
   FToolBarBranch.Visible := False;
@@ -153,18 +153,21 @@ procedure TC4DWizardIDEToolBarsBranch.RemoveToolBarC4D;
 var
   i: Integer;
 begin
-  FToolBarBranch := FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_BRANCH_NAME];
+  FToolBarBranch := FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_BRANCH_NAME];
   if(Assigned(FToolBarBranch))then
   begin
     for i := Pred(FToolBarBranch.ButtonCount) DownTo 0 do
       FToolBarBranch.Buttons[i].Free;
-    FreeAndNil(FToolBarBranch);
+
+    FToolBarBranch.Visible := False;
+    if(not TC4DWizardUtilsOTA.CurrentProjectIsC4DWizardDPROJ)then
+      FreeAndNil(FToolBarBranch);
   end;
 end;
 
 procedure TC4DWizardIDEToolBarsBranch.AddButtonRefreshBranch;
 begin
-  FToolButton := TToolButton(FToolBarBranch.FindComponent(TC4DConsts.C_TOOL_BAR_BRANCH_TOOL_BUTTON_NAME));
+  FToolButton := TToolButton(FToolBarBranch.FindComponent(TC4DConsts.TOOL_BAR_BRANCH_TOOL_BUTTON_NAME));
   if(FToolButton <> nil)then
     FToolButton.Free;
 
@@ -173,7 +176,7 @@ begin
   FToolButton.Caption := 'Get Name Current Branch';
   FToolButton.Hint := FToolButton.Caption;
   FToolButton.ShowHint := True;
-  FToolButton.Name := TC4DConsts.C_TOOL_BAR_BRANCH_TOOL_BUTTON_NAME;
+  FToolButton.Name := TC4DConsts.TOOL_BAR_BRANCH_TOOL_BUTTON_NAME;
   FToolButton.Style := tbsButton;
   FToolButton.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexRefresh;
   FToolButton.Visible := True;
@@ -184,7 +187,7 @@ end;
 
 procedure TC4DWizardIDEToolBarsBranch.AddLabelBranch;
 begin
-  FLabel := TLabel(FToolBarBranch.FindComponent(TC4DConsts.C_TOOL_BAR_BRANCH_LABEL_NAME));
+  FLabel := TLabel(FToolBarBranch.FindComponent(TC4DConsts.TOOL_BAR_BRANCH_LABEL_NAME));
   if(FLabel <> nil)then
     FLabel.Free;
 
@@ -198,7 +201,7 @@ begin
   FLabel.Alignment := taLeftJustify;
   FLabel.Hint := 'Name Current Branch';
   FLabel.ShowHint := True;
-  FLabel.Name := TC4DConsts.C_TOOL_BAR_BRANCH_LABEL_NAME;
+  FLabel.Name := TC4DConsts.TOOL_BAR_BRANCH_LABEL_NAME;
   FLabel.OnClick := Self.OnC4DLabelBranchClick;
   FLabel.OnMouseLeave := OnC4DLabelBranchMouseLeave;
   FLabel.OnMouseMove := OnC4DLabelBranchMouseMove;
@@ -285,6 +288,6 @@ initialization
 
 finalization
   if(Assigned(C4DWizardIDEToolBarsBranch))then
-    C4DWizardIDEToolBarsBranch.Free;
+    FreeAndNil(C4DWizardIDEToolBarsBranch);
 
 end.

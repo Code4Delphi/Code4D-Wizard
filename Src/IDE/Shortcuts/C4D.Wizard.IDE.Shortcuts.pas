@@ -61,7 +61,7 @@ end;
 
 procedure TC4DWizardIDEShortcuts.BindKeyboard(const BindingServices: IOTAKeyBindingServices);
 begin
-  //BindingServices.AddKeyBinding([ShortCut(Ord('C'), [ssCtrl, ssAlt])], Self.KeyProcUsesOrganization, nil, 0, '', TC4DConsts.C_MENU_IDE_ORGANIZATION_NAME);
+  //BindingServices.AddKeyBinding([ShortCut(Ord('C'), [ssCtrl, ssAlt])], Self.KeyProcUsesOrganization, nil, 0, '', TC4DConsts.MENU_IDE_ORGANIZATION_NAME);
   //BindingServices.AddKeyBinding([TextToShortcut('Ins')], Self.KeyProcInsert, nil);
 
   {if(C4DWizardSettingsModel.BlockKeyInsert)then

@@ -111,7 +111,7 @@ begin
     TC4DWizardUtilsListOfFilesInFolder.New
       .FolderPath(TC4DWizardUtils.GetPathFolderRoot)
       .IncludeSubdirectories(False)
-      .ExtensionsOfFiles(TC4DConsts.C_EXTENSIONS_PERMITTED_BACKUP_EXPORT)
+      .ExtensionsOfFiles(TC4DConsts.EXTENSIONS_PERMITTED_BACKUP_EXPORT)
       .GetListOfFiles(LListFiles);
 
     for LNameFile in LListFiles do

@@ -122,8 +122,8 @@ end;
 procedure TC4DWizardIDEMainMenuOpenExternal.CreateItemMenuMain;
 begin
   FMenuItemOpenExternal := TMenuItem.Create(FMenuItemParent);
-  FMenuItemOpenExternal.Name := TC4DConsts.C_MENU_IDE_OpenExternal_NAME;
-  FMenuItemOpenExternal.Caption := TC4DConsts.C_MENU_IDE_OpenExternal_CAPTION;
+  FMenuItemOpenExternal.Name := TC4DConsts.MENU_IDE_OpenExternal_NAME;
+  FMenuItemOpenExternal.Caption := TC4DConsts.MENU_IDE_OpenExternal_CAPTION;
   FMenuItemOpenExternal.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexArrowGreen;
   FMenuItemParent.Add(FMenuItemOpenExternal);
 end;
@@ -154,7 +154,7 @@ begin
   LMenuItem.Name := 'C4DOpenExternalItemMenu' + TC4DWizardUtils.IncInt(FCont).Tostring;
   LMenuItem.Caption := AC4DWizardOpenExternal.Description;
   LMenuItem.OnClick := Self.ItemMenuClick;
-  LMenuItem.Hint := AC4DWizardOpenExternal.Path + TC4DConsts.C_OPEN_EXTERNAL_Separator_PARAMETERS + AC4DWizardOpenExternal.Parameters;
+  LMenuItem.Hint := AC4DWizardOpenExternal.Path + TC4DConsts.OPEN_EXTERNAL_Separator_PARAMETERS + AC4DWizardOpenExternal.Parameters;
   LMenuItem.Shortcut := TextToShortCut(AC4DWizardOpenExternal.Shortcut);
   LMenuItem.ImageIndex := TC4DWizardOpenExternalUtils.GetImageIndexIfExists(AC4DWizardOpenExternal);
   FMenuItemOpenExternal.Add(LMenuItem);

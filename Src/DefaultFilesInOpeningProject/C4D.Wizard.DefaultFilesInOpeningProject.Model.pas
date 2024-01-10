@@ -44,7 +44,7 @@ begin
   LIniFile := Self.GetIniFile;
   try
     LIniFile.Writestring(AFilePathProject,
-      TC4DConsts.C_DEFAULT_FILES_IN_OPENING_PROJECT_INI_ListFilePathDefault,
+      TC4DConsts.DEFAULT_FILES_IN_OPENING_PROJECT_INI_ListFilePathDefault,
       AListFilePathDefault);
   finally
     LIniFile.Free;
@@ -61,7 +61,7 @@ begin
   LIniFile := Self.GetIniFile;
   try
     Result := LIniFile.Readstring(AFilePathProject,
-      TC4DConsts.C_DEFAULT_FILES_IN_OPENING_PROJECT_INI_ListFilePathDefault,
+      TC4DConsts.DEFAULT_FILES_IN_OPENING_PROJECT_INI_ListFilePathDefault,
       '');
   finally
     LIniFile.Free;

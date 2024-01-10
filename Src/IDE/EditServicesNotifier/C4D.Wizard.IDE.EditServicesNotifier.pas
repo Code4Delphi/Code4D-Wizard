@@ -43,9 +43,7 @@ begin
   if(IndexNotifier < 0)then
   begin
     IndexNotifier := TC4DWizardUtilsOTA.GetIOTAEditorServices.AddNotifier(TC4DWizardIDEEditServicesNotifier.Create);
-    {$IFNDEF C4D_WIZARD_DLL}
     TC4DWizardIDEToolBarsRegister.ProcessWithThread;
-    {$ENDIF}
   end;
 end;
 
@@ -81,10 +79,10 @@ end;
 
 procedure TC4DWizardIDEEditServicesNotifier.EditorViewModified(const EditWindow: INTAEditWindow; const EditView: IOTAEditView);
 begin
-  //   ShowMessage('EditorViewModified: Texto alterado no Editor' + sLineBreak +
-  //               'Linha atual: '       + EditView.Buffer.EditPosition.Row.Tostring     + sLineBreak  +
-  //               'Coluna atual: '      + EditView.Buffer.EditPosition.Column.Tostring  + sLineBreak  +
-  //               'Última linha: '      + EditView.Buffer.EditPosition.LastRow.Tostring + sLineBreak);
+//  AddLogInternal('EditorViewModified: ' +
+//    ' Linha atual: ' + EditView.Buffer.EditPosition.Row.Tostring +
+//    ' Coluna atual: ' + EditView.Buffer.EditPosition.Column.Tostring +
+//    ' Ultima linha: ' + EditView.Buffer.EditPosition.LastRow.Tostring);
 end;
 
 procedure TC4DWizardIDEEditServicesNotifier.WindowActivated(const EditWindow: INTAEditWindow);
@@ -94,15 +92,12 @@ end;
 
 procedure TC4DWizardIDEEditServicesNotifier.WindowCommand(const EditWindow: INTAEditWindow; Command, Param: Integer; var Handled: Boolean);
 begin
-  //   ShowMessage('WindowCommand' + sLineBreak +
-  //               'Command: ' + Command.Tostring + sLineBreak +
-  //               'Param: '   + Param.Tostring);
-
-  //   if(Command = 22)then
-  //   begin
-  //      ShowMessage('Você teclou Ctrl + C e essa opção não é permitida');
-  //      Abort;
-  //   end;
+  //AddLogInternal('WindowCommand: Command: ' + Command.Tostring +  ' - Param: '   + Param.Tostring);
+  //if(Command = 22)then
+  //begin
+  //  ShowMessage('Você teclou Ctrl + C e essa opção não é permitida');
+  //  Abort;
+  //end;
 end;
 
 procedure TC4DWizardIDEEditServicesNotifier.WindowNotification(const EditWindow: INTAEditWindow; Operation: TOperation);
@@ -110,12 +105,9 @@ begin
 
 end;
 
+//QUANDO O DELPHI É ABERTO E QUANDO OUTRAS JANELAS SÃO ABERTAS
 procedure TC4DWizardIDEEditServicesNotifier.WindowShow(const EditWindow: INTAEditWindow; Show, LoadedFromDesktop: Boolean);
 begin
-  //   ShowMessage('WindowShow: Quando o Delphi é aberto e quando outras janelas são abertas' + sLineBreak +
-  //               'Show: '              + BoolToStr(Show, True)              + sLineBreak +
-  //               'LoadedFromDesktop: ' + BoolToStr(LoadedFromDesktop, True));
-
   TC4DWizardIDEToolBarsRegister.Process;
 end;
 
@@ -123,9 +115,6 @@ initialization
 
 finalization
   if(IndexNotifier >= 0)then
-  begin
     TC4DWizardUtilsOTA.GetIOTAEditorServices.RemoveNotifier(IndexNotifier);
-    IndexNotifier := -1;
-  end;
 
 end.

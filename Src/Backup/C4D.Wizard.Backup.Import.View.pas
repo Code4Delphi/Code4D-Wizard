@@ -191,11 +191,11 @@ begin
   C4DWizardBackupImportSelectFilesView := TC4DWizardBackupImportSelectFilesView.Create(nil);
   LView := C4DWizardBackupImportSelectFilesView;
   try
-    LView.ckGeneralSettings.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.C_FILE_INI_GENERAL_SETTINGS);
-    LView.ckDefaultFilesInOpeningProject.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.C_FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT);
-    LView.ckOpenExternalPath.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.C_FILE_INI_OPEN_EXTERNAL);
-    LView.ckReopenFileHistory.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.C_FILE_INI_REOPEN);
-    LView.ckGroups.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.C_FILE_INI_GROUPS);
+    LView.ckGeneralSettings.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.FILE_INI_GENERAL_SETTINGS);
+    LView.ckDefaultFilesInOpeningProject.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT);
+    LView.ckOpenExternalPath.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.FILE_INI_OPEN_EXTERNAL);
+    LView.ckReopenFileHistory.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.FILE_INI_REOPEN);
+    LView.ckGroups.Enabled := FileExists(FPathFolderTempExtract + TC4DConsts.FILE_INI_GROUPS);
 
     if(LView.ShowModal <> mrOk)then
       Abort;
@@ -218,7 +218,7 @@ begin
   if(not FImportGeneralSettings)then
     Exit;
 
-  LPathNewFile := FPathFolderTempExtract + TC4DConsts.C_FILE_INI_GENERAL_SETTINGS;
+  LPathNewFile := FPathFolderTempExtract + TC4DConsts.FILE_INI_GENERAL_SETTINGS;
   if(not FileExists(LPathNewFile))then
   begin
     TC4DWizardUtils.ShowMsg('File not found: '+ LPathNewFile);
@@ -241,7 +241,7 @@ begin
   if(not FImportDefaultFilesInOpeningProject)then
     Exit;
 
-  LPathNewFile := FPathFolderTempExtract + TC4DConsts.C_FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT;
+  LPathNewFile := FPathFolderTempExtract + TC4DConsts.FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT;
   if(not FileExists(LPathNewFile))then
   begin
     TC4DWizardUtils.ShowMsg('File not found: '+ LPathNewFile);
@@ -264,7 +264,7 @@ begin
   if(not FImportOpenExternalPath)then
     Exit;
 
-  LPathNewFile := FPathFolderTempExtract + TC4DConsts.C_FILE_INI_OPEN_EXTERNAL;
+  LPathNewFile := FPathFolderTempExtract + TC4DConsts.FILE_INI_OPEN_EXTERNAL;
   if(not FileExists(LPathNewFile))then
   begin
     TC4DWizardUtils.ShowMsg('File not found: '+ LPathNewFile);
@@ -287,7 +287,7 @@ begin
   if(not FImportReopenFileHistory)then
     Exit;
 
-  LPathNewFile := FPathFolderTempExtract + TC4DConsts.C_FILE_INI_REOPEN;
+  LPathNewFile := FPathFolderTempExtract + TC4DConsts.FILE_INI_REOPEN;
   if(not FileExists(LPathNewFile))then
   begin
     TC4DWizardUtils.ShowMsg('File not found: '+ LPathNewFile);
@@ -310,7 +310,7 @@ begin
   if(not FImportGroups)then
     Exit;
 
-  LPathNewFile := FPathFolderTempExtract + TC4DConsts.C_FILE_INI_GROUPS;
+  LPathNewFile := FPathFolderTempExtract + TC4DConsts.FILE_INI_GROUPS;
   if(not FileExists(LPathNewFile))then
   begin
     TC4DWizardUtils.ShowMsg('File not found: '+ LPathNewFile);

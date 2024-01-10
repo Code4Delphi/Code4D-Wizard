@@ -200,7 +200,7 @@ begin
   if(FGroupName.Trim.IsEmpty)then
     Exit;
 
-  //if(ExtractFileName(TC4DWizardUtilsOTA.GetCurrentProject.FileName) = TC4DConsts.C_C4D_WIZARD_DPROJ)then
+  //if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(TC4DWizardUtilsOTA.GetCurrentProject.FileName))then
   //  Exit;
 
   Result := FIOTAMessageServices.AddMessageGroup(FGroupName.Trim);

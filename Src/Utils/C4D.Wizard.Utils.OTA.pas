@@ -20,6 +20,7 @@ type
     class function EditorAsstring(AIOTAModule: IOTAModule): string;
     class procedure DoCloseFile(AInfoFile: TC4DWizardInfoFile);
   public
+    class function CurrentProjectIsC4DWizardDPROJ: Boolean;
     class function CurrentModuleIsReadOnly: Boolean;
     class procedure CloseFilesOpened(AC4DWizardExtensions: TC4DExtensionsOfFiles);
     class function AddImgIDEResourceName(AResourceName: string): Integer;
@@ -83,10 +84,24 @@ type
 implementation
 
 uses
+  C4D.Wizard.Consts,
   C4D.Wizard.LogFile,
   C4D.Wizard.Model.Files.Loop,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA.BinaryPath;
+
+class function TC4DWizardUtilsOTA.CurrentProjectIsC4DWizardDPROJ: Boolean;
+var
+  LIOTAProject: IOTAProject;
+begin
+  Result := False;
+
+  LIOTAProject := Self.GetCurrentProject;
+  if(LIOTAProject = nil)then
+    Exit;
+
+  Result := TC4DWizardUtils.FileNameIsC4DWizardDPROJ(LIOTAProject.FileName);
+end;
 
 class function TC4DWizardUtilsOTA.CurrentModuleIsReadOnly: Boolean;
 var
@@ -128,7 +143,7 @@ begin
   try
     try
       LBitmap.LoadFromResourceName(hInstance, AResourceName);
-      {$IF CompilerVersion >= 35} //Alexandria
+      {$IF CompilerVersion = 35} //Alexandria
         LMaskColor := clLime;
       {$ELSE}
         LMaskColor := LBitmap.TransparentColor;
@@ -156,7 +171,7 @@ begin
   try
     try
       LBitmap.LoadFromFile(AFilePath);
-      {$IF CompilerVersion >= 35} //Alexandria
+      {$IF CompilerVersion = 35} //Alexandria
         LMaskColor := clLime;
       {$ELSE}
         LMaskColor := LBitmap.TransparentColor;

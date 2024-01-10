@@ -15,15 +15,17 @@ var
   IndexAboutBox: Integer = 0;
 
 procedure RegisterAboutBox;
+var
+  LDescription: string;
 begin
-  if(Supports(BorlandIDEServices, IOTAAboutBoxServices, OTAAboutBoxServices))then
-    IndexAboutBox := OTAAboutBoxServices.AddPluginInfo(
-      TC4DConsts.C_ABOUT_TITLE,
-      TC4DConsts.C_ABOUT_COPY_RIGHT + sLineBreak + TC4DConsts.C_ABOUT_DESCRIPTION,
-      LoadBitmap(HInstance, TC4DConsts.C_RESOURCE_c4d_logo_48x48),
-      False,
-      TC4DConsts.C_WIZARD_LICENSE
-    );
+  if(not Supports(BorlandIDEServices, IOTAAboutBoxServices, OTAAboutBoxServices))then
+    Exit;
+
+  LDescription := TC4DConsts.ABOUT_COPY_RIGHT + sLineBreak + TC4DConsts.ABOUT_DESCRIPTION + sLineBreak +
+    TC4DConsts.GITHUB_Code4D_Wizard + sLineBreak + TC4DConsts.SEMANTIC_VERSION_LB + sLineBreak + TC4DConsts.WIZARD_LICENSE;
+
+  IndexAboutBox := OTAAboutBoxServices.AddPluginInfo(TC4DConsts.ABOUT_TITLE, LDescription,
+    LoadBitmap(HInstance, TC4DConsts.RESOURCE_c4d_logo_48x48), TC4DConsts.IS_UNREGISTERED, TC4DConsts.WIZARD_LICENSE);
 end;
 
 procedure UnregisterAboutBox;

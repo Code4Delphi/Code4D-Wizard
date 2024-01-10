@@ -69,12 +69,12 @@ end;
 procedure TC4DWizardIDEToolBarsNotifier.ShowToolbar(Toolbar: TWinControl; Show: Boolean);
 begin
   //AO CLICAR NOS ITENS DO CheckListBox DO FORM DE Customize
-  if(Toolbar.Name = TC4DConsts.C_TOOL_BAR_BRANCH_NAME)then
+  if(Toolbar.Name = TC4DConsts.TOOL_BAR_BRANCH_NAME)then
   begin
     if(Assigned(C4DWizardIDEToolBarsBranch))then
       C4DWizardIDEToolBarsBranch.SetVisibleInINI(Show);
   end
-  else if(Toolbar.Name = TC4DConsts.C_TOOL_BAR_BUILD_NAME)then
+  else if(Toolbar.Name = TC4DConsts.TOOL_BAR_BUILD_NAME)then
   begin
     if(Assigned(C4DWizardIDEToolBarsBuild))then
       C4DWizardIDEToolBarsBuild.SetVisibleInINI(Show);
@@ -92,7 +92,7 @@ finalization
   if(IndexNotifier >= 0)then
   begin
     TC4DWizardUtilsOTA.GetINTAServices.UnregisterToolbarNotifier(IndexNotifier);
-    IndexNotifier := -1;
+    //IndexNotifier := -1;
   end;
 
 end.

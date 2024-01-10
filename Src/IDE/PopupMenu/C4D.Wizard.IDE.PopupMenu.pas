@@ -77,35 +77,35 @@ begin
   FProject := Project;
   FPosition := FPosition + 200;
   ProjectManagerMenuList.Add(Self.AddItemInMenu('-'));
-  ProjectManagerMenuList.Add(Self.AddItemInMenu(TC4DConsts.C_ITEM_MENU_Code4D_CAPTION));
+  ProjectManagerMenuList.Add(Self.AddItemInMenu(TC4DConsts.ITEM_MENU_Code4D_CAPTION));
 
   if(System.SysUtils.FileExists(FProject.FileName))and(Self.GetReopenDataOfFileName.Favorite)then
-    ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_Mark_Unfavorite_CAPTION,
+    ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_Mark_Unfavorite_CAPTION,
       OnExecuteMarkAsUnfavorite))
   else
-    ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_Mark_Favorite_CAPTION,
+    ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_Mark_Favorite_CAPTION,
       OnExecuteMarkAsFavorite));
 
   ProjectManagerMenuList.Add(Self.AddSubItemInMenu('-'));
-  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_EditInformations_CAPTION,
+  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_EditInformations_CAPTION,
     OnExecuteEditInformations));
 
   ProjectManagerMenuList.Add(Self.AddSubItemInMenu('-'));
-  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_DefaultFilesInOpeningProject_CAPTION,
+  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_DefaultFilesInOpeningProject_CAPTION,
     OnExecuteDefaultFilesInOpeningProject));
 
   ProjectManagerMenuList.Add(Self.AddSubItemInMenu('-'));
-  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_OpenInGitHubDesktop_CAPTION,
+  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_OpenInGitHubDesktop_CAPTION,
     OnExecuteOpenInGitHubDesktop));
-  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_ViewInRemoteRepository_CAPTION,
+  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_ViewInRemoteRepository_CAPTION,
     OnExecuteViewInRemoteRepository));
-  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_ViewInfRemoteRepository_CAPTION,
+  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_ViewInfRemoteRepository_CAPTION,
     OnExecuteViewInfRemoteRepository));
 
   ProjectManagerMenuList.Add(Self.AddSubItemInMenu('-'));
-  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_ViewFileInExplorer_CAPTION,
+  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_ViewFileInExplorer_CAPTION,
     OnExecuteViewFileInExplorer));
-  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.C_ITEM_MENU_ViewExeInExplorer_CAPTION,
+  ProjectManagerMenuList.Add(Self.AddSubItemInMenu(TC4DConsts.ITEM_MENU_ViewExeInExplorer_CAPTION,
     OnExecuteViewExeInExplorer));
 end;
 
@@ -195,7 +195,7 @@ begin
   Result := TC4DWizardIDEPopupMenuItem.New(AOnExecute);
   Result.Caption := ACaption;
   Result.Verb := ACaption;
-  Result.Parent := TC4DConsts.C_ITEM_MENU_Code4D_CAPTION;
+  Result.Parent := TC4DConsts.ITEM_MENU_Code4D_CAPTION;
   Result.Position := TC4DWizardUtils.IncInt(FPosition);
   Result.Checked := AChecked;
   Result.IsMultiSelectable := False;

@@ -75,7 +75,7 @@ constructor TC4DWizardIDEToolBarsBuild.Create;
 begin
   FINTAServices := TC4DWizardUtilsOTA.GetINTAServices;
   Self.NewToolBarBuild;
-  Self.ProcessRefreshComboBox;
+  //Self.ProcessRefreshComboBox;
 end;
 
 destructor TC4DWizardIDEToolBarsBuild.Destroy;
@@ -91,8 +91,8 @@ end;
 
 procedure TC4DWizardIDEToolBarsBuild.SetVisibleInINI(AVisible: Boolean);
 begin
-  Self.GetIniFile.WriteBool(TC4DConsts.C_TOOL_BAR_BUILD_NAME,
-    TC4DConsts.C_TOOL_BAR_BUILD_INI_Visible,
+  Self.GetIniFile.WriteBool(TC4DConsts.TOOL_BAR_BUILD_NAME,
+    TC4DConsts.TOOL_BAR_BUILD_INI_Visible,
     AVisible);
   if(AVisible)then
     Self.ProcessRefreshComboBox(True);
@@ -100,8 +100,8 @@ end;
 
 function TC4DWizardIDEToolBarsBuild.GetVisibleInINI: Boolean;
 begin
-  Result := Self.GetIniFile.ReadBool(TC4DConsts.C_TOOL_BAR_BUILD_NAME,
-    TC4DConsts.C_TOOL_BAR_BUILD_INI_Visible,
+  Result := Self.GetIniFile.ReadBool(TC4DConsts.TOOL_BAR_BUILD_NAME,
+    TC4DConsts.TOOL_BAR_BUILD_INI_Visible,
     True);
 end;
 
@@ -115,8 +115,8 @@ var
 begin
   Result := sBrowserToolbar;
 
-  if(FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_BRANCH_NAME] <> nil)then
-    Result := TC4DConsts.C_TOOL_BAR_BRANCH_NAME;
+  if(FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_BRANCH_NAME] <> nil)then
+    Result := TC4DConsts.TOOL_BAR_BRANCH_NAME;
 
   LStandardToolBar := FINTAServices.ToolBar[sStandardToolBar];
   if(not Assigned(LStandardToolBar))then
@@ -138,8 +138,8 @@ end;
 procedure TC4DWizardIDEToolBarsBuild.NewToolBarBuild;
 begin
   Self.RemoveToolBarBuild;
-  FToolBarBuild := FINTAServices.NewToolbar(TC4DConsts.C_TOOL_BAR_BUILD_NAME,
-    TC4DConsts.C_TOOL_BAR_BUILD_CAPTION,
+  FToolBarBuild := FINTAServices.NewToolbar(TC4DConsts.TOOL_BAR_BUILD_NAME,
+    TC4DConsts.TOOL_BAR_BUILD_CAPTION,
     Self.GetReferenceToolBar,
     True);
   FToolBarBuild.Visible := False;
@@ -160,18 +160,21 @@ procedure TC4DWizardIDEToolBarsBuild.RemoveToolBarBuild;
 var
   i: integer;
 begin
-  FToolBarBuild := FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_BUILD_NAME];
+  FToolBarBuild := FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_BUILD_NAME];
   if(Assigned(FToolBarBuild))then
   begin
     for i := Pred(FToolBarBuild.ButtonCount) DownTo 0 do
       FToolBarBuild.Buttons[i].Free;
-    FreeAndNil(FToolBarBuild);
+
+    FToolBarBuild.Visible := False;
+    if(not TC4DWizardUtilsOTA.CurrentProjectIsC4DWizardDPROJ)then
+      FreeAndNil(FToolBarBuild);
   end;
 end;
 
 procedure TC4DWizardIDEToolBarsBuild.AddButtonBuildAllGroup;
 begin
-  FToolButtonBuildAllGroup := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.C_TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME));
+  FToolButtonBuildAllGroup := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME));
   if(FToolButtonBuildAllGroup <> nil)then
     FToolButtonBuildAllGroup.Free;
 
@@ -180,7 +183,7 @@ begin
   FToolButtonBuildAllGroup.Caption := 'Build all group projects';
   FToolButtonBuildAllGroup.Hint := FToolButtonBuildAllGroup.Caption;
   FToolButtonBuildAllGroup.ShowHint := True;
-  FToolButtonBuildAllGroup.Name := TC4DConsts.C_TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME;
+  FToolButtonBuildAllGroup.Name := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME;
   FToolButtonBuildAllGroup.Style := tbsButton;
   FToolButtonBuildAllGroup.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexBuildGroup;
   FToolButtonBuildAllGroup.Visible := True;
@@ -191,7 +194,7 @@ end;
 
 procedure TC4DWizardIDEToolBarsBuild.AddButtonBuildInRelease;
 begin
-  FToolButtonBuildInRelease := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.C_TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME));
+  FToolButtonBuildInRelease := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME));
   if(FToolButtonBuildInRelease <> nil)then
     FToolButtonBuildInRelease.Free;
 
@@ -200,7 +203,7 @@ begin
   FToolButtonBuildInRelease.Caption := 'Build Project In Release';
   FToolButtonBuildInRelease.Hint := FToolButtonBuildInRelease.Caption;
   FToolButtonBuildInRelease.ShowHint := True;
-  FToolButtonBuildInRelease.Name := TC4DConsts.C_TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME;
+  FToolButtonBuildInRelease.Name := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME;
   FToolButtonBuildInRelease.Style := tbsButton;
   FToolButtonBuildInRelease.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexPlayBlue;
   FToolButtonBuildInRelease.Visible := True;
@@ -211,7 +214,7 @@ end;
 
 procedure TC4DWizardIDEToolBarsBuild.AddButtonRefreshBuild;
 begin
-  FToolButtonRefresh := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.C_TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME));
+  FToolButtonRefresh := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME));
   if(FToolButtonRefresh <> nil)then
     FToolButtonRefresh.Free;
 
@@ -220,7 +223,7 @@ begin
   FToolButtonRefresh.Caption := 'Get Current Build Configuration';
   FToolButtonRefresh.Hint := FToolButtonRefresh.Caption;
   FToolButtonRefresh.ShowHint := True;
-  FToolButtonRefresh.Name := TC4DConsts.C_TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME;
+  FToolButtonRefresh.Name := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME;
   FToolButtonRefresh.Style := tbsButton;
   FToolButtonRefresh.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexRefresh;
   FToolButtonRefresh.Visible := True;
@@ -231,7 +234,7 @@ end;
 
 procedure TC4DWizardIDEToolBarsBuild.AddComboBoxBuild;
 begin
-  FComboBox := TComboBox(FToolBarBuild.FindComponent(TC4DConsts.C_TOOL_BAR_BUILD_COMBOBOX_NAME));
+  FComboBox := TComboBox(FToolBarBuild.FindComponent(TC4DConsts.TOOL_BAR_BUILD_COMBOBOX_NAME));
   if(FComboBox <> nil)then
     FComboBox.Free;
 
@@ -239,7 +242,7 @@ begin
   FComboBox.Parent := FToolBarBuild;
   FComboBox.Hint := 'Alter Build Configuration';
   FComboBox.ShowHint := True;
-  FComboBox.Name := TC4DConsts.C_TOOL_BAR_BUILD_COMBOBOX_NAME;
+  FComboBox.Name := TC4DConsts.TOOL_BAR_BUILD_COMBOBOX_NAME;
   FComboBox.Style := csDropDownList;
   FComboBox.Width := 80;
   FComboBox.OnClick := Self.ComboBoxClick;
@@ -297,24 +300,18 @@ begin
   if(LIOTAProject = nil)then
     Exit;
 
-  if(ExtractFileName(LIOTAProject.FileName) = TC4DConsts.C_C4D_WIZARD_DPROJ)then
-    TC4DWizardUtils.ShowMsgAndAbort('It is not possible to build in project: ' + TC4DConsts.C_C4D_WIZARD_DPROJ);
+  if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(LIOTAProject.FileName))then
+    TC4DWizardUtils.ShowMsgAndAbort('It is not possible to build in project: ' + TC4DConsts.C4D_WIZARD_DPROJ);
 
   LCurrentBinaryPath := TC4DWizardUtilsOTA.GetBinaryPathCurrent;
   if(FileExists(LCurrentBinaryPath))then
-  begin
     if(TC4DWizardUtils.ProcessWindowsExists(ExtractFileName(LCurrentBinaryPath), LCurrentBinaryPath))then
-    begin
       if(not TC4DWizardUtils.ShowQuestion('The application is already running, do you wish to continue?'))then
         Exit;
 
-      //PostMessage(FindWindow(nil, PWideChar(LCurrentBinaryPath)), WM_QUIT, 0, 0);
-    end;
-  end;
-
   LBuildConfCurrent := LIOTAProject.CurrentConfiguration;
   try
-    LIOTAProject.CurrentConfiguration := TC4DConsts.C_BUILD_RELEASE;
+    LIOTAProject.CurrentConfiguration := TC4DConsts.BUILD_RELEASE;
     Self.ProcessRefreshComboBox;
     LIOTAProject
       .ProjectBuilder

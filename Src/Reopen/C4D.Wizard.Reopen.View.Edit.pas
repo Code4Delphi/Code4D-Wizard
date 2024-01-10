@@ -111,7 +111,7 @@ begin
   if(Trim(edtFolderGit.Text).IsEmpty)then
   begin
     LFolderGit := ExtractFilePath(FC4DWizardReopenData.FilePath);
-    LFolderGit := IncludeTrailingPathDelimiter(LFolderGit + TC4DConsts.C_NAME_FOLDER_GIT);
+    LFolderGit := IncludeTrailingPathDelimiter(LFolderGit + TC4DConsts.NAME_FOLDER_GIT);
     if(DirectoryExists(LFolderGit))then
       edtFolderGit.Text := LFolderGit;
   end;
