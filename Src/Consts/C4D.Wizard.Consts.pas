@@ -38,9 +38,11 @@ type
 
     //ABOUT AND SPLASH
     C_ABOUT_TITLE = 'Code4Delphi Wizard';
-    C_ABOUT_COPY_RIGHT = 'Copyright 2023 Code4Delphi Team';
-    C_ABOUT_DESCRIPTION = 'Code4delphi Wizard aims to help with productivity in development';
-    C_WIZARD_LICENSE = ''; //Freeware
+    C_ABOUT_COPY_RIGHT = 'Copyright 2024 Code4Delphi Team.';
+    C_ABOUT_DESCRIPTION = 'Wizard/plugin designed to be used in the Delphi IDE.' + sLineBreak +
+      'https://github.com/Code4Delphi/Code4D-Wizard';
+    C_WIZARD_LICENSE = 'MIT license';
+    IS_UNREGISTERED = False;
 
     //NAMES FILES AND IMAGES RESOURCE
     C_RESOURCE_c4d_logo_24x24 = 'c4d_logo_24x24';
