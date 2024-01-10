@@ -474,7 +474,7 @@ begin
   Result := '';
   LFileOpenDialog := TFileOpenDialog.Create(nil);
   try
-    LFileOpenDialog.Title := 'Code4D-Wizard - Select a folder';
+    LFileOpenDialog.Title := 'Code4D-Wizard -  Select a folder';
     LFileOpenDialog.Options := [fdoPickFolders];
 
     if(not ADefaultFolder.Trim.IsEmpty)and(System.SysUtils.DirectoryExists(ADefaultFolder))then
@@ -549,7 +549,6 @@ begin
   try
     if(MoveFile(PWideChar(AFrom), PWideChar(ATo)))then
       Result := True;
-    //TFile.Move(AFrom, ATo);
   except
     on E: Exception do
       Self.ShowError('Directory or file not moved: ' + E.Message);
