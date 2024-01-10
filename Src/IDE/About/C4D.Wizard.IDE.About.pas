@@ -22,7 +22,7 @@ begin
     Exit;
 
   LDescription := TC4DConsts.ABOUT_COPY_RIGHT + sLineBreak + TC4DConsts.ABOUT_DESCRIPTION + sLineBreak +
-    TC4DConsts.GITHUB_Code4D_Wizard + sLineBreak + 'Version: ' + TC4DConsts.SEMANTIC_VERSION + sLineBreak + TC4DConsts.WIZARD_LICENSE;
+    TC4DConsts.GITHUB_Code4D_Wizard + sLineBreak + TC4DConsts.SEMANTIC_VERSION_LB + sLineBreak + TC4DConsts.WIZARD_LICENSE;
 
   IndexAboutBox := OTAAboutBoxServices.AddPluginInfo(TC4DConsts.ABOUT_TITLE, LDescription,
     LoadBitmap(HInstance, TC4DConsts.RESOURCE_c4d_logo_48x48), TC4DConsts.IS_UNREGISTERED, TC4DConsts.WIZARD_LICENSE);

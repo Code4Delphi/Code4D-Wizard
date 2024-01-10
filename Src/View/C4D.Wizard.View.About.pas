@@ -71,7 +71,7 @@ begin
   mmMensagem.Lines.Clear;
   mmMensagem.Lines.Add(TC4DConsts.ABOUT_COPY_RIGHT);
   mmMensagem.Lines.Add(TC4DConsts.ABOUT_DESCRIPTION);
-  mmMensagem.Lines.Add('Version: ' + TC4DConsts.SEMANTIC_VERSION);
+  mmMensagem.Lines.Add(TC4DConsts.SEMANTIC_VERSION_LB);
   mmMensagem.Lines.Add(TC4DConsts.WIZARD_LICENSE);
 end;
 
