@@ -133,9 +133,9 @@ end;
 procedure TC4DWizardOpenExternalAddEditView.FillTags;
 begin
   mmTags.Lines.Clear;
-  mmTags.Lines.Add(TC4DConsts.C_TAG_BLOCK_TEXT_SELECT);
-  mmTags.Lines.Add(TC4DConsts.C_TAG_FOLDER_GIT);
-  mmTags.Lines.Add(TC4DConsts.C_TAG_FILE_PATH_BINARY);
+  mmTags.Lines.Add(TC4DConsts.TAG_BLOCK_TEXT_SELECT);
+  mmTags.Lines.Add(TC4DConsts.TAG_FOLDER_GIT);
+  mmTags.Lines.Add(TC4DConsts.TAG_FILE_PATH_BINARY);
   mmTags.Lines.Text := mmTags.Lines.Text.Trim;
 end;
 

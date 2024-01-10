@@ -90,8 +90,8 @@ end;
 procedure TC4DWizardIDEToolBarsUtilities.NewToolBarUtilities;
 begin
   Self.RemoveToolBarUtilities;
-  FToolBarUtilities := FINTAServices.NewToolbar(TC4DConsts.C_TOOL_BAR_UTILITIES_NAME,
-    TC4DConsts.C_TOOL_BAR_UTILITIES_CAPTION,
+  FToolBarUtilities := FINTAServices.NewToolbar(TC4DConsts.TOOL_BAR_UTILITIES_NAME,
+    TC4DConsts.TOOL_BAR_UTILITIES_CAPTION,
     Self.GetReferenceToolBar,
     True);
   FToolBarUtilities.Visible := False;
@@ -122,7 +122,7 @@ begin
   Self.RemoveToolButtons;
 
   if(not Assigned(FToolBarUtilities))then
-    FToolBarUtilities := FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_UTILITIES_NAME];
+    FToolBarUtilities := FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_UTILITIES_NAME];
 
   if(Assigned(FToolBarUtilities))then
   begin
@@ -136,7 +136,7 @@ procedure TC4DWizardIDEToolBarsUtilities.RemoveToolButtons;
 var
   i: Integer;
 begin
-  FToolBarUtilities := FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_UTILITIES_NAME];
+  FToolBarUtilities := FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_UTILITIES_NAME];
   if(Assigned(FToolBarUtilities))then
   begin
     for i := Pred(FToolBarUtilities.ButtonCount) DownTo 0 do
@@ -151,8 +151,8 @@ end;
 
 procedure TC4DWizardIDEToolBarsUtilities.SetVisibleInINI(AVisible: Boolean);
 begin
-  Self.GetIniFile.WriteBool(TC4DConsts.C_TOOL_BAR_UTILITIES_NAME,
-    TC4DConsts.C_TOOL_BAR_UTILITIES_INI_Visible, AVisible);
+  Self.GetIniFile.WriteBool(TC4DConsts.TOOL_BAR_UTILITIES_NAME,
+    TC4DConsts.TOOL_BAR_UTILITIES_INI_Visible, AVisible);
 
   if(AVisible)then
     Self.ProcessRefresh(True);
@@ -160,8 +160,8 @@ end;
 
 function TC4DWizardIDEToolBarsUtilities.GetVisibleInINI: Boolean;
 begin
-  Result := Self.GetIniFile.ReadBool(TC4DConsts.C_TOOL_BAR_UTILITIES_NAME,
-    TC4DConsts.C_TOOL_BAR_UTILITIES_INI_Visible, True);
+  Result := Self.GetIniFile.ReadBool(TC4DConsts.TOOL_BAR_UTILITIES_NAME,
+    TC4DConsts.TOOL_BAR_UTILITIES_INI_Visible, True);
 end;
 
 function TC4DWizardIDEToolBarsUtilities.GetReferenceToolBar: string;
@@ -174,8 +174,8 @@ var
 begin
   Result := sBrowserToolbar;
 
-  if(FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_BRANCH_NAME] <> nil)then
-    Result := TC4DConsts.C_TOOL_BAR_BRANCH_NAME;
+  if(FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_BRANCH_NAME] <> nil)then
+    Result := TC4DConsts.TOOL_BAR_BRANCH_NAME;
 
   LStandardToolBar := FINTAServices.ToolBar[sStandardToolBar];
   if(not Assigned(LStandardToolBar))then
@@ -196,7 +196,7 @@ end;
 
 procedure TC4DWizardIDEToolBarsUtilities.AddButtonUnitInReadOnly;
 begin
-  FToolButtonUnitInReadOnly := TToolButton(FToolBarUtilities.FindComponent(TC4DConsts.C_TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME));
+  FToolButtonUnitInReadOnly := TToolButton(FToolBarUtilities.FindComponent(TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME));
   if(FToolButtonUnitInReadOnly <> nil)then
     FToolButtonUnitInReadOnly.Free;
 
@@ -205,7 +205,7 @@ begin
   FToolButtonUnitInReadOnly.Caption := '';
   FToolButtonUnitInReadOnly.Hint := FToolButtonUnitInReadOnly.Caption;
   FToolButtonUnitInReadOnly.ShowHint := True;
-  FToolButtonUnitInReadOnly.Name := TC4DConsts.C_TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME;
+  FToolButtonUnitInReadOnly.Name := TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME;
   FToolButtonUnitInReadOnly.Style := tbsButton;
   FToolButtonUnitInReadOnly.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexLockOFF;
   FToolButtonUnitInReadOnly.Visible := True;
@@ -320,7 +320,7 @@ begin
 
   LToolButton := TToolButton.Create(FToolBarUtilities);
   LToolButton.Parent := FToolBarUtilities;
-  LToolButton.Caption := AC4DWizardOpenExternal.Path + TC4DConsts.C_OPEN_EXTERNAL_Separator_PARAMETERS + AC4DWizardOpenExternal.Parameters;;
+  LToolButton.Caption := AC4DWizardOpenExternal.Path + TC4DConsts.OPEN_EXTERNAL_Separator_PARAMETERS + AC4DWizardOpenExternal.Parameters;;
   LToolButton.Hint := AC4DWizardOpenExternal.Description;
   LToolButton.ShowHint := True;
   LToolButton.Name := LNameButton;

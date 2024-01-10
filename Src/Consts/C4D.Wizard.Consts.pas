@@ -8,161 +8,162 @@ uses
 type
   TC4DConsts = class
   public const
-    C_SEMANTIC_VERSION = '1.16.0';
-    C_NAME_FOLDER_GIT = '.git\';
-    C_WIN_CONTROL_FOCU_NIL = nil;
-    C_C4D_WIZARD_DPROJ = 'C4DWizard.dproj';
-    C_C4D_WIZARD_BPL = 'C4DWizard.bpl';
-    C_C4D_PROJECT_GROUP1 = 'ProjectGroup1.groupproj';
-    C_NAME_FOLDER_TEMP = 'Temp';
-    C_DEFAULT_HTM = 'default.htm';
+    SEMANTIC_VERSION = '1.17.0';
+    NAME_FOLDER_GIT = '.git\';
+    WIN_CONTROL_FOCU_NIL = nil;
+    C4D_WIZARD_DPROJ = 'C4DWizard.dproj';
+    C4D_WIZARD_BPL = 'C4DWizard.bpl';
+    C4D_PROJECT_GROUP1 = 'ProjectGroup1.groupproj';
+    NAME_FOLDER_TEMP = 'Temp';
+    DEFAULT_HTM = 'default.htm';
+    GITHUB_Code4Delphi = 'https://github.com/Code4Delphi';
+    GITHUB_Code4D_Wizard = 'https://github.com/Code4Delphi/Code4D-Wizard';
 
     //BUILD TYPES
-    C_BUILD_DEBUG = 'Debug';
-    C_BUILD_RELEASE = 'Release';
+    BUILD_DEBUG = 'Debug';
+    BUILD_RELEASE = 'Release';
 
     //TAGS
-    C_TAG_BLOCK_TEXT_SELECT = '<BlockTextSelect/>';
-    C_TAG_FOLDER_GIT = '<FolderGit/>';
-    C_TAG_FILE_PATH_BINARY = '<FilePathBinary/>';
+    TAG_BLOCK_TEXT_SELECT = '<BlockTextSelect/>';
+    TAG_FOLDER_GIT = '<FolderGit/>';
+    TAG_FILE_PATH_BINARY = '<FilePathBinary/>';
 
     //NAMES FILES .INI
-    C_FILE_INI_GENERAL_SETTINGS = 'code4d-wizard.ini';
-    C_FILE_INI_REOPEN = 'reopen.ini';
-    C_FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT = 'default-files-in-opening-project.ini';
-    C_FILE_INI_GROUPS = 'groups.ini';
-    C_FILE_INI_OPEN_EXTERNAL = 'open-external.ini';
+    FILE_INI_GENERAL_SETTINGS = 'code4d-wizard.ini';
+    FILE_INI_REOPEN = 'reopen.ini';
+    FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT = 'default-files-in-opening-project.ini';
+    FILE_INI_GROUPS = 'groups.ini';
+    FILE_INI_OPEN_EXTERNAL = 'open-external.ini';
 
     //NAMES FILES .rtf
-    C_FILE_RTF_NOTES = 'notes.rtf';
+    FILE_RTF_NOTES = 'notes.rtf';
 
     //ABOUT AND SPLASH
-    C_ABOUT_TITLE = 'Code4Delphi Wizard';
-    C_ABOUT_COPY_RIGHT = 'Copyright 2024 Code4Delphi Team.';
-    C_ABOUT_DESCRIPTION = 'Wizard/plugin designed to be used in the Delphi IDE.' + sLineBreak +
-      'https://github.com/Code4Delphi/Code4D-Wizard';
-    C_WIZARD_LICENSE = 'MIT license';
+    ABOUT_TITLE = 'Code4Delphi Wizard';
+    ABOUT_COPY_RIGHT = 'Copyright 2024 Code4Delphi Team.';
+    ABOUT_DESCRIPTION = 'Wizard/plugin designed to be used in the Delphi IDE.';
+    WIZARD_LICENSE = 'MIT license';
     IS_UNREGISTERED = False;
 
     //NAMES FILES AND IMAGES RESOURCE
-    C_RESOURCE_c4d_logo_24x24 = 'c4d_logo_24x24';
-    C_RESOURCE_c4d_logo_48x48 = 'c4d_logo_48x48';
+    RESOURCE_c4d_logo_24x24 = 'c4d_logo_24x24';
+    RESOURCE_c4d_logo_48x48 = 'c4d_logo_48x48';
 
     //CAPTIONS ITENS MAIN MENU IDE, AND POPUPMENU PROJ
-    C_ITEM_MENU_Code4D_NAME = 'Code4DelphiItemMenu';
-    C_ITEM_MENU_Code4D_CAPTION = 'Code4D';
-    C_ITEM_MENU_Mark_Favorite_CAPTION = 'Mark as Favorite';
-    C_ITEM_MENU_Mark_Unfavorite_CAPTION = 'Mark as Unfavorite';
-    C_ITEM_MENU_EditInformations_CAPTION = 'Edit Informations';
-    C_ITEM_MENU_DefaultFilesInOpeningProject_NAME = 'C4DWizarDefaultFilesInOpeningProject1';
-    C_ITEM_MENU_DefaultFilesInOpeningProject_CAPTION = 'Default Files In Opening Project';
-    C_ITEM_MENU_OpenInGitHubDesktop_NAME = 'C4DWizarOpenInGitHubDesktop1';
-    C_ITEM_MENU_OpenInGitHubDesktop_CAPTION = 'Open in GitHub Desktop';
-    C_ITEM_MENU_ViewInRemoteRepository_NAME = 'C4DWizarViewInRemoteRepository1';
-    C_ITEM_MENU_ViewInRemoteRepository_CAPTION = 'View in Remote Repository';
-    C_ITEM_MENU_ViewInfRemoteRepository_NAME = 'C4DWizarViewInfRemoteRepository1';
-    C_ITEM_MENU_ViewInfRemoteRepository_CAPTION = 'View Information Remote Repository';
-    C_ITEM_MENU_ViewFileInExplorer_NAME = 'C4DWizarViewFileInExplorer1';
-    C_ITEM_MENU_ViewFileInExplorer_CAPTION = 'View File in Explorer';
-    C_ITEM_MENU_ViewExeInExplorer_CAPTION = 'View Binary in Explorer';
-    C_ITEM_MENU_ViewFileProjInExplorer_NAME = 'C4DWizarViewFileProjectInExplorer1';
-    C_ITEM_MENU_ViewFileProjInExplorer_CAPTION = 'View File Project in Explorer';
-    C_ITEM_MENU_ViewCurFileInExplorer_NAME = 'C4DWizarViewCurrentFileInExplorer1';
-    C_ITEM_MENU_ViewCurFileInExplorer_CAPTION = 'View Current File in Explorer';
-    C_ITEM_MENU_ViewCurExeInExplorer_NAME = 'C4DWizarViewCurrentExeInExplorer1';
-    C_ITEM_MENU_ViewCurExeInExplorer_CAPTION = 'View Current Binary in Explorer';
+    ITEM_MENU_Code4D_NAME = 'Code4DelphiItemMenu';
+    ITEM_MENU_Code4D_CAPTION = 'Code4D';
+    ITEM_MENU_Mark_Favorite_CAPTION = 'Mark as Favorite';
+    ITEM_MENU_Mark_Unfavorite_CAPTION = 'Mark as Unfavorite';
+    ITEM_MENU_EditInformations_CAPTION = 'Edit Informations';
+    ITEM_MENU_DefaultFilesInOpeningProject_NAME = 'C4DWizarDefaultFilesInOpeningProject1';
+    ITEM_MENU_DefaultFilesInOpeningProject_CAPTION = 'Default Files In Opening Project';
+    ITEM_MENU_OpenInGitHubDesktop_NAME = 'C4DWizarOpenInGitHubDesktop1';
+    ITEM_MENU_OpenInGitHubDesktop_CAPTION = 'Open in GitHub Desktop';
+    ITEM_MENU_ViewInRemoteRepository_NAME = 'C4DWizarViewInRemoteRepository1';
+    ITEM_MENU_ViewInRemoteRepository_CAPTION = 'View in Remote Repository';
+    ITEM_MENU_ViewInfRemoteRepository_NAME = 'C4DWizarViewInfRemoteRepository1';
+    ITEM_MENU_ViewInfRemoteRepository_CAPTION = 'View Information Remote Repository';
+    ITEM_MENU_ViewFileInExplorer_NAME = 'C4DWizarViewFileInExplorer1';
+    ITEM_MENU_ViewFileInExplorer_CAPTION = 'View File in Explorer';
+    ITEM_MENU_ViewExeInExplorer_CAPTION = 'View Binary in Explorer';
+    ITEM_MENU_ViewFileProjInExplorer_NAME = 'C4DWizarViewFileProjectInExplorer1';
+    ITEM_MENU_ViewFileProjInExplorer_CAPTION = 'View File Project in Explorer';
+    ITEM_MENU_ViewCurFileInExplorer_NAME = 'C4DWizarViewCurrentFileInExplorer1';
+    ITEM_MENU_ViewCurFileInExplorer_CAPTION = 'View Current File in Explorer';
+    ITEM_MENU_ViewCurExeInExplorer_NAME = 'C4DWizarViewCurrentExeInExplorer1';
+    ITEM_MENU_ViewCurExeInExplorer_CAPTION = 'View Current Binary in Explorer';
 
     //MAIN MENU IDE NAME
-    C_MENU_IDE_OpenExternal_NAME = 'C4DWizarOpenExternal1';
-    C_MENU_IDE_OpenExternal_CAPTION = 'Open External Path';
-    C_MENU_IDE_ORGANIZATION_NAME = 'C4DWizarUsesOrganization1';
-    C_MENU_IDE_ORGANIZATION_CAPTION = 'Uses Organization';
-    C_MENU_IDE_REOPEN_NAME = 'C4DWizarReopen1';
-    C_MENU_IDE_REOPEN_CAPTION = 'Reopen File History';
-    C_MENU_IDE_TRANSLATE_NAME = 'C4DWizarTranslateText1';
-    C_MENU_IDE_TRANSLATE_CAPTION = 'Translate Text';
-    C_MENU_IDE_INDENT_NAME = 'C4DWizarIndent1';
-    C_MENU_IDE_INDENT_CAPTION = 'Indent Text Selected';
-    C_MENU_IDE_FIND_NAME = 'C4DWizarFind1';
-    C_MENU_IDE_FIND_CAPTION = 'Find in Files';
-    C_MENU_IDE_REPLACE_NAME = 'C4DWizarReplace1';
-    C_MENU_IDE_REPLACE_CAPTION = 'Replace in Files';
-    C_MENU_IDE_BACKUP_NAME = 'C4DWizarBackupConfig1';
-    C_MENU_IDE_BACKUP_CAPTION = 'Backup/Restore Configs';
-    C_MENU_IDE_IMPORT_NAME = 'C4DWizarBackupImportConfig1';
-    C_MENU_IDE_IMPORT_CAPTION = 'Import Configs';
-    C_MENU_IDE_EXPORT_NAME = 'C4DWizarBackupExportConfig1';
-    C_MENU_IDE_EXPORT_CAPTION = 'Export Configs';
-    C_MENU_IDE_SETTINGS_NAME = 'C4DWizarSettings1';
-    C_MENU_IDE_SETTINGS_CAPTION = 'Settings';
-    C_MENU_IDE_ABOUT_NAME = 'C4DWizarAbout1';
-    C_MENU_IDE_ABOUT_CAPTION = 'About Code4Delphi Wizard';
-    C_MENU_IDE_FormatSource_NAME = 'C4DFormatSource1';
-    C_MENU_IDE_FormatSource_CAPTION = 'Format Source';
-    C_MENU_IDE_NOTES_NAME = 'C4DWizarNotes1';
-    C_MENU_IDE_NOTES_CAPTION = 'Notes';
+    MENU_IDE_OpenExternal_NAME = 'C4DWizarOpenExternal1';
+    MENU_IDE_OpenExternal_CAPTION = 'Open External Path';
+    MENU_IDE_ORGANIZATION_NAME = 'C4DWizarUsesOrganization1';
+    MENU_IDE_ORGANIZATION_CAPTION = 'Uses Organization';
+    MENU_IDE_REOPEN_NAME = 'C4DWizarReopen1';
+    MENU_IDE_REOPEN_CAPTION = 'Reopen File History';
+    MENU_IDE_TRANSLATE_NAME = 'C4DWizarTranslateText1';
+    MENU_IDE_TRANSLATE_CAPTION = 'Translate Text';
+    MENU_IDE_INDENT_NAME = 'C4DWizarIndent1';
+    MENU_IDE_INDENT_CAPTION = 'Indent Text Selected';
+    MENU_IDE_FIND_NAME = 'C4DWizarFind1';
+    MENU_IDE_FIND_CAPTION = 'Find in Files';
+    MENU_IDE_REPLACE_NAME = 'C4DWizarReplace1';
+    MENU_IDE_REPLACE_CAPTION = 'Replace in Files';
+    MENU_IDE_BACKUP_NAME = 'C4DWizarBackupConfig1';
+    MENU_IDE_BACKUP_CAPTION = 'Backup/Restore Configs';
+    MENU_IDE_IMPORT_NAME = 'C4DWizarBackupImportConfig1';
+    MENU_IDE_IMPORT_CAPTION = 'Import Configs';
+    MENU_IDE_EXPORT_NAME = 'C4DWizarBackupExportConfig1';
+    MENU_IDE_EXPORT_CAPTION = 'Export Configs';
+    MENU_IDE_SETTINGS_NAME = 'C4DWizarSettings1';
+    MENU_IDE_SETTINGS_CAPTION = 'Settings';
+    MENU_IDE_ABOUT_NAME = 'C4DWizarAbout1';
+    MENU_IDE_ABOUT_CAPTION = 'About Code4Delphi Wizard';
+    MENU_IDE_FormatSource_NAME = 'C4DFormatSource1';
+    MENU_IDE_FormatSource_CAPTION = 'Format Source';
+    MENU_IDE_NOTES_NAME = 'C4DWizarNotes1';
+    MENU_IDE_NOTES_CAPTION = 'Notes';
 
     //FILE .INI REOPEN
-    C_REOPEN_INI_Favorite = 'Favorite';
-    C_REOPEN_INI_Nickname = 'Nickname';
-    C_REOPEN_INI_Name = 'Name';
-    C_REOPEN_INI_LastOpen = 'LastOpen';
-    C_REOPEN_INI_LastClose = 'LastClose';
-    C_REOPEN_INI_FilePath = 'FilePath';
-    C_REOPEN_INI_Color = 'Color';
-    C_REOPEN_INI_FolderGit = 'FolderGit';
-    C_REOPEN_INI_GuidGroup = 'GuidGroup';
+    REOPEN_INI_Favorite = 'Favorite';
+    REOPEN_INI_Nickname = 'Nickname';
+    REOPEN_INI_Name = 'Name';
+    REOPEN_INI_LastOpen = 'LastOpen';
+    REOPEN_INI_LastClose = 'LastClose';
+    REOPEN_INI_FilePath = 'FilePath';
+    REOPEN_INI_Color = 'Color';
+    REOPEN_INI_FolderGit = 'FolderGit';
+    REOPEN_INI_GuidGroup = 'GuidGroup';
 
     //FILE .INI DefaultFilesInOpeningProject
-    C_DEFAULT_FILES_IN_OPENING_PROJECT_INI_ListFilePathDefault = 'ListFilePathDefault';
+    DEFAULT_FILES_IN_OPENING_PROJECT_INI_ListFilePathDefault = 'ListFilePathDefault';
 
     //GROUPS FILE .INI
-    C_GROUPS_GUID_ALL = 'ALL';
-    C_GROUPS_GUID_NO_GROUP = 'NO-GROUP';
-    C_GROUPS_INI_Name = 'Name';
-    C_GROUPS_INI_FixedSystem = 'FixedSystem';
-    C_GROUPS_INI_DefaultGroup = 'DefaultGroup';
+    GROUPS_GUID_ALL = 'ALL';
+    GROUPS_GUID_NO_GROUP = 'NO-GROUP';
+    GROUPS_INI_Name = 'Name';
+    GROUPS_INI_FixedSystem = 'FixedSystem';
+    GROUPS_INI_DefaultGroup = 'DefaultGroup';
 
     //OpenExternal FILE .INI
-    C_OPEN_EXTERNAL_Separator_PARAMETERS = '|p|';
-    C_OPEN_EXTERNAL_INI_Description = 'Description';
-    C_OPEN_EXTERNAL_INI_Path = 'Path';
-    C_OPEN_EXTERNAL_INI_Parameters = 'Parameters';
-    C_OPEN_EXTERNAL_INI_Kind = 'Kind';
-    C_OPEN_EXTERNAL_INI_Visible = 'Visible';
-    C_OPEN_EXTERNAL_INI_VisibleInToolBarUtilities = 'VisibleInToolBarUtilities';
-    C_OPEN_EXTERNAL_INI_Order = 'Order';
-    C_OPEN_EXTERNAL_INI_Shortcut = 'Shortcut';
-    C_OPEN_EXTERNAL_INI_IconHas = 'IconHas';
-    C_OPEN_EXTERNAL_INI_PREFIX_IMG = 'OPEN_EXTERNAL_IMG_';
+    OPEN_EXTERNAL_Separator_PARAMETERS = '|p|';
+    OPEN_EXTERNAL_INI_Description = 'Description';
+    OPEN_EXTERNAL_INI_Path = 'Path';
+    OPEN_EXTERNAL_INI_Parameters = 'Parameters';
+    OPEN_EXTERNAL_INI_Kind = 'Kind';
+    OPEN_EXTERNAL_INI_Visible = 'Visible';
+    OPEN_EXTERNAL_INI_VisibleInToolBarUtilities = 'VisibleInToolBarUtilities';
+    OPEN_EXTERNAL_INI_Order = 'Order';
+    OPEN_EXTERNAL_INI_Shortcut = 'Shortcut';
+    OPEN_EXTERNAL_INI_IconHas = 'IconHas';
+    OPEN_EXTERNAL_INI_PREFIX_IMG = 'OPEN_EXTERNAL_IMG_';
 
     //TOOLBAR BRANCH
-    C_TOOL_BAR_BRANCH_NAME = 'C4DToolBarBranch';
-    C_TOOL_BAR_BRANCH_CAPTION = 'C4D Branch';
-    C_TOOL_BAR_BRANCH_TOOL_BUTTON_NAME = 'C4DToolButtonGetNameCurrentBranch';
-    C_TOOL_BAR_BRANCH_LABEL_NAME = 'C4DToolLabelNameCurrentBranch';
+    TOOL_BAR_BRANCH_NAME = 'C4DToolBarBranch';
+    TOOL_BAR_BRANCH_CAPTION = 'C4D Branch';
+    TOOL_BAR_BRANCH_TOOL_BUTTON_NAME = 'C4DToolButtonGetNameCurrentBranch';
+    TOOL_BAR_BRANCH_LABEL_NAME = 'C4DToolLabelNameCurrentBranch';
     //TOOLBAR BRANCH INI
-    C_TOOL_BAR_BRANCH_INI_Visible = 'Visible';
+    TOOL_BAR_BRANCH_INI_Visible = 'Visible';
 
     //TOOLBAR BUILD
-    C_TOOL_BAR_BUILD_NAME = 'C4DToolBarBuild';
-    C_TOOL_BAR_BUILD_CAPTION = 'C4D Build';
-    C_TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME = 'C4DToolButtonBuildAllGroup';
-    C_TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME = 'C4DToolButtonBuildInRelease';
-    C_TOOL_BAR_BUILD_COMBOBOX_NAME = 'C4DToolComboBoxNameCurrentBuild';
-    C_TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME = 'C4DToolButtonBuildRefresh';
+    TOOL_BAR_BUILD_NAME = 'C4DToolBarBuild';
+    TOOL_BAR_BUILD_CAPTION = 'C4D Build';
+    TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME = 'C4DToolButtonBuildAllGroup';
+    TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME = 'C4DToolButtonBuildInRelease';
+    TOOL_BAR_BUILD_COMBOBOX_NAME = 'C4DToolComboBoxNameCurrentBuild';
+    TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME = 'C4DToolButtonBuildRefresh';
     //TOOLBAR BUILD INI
-    C_TOOL_BAR_BUILD_INI_Visible = 'Visible';
+    TOOL_BAR_BUILD_INI_Visible = 'Visible';
 
     //TOOLBAR UTILITIES
-    C_TOOL_BAR_UTILITIES_NAME = 'C4DToolBarUtilities';
-    C_TOOL_BAR_UTILITIES_CAPTION = 'C4D Utilities';
-    C_TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME = 'C4DToolButtoUtilitiesUnitInReadOnly';
-    C_TOOL_BAR_UTILITIES_TOOL_BUTTON_GithubDesktop_NAME = 'C4DToolButtonUtilitiesGithubDesktop';
+    TOOL_BAR_UTILITIES_NAME = 'C4DToolBarUtilities';
+    TOOL_BAR_UTILITIES_CAPTION = 'C4D Utilities';
+    TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME = 'C4DToolButtoUtilitiesUnitInReadOnly';
+    TOOL_BAR_UTILITIES_TOOL_BUTTON_GithubDesktop_NAME = 'C4DToolButtonUtilitiesGithubDesktop';
     //TOOLBAR UTILITIES INI
-    C_TOOL_BAR_UTILITIES_INI_Visible = 'Visible';
+    TOOL_BAR_UTILITIES_INI_Visible = 'Visible';
 
-    C_EXTENSIONS_PERMITTED_BACKUP_EXPORT: TC4DExtensionsOfFiles = [TC4DExtensionsFiles.INI,
+    EXTENSIONS_PERMITTED_BACKUP_EXPORT: TC4DExtensionsOfFiles = [TC4DExtensionsFiles.INI,
       TC4DExtensionsFiles.BMP];
   end;
 

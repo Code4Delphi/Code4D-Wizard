@@ -90,8 +90,8 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
           AlignWithMargins = True
           Left = 56
           Top = 8
-          Width = 191
-          Height = 18
+          Width = 572
+          Height = 32
           Cursor = crHandPoint
           Margins.Left = 8
           Align = alClient
@@ -106,6 +106,8 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
           OnClick = lbSiteCode4DelphiClick
           OnMouseMove = lbSiteCode4DelphiMouseMove
           OnMouseLeave = lbSiteCode4DelphiMouseLeave
+          ExplicitWidth = 191
+          ExplicitHeight = 18
         end
         object imgLogoC4D: TImage
           Left = 10
@@ -1878,8 +1880,8 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
           AlignWithMargins = True
           Left = 56
           Top = 8
-          Width = 182
-          Height = 18
+          Width = 572
+          Height = 32
           Cursor = crHandPoint
           Margins.Left = 8
           Align = alClient
@@ -1894,6 +1896,8 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
           OnClick = lbGitHubCode4DelphiClick
           OnMouseMove = lbSiteCode4DelphiMouseMove
           OnMouseLeave = lbSiteCode4DelphiMouseLeave
+          ExplicitWidth = 182
+          ExplicitHeight = 18
         end
         object imgGithub: TImage
           Left = 10
@@ -1991,8 +1995,8 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
         AlignWithMargins = True
         Left = 56
         Top = 8
-        Width = 171
-        Height = 18
+        Width = 572
+        Height = 32
         Cursor = crHandPoint
         Margins.Left = 8
         Align = alClient
@@ -2007,6 +2011,8 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
         OnClick = lbDonateToCode4DelphiClick
         OnMouseMove = lbSiteCode4DelphiMouseMove
         OnMouseLeave = lbSiteCode4DelphiMouseLeave
+        ExplicitWidth = 171
+        ExplicitHeight = 18
       end
       object imgDonate: TImage
         Left = 10

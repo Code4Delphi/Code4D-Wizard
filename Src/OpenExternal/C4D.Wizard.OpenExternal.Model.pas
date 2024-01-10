@@ -53,15 +53,15 @@ begin
 
   LIniFile := Self.GetIniFile;
   try
-    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_Description, AC4DWizardOpenExternal.Description);
-    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_Path, AC4DWizardOpenExternal.Path);
-    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_Parameters, AC4DWizardOpenExternal.Parameters);
-    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_Kind, AC4DWizardOpenExternal.Kind.Tostring);
-    LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_Visible, AC4DWizardOpenExternal.Visible);
-    LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_VisibleInToolBarUtilities, AC4DWizardOpenExternal.VisibleInToolBarUtilities);
-    LIniFile.WriteInteger(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_Order, AC4DWizardOpenExternal.Order);
-    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_Shortcut, AC4DWizardOpenExternal.Shortcut);
-    LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.C_OPEN_EXTERNAL_INI_IconHas, AC4DWizardOpenExternal.IconHas);
+    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Description, AC4DWizardOpenExternal.Description);
+    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Path, AC4DWizardOpenExternal.Path);
+    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Parameters, AC4DWizardOpenExternal.Parameters);
+    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Kind, AC4DWizardOpenExternal.Kind.Tostring);
+    LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Visible, AC4DWizardOpenExternal.Visible);
+    LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_VisibleInToolBarUtilities, AC4DWizardOpenExternal.VisibleInToolBarUtilities);
+    LIniFile.WriteInteger(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Order, AC4DWizardOpenExternal.Order);
+    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Shortcut, AC4DWizardOpenExternal.Shortcut);
+    LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_IconHas, AC4DWizardOpenExternal.IconHas);
   finally
     LIniFile.Free;
   end;
@@ -80,7 +80,7 @@ begin
     Exit;
 
   LFileNameToSave := TC4DWizardUtils.GetPathFolderRoot +
-    TC4DConsts.C_OPEN_EXTERNAL_INI_PREFIX_IMG +
+    TC4DConsts.OPEN_EXTERNAL_INI_PREFIX_IMG +
     TC4DWizardUtils.GuidToFileName(AGuid, ExtractFileExt(APathIcon));
 
   TC4DWizardUtils.FileCopy(APathIcon, LFileNameToSave);
@@ -97,15 +97,15 @@ begin
   LIniFile := Self.GetIniFile;
   try
     Result.Guid := AGuid;
-    Result.Description := LIniFile.Readstring(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_Description, '');
-    Result.Path := LIniFile.Readstring(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_Path, '');
-    Result.Parameters := LIniFile.Readstring(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_Parameters, '');
-    Result.Kind := TC4DWizardUtils.StrToOpenExternalKind(LIniFile.Readstring(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_Kind, ''));
-    Result.Visible := LIniFile.ReadBool(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_Visible, True);
-    Result.VisibleInToolBarUtilities := LIniFile.ReadBool(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_VisibleInToolBarUtilities, False);
-    Result.Order := LIniFile.ReadInteger(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_Order, 0);
-    Result.Shortcut := LIniFile.Readstring(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_Shortcut, '');
-    Result.IconHas := LIniFile.ReadBool(AGuid, TC4DConsts.C_OPEN_EXTERNAL_INI_IconHas, False);
+    Result.Description := LIniFile.Readstring(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Description, '');
+    Result.Path := LIniFile.Readstring(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Path, '');
+    Result.Parameters := LIniFile.Readstring(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Parameters, '');
+    Result.Kind := TC4DWizardUtils.StrToOpenExternalKind(LIniFile.Readstring(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Kind, ''));
+    Result.Visible := LIniFile.ReadBool(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Visible, True);
+    Result.VisibleInToolBarUtilities := LIniFile.ReadBool(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_VisibleInToolBarUtilities, False);
+    Result.Order := LIniFile.ReadInteger(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Order, 0);
+    Result.Shortcut := LIniFile.Readstring(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Shortcut, '');
+    Result.IconHas := LIniFile.ReadBool(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_IconHas, False);
   finally
     LIniFile.Free;
   end;
@@ -130,15 +130,15 @@ begin
         LC4DWizardOpenExternal := TC4DWizardOpenExternal.Create;
         try
           LC4DWizardOpenExternal.Guid := LSessaoStr;
-          LC4DWizardOpenExternal.Description := LIniFile.Readstring(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_Description, '');
-          LC4DWizardOpenExternal.Path := LIniFile.Readstring(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_Path, '');
-          LC4DWizardOpenExternal.Parameters := LIniFile.Readstring(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_Parameters, '');
-          LC4DWizardOpenExternal.Kind := TC4DWizardUtils.StrToOpenExternalKind(LIniFile.Readstring(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_Kind, ''));
-          LC4DWizardOpenExternal.Visible := LIniFile.ReadBool(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_Visible, True);
-          LC4DWizardOpenExternal.VisibleInToolBarUtilities := LIniFile.ReadBool(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_VisibleInToolBarUtilities, False);
-          LC4DWizardOpenExternal.Order := LIniFile.ReadInteger(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_Order, 0);
-          LC4DWizardOpenExternal.Shortcut := LIniFile.Readstring(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_Shortcut, '');
-          LC4DWizardOpenExternal.IconHas := LIniFile.ReadBool(LSessaoStr, TC4DConsts.C_OPEN_EXTERNAL_INI_IconHas, False);
+          LC4DWizardOpenExternal.Description := LIniFile.Readstring(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Description, '');
+          LC4DWizardOpenExternal.Path := LIniFile.Readstring(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Path, '');
+          LC4DWizardOpenExternal.Parameters := LIniFile.Readstring(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Parameters, '');
+          LC4DWizardOpenExternal.Kind := TC4DWizardUtils.StrToOpenExternalKind(LIniFile.Readstring(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Kind, ''));
+          LC4DWizardOpenExternal.Visible := LIniFile.ReadBool(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Visible, True);
+          LC4DWizardOpenExternal.VisibleInToolBarUtilities := LIniFile.ReadBool(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_VisibleInToolBarUtilities, False);
+          LC4DWizardOpenExternal.Order := LIniFile.ReadInteger(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Order, 0);
+          LC4DWizardOpenExternal.Shortcut := LIniFile.Readstring(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Shortcut, '');
+          LC4DWizardOpenExternal.IconHas := LIniFile.ReadBool(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_IconHas, False);
           AProc(LC4DWizardOpenExternal);
         finally
           LC4DWizardOpenExternal.Free;

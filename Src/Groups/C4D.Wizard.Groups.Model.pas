@@ -48,13 +48,13 @@ end;
 
 procedure TC4DWizardGroupsModel.CreateIniFileWithGroupsFixed(var AIniFile: TIniFile);
 begin
-  AIniFile.Writestring(TC4DConsts.C_GROUPS_GUID_ALL, TC4DConsts.C_GROUPS_INI_Name, '- Show ALL');
-  AIniFile.WriteBool(TC4DConsts.C_GROUPS_GUID_ALL, TC4DConsts.C_GROUPS_INI_FixedSystem, True);
-  AIniFile.WriteBool(TC4DConsts.C_GROUPS_GUID_ALL, TC4DConsts.C_GROUPS_INI_DefaultGroup, True);
+  AIniFile.Writestring(TC4DConsts.GROUPS_GUID_ALL, TC4DConsts.GROUPS_INI_Name, '- Show ALL');
+  AIniFile.WriteBool(TC4DConsts.GROUPS_GUID_ALL, TC4DConsts.GROUPS_INI_FixedSystem, True);
+  AIniFile.WriteBool(TC4DConsts.GROUPS_GUID_ALL, TC4DConsts.GROUPS_INI_DefaultGroup, True);
 
-  AIniFile.Writestring(TC4DConsts.C_GROUPS_GUID_NO_GROUP, TC4DConsts.C_GROUPS_INI_Name, '- No group');
-  AIniFile.WriteBool(TC4DConsts.C_GROUPS_GUID_NO_GROUP, TC4DConsts.C_GROUPS_INI_FixedSystem, True);
-  AIniFile.WriteBool(TC4DConsts.C_GROUPS_GUID_NO_GROUP, TC4DConsts.C_GROUPS_INI_DefaultGroup, False);
+  AIniFile.Writestring(TC4DConsts.GROUPS_GUID_NO_GROUP, TC4DConsts.GROUPS_INI_Name, '- No group');
+  AIniFile.WriteBool(TC4DConsts.GROUPS_GUID_NO_GROUP, TC4DConsts.GROUPS_INI_FixedSystem, True);
+  AIniFile.WriteBool(TC4DConsts.GROUPS_GUID_NO_GROUP, TC4DConsts.GROUPS_INI_DefaultGroup, False);
 end;
 
 procedure TC4DWizardGroupsModel.WriteInIniFile(AC4DWizardGroups: TC4DWizardGroups);
@@ -69,9 +69,9 @@ begin
 
   LIniFile := Self.GetIniFile;
   try
-    LIniFile.Writestring(AC4DWizardGroups.Guid, TC4DConsts.C_GROUPS_INI_Name, AC4DWizardGroups.Name);
-    LIniFile.WriteBool(AC4DWizardGroups.Guid, TC4DConsts.C_GROUPS_INI_FixedSystem, AC4DWizardGroups.FixedSystem);
-    LIniFile.WriteBool(AC4DWizardGroups.Guid, TC4DConsts.C_GROUPS_INI_DefaultGroup, AC4DWizardGroups.DefaultGroup);
+    LIniFile.Writestring(AC4DWizardGroups.Guid, TC4DConsts.GROUPS_INI_Name, AC4DWizardGroups.Name);
+    LIniFile.WriteBool(AC4DWizardGroups.Guid, TC4DConsts.GROUPS_INI_FixedSystem, AC4DWizardGroups.FixedSystem);
+    LIniFile.WriteBool(AC4DWizardGroups.Guid, TC4DConsts.GROUPS_INI_DefaultGroup, AC4DWizardGroups.DefaultGroup);
   finally
     LIniFile.Free;
   end;
@@ -92,8 +92,8 @@ begin
       for i := 0 to Pred(LSections.Count) do
       begin
         LSessaoStr := LSections[i];
-        if(LIniFile.ReadBool(LSessaoStr, TC4DConsts.C_GROUPS_INI_DefaultGroup, False))then
-          LIniFile.WriteBool(LSessaoStr, TC4DConsts.C_GROUPS_INI_DefaultGroup, False);
+        if(LIniFile.ReadBool(LSessaoStr, TC4DConsts.GROUPS_INI_DefaultGroup, False))then
+          LIniFile.WriteBool(LSessaoStr, TC4DConsts.GROUPS_INI_DefaultGroup, False);
       end;
     finally
       LSections.Free;
@@ -114,9 +114,9 @@ begin
   LIniFile := Self.GetIniFile;
   try
     Result.Guid := AGuid;
-    Result.Name := LIniFile.Readstring(AGuid, TC4DConsts.C_GROUPS_INI_Name, '');
-    Result.FixedSystem := LIniFile.ReadBool(AGuid, TC4DConsts.C_GROUPS_INI_FixedSystem, False);
-    Result.DefaultGroup := LIniFile.ReadBool(AGuid, TC4DConsts.C_GROUPS_INI_DefaultGroup, False);
+    Result.Name := LIniFile.Readstring(AGuid, TC4DConsts.GROUPS_INI_Name, '');
+    Result.FixedSystem := LIniFile.ReadBool(AGuid, TC4DConsts.GROUPS_INI_FixedSystem, False);
+    Result.DefaultGroup := LIniFile.ReadBool(AGuid, TC4DConsts.GROUPS_INI_DefaultGroup, False);
   finally
     LIniFile.Free;
   end;
@@ -141,9 +141,9 @@ begin
         LC4DWizardGroups := TC4DWizardGroups.Create;
         try
           LC4DWizardGroups.Guid := LSessaoStr;
-          LC4DWizardGroups.Name := LIniFile.Readstring(LSessaoStr, TC4DConsts.C_GROUPS_INI_Name, '');
-          LC4DWizardGroups.FixedSystem := LIniFile.ReadBool(LSessaoStr, TC4DConsts.C_GROUPS_INI_FixedSystem, False);
-          LC4DWizardGroups.DefaultGroup := LIniFile.ReadBool(LSessaoStr, TC4DConsts.C_GROUPS_INI_DefaultGroup, False);
+          LC4DWizardGroups.Name := LIniFile.Readstring(LSessaoStr, TC4DConsts.GROUPS_INI_Name, '');
+          LC4DWizardGroups.FixedSystem := LIniFile.ReadBool(LSessaoStr, TC4DConsts.GROUPS_INI_FixedSystem, False);
+          LC4DWizardGroups.DefaultGroup := LIniFile.ReadBool(LSessaoStr, TC4DConsts.GROUPS_INI_DefaultGroup, False);
           AProc(LC4DWizardGroups);
         finally
           LC4DWizardGroups.Free;
@@ -161,7 +161,7 @@ procedure TC4DWizardGroupsModel.RemoveGuidInIniFile(AGuid: string);
 var
   LIniFile: TIniFile;
 begin
-  if(AGuid.Trim.ToUpper = TC4DConsts.C_GROUPS_GUID_ALL)or(AGuid.Trim.ToUpper = TC4DConsts.C_GROUPS_GUID_NO_GROUP)then
+  if(AGuid.Trim.ToUpper = TC4DConsts.GROUPS_GUID_ALL)or(AGuid.Trim.ToUpper = TC4DConsts.GROUPS_GUID_NO_GROUP)then
     Exit;
 
   if(TC4DWizardReopenModel.New.ReadIniFileIfExistGuidGroup(AGuid))then

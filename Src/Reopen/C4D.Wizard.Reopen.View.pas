@@ -471,8 +471,8 @@ begin
     Exit;
 
   if not(
-    ((LGuidGroup.IsEmpty)or(LGuidGroup = TC4DConsts.C_GROUPS_GUID_ALL)or(AC4DWizardReopenData.GuidGroup = LGuidGroup))
-    or((LGuidGroup = TC4DConsts.C_GROUPS_GUID_NO_GROUP)and(AC4DWizardReopenData.GuidGroup.Trim.IsEmpty))
+    ((LGuidGroup.IsEmpty)or(LGuidGroup = TC4DConsts.GROUPS_GUID_ALL)or(AC4DWizardReopenData.GuidGroup = LGuidGroup))
+    or((LGuidGroup = TC4DConsts.GROUPS_GUID_NO_GROUP)and(AC4DWizardReopenData.GuidGroup.Trim.IsEmpty))
     )
   then
     Exit;
@@ -938,7 +938,7 @@ begin
     Exit;
   LC4DWizardGroups := TC4DWizardGroups(LTreeNode.Data);
   LGroupsGuid := LC4DWizardGroups.Guid;
-  if(LGroupsGuid = TC4DConsts.C_GROUPS_GUID_ALL)then
+  if(LGroupsGuid = TC4DConsts.GROUPS_GUID_ALL)then
     Exit;
 
   Self.FillReopenDataSelectedItem(LC4DWizardReopenData);

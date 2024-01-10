@@ -108,7 +108,7 @@ begin
   begin
     if(FFileName.Contains('Embarcadero'))then
     begin
-      if(FFileName.Contains(TC4DConsts.C_C4D_PROJECT_GROUP1))
+      if(FFileName.Contains(TC4DConsts.C4D_PROJECT_GROUP1))
         or(FFileName.Contains('Project1.dproj'))
         or(FFileName.Contains('Package1.dproj'))
       then
@@ -143,7 +143,7 @@ begin
   TC4DWizardReopenSaveAs.New(FFileName);
   {$ELSE}
   //PARA TRATAR ERRO AO FECHAR O PROJETO C4DWizard APOS SUA COMPILACAO
-  if(ExtractFileName(FFileName) <> TC4DConsts.C_C4D_PROJECT_GROUP1)then
+  if(ExtractFileName(FFileName) <> TC4DConsts.C4D_PROJECT_GROUP1)then
     TC4DWizardReopenSaveAs.New(FFileName);
   {$ENDIF}
 end;

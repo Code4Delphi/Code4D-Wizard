@@ -66,21 +66,24 @@ end;
 
 procedure TC4DWizardViewAbout.FormShow(Sender: TObject);
 begin
-  Self.Caption := 'About Code4Delphi Wizard ' + TC4DConsts.C_SEMANTIC_VERSION;
+  Self.Caption := 'About Code4Delphi Wizard ' + TC4DConsts.SEMANTIC_VERSION;
+
   mmMensagem.Lines.Clear;
-  mmMensagem.Lines.Add(Self.Caption);
-  mmMensagem.Lines.Add('');
+  mmMensagem.Lines.Add(TC4DConsts.ABOUT_COPY_RIGHT);
+  mmMensagem.Lines.Add(TC4DConsts.ABOUT_DESCRIPTION);
+  mmMensagem.Lines.Add('Version: ' + TC4DConsts.SEMANTIC_VERSION);
+  mmMensagem.Lines.Add(TC4DConsts.WIZARD_LICENSE);
 end;
 
 procedure TC4DWizardViewAbout.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   case(Key)of
     VK_F4:
-    if(ssAlt in Shift)then
-      Key := 0;
+      if(ssAlt in Shift)then
+        Key := 0;
     VK_ESCAPE:
-    if(Shift = [])then
-      btnOK.Click;
+      if(Shift = [])then
+        btnOK.Click;
   end;
 end;
 

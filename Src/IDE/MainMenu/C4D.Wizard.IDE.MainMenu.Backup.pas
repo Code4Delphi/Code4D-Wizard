@@ -50,8 +50,8 @@ end;
 procedure TC4DWizardIDEMainMenuBakcups.AddMenuItemSave;
 begin
   FMenuItemSave := TMenuItem.Create(FMenuItemC4D);
-  FMenuItemSave.Name := TC4DConsts.C_MENU_IDE_BACKUP_NAME;
-  FMenuItemSave.Caption := TC4DConsts.C_MENU_IDE_BACKUP_CAPTION;
+  FMenuItemSave.Name := TC4DConsts.MENU_IDE_BACKUP_NAME;
+  FMenuItemSave.Caption := TC4DConsts.MENU_IDE_BACKUP_CAPTION;
   FMenuItemSave.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexSave;
   FMenuItemC4D.Add(FMenuItemSave);
 end;
@@ -61,8 +61,8 @@ var
   LItemExport: TMenuItem;
 begin
   LItemExport := TMenuItem.Create(FMenuItemSave);
-  LItemExport.Name := TC4DConsts.C_MENU_IDE_EXPORT_NAME;
-  LItemExport.Caption := TC4DConsts.C_MENU_IDE_EXPORT_CAPTION;
+  LItemExport.Name := TC4DConsts.MENU_IDE_EXPORT_NAME;
+  LItemExport.Caption := TC4DConsts.MENU_IDE_EXPORT_CAPTION;
   LItemExport.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexExport;
   LItemExport.OnClick := TC4DWizardIDEMainMenuClicks.BackupExportClick;
   FMenuItemSave.Add(LItemExport);
@@ -73,8 +73,8 @@ var
   LItemImport: TMenuItem;
 begin
   LItemImport := TMenuItem.Create(FMenuItemSave);
-  LItemImport.Name := TC4DConsts.C_MENU_IDE_IMPORT_NAME;
-  LItemImport.Caption := TC4DConsts.C_MENU_IDE_IMPORT_CAPTION;
+  LItemImport.Name := TC4DConsts.MENU_IDE_IMPORT_NAME;
+  LItemImport.Caption := TC4DConsts.MENU_IDE_IMPORT_CAPTION;
   LItemImport.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexImport;
   LItemImport.OnClick := TC4DWizardIDEMainMenuClicks.BackupImportClick;
   FMenuItemSave.Add(LItemImport);

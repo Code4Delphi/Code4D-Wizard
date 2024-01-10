@@ -172,7 +172,7 @@ begin
 
   if(LIOTAModuleServices.GetModuleCount = 1)then
   begin
-    if(LIOTAModuleServices.GetModule(0).FileName = TC4DConsts.C_DEFAULT_HTM)then
+    if(LIOTAModuleServices.GetModule(0).FileName = TC4DConsts.DEFAULT_HTM)then
       raise Exception.Create('No Units Opened was found.');
   end;
 
@@ -195,7 +195,7 @@ var
   LFileName: string;
 begin
   LFileName := TC4DWizardUtilsOTA.GetCurrentModuleFileName.Trim;
-  if(LFileName.IsEmpty)or(LFileName = TC4DConsts.C_DEFAULT_HTM)then
+  if(LFileName.IsEmpty)or(LFileName = TC4DConsts.DEFAULT_HTM)then
     raise Exception.Create('No File Current was found');
 
   Self.ListFilesAdd(LFileName);

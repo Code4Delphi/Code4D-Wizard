@@ -138,7 +138,7 @@ function PathCanonicalize(lpszDst: PChar; lpszSrc: PChar): LongBool; stdcall; ex
 
 class function TC4DWizardUtils.FileNameIsC4DWizardDPROJ(const AFileName: string): Boolean;
 begin
-  Result := ExtractFileName(AFileName) = TC4DConsts.C_C4D_WIZARD_DPROJ;
+  Result := ExtractFileName(AFileName) = TC4DConsts.C4D_WIZARD_DPROJ;
 end;
 
 class procedure TC4DWizardUtils.RemoveBlankSpaceInBegin(var AValue: string; const ACount: Integer);
@@ -601,44 +601,44 @@ end;
 
 class function TC4DWizardUtils.GetPathFileIniGeneralSettings: string;
 begin
-  Result := Self.GetPathFolderRoot + TC4DConsts.C_FILE_INI_GENERAL_SETTINGS;
+  Result := Self.GetPathFolderRoot + TC4DConsts.FILE_INI_GENERAL_SETTINGS;
 end;
 
 class function TC4DWizardUtils.GetPathFileIniReopen: string;
 begin
-  Result := Self.GetPathFolderRoot + TC4DConsts.C_FILE_INI_REOPEN;
+  Result := Self.GetPathFolderRoot + TC4DConsts.FILE_INI_REOPEN;
 end;
 
 class function TC4DWizardUtils.GetPathFileIniDefaultFilesInOpeningProject: string;
 begin
-  Result := Self.GetPathFolderRoot + TC4DConsts.C_FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT;
+  Result := Self.GetPathFolderRoot + TC4DConsts.FILE_INI_DEFAULT_FILES_IN_OPENING_PROJECT;
 end;
 
 class function TC4DWizardUtils.GetPathFileIniGroups: string;
 begin
-  Result := Self.GetPathFolderRoot + TC4DConsts.C_FILE_INI_GROUPS;
+  Result := Self.GetPathFolderRoot + TC4DConsts.FILE_INI_GROUPS;
 end;
 
 class function TC4DWizardUtils.GetPathFileIniOpenExternal: string;
 begin
-  Result := Self.GetPathFolderRoot + TC4DConsts.C_FILE_INI_OPEN_EXTERNAL;
+  Result := Self.GetPathFolderRoot + TC4DConsts.FILE_INI_OPEN_EXTERNAL;
 end;
 
 class function TC4DWizardUtils.GetPathImageOpenExternal(AGuid: string): string;
 begin
   Result := Self.GetPathFolderRoot +
-    TC4DConsts.C_OPEN_EXTERNAL_INI_PREFIX_IMG +
+    TC4DConsts.OPEN_EXTERNAL_INI_PREFIX_IMG +
     Self.GuidToFileName(AGuid, '.' + TC4DExtensionsFiles.Bmp.Tostring);
 end;
 
 class function TC4DWizardUtils.GetPathFileNotes: string;
 begin
-  Result := Self.GetPathFolderRoot + TC4DConsts.C_FILE_RTF_NOTES;
+  Result := Self.GetPathFolderRoot + TC4DConsts.FILE_RTF_NOTES;
 end;
 
 class function TC4DWizardUtils.CreateIfNecessaryAndGetPathFolderTemp: string;
 begin
-  Result := Self.GetPathFolderRoot + TC4DConsts.C_NAME_FOLDER_TEMP;
+  Result := Self.GetPathFolderRoot + TC4DConsts.NAME_FOLDER_TEMP;
   if(not DirectoryExists(Result))then
     ForceDirectories(Result);
 end;
@@ -917,17 +917,17 @@ end;
 
 class procedure TC4DWizardUtils.ShowMsg(const AMsg: string; const ADetails: string = '');
 begin
-  Self.ShowMsgInternal(AMsg, ADetails, TC4DWizardIcon.Information, TC4DButtons.OK, TC4DBtnFocu.OK, TC4DConsts.C_WIN_CONTROL_FOCU_NIL);
+  Self.ShowMsgInternal(AMsg, ADetails, TC4DWizardIcon.Information, TC4DButtons.OK, TC4DBtnFocu.OK, TC4DConsts.WIN_CONTROL_FOCU_NIL);
 end;
 
 class procedure TC4DWizardUtils.ShowV(const AMsg: string; const ADetails: string = '');
 begin
-  Self.ShowMsgInternal(AMsg, ADetails, TC4DWizardIcon.Success, TC4DButtons.OK, TC4DBtnFocu.OK, TC4DConsts.C_WIN_CONTROL_FOCU_NIL);
+  Self.ShowMsgInternal(AMsg, ADetails, TC4DWizardIcon.Success, TC4DButtons.OK, TC4DBtnFocu.OK, TC4DConsts.WIN_CONTROL_FOCU_NIL);
 end;
 
 class procedure TC4DWizardUtils.ShowError(const AMsg: string; const ADetails: string = '');
 begin
-  Self.ShowError(AMsg, ADetails, TC4DConsts.C_WIN_CONTROL_FOCU_NIL);
+  Self.ShowError(AMsg, ADetails, TC4DConsts.WIN_CONTROL_FOCU_NIL);
 end;
 
 class procedure TC4DWizardUtils.ShowError(const AMsg: string; const AWinControlFocu: TWinControl);
@@ -942,17 +942,17 @@ end;
 
 class function TC4DWizardUtils.ShowQuestion(const APerg: string; const ADetails: string = ''): Boolean;
 begin
-  Result := Self.ShowMsgInternal(APerg, ADetails, TC4DWizardIcon.Question, TC4DButtons.OK_Cancel, TC4DBtnFocu.OK, TC4DConsts.C_WIN_CONTROL_FOCU_NIL);
+  Result := Self.ShowMsgInternal(APerg, ADetails, TC4DWizardIcon.Question, TC4DButtons.OK_Cancel, TC4DBtnFocu.OK, TC4DConsts.WIN_CONTROL_FOCU_NIL);
 end;
 
 class function TC4DWizardUtils.ShowQuestion2(const APerg: string; const ADetails: string = ''): Boolean;
 begin
-  Result := Self.ShowMsgInternal(APerg, ADetails, TC4DWizardIcon.Question, TC4DButtons.OK_Cancel, TC4DBtnFocu.Cancel, TC4DConsts.C_WIN_CONTROL_FOCU_NIL);
+  Result := Self.ShowMsgInternal(APerg, ADetails, TC4DWizardIcon.Question, TC4DButtons.OK_Cancel, TC4DBtnFocu.Cancel, TC4DConsts.WIN_CONTROL_FOCU_NIL);
 end;
 
 class procedure TC4DWizardUtils.ShowMsgErrorAndAbort(const AMsg: string; const ADetails: string = '');
 begin
-  Self.ShowMsgErrorAndAbort(AMsg, ADetails, TC4DConsts.C_WIN_CONTROL_FOCU_NIL);
+  Self.ShowMsgErrorAndAbort(AMsg, ADetails, TC4DConsts.WIN_CONTROL_FOCU_NIL);
 end;
 
 class procedure TC4DWizardUtils.ShowMsgErrorAndAbort(const AMsg: string; const AWinControlFocu: TWinControl);
@@ -968,7 +968,7 @@ end;
 
 class procedure TC4DWizardUtils.ShowMsgAndAbort(const AMsg: string; const ADetails: string = '');
 begin
-  Self.ShowMsgAndAbort(AMsg, ADetails, TC4DConsts.C_WIN_CONTROL_FOCU_NIL)
+  Self.ShowMsgAndAbort(AMsg, ADetails, TC4DConsts.WIN_CONTROL_FOCU_NIL)
 end;
 
 class procedure TC4DWizardUtils.ShowMsgAndAbort(const AMsg: string; const AWinControlFocu: TWinControl);

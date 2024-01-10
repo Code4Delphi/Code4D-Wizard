@@ -73,104 +73,104 @@ begin
 
   TC4DWizardIDEMainMenuOpenExternal.New(FMenuItemC4D).CreateMenusOpenExternal;
 
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_ORGANIZATION_NAME,
-    TC4DConsts.C_MENU_IDE_ORGANIZATION_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_ORGANIZATION_NAME,
+    TC4DConsts.MENU_IDE_ORGANIZATION_CAPTION,
     TC4DWizardIDEMainMenuClicks.UsesOrganizationClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexUsesOrganization,
     Self.GetShortcutUsesOrganization);
 
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_REOPEN_NAME,
-    TC4DConsts.C_MENU_IDE_REOPEN_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_REOPEN_NAME,
+    TC4DConsts.MENU_IDE_REOPEN_CAPTION,
     TC4DWizardIDEMainMenuClicks.ReopenClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexFolderOpen,
     Self.GetShortcutReopenFileHistory);
 
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_TRANSLATE_NAME,
-    TC4DConsts.C_MENU_IDE_TRANSLATE_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_TRANSLATE_NAME,
+    TC4DConsts.MENU_IDE_TRANSLATE_CAPTION,
     TC4DWizardIDEMainMenuClicks.TranslateTextClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexTranslate,
     Self.GetShortcutTranslateText);
 
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_INDENT_NAME,
-    TC4DConsts.C_MENU_IDE_INDENT_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_INDENT_NAME,
+    TC4DConsts.MENU_IDE_INDENT_CAPTION,
     TC4DWizardIDEMainMenuClicks.IndentClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexIndent,
     Self.GetShortcutIndent);
 
-  {Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_FormatSource_NAME,
-    TC4DConsts.C_MENU_IDE_FormatSource_CAPTION,
+  {Self.CreateSubMenu(TC4DConsts.MENU_IDE_FormatSource_NAME,
+    TC4DConsts.MENU_IDE_FormatSource_CAPTION,
     TC4DWizardIDEMainMenuClicks.FormatSourceClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgVerifyDocument); }
 
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_FIND_NAME,
-    TC4DConsts.C_MENU_IDE_FIND_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_FIND_NAME,
+    TC4DConsts.MENU_IDE_FIND_CAPTION,
     TC4DWizardIDEMainMenuClicks.FindClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexFind,
     Self.GetShortcutFind);
 
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_REPLACE_NAME,
-    TC4DConsts.C_MENU_IDE_REPLACE_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_REPLACE_NAME,
+    TC4DConsts.MENU_IDE_REPLACE_CAPTION,
     TC4DWizardIDEMainMenuClicks.ReplaceClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexReplace,
     Self.GetShortcutReplace);
 
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_NOTES_NAME,
-    TC4DConsts.C_MENU_IDE_NOTES_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_NOTES_NAME,
+    TC4DConsts.MENU_IDE_NOTES_CAPTION,
     TC4DWizardIDEMainMenuClicks.NotesClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexNotes,
     Self.GetShortcutNotes);
 
   Self.CreateSubMenu('C4DSeparator50', '-', nil);
-  Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_DefaultFilesInOpeningProject_NAME,
-    TC4DConsts.C_ITEM_MENU_DefaultFilesInOpeningProject_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.ITEM_MENU_DefaultFilesInOpeningProject_NAME,
+    TC4DConsts.ITEM_MENU_DefaultFilesInOpeningProject_CAPTION,
     TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexLinkToFile,
     Self.GetShortcutDefaultFilesInOpeningProject);
 
   Self.CreateSubMenu('C4DSeparator60', '-', nil);
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_SETTINGS_NAME,
-    TC4DConsts.C_MENU_IDE_SETTINGS_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_SETTINGS_NAME,
+    TC4DConsts.MENU_IDE_SETTINGS_CAPTION,
     TC4DWizardIDEMainMenuClicks.SettingsClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexGear);
 
   TC4DWizardIDEMainMenuBakcups.New(FMenuItemC4D).Process;
 
   Self.CreateSubMenu('C4DSeparator70', '-', nil);
-  Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_OpenInGitHubDesktop_NAME,
-    TC4DConsts.C_ITEM_MENU_OpenInGitHubDesktop_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.ITEM_MENU_OpenInGitHubDesktop_NAME,
+    TC4DConsts.ITEM_MENU_OpenInGitHubDesktop_CAPTION,
     TC4DWizardIDEMainMenuClicks.OpenInGitHubDesktopClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexGithubDesktop,
     Self.GetShortcutOpenInGitHubDesktop);
 
-  Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_ViewInRemoteRepository_NAME,
-    TC4DConsts.C_ITEM_MENU_ViewInRemoteRepository_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.ITEM_MENU_ViewInRemoteRepository_NAME,
+    TC4DConsts.ITEM_MENU_ViewInRemoteRepository_CAPTION,
     TC4DWizardIDEMainMenuClicks.ViewInRemoteRepositoryClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexGitRemote);
 
-  Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_ViewInfRemoteRepository_NAME,
-    TC4DConsts.C_ITEM_MENU_ViewInfRemoteRepository_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.ITEM_MENU_ViewInfRemoteRepository_NAME,
+    TC4DConsts.ITEM_MENU_ViewInfRemoteRepository_CAPTION,
     TC4DWizardIDEMainMenuClicks.ViewInfRemoteRepositoryClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexGitInf);
 
   Self.CreateSubMenu('C4DSeparator80', '-', nil);
-  Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_ViewFileProjInExplorer_NAME,
-    TC4DConsts.C_ITEM_MENU_ViewFileProjInExplorer_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.ITEM_MENU_ViewFileProjInExplorer_NAME,
+    TC4DConsts.ITEM_MENU_ViewFileProjInExplorer_CAPTION,
     TC4DWizardIDEMainMenuClicks.ViewFileProjectInExplorerClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexOpenInExplorer);
 
-  Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_ViewCurFileInExplorer_NAME,
-    TC4DConsts.C_ITEM_MENU_ViewCurFileInExplorer_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.ITEM_MENU_ViewCurFileInExplorer_NAME,
+    TC4DConsts.ITEM_MENU_ViewCurFileInExplorer_CAPTION,
     TC4DWizardIDEMainMenuClicks.ViewCurrentFileInExplorerClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexOpenInExplorerFile);
 
-  Self.CreateSubMenu(TC4DConsts.C_ITEM_MENU_ViewCurExeInExplorer_NAME,
-    TC4DConsts.C_ITEM_MENU_ViewCurExeInExplorer_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.ITEM_MENU_ViewCurExeInExplorer_NAME,
+    TC4DConsts.ITEM_MENU_ViewCurExeInExplorer_CAPTION,
     TC4DWizardIDEMainMenuClicks.ViewCurrentExeInExplorerClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexBinary);
 
   Self.CreateSubMenu('C4DSeparator90', '-', nil);
-  Self.CreateSubMenu(TC4DConsts.C_MENU_IDE_ABOUT_NAME,
-    TC4DConsts.C_MENU_IDE_ABOUT_CAPTION,
+  Self.CreateSubMenu(TC4DConsts.MENU_IDE_ABOUT_NAME,
+    TC4DConsts.MENU_IDE_ABOUT_CAPTION,
     TC4DWizardIDEMainMenuClicks.AboutClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexC4D_Logo);
 end;
@@ -180,13 +180,13 @@ var
   LMenuItemTabs: TMenuItem;
   LMenuItemTools: TMenuItem;
 begin
-  FMenuItemC4D := TMenuItem(FMainMenuIDE.FindComponent(TC4DConsts.C_ITEM_MENU_Code4D_NAME));
+  FMenuItemC4D := TMenuItem(FMainMenuIDE.FindComponent(TC4DConsts.ITEM_MENU_Code4D_NAME));
   if(Assigned(FMenuItemC4D))then
     FreeAndNil(FMenuItemC4D);
 
   FMenuItemC4D := TMenuItem.Create(FMainMenuIDE);
-  FMenuItemC4D.Name := TC4DConsts.C_ITEM_MENU_Code4D_NAME;
-  FMenuItemC4D.Caption := TC4DConsts.C_ITEM_MENU_Code4D_CAPTION;
+  FMenuItemC4D.Name := TC4DConsts.ITEM_MENU_Code4D_NAME;
+  FMenuItemC4D.Caption := TC4DConsts.ITEM_MENU_Code4D_CAPTION;
 
   LMenuItemTabs := FMainMenuIDE.Items.Find('Tabs');
   if(Assigned(LMenuItemTabs))then

@@ -279,7 +279,7 @@ begin
   if(TC4DWizardUtils.StrToBoolC4D(ListViewHistory.Items[ListViewHistory.Selected.Index].SubItems[C_INDEX_SUBITEM_FixedSystem]))then
     TC4DWizardUtils.ShowMsgAndAbort('It is not allowed to exclude fixed groups');
 
-  if(LGuid.ToUpper = TC4DConsts.C_GROUPS_GUID_ALL)or(LGuid.ToUpper = TC4DConsts.C_GROUPS_GUID_NO_GROUP)then
+  if(LGuid.ToUpper = TC4DConsts.GROUPS_GUID_ALL)or(LGuid.ToUpper = TC4DConsts.GROUPS_GUID_NO_GROUP)then
     TC4DWizardUtils.ShowMsgAndAbort('This is a standard group and therefore cannot be deleted');
 
   if(TC4DWizardReopenModel.New.ReadIniFileIfExistGuidGroup(LGuid))then

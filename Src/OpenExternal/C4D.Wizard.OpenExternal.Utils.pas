@@ -35,7 +35,7 @@ var
   LParameters: string;
 begin
   LStringClick := AStringClick;
-  LSeparator := TC4DConsts.C_OPEN_EXTERNAL_Separator_PARAMETERS;
+  LSeparator := TC4DConsts.OPEN_EXTERNAL_Separator_PARAMETERS;
   if(LStringClick.Trim.Replace(LSeparator, '').IsEmpty)then
     Exit;
 
@@ -75,27 +75,27 @@ var
 begin
   Result := AText;
 
-  if(Result.ToUpper.Contains(TC4DConsts.C_TAG_BLOCK_TEXT_SELECT.ToUpper))then
+  if(Result.ToUpper.Contains(TC4DConsts.TAG_BLOCK_TEXT_SELECT.ToUpper))then
   begin
     LBlockTextSelect := TC4DWizardUtilsOTA.GetBlockTextSelect;
-    Result := StringReplace(Result, TC4DConsts.C_TAG_BLOCK_TEXT_SELECT, LBlockTextSelect, [rfReplaceAll, rfIgnoreCase]);
+    Result := StringReplace(Result, TC4DConsts.TAG_BLOCK_TEXT_SELECT, LBlockTextSelect, [rfReplaceAll, rfIgnoreCase]);
   end;
 
-  if(Result.ToUpper.Contains(TC4DConsts.C_TAG_FOLDER_GIT.ToUpper))then
+  if(Result.ToUpper.Contains(TC4DConsts.TAG_FOLDER_GIT.ToUpper))then
   begin
     LFolderGit := '';
     LProjectFileName := TC4DWizardUtilsOTA.GetCurrentProjectFileName;
     if(not LProjectFileName.IsEmpty)then
     begin
       LFolderGit := TC4DWizardReopenController.New(LProjectFileName).GetPathFolderGit;
-      LFolderGit := IncludeTrailingPathDelimiter(LFolderGit.Replace(TC4DConsts.C_NAME_FOLDER_GIT, EmptyStr));
+      LFolderGit := IncludeTrailingPathDelimiter(LFolderGit.Replace(TC4DConsts.NAME_FOLDER_GIT, EmptyStr));
     end;
-    Result := StringReplace(Result, TC4DConsts.C_TAG_FOLDER_GIT, LFolderGit, [rfReplaceAll, rfIgnoreCase]);
+    Result := StringReplace(Result, TC4DConsts.TAG_FOLDER_GIT, LFolderGit, [rfReplaceAll, rfIgnoreCase]);
   end;
 
-  if(Result.ToUpper.Contains(TC4DConsts.C_TAG_FILE_PATH_BINARY.ToUpper))then
+  if(Result.ToUpper.Contains(TC4DConsts.TAG_FILE_PATH_BINARY.ToUpper))then
     Result := StringReplace(Result,
-                            TC4DConsts.C_TAG_FILE_PATH_BINARY,
+                            TC4DConsts.TAG_FILE_PATH_BINARY,
                             TC4DWizardUtilsOTA.GetBinaryPathCurrent,
                             [rfReplaceAll, rfIgnoreCase]);
 end;

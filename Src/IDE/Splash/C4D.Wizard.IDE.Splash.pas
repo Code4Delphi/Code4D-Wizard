@@ -14,8 +14,8 @@ uses
 procedure RegisterSplashScreen;
 begin
   ForceDemandLoadState(dlDisable);
-  SplashScreenServices.AddPluginBitmap(TC4DConsts.C_ABOUT_TITLE, LoadBitmap(HInstance, TC4DConsts.C_RESOURCE_c4d_logo_24x24),
-    TC4DConsts.IS_UNREGISTERED, TC4DConsts.C_WIZARD_LICENSE);
+  SplashScreenServices.AddPluginBitmap(TC4DConsts.ABOUT_TITLE, LoadBitmap(HInstance, TC4DConsts.RESOURCE_c4d_logo_24x24),
+    TC4DConsts.IS_UNREGISTERED, TC4DConsts.WIZARD_LICENSE);
 end;
 
 initialization

@@ -32,8 +32,8 @@ begin
     Exit;
 
   Result := IncludeTrailingPathDelimiter(Result);
-  Result := Result.Replace(TC4DConsts.C_NAME_FOLDER_GIT, EmptyStr);
-  Result := Result + TC4DConsts.C_NAME_FOLDER_GIT;
+  Result := Result.Replace(TC4DConsts.NAME_FOLDER_GIT, EmptyStr);
+  Result := Result + TC4DConsts.NAME_FOLDER_GIT;
   Result := IncludeTrailingPathDelimiter(Result);
   if(not DirectoryExists(Result))then
     Result := '';
@@ -43,7 +43,7 @@ class procedure TC4DWizardUtilsGit.OpenInGitHubDesktop(const AFolderGit: string)
 var
   LFolderGit: string;
 begin
-  LFolderGit := IncludeTrailingPathDelimiter(AFolderGit.Replace(TC4DConsts.C_NAME_FOLDER_GIT, EmptyStr));
+  LFolderGit := IncludeTrailingPathDelimiter(AFolderGit.Replace(TC4DConsts.NAME_FOLDER_GIT, EmptyStr));
   TC4DWizardProcessDelphi.RunCommand(['github ' + LFolderGit]);
 end;
 
