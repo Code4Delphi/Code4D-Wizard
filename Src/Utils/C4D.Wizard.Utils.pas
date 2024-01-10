@@ -465,6 +465,8 @@ begin
   end;
 end;
 
+//FOR VERSIONS PRIOR TO DELPHI
+{$WARN SYMBOL_PLATFORM OFF}
 class function TC4DWizardUtils.SelectFolder(const ADefaultFolder: string; const ADefaultFolderIfCancel: Boolean = True): string;
 var
   LFileOpenDialog: TFileOpenDialog;
@@ -472,7 +474,7 @@ begin
   Result := '';
   LFileOpenDialog := TFileOpenDialog.Create(nil);
   try
-    LFileOpenDialog.Title := 'C4D - Select a folder';
+    LFileOpenDialog.Title := 'Code4D-Wizard - Select a folder';
     LFileOpenDialog.Options := [fdoPickFolders];
 
     if(not ADefaultFolder.Trim.IsEmpty)and(System.SysUtils.DirectoryExists(ADefaultFolder))then
@@ -490,6 +492,7 @@ begin
     LFileOpenDialog.Free;
   end;
 end;
+{$WARN SYMBOL_PLATFORM ON}
 
 class function TC4DWizardUtils.stringToColorDef(AValue: string; AColorDefault: TColor = clBlack): TColor;
 begin
