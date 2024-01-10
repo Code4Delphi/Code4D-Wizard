@@ -158,7 +158,10 @@ begin
   begin
     for i := Pred(FToolBarBranch.ButtonCount) DownTo 0 do
       FToolBarBranch.Buttons[i].Free;
-    FreeAndNil(FToolBarBranch);
+
+    FToolBarBranch.Visible := False;
+    if(not TC4DWizardUtilsOTA.CurrentProjectIsC4DWizardDPROJ)then
+      FreeAndNil(FToolBarBranch);
   end;
 end;
 

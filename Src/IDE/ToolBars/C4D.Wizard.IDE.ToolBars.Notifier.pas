@@ -92,7 +92,7 @@ finalization
   if(IndexNotifier >= 0)then
   begin
     TC4DWizardUtilsOTA.GetINTAServices.UnregisterToolbarNotifier(IndexNotifier);
-    IndexNotifier := -1;
+    //IndexNotifier := -1;
   end;
 
 end.

@@ -75,7 +75,7 @@ constructor TC4DWizardIDEToolBarsBuild.Create;
 begin
   FINTAServices := TC4DWizardUtilsOTA.GetINTAServices;
   Self.NewToolBarBuild;
-  Self.ProcessRefreshComboBox;
+  //Self.ProcessRefreshComboBox;
 end;
 
 destructor TC4DWizardIDEToolBarsBuild.Destroy;
@@ -166,7 +166,9 @@ begin
     for i := Pred(FToolBarBuild.ButtonCount) DownTo 0 do
       FToolBarBuild.Buttons[i].Free;
 
-    FreeAndNil(FToolBarBuild);
+    FToolBarBuild.Visible := False;
+    if(not TC4DWizardUtilsOTA.CurrentProjectIsC4DWizardDPROJ)then
+      FreeAndNil(FToolBarBuild);
   end;
 end;
 

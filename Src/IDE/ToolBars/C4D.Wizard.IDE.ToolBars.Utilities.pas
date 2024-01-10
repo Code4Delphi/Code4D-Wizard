@@ -120,9 +120,16 @@ end;
 procedure TC4DWizardIDEToolBarsUtilities.RemoveToolBarUtilities;
 begin
   Self.RemoveToolButtons;
-  //FToolBarUtilities := FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_UTILITIES_NAME];
+
+  if(not Assigned(FToolBarUtilities))then
+    FToolBarUtilities := FINTAServices.ToolBar[TC4DConsts.C_TOOL_BAR_UTILITIES_NAME];
+
   if(Assigned(FToolBarUtilities))then
-    FreeAndNil(FToolBarUtilities);
+  begin
+    FToolBarUtilities.Visible := False;
+    if(not TC4DWizardUtilsOTA.CurrentProjectIsC4DWizardDPROJ)then
+      FreeAndNil(FToolBarUtilities);
+  end;
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.RemoveToolButtons;
@@ -145,8 +152,8 @@ end;
 procedure TC4DWizardIDEToolBarsUtilities.SetVisibleInINI(AVisible: Boolean);
 begin
   Self.GetIniFile.WriteBool(TC4DConsts.C_TOOL_BAR_UTILITIES_NAME,
-    TC4DConsts.C_TOOL_BAR_UTILITIES_INI_Visible,
-    AVisible);
+    TC4DConsts.C_TOOL_BAR_UTILITIES_INI_Visible, AVisible);
+
   if(AVisible)then
     Self.ProcessRefresh(True);
 end;
@@ -154,8 +161,7 @@ end;
 function TC4DWizardIDEToolBarsUtilities.GetVisibleInINI: Boolean;
 begin
   Result := Self.GetIniFile.ReadBool(TC4DConsts.C_TOOL_BAR_UTILITIES_NAME,
-    TC4DConsts.C_TOOL_BAR_UTILITIES_INI_Visible,
-    True);
+    TC4DConsts.C_TOOL_BAR_UTILITIES_INI_Visible, True);
 end;
 
 function TC4DWizardIDEToolBarsUtilities.GetReferenceToolBar: string;
@@ -251,9 +257,7 @@ end;
 procedure TC4DWizardIDEToolBarsUtilities.OpenExternalFillList;
 begin
   FList.Clear;
-  TC4DWizardOpenExternalModel
-    .New
-    .ReadIniFile(
+  TC4DWizardOpenExternalModel.New.ReadIniFile(
     procedure(AC4DWizardOpenExternal: TC4DWizardOpenExternal)
     var
       LC4DWizardOpenExternal: TC4DWizardOpenExternal;
