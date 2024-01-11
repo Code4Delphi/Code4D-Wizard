@@ -127,7 +127,7 @@ end;
 class procedure TC4DWizardUtilsOTA.DoCloseFile(AInfoFile: TC4DWizardInfoFile);
 begin
   if(FileExists(AInfoFile.Path))then
-    TC4DWizardUtilsOTA.GetIOTAActionServices.CloseFile(AInfoFile.Path);
+    Self.GetIOTAActionServices.CloseFile(AInfoFile.Path);
 end;
 
 class function TC4DWizardUtilsOTA.AddImgIDEResourceName(AResourceName: string): Integer;
