@@ -24,7 +24,7 @@ type
     function CreateSubMenu(const AMenuItemParent: TMenuItem; const AC4DWizardOpenExternal: TC4DWizardOpenExternal): TMenuItem; overload;
     procedure CustomizeClick(Sender: TObject);
     procedure ItemMenuClick(Sender: TObject);
-    procedure CreateMenuItensList;
+    procedure CreateMenuItemsList;
   protected
     function CreateMenusOpenExternal: IC4DWizardIDEMainMenuOpenExternal;
   public
@@ -74,6 +74,7 @@ begin
     begin
       if(not AC4DWizardOpenExternal.Visible)then
         Exit;
+
       LC4DWizardOpenExternal := TC4DWizardOpenExternal.Create;
       LC4DWizardOpenExternal.Guid := AC4DWizardOpenExternal.Guid;
       LC4DWizardOpenExternal.Description := AC4DWizardOpenExternal.Description;
@@ -83,21 +84,21 @@ begin
       LC4DWizardOpenExternal.Order := AC4DWizardOpenExternal.Order;
       LC4DWizardOpenExternal.Shortcut := AC4DWizardOpenExternal.Shortcut;
       LC4DWizardOpenExternal.IconHas := AC4DWizardOpenExternal.IconHas;
-      LC4DWizardOpenExternal.GuidMenuParent := AC4DWizardOpenExternal.GuidMenuParent;
+      LC4DWizardOpenExternal.GuidMenuMaster := AC4DWizardOpenExternal.GuidMenuMaster;
       LC4DWizardOpenExternal.Created := False;
       FList.Add(LC4DWizardOpenExternal);
     end);
-  Self.CreateMenuItensList;
+  Self.CreateMenuItemsList;
 end;
 
-procedure TC4DWizardIDEMainMenuOpenExternal.CreateMenuItensList;
+procedure TC4DWizardIDEMainMenuOpenExternal.CreateMenuItemsList;
 var
   LItem: TC4DWizardOpenExternal;
   LListOrder: TList<Integer>;
   LOrder: Integer;
   LMenuItem: TMenuItem;
 
- procedure AddItensMenu(const AC4DWizardOpenExternal: TC4DWizardOpenExternal; const AMenuItem: TMenuItem);
+ procedure AddSubMenuChildrens(const AC4DWizardOpenExternal: TC4DWizardOpenExternal; const AMenuItem: TMenuItem);
  var
    LOrder2: Integer;
    LItem2: TC4DWizardOpenExternal;
@@ -107,12 +108,14 @@ var
      for LItem2 in FList do
      begin
        if(LItem2.Order = LOrder2)then
-         if(not LItem2.Created)and(LItem2.GuidMenuParent.Trim = AC4DWizardOpenExternal.Guid.Trim)then
+         if(not LItem2.Created)and(LItem2.GuidMenuMaster.Trim = AC4DWizardOpenExternal.Guid.Trim)then
          begin
            LMenuItem2 := Self.CreateSubMenu(AMenuItem, LItem2);
            LItem2.Created := True;
+           //RETIRA O CLICK DO MENU PAI, PARA NAO EXECUTAR O CLICK AO PASSAR O MOUSE E ATIVAR O SUBMENU
+           AMenuItem.OnClick := nil;
 
-           AddItensMenu(LItem2, LMenuItem2);
+           AddSubMenuChildrens(LItem2, LMenuItem2);
          end;
      end;
  end;
@@ -123,30 +126,46 @@ begin
   LListOrder := TList<Integer>.Create;
   try
     for LItem in FList do
-      if(LItem.Order > 0)and(not LListOrder.Contains(LItem.Order))then
+    begin
+      if(LItem.Order <= 0)then
+        LItem.Order := 9999;
+
+      if(not LListOrder.Contains(LItem.Order))then //(LItem.Order > 0)and
         LListOrder.Add(LItem.Order);
+    end;
 
     LListOrder.Sort;
 
+    //LACO NA LListOrder PARA ADD PELA ORDEM, ADD OS QUE NAO TEM MENU MASTER, E A CADA MENU MASTER ADD SEU FILHOS
     for LOrder in LListOrder do
       for LItem in FList do
       begin
         if(LItem.Order = LOrder)then
-          if(not LItem.Created)and(LITem.GuidMenuParent.Trim.IsEmpty)then
+          if(not LItem.Created)and(LITem.GuidMenuMaster.Trim.IsEmpty)then
           begin
             LMenuItem := Self.CreateSubMenu(FMenuItemOpenExternal, LItem);
             LItem.Created := True;
 
-            AddItensMenu(LItem, LMenuItem);
+            AddSubMenuChildrens(LItem, LMenuItem);
+          end;
+      end;
+
+    //ADD TODOS QUE TENHA A ORDEM MAIOR QUE ZERO, E QUE AINDA NAO FORAM ADICIONADOS
+    for LOrder in LListOrder do
+      for LItem in FList do
+      begin
+        if(LItem.Order = LOrder)then
+          if(not LItem.Created)then
+          begin
+            LMenuItem := Self.CreateSubMenu(FMenuItemOpenExternal, LItem);
+            LItem.Created := True;
+
+            AddSubMenuChildrens(LItem, LMenuItem);
           end;
       end;
   finally
     LListOrder.Free;
   end;
-
-  for LItem in FList do
-    if(LItem.Order = 0)and(not LItem.Created)then
-      Self.CreateSubMenu(FMenuItemOpenExternal, LItem);
 end;
 
 procedure TC4DWizardIDEMainMenuOpenExternal.CreateItemMenuMain;

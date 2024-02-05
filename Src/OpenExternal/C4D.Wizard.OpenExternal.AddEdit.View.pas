@@ -48,6 +48,8 @@ type
     Label8: TLabel;
     mmTags: TMemo;
     ckVisibleInToolBarUtilities: TCheckBox;
+    Label9: TLabel;
+    cBoxMenuMaster: TComboBox;
     procedure btnCloseClick(Sender: TObject);
     procedure btnConfirmClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -57,17 +59,21 @@ type
     procedure btnBathClick(Sender: TObject);
     procedure edtPathIconLoadClick(Sender: TObject);
     procedure edtPathIconClearClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     FC4DWizardOpenExternal: TC4DWizardOpenExternal;
     FLastDescription: string;
     FLastPath: string;
     FLastParameters: string;
+    FLastItemIndexMenuMaster: Integer;
     FAlterIcon: Boolean;
     FPathIconAlter: string;
     procedure ConfFieldsKind;
     procedure FillcBoxKind;
     procedure LoadIconCurrent;
     procedure FillTags;
+    procedure MenuMasterLoad;
+    procedure MenuMasterClear;
   public
     property C4DWizardOpenExternal: TC4DWizardOpenExternal read FC4DWizardOpenExternal write FC4DWizardOpenExternal;
   end;
@@ -89,9 +95,20 @@ uses
 procedure TC4DWizardOpenExternalAddEditView.FormCreate(Sender: TObject);
 begin
   Self.ModalResult := mrCancel;
+
+  FLastDescription := '';
+  FLastPath := '';
+  FLastParameters := '';
+  FLastItemIndexMenuMaster := 0;
+
   TC4DWizardUtilsOTA.IDEThemingAll(TC4DWizardOpenExternalAddEditView, Self);
   Self.FillcBoxKind;
   Self.FillTags;
+end;
+
+procedure TC4DWizardOpenExternalAddEditView.FormDestroy(Sender: TObject);
+begin
+  Self.MenuMasterClear;
 end;
 
 procedure TC4DWizardOpenExternalAddEditView.FormShow(Sender: TObject);
@@ -108,7 +125,51 @@ begin
   FPathIconAlter := '';
   Self.LoadIconCurrent;
   Self.ConfFieldsKind;
+  Self.MenuMasterLoad;
   cBoxKind.SetFocus;
+end;
+
+procedure TC4DWizardOpenExternalAddEditView.MenuMasterClear;
+var
+  I: Integer;
+  LC4DWizardOpenExternal: TC4DWizardOpenExternal;
+begin
+  for I := Pred(cBoxMenuMaster.Items.Count) downto 0 do
+  begin
+    LC4DWizardOpenExternal := TC4DWizardOpenExternal(cBoxMenuMaster.Items.Objects[I]);
+    LC4DWizardOpenExternal.Free;
+  end;
+  cBoxMenuMaster.Items.Clear;
+end;
+
+procedure TC4DWizardOpenExternalAddEditView.MenuMasterLoad;
+var
+  LItemIndexDefault: Integer;
+begin
+  Self.MenuMasterClear;
+
+  cBoxMenuMaster.Items.AddObject('None', nil);
+
+  LItemIndexDefault := 0;
+  TC4DWizardOpenExternalModel.New.ReadIniFile(
+    procedure(AC4DWizardOpenExternal: TC4DWizardOpenExternal)
+    var
+      LC4DWizardOpenExternal: TC4DWizardOpenExternal;
+      LItemIndex: Integer;
+    begin
+      if(AC4DWizardOpenExternal.Kind <> TC4DWizardOpenExternalKind.MenuMasterOnly)then
+        Exit;
+
+      LC4DWizardOpenExternal := TC4DWizardOpenExternal.Create;
+      LC4DWizardOpenExternal.Guid := AC4DWizardOpenExternal.Guid;
+      LC4DWizardOpenExternal.Description := AC4DWizardOpenExternal.Description;
+      LItemIndex := cBoxMenuMaster.Items.AddObject(LC4DWizardOpenExternal.Description, LC4DWizardOpenExternal);
+      if(FC4DWizardOpenExternal.GuidMenuMaster = LC4DWizardOpenExternal.Guid)then
+        LItemIndexDefault := LItemIndex;
+    end
+    );
+
+  cBoxMenuMaster.ItemIndex := LItemIndexDefault;
 end;
 
 procedure TC4DWizardOpenExternalAddEditView.LoadIconCurrent;
@@ -174,8 +235,15 @@ begin
   FC4DWizardOpenExternal.Shortcut := ShortCutToText(edtShortcut.HotKey);
   FC4DWizardOpenExternal.Visible := ckVisible.Checked;
   FC4DWizardOpenExternal.VisibleInToolBarUtilities := ckVisibleInToolBarUtilities.Checked;
+
   if(FAlterIcon)then
     FC4DWizardOpenExternal.IconHas := (not FPathIconAlter.Trim.IsEmpty)and(FileExists(FPathIconAlter));
+
+  FC4DWizardOpenExternal.GuidMenuMaster := '';
+  if(cBoxMenuMaster.ItemIndex >= 0)then
+    if(TC4DWizardOpenExternal(cBoxMenuMaster.Items.Objects[cBoxMenuMaster.ItemIndex]) <> nil)then
+      FC4DWizardOpenExternal.GuidMenuMaster := TC4DWizardOpenExternal(cBoxMenuMaster.Items.Objects[cBoxMenuMaster.ItemIndex]).Guid;
+
   TC4DWizardOpenExternalModel.New
     .SaveIconInFolder(FC4DWizardOpenExternal.Guid, FPathIconAlter)
     .WriteInIniFile(FC4DWizardOpenExternal);
@@ -197,6 +265,7 @@ begin
   btnBath.Enabled := (cBoxKind.Text = TC4DWizardOpenExternalKind.Files.Tostring)
     or(cBoxKind.Text = TC4DWizardOpenExternalKind.Folders.Tostring);
   lbParameters.Caption := 'Parameters';
+  cBoxMenuMaster.Enabled := True;
 
   if(cBoxKind.Text = TC4DWizardOpenExternalKind.Separators.Tostring)then
   begin
@@ -211,6 +280,24 @@ begin
     edtParameters.Enabled := False;
     edtShortcut.HotKey := $0000;
     edtShortcut.Enabled := False;
+  end
+  else if(cBoxKind.Text = TC4DWizardOpenExternalKind.MenuMasterOnly.Tostring)then
+  begin
+    if(edtDescription.Text = '-')and(not FLastDescription.Trim.IsEmpty)then
+      edtDescription.Text := FLastDescription;
+
+    FLastPath := edtPath.Text;
+    edtPath.Text := '';
+    edtPath.Enabled := False;
+    FLastParameters := edtParameters.Text;
+    edtParameters.Text := '';
+    edtParameters.Enabled := False;
+    edtShortcut.HotKey := $0000;
+    edtShortcut.Enabled := False;
+
+    FLastItemIndexMenuMaster := cBoxMenuMaster.ItemIndex;
+    cBoxMenuMaster.ItemIndex := 0;
+    cBoxMenuMaster.Enabled := False;
   end
   else if(cBoxKind.Text = TC4DWizardOpenExternalKind.CMD.Tostring)then
   begin
@@ -236,6 +323,12 @@ begin
 
     if(Trim(edtParameters.Text).IsEmpty)then
       edtParameters.Text := FLastParameters;
+  end;
+
+  if(cBoxKind.Text <> TC4DWizardOpenExternalKind.MenuMasterOnly.Tostring)then
+  begin
+    if(cBoxMenuMaster.ItemIndex <= 0)then
+      cBoxMenuMaster.ItemIndex := FLastItemIndexMenuMaster;
   end;
 end;
 

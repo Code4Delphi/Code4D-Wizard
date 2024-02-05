@@ -136,7 +136,7 @@ type
     OPEN_EXTERNAL_INI_Order = 'Order';
     OPEN_EXTERNAL_INI_Shortcut = 'Shortcut';
     OPEN_EXTERNAL_INI_IconHas = 'IconHas';
-    OPEN_EXTERNAL_INI_GuidMenuParent = 'GuidMenuParent';
+    OPEN_EXTERNAL_INI_GuidMenuMaster = 'GuidMenuMaster';
     OPEN_EXTERNAL_INI_PREFIX_IMG = 'OPEN_EXTERNAL_IMG_';
 
     //TOOLBAR BRANCH
@@ -167,6 +167,9 @@ type
 
     EXTENSIONS_PERMITTED_BACKUP_EXPORT: TC4DExtensionsOfFiles = [TC4DExtensionsFiles.INI,
       TC4DExtensionsFiles.BMP];
+
+    STR_CMD_COMMANDS = 'CMD Commands';
+    STR_MENU_MASTER_ONLY = 'Menu Master Only';
   end;
 
 implementation

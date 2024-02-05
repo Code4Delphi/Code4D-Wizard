@@ -16,7 +16,7 @@ type
   private
     class procedure CopyNamesClick(Sender: TObject);
   public
-    class procedure AddSubItens(const AItem: IMenuItem);
+    class procedure AddSubItems(const AItem: IMenuItem);
     class procedure CopyNames;
   end;
 
@@ -25,7 +25,7 @@ implementation
 uses
   C4D.Wizard.Utils.OTA;
 
-class procedure TC4DWizardIDEPopupMenuDesignerComponentSel.AddSubItens(const AItem: IMenuItem);
+class procedure TC4DWizardIDEPopupMenuDesignerComponentSel.AddSubItems(const AItem: IMenuItem);
 begin
   AItem.AddItem('Copy names of selected components', TextToShortCut(''), False, True, Self.CopyNamesClick, 0, 'C4DWizardIDEPopupMenuDesignerComponentSel1');
 end;

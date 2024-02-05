@@ -18,7 +18,7 @@ type
   TC4DWizardListUsesKind = (Normal, Directiva);
   TC4DWizardFavorite = (None, Yes, No);
   TC4DWizardFileNotification = (None, FileOpened, FileClosing);
-  TC4DWizardOpenExternalKind = (None, Files, Folders, Links, Separators, CMD);
+  TC4DWizardOpenExternalKind = (None, Files, Folders, Links, Separators, CMD, MenuMasterOnly);
   TC4DWizardIcon = (Information, Question, Warning, Error, Success);
   TC4DButtons = (OK, OK_Cancel);
   TC4DBtnFocu = (OK, Cancel);
@@ -59,6 +59,9 @@ type
 
 implementation
 
+uses
+  C4D.Wizard.Consts;
+
 { TC4DWizardReopenData }
 procedure TC4DWizardReopenData.Clear;
 begin
@@ -77,7 +80,10 @@ end;
 function TC4DWizardOpenExternalKindHelper.Tostring: string;
 begin
   if(Self = TC4DWizardOpenExternalKind.CMD)then
-    Exit('CMD Commands');
+    Exit(TC4DConsts.STR_CMD_COMMANDS)
+  else if(Self = TC4DWizardOpenExternalKind.MenuMasterOnly)then
+    Exit(TC4DConsts.STR_MENU_MASTER_ONLY);
+
   Result := GetEnumName(TypeInfo(TC4DWizardOpenExternalKind), Integer(Self));
 end;
 

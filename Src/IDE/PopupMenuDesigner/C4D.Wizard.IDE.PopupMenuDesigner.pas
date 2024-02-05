@@ -45,7 +45,7 @@ end;
 procedure TC4DWizardIDEPopupMenuDesigner.PrepareItem(Index: Integer; const AItem: IMenuItem);
 begin
   AItem.Visible := True;
-  TC4DWizardIDEPopupMenuDesignerComponentSel.AddSubItens(AItem);
+  TC4DWizardIDEPopupMenuDesignerComponentSel.AddSubItems(AItem);
   //AItem.AddLine();
   //AItem.AddItem('SubItem 05', TextToShortCut(''), False, True);
 end;

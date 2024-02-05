@@ -15,6 +15,7 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96
@@ -102,7 +103,10 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = -2
+    ExplicitTop = -3
+    DesignSize = (
+      676
+      412)
     object Label1: TLabel
       Left = 35
       Top = 54
@@ -165,6 +169,13 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
       Height = 13
       Caption = 'Icon (.bmp 16 x 16)'
     end
+    object Label9: TLabel
+      Left = 183
+      Top = 13
+      Width = 62
+      Height = 13
+      Caption = 'Menu master'
+    end
     object edtDescription: TEdit
       Left = 35
       Top = 70
@@ -212,6 +223,7 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
       Top = 210
       Width = 126
       Height = 21
+      MaxLength = 4
       NumbersOnly = True
       TabOrder = 5
       Text = '0'
@@ -221,8 +233,9 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
       Top = 210
       Width = 17
       Height = 21
+      Cursor = crHandPoint
       Associate = edtOrder
-      Max = 100000
+      Max = 9999
       TabOrder = 6
     end
     object edtShortcut: THotKey
@@ -317,6 +330,20 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
       Caption = 'Visible in ToolBar Utilities'
       TabOrder = 12
     end
+    object cBoxMenuMaster: TComboBox
+      Left = 183
+      Top = 28
+      Width = 450
+      Height = 21
+      Margins.Left = 10
+      Margins.Top = 15
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Style = csDropDownList
+      Anchors = [akLeft, akTop, akRight]
+      DropDownCount = 30
+      TabOrder = 13
+    end
   end
   object pnTagsBack: TPanel
     Left = 0
@@ -331,7 +358,6 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
     Padding.Bottom = 3
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 416
     object Label8: TLabel
       Left = 3
       Top = 3

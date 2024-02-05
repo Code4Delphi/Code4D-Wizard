@@ -62,7 +62,7 @@ begin
     LIniFile.WriteInteger(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Order, AC4DWizardOpenExternal.Order);
     LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Shortcut, AC4DWizardOpenExternal.Shortcut);
     LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_IconHas, AC4DWizardOpenExternal.IconHas);
-    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_GuidMenuParent, AC4DWizardOpenExternal.GuidMenuParent);
+    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_GuidMenuMaster, AC4DWizardOpenExternal.GuidMenuMaster);
   finally
     LIniFile.Free;
   end;
@@ -107,7 +107,7 @@ begin
     Result.Order := LIniFile.ReadInteger(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Order, 0);
     Result.Shortcut := LIniFile.ReadString(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_Shortcut, '');
     Result.IconHas := LIniFile.ReadBool(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_IconHas, False);
-    Result.GuidMenuParent := LIniFile.ReadString(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_GuidMenuParent, '');
+    Result.GuidMenuMaster := LIniFile.ReadString(AGuid, TC4DConsts.OPEN_EXTERNAL_INI_GuidMenuMaster, '');
   finally
     LIniFile.Free;
   end;
@@ -141,7 +141,7 @@ begin
           LC4DWizardOpenExternal.Order := LIniFile.ReadInteger(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Order, 0);
           LC4DWizardOpenExternal.Shortcut := LIniFile.ReadString(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_Shortcut, '');
           LC4DWizardOpenExternal.IconHas := LIniFile.ReadBool(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_IconHas, False);
-          LC4DWizardOpenExternal.GuidMenuParent := LIniFile.ReadString(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_GuidMenuParent, '');
+          LC4DWizardOpenExternal.GuidMenuMaster := LIniFile.ReadString(LSessaoStr, TC4DConsts.OPEN_EXTERNAL_INI_GuidMenuMaster, '');
           AProc(LC4DWizardOpenExternal);
         finally
           LC4DWizardOpenExternal.Free;

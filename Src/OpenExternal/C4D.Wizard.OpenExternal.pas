@@ -18,7 +18,7 @@ type
     FVisible: Boolean;
     FVisibleInToolBarUtilities: Boolean;
     FIconHas: Boolean;
-    FGuidMenuParent: string;
+    FGuidMenuMaster: string;
     FCreated: Boolean;
   public
     property Guid: string read FGuid write FGuid;
@@ -31,7 +31,7 @@ type
     property Visible: Boolean read FVisible write FVisible;
     property VisibleInToolBarUtilities: Boolean read FVisibleInToolBarUtilities write FVisibleInToolBarUtilities;
     property IconHas: Boolean read FIconHas write FIconHas;
-    property GuidMenuParent: string read FGuidMenuParent write FGuidMenuParent;
+    property GuidMenuMaster: string read FGuidMenuMaster write FGuidMenuMaster;
     property Created: Boolean read FCreated write FCreated;
     procedure Clear;
     constructor Create;
@@ -56,7 +56,7 @@ begin
   FVisible := False;
   FVisibleInToolBarUtilities := False;
   FIconHas := False;
-  FGuidMenuParent := '';
+  FGuidMenuMaster := '';
   FCreated := False;
 end;
 

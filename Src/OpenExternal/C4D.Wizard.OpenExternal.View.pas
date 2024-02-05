@@ -85,6 +85,7 @@ const
   C_INDEX_SUBITEM_Parameters = 6;
   C_INDEX_SUBITEM_IconHas = 7;
   C_INDEX_SUBITEM_Guid = 8;
+  C_INDEX_SUBITEM_GuidMenuMaster = 9;
 
 procedure C4DWizardOpenExternalViewShow;
 begin
@@ -210,6 +211,7 @@ begin
         LListItem.SubItems.Add(AC4DWizardOpenExternal.Parameters);
         LListItem.SubItems.Add(TC4DWizardUtils.BoolToStrC4D(AC4DWizardOpenExternal.IconHas));
         LListItem.SubItems.Add(AC4DWizardOpenExternal.Guid);
+        LListItem.SubItems.Add(AC4DWizardOpenExternal.GuidMenuMaster);
       end;
     end
     );
@@ -392,6 +394,7 @@ begin
   AC4DWizardOpenExternal.Parameters := LListItem.SubItems[C_INDEX_SUBITEM_Parameters];
   AC4DWizardOpenExternal.IconHas := TC4DWizardUtils.StrToBoolC4D(LListItem.SubItems[C_INDEX_SUBITEM_IconHas]);
   AC4DWizardOpenExternal.Guid := LListItem.SubItems[C_INDEX_SUBITEM_Guid];
+  AC4DWizardOpenExternal.GuidMenuMaster := LListItem.SubItems[C_INDEX_SUBITEM_GuidMenuMaster];
 end;
 
 procedure TC4DWizardOpenExternalView.btnRemoveClick(Sender: TObject);

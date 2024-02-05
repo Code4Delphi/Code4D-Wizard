@@ -330,8 +330,10 @@ begin
     Result := TC4DWizardOpenExternalKind.Links
   else if(Value = 'Separators')then
     Result := TC4DWizardOpenExternalKind.Separators
-  else if(Value = 'CMD Commands')then
+  else if(Value = TC4DConsts.STR_CMD_COMMANDS)then
     Result := TC4DWizardOpenExternalKind.CMD
+  else if(Value = TC4DConsts.STR_MENU_MASTER_ONLY)then
+    Result := TC4DWizardOpenExternalKind.MenuMasterOnly;
 end;
 
 class procedure TC4DWizardUtils.OpenExternalKindFillItemsTStrings(Astrings: TStrings);
@@ -344,7 +346,9 @@ begin
   for LItem := Low(TC4DWizardOpenExternalKind) to High(TC4DWizardOpenExternalKind) do
   begin
     if(LItem = TC4DWizardOpenExternalKind.CMD)then
-      Astrings.Add('CMD Commands')
+      Astrings.Add(TC4DConsts.STR_CMD_COMMANDS)
+    else  if(LItem = TC4DWizardOpenExternalKind.MenuMasterOnly)then
+      Astrings.Add(TC4DConsts.STR_MENU_MASTER_ONLY)
     else
       Astrings.Add(GetEnumName(TypeInfo(TC4DWizardOpenExternalKind), Integer(LItem)));
   end;
