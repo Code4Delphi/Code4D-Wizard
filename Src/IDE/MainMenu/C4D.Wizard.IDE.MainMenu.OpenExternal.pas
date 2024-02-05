@@ -94,12 +94,28 @@ procedure TC4DWizardIDEMainMenuOpenExternal.CreateMenuItensList;
 var
   LItem: TC4DWizardOpenExternal;
   LListOrder: TList<Integer>;
-  I: Integer;
+  LOrder: Integer;
   LMenuItem: TMenuItem;
 
-  I2: Integer;
-  LItem2: TC4DWizardOpenExternal;
-  LMenuItem2: TMenuItem;
+ procedure AddItensMenu(const AC4DWizardOpenExternal: TC4DWizardOpenExternal; const AMenuItem: TMenuItem);
+ var
+   LOrder2: Integer;
+   LItem2: TC4DWizardOpenExternal;
+   LMenuItem2: TMenuItem;
+ begin
+   for LOrder2 in LListOrder do
+     for LItem2 in FList do
+     begin
+       if(LItem2.Order = LOrder2)then
+         if(not LItem2.Created)and(LItem2.GuidMenuParent.Trim = AC4DWizardOpenExternal.Guid.Trim)then
+         begin
+           LMenuItem2 := Self.CreateSubMenu(AMenuItem, LItem2);
+           LItem2.Created := True;
+
+           AddItensMenu(LItem2, LMenuItem2);
+         end;
+     end;
+ end;
 begin
   if(FList.Count <= 0)then
     Exit;
@@ -112,28 +128,16 @@ begin
 
     LListOrder.Sort;
 
-    //PRIMEIRO COLOCA OS PARENT (PAIS)
-    for I in LListOrder do
+    for LOrder in LListOrder do
       for LItem in FList do
       begin
-        if(LItem.Order = I)then
+        if(LItem.Order = LOrder)then
           if(not LItem.Created)and(LITem.GuidMenuParent.Trim.IsEmpty)then
           begin
             LMenuItem := Self.CreateSubMenu(FMenuItemOpenExternal, LItem);
             LItem.Created := True;
 
-            //**
-            for I2 in LListOrder do
-              for LItem2 in FList do
-              begin
-                if(LItem2.Order = I2)then
-                  if(not LItem2.Created)and(LItem2.GuidMenuParent.Trim = LITem.Guid.Trim)then
-                  begin
-                    LMenuItem2 := Self.CreateSubMenu(LMenuItem, LItem2);
-                    LItem2.Created := True;
-                  end;
-              end;
-            //**
+            AddItensMenu(LItem, LMenuItem);
           end;
       end;
   finally
@@ -141,7 +145,7 @@ begin
   end;
 
   for LItem in FList do
-    if(LItem.Order = 0)then
+    if(LItem.Order = 0)and(not LItem.Created)then
       Self.CreateSubMenu(FMenuItemOpenExternal, LItem);
 end;
 
