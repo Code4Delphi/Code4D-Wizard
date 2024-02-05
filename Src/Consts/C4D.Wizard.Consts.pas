@@ -136,6 +136,7 @@ type
     OPEN_EXTERNAL_INI_Order = 'Order';
     OPEN_EXTERNAL_INI_Shortcut = 'Shortcut';
     OPEN_EXTERNAL_INI_IconHas = 'IconHas';
+    OPEN_EXTERNAL_INI_GuidMenuParent = 'GuidMenuParent';
     OPEN_EXTERNAL_INI_PREFIX_IMG = 'OPEN_EXTERNAL_IMG_';
 
     //TOOLBAR BRANCH

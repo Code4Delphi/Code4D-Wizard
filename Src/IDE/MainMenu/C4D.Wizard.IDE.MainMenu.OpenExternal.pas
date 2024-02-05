@@ -20,8 +20,8 @@ type
     FMenuItemOpenExternal: TMenuItem;
     FList: TObjectList<TC4DWizardOpenExternal>;
     procedure CreateItemMenuMain;
-    procedure CreateSubMenu(const AName: string; const ACaption: string; const AOnClick: TNotifyEvent); overload;
-    procedure CreateSubMenu(const AC4DWizardOpenExternal: TC4DWizardOpenExternal); overload;
+    function CreateSubMenu(const AMenuItemParent: TMenuItem; const AName: string; const ACaption: string; const AOnClick: TNotifyEvent): TMenuItem; overload;
+    function CreateSubMenu(const AMenuItemParent: TMenuItem; const AC4DWizardOpenExternal: TC4DWizardOpenExternal): TMenuItem; overload;
     procedure CustomizeClick(Sender: TObject);
     procedure ItemMenuClick(Sender: TObject);
     procedure CreateMenuItensList;
@@ -63,13 +63,11 @@ end;
 function TC4DWizardIDEMainMenuOpenExternal.CreateMenusOpenExternal: IC4DWizardIDEMainMenuOpenExternal;
 begin
   Self.CreateItemMenuMain;
-  Self.CreateSubMenu('C4DOpenExternalMenuItemCad1', 'Customize...', Self.CustomizeClick);
-  Self.CreateSubMenu('C4DOpenExternalSeparator01', '-', {$IF CompilerVersion = 30.0} TNotifyEvent(nil) {$ELSE} nil {$ENDIF});
+  Self.CreateSubMenu(FMenuItemOpenExternal, 'C4DOpenExternalMenuItemCad1', 'Customize...', Self.CustomizeClick);
+  Self.CreateSubMenu(FMenuItemOpenExternal, 'C4DOpenExternalSeparator01', '-', {$IF CompilerVersion = 30.0} TNotifyEvent(nil) {$ELSE} nil {$ENDIF});
 
   FList.Clear;
-  TC4DWizardOpenExternalModel
-    .New
-    .ReadIniFile(
+  TC4DWizardOpenExternalModel.New.ReadIniFile(
     procedure(AC4DWizardOpenExternal: TC4DWizardOpenExternal)
     var
       LC4DWizardOpenExternal: TC4DWizardOpenExternal;
@@ -85,6 +83,8 @@ begin
       LC4DWizardOpenExternal.Order := AC4DWizardOpenExternal.Order;
       LC4DWizardOpenExternal.Shortcut := AC4DWizardOpenExternal.Shortcut;
       LC4DWizardOpenExternal.IconHas := AC4DWizardOpenExternal.IconHas;
+      LC4DWizardOpenExternal.GuidMenuParent := AC4DWizardOpenExternal.GuidMenuParent;
+      LC4DWizardOpenExternal.Created := False;
       FList.Add(LC4DWizardOpenExternal);
     end);
   Self.CreateMenuItensList;
@@ -95,6 +95,11 @@ var
   LItem: TC4DWizardOpenExternal;
   LListOrder: TList<Integer>;
   I: Integer;
+  LMenuItem: TMenuItem;
+
+  I2: Integer;
+  LItem2: TC4DWizardOpenExternal;
+  LMenuItem2: TMenuItem;
 begin
   if(FList.Count <= 0)then
     Exit;
@@ -106,17 +111,38 @@ begin
         LListOrder.Add(LItem.Order);
 
     LListOrder.Sort;
+
+    //PRIMEIRO COLOCA OS PARENT (PAIS)
     for I in LListOrder do
       for LItem in FList do
+      begin
         if(LItem.Order = I)then
-          Self.CreateSubMenu(LItem);
+          if(not LItem.Created)and(LITem.GuidMenuParent.Trim.IsEmpty)then
+          begin
+            LMenuItem := Self.CreateSubMenu(FMenuItemOpenExternal, LItem);
+            LItem.Created := True;
+
+            //**
+            for I2 in LListOrder do
+              for LItem2 in FList do
+              begin
+                if(LItem2.Order = I2)then
+                  if(not LItem2.Created)and(LItem2.GuidMenuParent.Trim = LITem.Guid.Trim)then
+                  begin
+                    LMenuItem2 := Self.CreateSubMenu(LMenuItem, LItem2);
+                    LItem2.Created := True;
+                  end;
+              end;
+            //**
+          end;
+      end;
   finally
     LListOrder.Free;
   end;
 
   for LItem in FList do
     if(LItem.Order = 0)then
-      Self.CreateSubMenu(LItem);
+      Self.CreateSubMenu(FMenuItemOpenExternal, LItem);
 end;
 
 procedure TC4DWizardIDEMainMenuOpenExternal.CreateItemMenuMain;
@@ -128,36 +154,33 @@ begin
   FMenuItemParent.Add(FMenuItemOpenExternal);
 end;
 
-procedure TC4DWizardIDEMainMenuOpenExternal.CustomizeClick(Sender: TObject);
-begin
-  C4DWizardOpenExternalViewShow;
-end;
-
-procedure TC4DWizardIDEMainMenuOpenExternal.CreateSubMenu(const AName: string; const ACaption: string; const AOnClick: TNotifyEvent);
+function TC4DWizardIDEMainMenuOpenExternal.CreateSubMenu(const AMenuItemParent: TMenuItem; const AName: string; const ACaption: string; const AOnClick: TNotifyEvent): TMenuItem;
 var
   LMenuItem: TMenuItem;
 begin
-  LMenuItem := TMenuItem.Create(FMenuItemOpenExternal);
+  LMenuItem := TMenuItem.Create(AMenuItemParent);
   LMenuItem.Name := AName;
   LMenuItem.Caption := ACaption;
   LMenuItem.OnClick := AOnClick;
   LMenuItem.Hint := '';
   LMenuItem.ImageIndex := -1;
-  FMenuItemOpenExternal.Add(LMenuItem);
+  AMenuItemParent.Add(LMenuItem);
+  Result := LMenuItem;
 end;
 
-procedure TC4DWizardIDEMainMenuOpenExternal.CreateSubMenu(const AC4DWizardOpenExternal: TC4DWizardOpenExternal);
+function TC4DWizardIDEMainMenuOpenExternal.CreateSubMenu(const AMenuItemParent: TMenuItem; const AC4DWizardOpenExternal: TC4DWizardOpenExternal): TMenuItem;
 var
   LMenuItem: TMenuItem;
 begin
-  LMenuItem := TMenuItem.Create(FMenuItemOpenExternal);
+  LMenuItem := TMenuItem.Create(AMenuItemParent);
   LMenuItem.Name := 'C4DOpenExternalItemMenu' + TC4DWizardUtils.IncInt(FCont).Tostring;
   LMenuItem.Caption := AC4DWizardOpenExternal.Description;
   LMenuItem.OnClick := Self.ItemMenuClick;
   LMenuItem.Hint := AC4DWizardOpenExternal.Path + TC4DConsts.OPEN_EXTERNAL_Separator_PARAMETERS + AC4DWizardOpenExternal.Parameters;
   LMenuItem.Shortcut := TextToShortCut(AC4DWizardOpenExternal.Shortcut);
   LMenuItem.ImageIndex := TC4DWizardOpenExternalUtils.GetImageIndexIfExists(AC4DWizardOpenExternal);
-  FMenuItemOpenExternal.Add(LMenuItem);
+  AMenuItemParent.Add(LMenuItem);
+  Result := LMenuItem;
 end;
 
 procedure TC4DWizardIDEMainMenuOpenExternal.ItemMenuClick(Sender: TObject);
@@ -169,6 +192,11 @@ begin
     Exit;
 
   TC4DWizardOpenExternalUtils.ClickFromString(LMenuItem.Hint);
+end;
+
+procedure TC4DWizardIDEMainMenuOpenExternal.CustomizeClick(Sender: TObject);
+begin
+  C4DWizardOpenExternalViewShow;
 end;
 
 end.

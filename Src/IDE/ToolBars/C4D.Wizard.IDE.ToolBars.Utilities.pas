@@ -273,6 +273,7 @@ begin
       LC4DWizardOpenExternal.Order := AC4DWizardOpenExternal.Order;
       LC4DWizardOpenExternal.Shortcut := AC4DWizardOpenExternal.Shortcut;
       LC4DWizardOpenExternal.IconHas := AC4DWizardOpenExternal.IconHas;
+      LC4DWizardOpenExternal.GuidMenuParent := AC4DWizardOpenExternal.GuidMenuParent;
       FList.Add(LC4DWizardOpenExternal);
     end);
 end;
