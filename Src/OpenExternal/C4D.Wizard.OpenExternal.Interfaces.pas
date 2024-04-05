@@ -16,8 +16,9 @@ type
     ['{08D4836C-F789-4228-8773-D9A1DC15AB57}']
     function WriteInIniFile(AC4DWizardOpenExternal: TC4DWizardOpenExternal): IC4DWizardOpenExternalModel;
     function SaveIconInFolder(const AGuid, APathIcon: string): IC4DWizardOpenExternalModel;
-    function ReadGuidInIniFile(AGuid: string): TC4DWizardOpenExternal;
+    //function ReadGuidInIniFile(AGuid: string): TC4DWizardOpenExternal;
     procedure ReadIniFile(AProc: TProc<TC4DWizardOpenExternal>);
+    function ExistGuidInIniFile(const AGuid: string): Boolean;
     procedure RemoveGuidInIniFile(const AGuid: string);
   end;
 

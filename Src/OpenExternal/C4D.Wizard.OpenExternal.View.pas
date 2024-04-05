@@ -408,6 +408,9 @@ begin
   if(LGuid.Trim.IsEmpty)then
     TC4DWizardUtils.ShowMsgErrorAndAbort('Guid not found');
 
+  if(TC4DWizardOpenExternalModel.New.ExistGuidInIniFile(LGuid))then
+    TC4DWizardUtils.ShowMsgAndAbort('This registration cannot be deleted, as it is linked to other registration(s)');
+
   if(not TC4DWizardUtils.ShowQuestion2('Confirm remove?'))then
     Exit;
 
