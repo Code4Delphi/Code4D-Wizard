@@ -22,7 +22,7 @@ procedure Register;
 
 implementation
 
-procedure RegistrarAll;
+procedure RegisterAll;
 begin
   C4D.Wizard.IDE.MainMenu.Register.RegisterSelf;
   C4D.Wizard.IDE.Shortcuts.BlockKeyInsert.RefreshRegister;
@@ -37,7 +37,7 @@ end;
 
 procedure Register;
 begin
-  RegistrarAll;
+  RegisterAll;
 end;
 
 end.
