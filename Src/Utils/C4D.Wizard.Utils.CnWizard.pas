@@ -6,8 +6,8 @@
 {                       CnPack For Delphi/C++Builder                           }
 {                     中国人自己的开放源码第三方开发包                         }
 {                   (C)Copyright 2001-2023 CnPack 开发组                       }
-{            网站地址：http://www.cnpack.org                                    }
-{            电子邮件：master@cnpack.org                                        }
+{                      网站地址：http://www.cnpack.org                          }
+{                       电子邮件：master@cnpack.org                             }
 {******************************************************************************}
 
 unit C4D.Wizard.Utils.CnWizard;
@@ -21,9 +21,6 @@ uses
   Winapi.Windows,
   ToolsAPI,
   Vcl.Forms;
-
-const
-  SCnIDEPathMacro = '$(DELPHI)';
 
 function CnOtaGetCurrentProject: IOTAProject;
 function CnOtaGetProjectGroup: IOTAProjectGroup;
@@ -45,6 +42,9 @@ procedure ExploreFile(const AFile: string; ShowDir: Boolean = True);
 procedure ExploreDir(const APath: string; ShowDir: Boolean = True);
 
 implementation
+
+const
+  SCnIDEPathMacro = '$(DELPHI)';
 
 function CnOtaGetCurrentProject: IOTAProject;
 var

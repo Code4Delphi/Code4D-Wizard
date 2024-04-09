@@ -20,6 +20,7 @@ type
     class function EditorAsstring(AIOTAModule: IOTAModule): string;
     class procedure DoCloseFile(AInfoFile: TC4DWizardInfoFile);
   public
+    class function CleanCurrentProject: Boolean;
     class function CurrentProjectIsC4DWizardDPROJ: Boolean;
     class function CurrentModuleIsReadOnly: Boolean;
     class procedure CloseFilesOpened(AC4DWizardExtensions: TC4DExtensionsOfFiles);
@@ -88,7 +89,13 @@ uses
   C4D.Wizard.LogFile,
   C4D.Wizard.Model.Files.Loop,
   C4D.Wizard.Utils,
-  C4D.Wizard.Utils.OTA.BinaryPath;
+  C4D.Wizard.Utils.OTA.BinaryPath,
+  C4D.Wizard.Utils.OTA.Codex;
+
+class function TC4DWizardUtilsOTA.CleanCurrentProject: Boolean;
+begin
+  Result := TC4DWizardUtilsOTACodex.ExecuteIDEAction(TC4DConsts.COMMAND_ProjectCleanCommand);
+end;
 
 class function TC4DWizardUtilsOTA.CurrentProjectIsC4DWizardDPROJ: Boolean;
 var

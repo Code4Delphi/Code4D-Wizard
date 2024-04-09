@@ -20,15 +20,12 @@ type
     FINTAServices: INTAServices;
     FToolBarBuild: TToolBar;
     FToolButtonBuildAllGroup: TToolButton;
+    FToolButtonCleanAndBuild: TToolButton;
     FToolButtonBuildInRelease: TToolButton;
     FToolButtonRefresh: TToolButton;
     FComboBox: TComboBox;
     procedure NewToolBarBuild;
-    procedure OnC4DToolButtonBuildRefreshClick(Sender: TObject);
-    procedure OnC4DToolButtonBuildInReleaseClick(Sender: TObject);
     procedure RemoveToolBarBuild;
-    procedure AddButtonRefreshBuild;
-    procedure AddButtonBuildInRelease;
     procedure AddComboBoxBuild;
     procedure FillComboBoxBuild;
     function GetReferenceToolBar: string;
@@ -36,6 +33,12 @@ type
     procedure ComboBoxClick(Sender: TObject);
     procedure AddButtonBuildAllGroup;
     procedure OnC4DToolButtonBuildAllGroupClick(Sender: TObject);
+    procedure AddButtonCleanAndBuild;
+    procedure OnC4DToolButtonCleanAndBuildClick(Sender: TObject);
+    procedure AddButtonBuildInRelease;
+    procedure OnC4DToolButtonBuildInReleaseClick(Sender: TObject);
+    procedure AddButtonRefreshBuild;
+    procedure OnC4DToolButtonBuildRefreshClick(Sender: TObject);
   protected
     constructor Create;
   public
@@ -149,6 +152,7 @@ begin
   FToolBarBuild.AutoSize := True;
 
   Self.AddButtonBuildAllGroup;
+  Self.AddButtonCleanAndBuild;
   Self.AddButtonBuildInRelease;
   Self.AddButtonRefreshBuild;
   Self.AddComboBoxBuild;
@@ -180,7 +184,7 @@ begin
 
   FToolButtonBuildAllGroup := TToolButton.Create(FToolBarBuild);
   FToolButtonBuildAllGroup.Parent := FToolBarBuild;
-  FToolButtonBuildAllGroup.Caption := 'Build all group projects';
+  FToolButtonBuildAllGroup.Caption := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_CAPTION;
   FToolButtonBuildAllGroup.Hint := FToolButtonBuildAllGroup.Caption;
   FToolButtonBuildAllGroup.ShowHint := True;
   FToolButtonBuildAllGroup.Name := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME;
@@ -192,6 +196,26 @@ begin
   FToolButtonBuildAllGroup.AutoSize := True;
 end;
 
+procedure TC4DWizardIDEToolBarsBuild.AddButtonCleanAndBuild;
+begin
+  FToolButtonCleanAndBuild := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_CleanAndBuild_NAME));
+  if(FToolButtonCleanAndBuild <> nil)then
+    FToolButtonCleanAndBuild.Free;
+
+  FToolButtonCleanAndBuild := TToolButton.Create(FToolBarBuild);
+  FToolButtonCleanAndBuild.Parent := FToolBarBuild;
+  FToolButtonCleanAndBuild.Caption := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_CleanAndBuild_CAPTION;
+  FToolButtonCleanAndBuild.Hint := FToolButtonCleanAndBuild.Caption;
+  FToolButtonCleanAndBuild.ShowHint := True;
+  FToolButtonCleanAndBuild.Name := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_CleanAndBuild_NAME;
+  FToolButtonCleanAndBuild.Style := tbsButton;
+  FToolButtonCleanAndBuild.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexCleanAndStart;
+  FToolButtonCleanAndBuild.Visible := True;
+  FToolButtonCleanAndBuild.Left := FToolButtonBuildAllGroup.Left + FToolButtonBuildAllGroup.Width;
+  FToolButtonCleanAndBuild.OnClick := OnC4DToolButtonCleanAndBuildClick;
+  FToolButtonCleanAndBuild.AutoSize := True;
+end;
+
 procedure TC4DWizardIDEToolBarsBuild.AddButtonBuildInRelease;
 begin
   FToolButtonBuildInRelease := TToolButton(FToolBarBuild.FindComponent(TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME));
@@ -200,14 +224,14 @@ begin
 
   FToolButtonBuildInRelease := TToolButton.Create(FToolBarBuild);
   FToolButtonBuildInRelease.Parent := FToolBarBuild;
-  FToolButtonBuildInRelease.Caption := 'Build Project In Release';
+  FToolButtonBuildInRelease.Caption := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_CAPTION;
   FToolButtonBuildInRelease.Hint := FToolButtonBuildInRelease.Caption;
   FToolButtonBuildInRelease.ShowHint := True;
   FToolButtonBuildInRelease.Name := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME;
   FToolButtonBuildInRelease.Style := tbsButton;
   FToolButtonBuildInRelease.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexPlayBlue;
   FToolButtonBuildInRelease.Visible := True;
-  FToolButtonBuildInRelease.Left := FToolButtonBuildAllGroup.Left + FToolButtonBuildAllGroup.Width;
+  FToolButtonBuildInRelease.Left := FToolButtonCleanAndBuild.Left + FToolButtonCleanAndBuild.Width;
   FToolButtonBuildInRelease.OnClick := OnC4DToolButtonBuildInReleaseClick;
   FToolButtonBuildInRelease.AutoSize := True;
 end;
@@ -220,7 +244,7 @@ begin
 
   FToolButtonRefresh := TToolButton.Create(FToolBarBuild);
   FToolButtonRefresh.Parent := FToolBarBuild;
-  FToolButtonRefresh.Caption := 'Get Current Build Configuration';
+  FToolButtonRefresh.Caption := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_CAPTION;
   FToolButtonRefresh.Hint := FToolButtonRefresh.Caption;
   FToolButtonRefresh.ShowHint := True;
   FToolButtonRefresh.Name := TC4DConsts.TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME;
@@ -240,7 +264,7 @@ begin
 
   FComboBox := TComboBox.Create(FToolBarBuild);
   FComboBox.Parent := FToolBarBuild;
-  FComboBox.Hint := 'Alter Build Configuration';
+  FComboBox.Hint := TC4DConsts.TOOL_BAR_BUILD_COMBOBOX_HINT;
   FComboBox.ShowHint := True;
   FComboBox.Name := TC4DConsts.TOOL_BAR_BUILD_COMBOBOX_NAME;
   FComboBox.Style := csDropDownList;
@@ -278,7 +302,7 @@ var
 begin
   LIOTAProjectGroup := (BorlandIDEServices as IOTAModuleServices).MainProjectGroup; //TC4DWizardUtilsOTA.GetCurrentProjectGroup
   if(LIOTAProjectGroup = nil)then
-    raise Exception.Create('Nenhum grupo selecionado');
+    raise Exception.Create('No groups selected');
 
   LClearMessages := True;
   for LContProjetos := 0 to Pred(LIOTAProjectGroup.ProjectCount)do
@@ -288,6 +312,31 @@ begin
       Exit;
     LClearMessages := False;
   end;
+end;
+
+procedure TC4DWizardIDEToolBarsBuild.OnC4DToolButtonCleanAndBuildClick(Sender: TObject);
+var
+  LIOTAProject: IOTAProject;
+  LCurrentBinaryPath: string;
+begin
+  LIOTAProject := TC4DWizardUtilsOTA.GetCurrentProject;
+  if(LIOTAProject = nil)then
+    Exit;
+
+  if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(LIOTAProject.FileName))then
+    TC4DWizardUtils.ShowMsgAndAbort('Cannot clean or build on project: ' + TC4DConsts.C4D_WIZARD_DPROJ);
+
+  LCurrentBinaryPath := TC4DWizardUtilsOTA.GetBinaryPathCurrent;
+  if(FileExists(LCurrentBinaryPath))then
+    if(TC4DWizardUtils.ProcessWindowsExists(ExtractFileName(LCurrentBinaryPath), LCurrentBinaryPath))then
+      TC4DWizardUtils.ShowMsgAndAbort('Operations not allowed, the application is already running.');
+
+  if(not TC4DWizardUtilsOTA.CleanCurrentProject)then
+    TC4DWizardUtils.ShowMsgAndAbort('Unable to clean the project');
+
+  LIOTAProject
+    .ProjectBuilder
+    .BuildProject(cmOTABuild, True, True);
 end;
 
 procedure TC4DWizardIDEToolBarsBuild.OnC4DToolButtonBuildInReleaseClick(Sender: TObject);

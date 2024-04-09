@@ -151,9 +151,15 @@ type
     TOOL_BAR_BUILD_NAME = 'C4DToolBarBuild';
     TOOL_BAR_BUILD_CAPTION = 'C4D Build';
     TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_NAME = 'C4DToolButtonBuildAllGroup';
+    TOOL_BAR_BUILD_TOOL_BUTTON_BuildAllGroup_CAPTION = 'Build all group projects';
+    TOOL_BAR_BUILD_TOOL_BUTTON_CleanAndBuild_NAME = 'C4DToolButtonCleanAndBuild';
+    TOOL_BAR_BUILD_TOOL_BUTTON_CleanAndBuild_CAPTION = 'Clean and build current project';
     TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_NAME = 'C4DToolButtonBuildInRelease';
+    TOOL_BAR_BUILD_TOOL_BUTTON_BuildInRelease_CAPTION = 'Build Project In Release';
     TOOL_BAR_BUILD_COMBOBOX_NAME = 'C4DToolComboBoxNameCurrentBuild';
+    TOOL_BAR_BUILD_COMBOBOX_HINT = 'Alter Build Configuration';
     TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_NAME = 'C4DToolButtonBuildRefresh';
+    TOOL_BAR_BUILD_TOOL_BUTTON_REFRESH_CAPTION = 'Get Current Build Configuration';
     //TOOLBAR BUILD INI
     TOOL_BAR_BUILD_INI_Visible = 'Visible';
 
@@ -170,6 +176,9 @@ type
 
     STR_CMD_COMMANDS = 'CMD Commands';
     STR_MENU_MASTER_ONLY = 'Menu Master Only';
+
+    //ProjectCommands
+    COMMAND_ProjectCleanCommand = 'ProjectCleanCommand';
   end;
 
 implementation

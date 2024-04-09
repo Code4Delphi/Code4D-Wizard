@@ -291,6 +291,7 @@
             <Form>C4DWizardNotesView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Src\Utils\C4D.Wizard.Utils.OTA.Codex.pas"/>
         <RcItem Include="Img\C4D_Logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>C4D_Logo</ResourceId>
@@ -419,6 +420,10 @@
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>c4d_notes</ResourceId>
         </RcItem>
+        <RcItem Include="Img\c4d_clean_and_start.bmp">
+            <ResourceType>BITMAP</ResourceType>
+            <ResourceId>c4d_clean_and_start</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -451,6 +456,12 @@
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\C4DWizard.bpl" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\C4DWizard.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>C4DWizard.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>
