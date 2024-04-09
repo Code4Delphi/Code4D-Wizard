@@ -302,7 +302,7 @@ var
 begin
   LIOTAProjectGroup := (BorlandIDEServices as IOTAModuleServices).MainProjectGroup; //TC4DWizardUtilsOTA.GetCurrentProjectGroup
   if(LIOTAProjectGroup = nil)then
-    raise Exception.Create('No groups selected');
+    TC4DWizardUtils.ShowMsgAndAbort('No groups selected');
 
   LClearMessages := True;
   for LContProjetos := 0 to Pred(LIOTAProjectGroup.ProjectCount)do
@@ -321,7 +321,7 @@ var
 begin
   LIOTAProject := TC4DWizardUtilsOTA.GetCurrentProject;
   if(LIOTAProject = nil)then
-    Exit;
+    TC4DWizardUtils.ShowMsgAndAbort('No project selected');
 
   if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(LIOTAProject.FileName))then
     TC4DWizardUtils.ShowMsgAndAbort('Cannot clean or build on project: ' + TC4DConsts.C4D_WIZARD_DPROJ);
@@ -347,7 +347,7 @@ var
 begin
   LIOTAProject := TC4DWizardUtilsOTA.GetCurrentProject;
   if(LIOTAProject = nil)then
-    Exit;
+    TC4DWizardUtils.ShowMsgAndAbort('No project selected');
 
   if(TC4DWizardUtils.FileNameIsC4DWizardDPROJ(LIOTAProject.FileName))then
     TC4DWizardUtils.ShowMsgAndAbort('It is not possible to build in project: ' + TC4DConsts.C4D_WIZARD_DPROJ);
