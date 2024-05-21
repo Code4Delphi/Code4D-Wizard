@@ -21,6 +21,7 @@ type
     class procedure FindClick(Sender: TObject);
     class procedure ReplaceClick(Sender: TObject);
     class procedure NotesClick(Sender: TObject);
+    class procedure OpenInVsCodeClick(Sender: TObject);
     class procedure DefaultFilesInOpeningProjectClick(Sender: TObject);
     class procedure BackupExportClick(Sender: TObject);
     class procedure BackupImportClick(Sender: TObject);
@@ -52,7 +53,8 @@ uses
   C4D.Wizard.View.About,
   C4D.Wizard.DefaultFilesInOpeningProject,
   C4D.Wizard.FormatSource.View,
-  C4D.Wizard.Notes.View;
+  C4D.Wizard.Notes.View,
+  C4D.Wizard.OpenInVsCode;
 
 class procedure TC4DWizardIDEMainMenuClicks.UsesOrganizationClick(Sender: TObject);
 var
@@ -130,6 +132,11 @@ end;
 class procedure TC4DWizardIDEMainMenuClicks.NotesClick(Sender: TObject);
 begin
   C4D.Wizard.Notes.View.C4DWizardNotesViewShowDockableForm;
+end;
+
+class procedure TC4DWizardIDEMainMenuClicks.OpenInVsCodeClick(Sender: TObject);
+begin
+  TC4DWizardOpenInVsCode.Open;
 end;
 
 class procedure TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick(Sender: TObject);

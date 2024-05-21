@@ -103,6 +103,8 @@ type
     MENU_IDE_FormatSource_CAPTION = 'Format Source';
     MENU_IDE_NOTES_NAME = 'C4DWizarNotes1';
     MENU_IDE_NOTES_CAPTION = 'Notes';
+    MENU_IDE_OPEN_IN_VSCODE_NAME = 'C4DWizarOpenInVsCode1';
+    MENU_IDE_OPEN_IN_VSCODE_CAPTION = 'Open In VS Code';
 
     //FILE .INI REOPEN
     REOPEN_INI_Favorite = 'Favorite';

@@ -292,6 +292,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Src\Utils\C4D.Wizard.Utils.OTA.Codex.pas"/>
+        <DCCReference Include="..\Src\OpenInVsCode\C4D.Wizard.OpenInVsCode.pas"/>
         <RcItem Include="Img\C4D_Logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>C4D_Logo</ResourceId>

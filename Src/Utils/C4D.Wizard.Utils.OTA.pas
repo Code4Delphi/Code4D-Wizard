@@ -23,6 +23,7 @@ type
     class function CleanCurrentProject: Boolean;
     class function CurrentProjectIsC4DWizardDPROJ: Boolean;
     class function CurrentModuleIsReadOnly: Boolean;
+    class procedure SaveAllModifiedModules;
     class procedure CloseFilesOpened(AC4DWizardExtensions: TC4DExtensionsOfFiles);
     class function AddImgIDEResourceName(AResourceName: string): Integer;
     class function AddImgIDEFilePath(AFilePath: string): Integer;
@@ -121,6 +122,26 @@ begin
     Exit;
 
   Result := LIOTAEditBuffer.IsReadOnly;
+end;
+
+class procedure TC4DWizardUtilsOTA.SaveAllModifiedModules;
+var
+  LIOTAModuleServices: IOTAModuleServices;
+  I: Integer;
+  LIOTAModule: IOTAModule;
+  LIOTAEditor: IOTAEditor;
+begin
+  LIOTAModuleServices := Self.GetIOTAModuleServices;
+  for I := 0 to Pred(LIOTAModuleServices.ModuleCount) do
+  begin
+    LIOTAModule := LIOTAModuleServices.Modules[I];
+    LIOTAEditor := LIOTAModule.CurrentEditor;
+    if LIOTAEditor = nil then
+      continue;
+
+    if LIOTAEditor.Modified then
+      LIOTAModule.Save(False, True);
+  end;
 end;
 
 class procedure TC4DWizardUtilsOTA.CloseFilesOpened(AC4DWizardExtensions: TC4DExtensionsOfFiles);
