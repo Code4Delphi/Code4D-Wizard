@@ -17,7 +17,7 @@ uses
 type
   TC4DWizardUtilsOTA = class
   private
-    class function EditorAsstring(AIOTAModule: IOTAModule): string;
+    class function EditorAsString(AIOTAModule: IOTAModule): string;
     class procedure DoCloseFile(AInfoFile: TC4DWizardInfoFile);
   public
     class function CleanCurrentProject: Boolean;
@@ -221,14 +221,14 @@ class function TC4DWizardUtilsOTA.EditorAsStringList(AIOTAModule: IOTAModule): T
 begin
   Result := TStringList.Create;
   try
-    Result.Text := Self.EditorAsstring(AIOTAModule);
+    Result.Text := Self.EditorAsString(AIOTAModule);
   except
     Result.Free;
     raise;
   end;
 end;
 
-class function TC4DWizardUtilsOTA.EditorAsstring(AIOTAModule: IOTAModule): string;
+class function TC4DWizardUtilsOTA.EditorAsString(AIOTAModule: IOTAModule): string;
 const
   BUFFER_SIZE: Integer = 1024;
 var
