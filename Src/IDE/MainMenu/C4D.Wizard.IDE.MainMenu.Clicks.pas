@@ -147,9 +147,7 @@ end;
 
 class procedure TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick(Sender: TObject);
 begin
-  TC4DWizardDefaultFilesInOpeningProject
-    .New(Self.GetFileNameCurrentProject)
-    .SelectionFilesForDefaultOpening;
+  TC4DWizardDefaultFilesInOpeningProject.New(Self.GetFileNameCurrentProject).SelectionFilesForDefaultOpening;
 end;
 
 class procedure TC4DWizardIDEMainMenuClicks.BackupExportClick(Sender: TObject);

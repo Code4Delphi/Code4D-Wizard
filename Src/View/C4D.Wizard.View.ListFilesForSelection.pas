@@ -101,8 +101,8 @@ const
 
 procedure TC4DWizardViewListFilesForSelection.FormCreate(Sender: TObject);
 begin
-  Self.Width := Screen.Width - 100;
-  Self.Height := Screen.Height - 200;
+  Self.Width := Screen.Width - 200;
+  Self.Height := Screen.Height - 250;
   pnOrigin.Width := (Self.Width div 2) - 10;
   TC4DWizardUtilsOTA.IDEThemingAll(TC4DWizardViewListFilesForSelection, Self);
 
@@ -181,8 +181,7 @@ begin
       LStrings := TStringList.Create;
       try
         TC4DWizardUtilsOTA.GetAllFilesFromProjectGroup(LStrings,
-          FFilePathProjectOrGroupForFilter,
-          [TC4DExtensionsFiles.PAS, TC4DExtensionsFiles.DPR]);
+          FFilePathProjectOrGroupForFilter, [TC4DExtensionsFiles.PAS, TC4DExtensionsFiles.DPR]);
 
         TThread.Synchronize(nil,
           procedure
