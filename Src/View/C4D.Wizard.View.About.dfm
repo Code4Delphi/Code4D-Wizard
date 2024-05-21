@@ -2111,8 +2111,34 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
       Align = alLeft
       Caption = 'Teste'
       TabOrder = 1
-      Visible = False
       OnClick = btnTesteClick
+    end
+    object Button1: TButton
+      Left = 112
+      Top = 3
+      Width = 75
+      Height = 25
+      Caption = 'Button1'
+      TabOrder = 2
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 193
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Button2'
+      TabOrder = 3
+      OnClick = Button2Click
+    end
+    object Button3: TButton
+      Left = 288
+      Top = -1
+      Width = 75
+      Height = 25
+      Caption = 'Button3'
+      TabOrder = 4
+      OnClick = Button3Click
     end
   end
 end

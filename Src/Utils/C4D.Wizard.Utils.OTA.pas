@@ -49,8 +49,11 @@ type
     class function GetIOTAWizardServices: IOTAWizardServices;
     class function GetIOTAEditView(AIOTAModule: IOTAModule): IOTAEditView; overload;
     class function GetIOTAEditView(AIOTASourceEditor: IOTASourceEditor): IOTAEditView; overload;
+    ///<summary> Get the active source editor (Tab selected in editor) </summary>
     class function GetIOTASourceEditor(AIOTAModule: IOTAModule): IOTASourceEditor; overload;
+    ///<summary> Get the active source editor (Tab selected in editor) </summary>
     class function GetIOTASourceEditor(AIOTAEditor: IOTAEditor): IOTASourceEditor; overload;
+    ///<summary> Get the active source editor (Tab selected in editor) </summary>
     class function GetIOTASourceEditor(AIOTAModule: IOTAModule; const AFileName: string): IOTASourceEditor; overload;
     class function GetIOTAEditBufferCurrentModule: IOTAEditBuffer;
     class function GetIOTAEditBuffer(AIOTAModule: IOTAModule): IOTAEditBuffer;
@@ -530,7 +533,7 @@ begin
   if(LIOTASourceEditor = nil)then
     Exit;
 
-  LIOTAEditView := GetIOTAEditView(LIOTASourceEditor);
+  LIOTAEditView := Self.GetIOTAEditView(LIOTASourceEditor);
   if(LIOTAEditView = nil)then
     Exit;
   //LIOTASourceEditor.Show;
