@@ -1,4 +1,4 @@
-unit C4D.Wizard.OpenInVsCode;
+unit C4D.Wizard.VsCodeIntegration;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   ToolsAPI;
 
 type
-  TC4DWizardOpenInVsCode = class
+  TC4DWizardVsCodeIntegration = class
   private
 
   public
@@ -21,7 +21,7 @@ uses
   C4D.Wizard.Utils.OTA,
   C4D.Wizard.ProcessDelphi;
 
-class procedure TC4DWizardOpenInVsCode.Open;
+class procedure TC4DWizardVsCodeIntegration.Open;
 var
   LIOTAModuleServices: IOTAModuleServices;
   LIOTAModule: IOTAModule;

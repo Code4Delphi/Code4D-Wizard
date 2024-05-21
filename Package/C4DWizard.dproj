@@ -292,7 +292,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Src\Utils\C4D.Wizard.Utils.OTA.Codex.pas"/>
-        <DCCReference Include="..\Src\OpenInVsCode\C4D.Wizard.OpenInVsCode.pas"/>
+        <DCCReference Include="..\Src\VsCodeIntegration\C4D.Wizard.VsCodeIntegration.pas"/>
         <RcItem Include="Img\C4D_Logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>C4D_Logo</ResourceId>
@@ -424,6 +424,10 @@
         <RcItem Include="Img\c4d_clean_and_start.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>c4d_clean_and_start</ResourceId>
+        </RcItem>
+        <RcItem Include="Img\c4d_vscode.bmp">
+            <ResourceType>BITMAP</ResourceType>
+            <ResourceId>c4d_vscode</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

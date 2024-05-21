@@ -169,6 +169,7 @@ type
     TOOL_BAR_UTILITIES_NAME = 'C4DToolBarUtilities';
     TOOL_BAR_UTILITIES_CAPTION = 'C4D Utilities';
     TOOL_BAR_UTILITIES_TOOL_BUTTON_OpenInVsCode_NAME = 'C4DToolButtoUtilitiesOpenInVsCode';
+    TOOL_BAR_UTILITIES_TOOL_BUTTON_OpenInVsCode_CAPTION = 'Open In VS Code';
     TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME = 'C4DToolButtoUtilitiesUnitInReadOnly';
     TOOL_BAR_UTILITIES_TOOL_BUTTON_GithubDesktop_NAME = 'C4DToolButtonUtilitiesGithubDesktop';
     //TOOLBAR UTILITIES INI

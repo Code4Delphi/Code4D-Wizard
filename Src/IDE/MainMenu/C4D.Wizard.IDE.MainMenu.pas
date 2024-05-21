@@ -124,7 +124,7 @@ begin
   Self.CreateSubMenu(TC4DConsts.MENU_IDE_OPEN_IN_VSCODE_NAME,
     TC4DConsts.MENU_IDE_OPEN_IN_VSCODE_CAPTION,
     TC4DWizardIDEMainMenuClicks.OpenInVsCodeClick,
-    TC4DWizardIDEImageListMain.GetInstance.ImgIndexOpenInExplorerFile,
+    TC4DWizardIDEImageListMain.GetInstance.ImgIndexVsCode,
     Self.GetShortcutOpenInVsCode);
 
   Self.CreateSubMenu('C4DSeparator50', '-', nil);

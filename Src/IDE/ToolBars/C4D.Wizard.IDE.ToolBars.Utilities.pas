@@ -64,7 +64,8 @@ uses
   C4D.Wizard.Utils.OTA,
   C4D.Wizard.IDE.ImageListMain,
   C4D.Wizard.OpenExternal.Model,
-  C4D.Wizard.OpenExternal.Utils;
+  C4D.Wizard.OpenExternal.Utils,
+  C4D.Wizard.VsCodeIntegration;
 
 procedure RegisterSelf;
 begin
@@ -111,8 +112,8 @@ procedure TC4DWizardIDEToolBarsUtilities.CreateAllButtons;
 begin
   Self.OpenExternalFillList;
   Self.OpenExternalCreateButtonList;
-  Self.AddButtonOpenInVsCode;
   Self.AddButtonUnitInReadOnly;
+  Self.AddButtonOpenInVsCode;
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.RefreshButtons;
@@ -206,12 +207,12 @@ begin
 
   FToolButtonOpenInVsCode := TToolButton.Create(FToolBarUtilities);
   FToolButtonOpenInVsCode.Parent := FToolBarUtilities;
-  FToolButtonOpenInVsCode.Caption := '';
+  FToolButtonOpenInVsCode.Caption := TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_OpenInVsCode_CAPTION;
   FToolButtonOpenInVsCode.Hint := FToolButtonOpenInVsCode.Caption;
   FToolButtonOpenInVsCode.ShowHint := True;
   FToolButtonOpenInVsCode.Name := TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_OpenInVsCode_NAME;
   FToolButtonOpenInVsCode.Style := tbsButton;
-  FToolButtonOpenInVsCode.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexLockOFF;
+  FToolButtonOpenInVsCode.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexVsCode;
   FToolButtonOpenInVsCode.Visible := True;
   FToolButtonOpenInVsCode.OnClick := OnC4DToolButtonOpenInVsCodeClick;
   FToolButtonOpenInVsCode.AutoSize := True;
@@ -219,15 +220,8 @@ begin
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.OnC4DToolButtonOpenInVsCodeClick(Sender: TObject);
-var
-  LIOTAEditBuffer: IOTAEditBuffer;
 begin
-  LIOTAEditBuffer := TC4DWizardUtilsOTA.GetIOTAEditBufferCurrentModule;
-  if(LIOTAEditBuffer = nil)then
-    Exit;
-
-  LIOTAEditBuffer.IsReadOnly := not LIOTAEditBuffer.IsReadOnly;
-  Self.ConfigButtonUnitInReadOnly(LIOTAEditBuffer.IsReadOnly);
+  TC4DWizardVsCodeIntegration.Open;
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.AddButtonUnitInReadOnly;
@@ -247,7 +241,7 @@ begin
   FToolButtonUnitInReadOnly.Visible := True;
   FToolButtonUnitInReadOnly.OnClick := OnC4DToolButtonUnitInReadOnlyClick;
   FToolButtonUnitInReadOnly.AutoSize := True;
-  FToolButtonUnitInReadOnly.Left := FToolButtonOpenInVsCode.Width + FToolButtonOpenInVsCode.Left;
+  FToolButtonUnitInReadOnly.Left := 0;
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.OnC4DToolButtonUnitInReadOnlyClick(Sender: TObject);

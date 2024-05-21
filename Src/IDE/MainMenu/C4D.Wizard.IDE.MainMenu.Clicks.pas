@@ -54,7 +54,7 @@ uses
   C4D.Wizard.DefaultFilesInOpeningProject,
   C4D.Wizard.FormatSource.View,
   C4D.Wizard.Notes.View,
-  C4D.Wizard.OpenInVsCode;
+  C4D.Wizard.VsCodeIntegration;
 
 class procedure TC4DWizardIDEMainMenuClicks.UsesOrganizationClick(Sender: TObject);
 var
@@ -136,7 +136,7 @@ end;
 
 class procedure TC4DWizardIDEMainMenuClicks.OpenInVsCodeClick(Sender: TObject);
 begin
-  TC4DWizardOpenInVsCode.Open;
+  TC4DWizardVsCodeIntegration.Open;
 end;
 
 class procedure TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick(Sender: TObject);

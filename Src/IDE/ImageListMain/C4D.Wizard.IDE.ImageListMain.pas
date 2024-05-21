@@ -37,6 +37,7 @@ type
     FImgIndexVerifyDocument: Integer;
     FImgIndexNotes: Integer;
     FImgIndexCleanAndStart: Integer;
+    FImgIndexVsCode: Integer;
     constructor Create;
   public
     property ImgIndexC4D_Logo: Integer read FImgIndexC4D_Logo;
@@ -67,6 +68,7 @@ type
     property ImgIndexVerifyDocument: Integer read FImgIndexVerifyDocument;
     property ImgIndexNotes: Integer read FImgIndexNotes;
     property ImgIndexCleanAndStart: Integer read FImgIndexCleanAndStart;
+    property ImgIndexVsCode: Integer read FImgIndexVsCode;
     class function GetInstance: TC4DWizardIDEImageListMain;
   end;
 
@@ -115,6 +117,7 @@ begin
   FImgIndexVerifyDocument := TC4DWizardUtilsOTA.AddImgIDEResourceName('c4d_verify_document');
   FImgIndexNotes := TC4DWizardUtilsOTA.AddImgIDEResourceName('c4d_notes');
   FImgIndexCleanAndStart := TC4DWizardUtilsOTA.AddImgIDEResourceName('c4d_clean_and_start');
+  FImgIndexVsCode := TC4DWizardUtilsOTA.AddImgIDEResourceName('c4d_vscode');
 end;
 
 initialization

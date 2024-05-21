@@ -131,6 +131,6 @@ contains
   C4D.Wizard.FormatSource.View in '..\Src\FormatSource\C4D.Wizard.FormatSource.View.pas' {C4DWizardFormatSourceView},
   C4D.Wizard.Notes.View in '..\Src\Notes\C4D.Wizard.Notes.View.pas' {C4DWizardNotesView},
   C4D.Wizard.Utils.OTA.Codex in '..\Src\Utils\C4D.Wizard.Utils.OTA.Codex.pas',
-  C4D.Wizard.OpenInVsCode in '..\Src\OpenInVsCode\C4D.Wizard.OpenInVsCode.pas';
+  C4D.Wizard.VsCodeIntegration in '..\Src\VsCodeIntegration\C4D.Wizard.VsCodeIntegration.pas';
 
 end.
