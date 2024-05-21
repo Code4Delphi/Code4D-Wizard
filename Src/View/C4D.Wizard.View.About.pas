@@ -134,11 +134,8 @@ var
   LIOTASourceEditor: IOTASourceEditor;
   LFileName: string;
   i: integer;
-  LContFile: Integer;
-  LMsg: string;
 
   LIOTAModule: IOTAModule;
-  LReader: IOTAEditReader;
 begin
   LIOTAModule := TC4DWizardUtilsOTA.GetCurrentModule;
   LFileName := '';

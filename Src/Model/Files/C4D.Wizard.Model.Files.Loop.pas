@@ -175,32 +175,22 @@ begin
     if(LIOTAModuleServices.GetModule(0).FileName = TC4DConsts.DEFAULT_HTM)then
       raise Exception.Create('No Units Opened was found.');
 
-  for LContModule := 0 to pred(LIOTAModuleServices.ModuleCount) do
+  for LContModule := 0 to Pred(LIOTAModuleServices.ModuleCount) do
   begin
     LIOTAModule := LIOTAModuleServices.GetModule(LContModule);
-    for LContFile := 0 to pred(LIOTAModule.GetModuleFileCount)do
+    for LContFile := 0 to Pred(LIOTAModule.GetModuleFileCount)do
     begin
       LIOTAEditor := LIOTAModule.GetModuleFileEditor(LContFile);
-      if(Supports(LIOTAEditor, IOTASourceEditor, LIOTASourceEditor))then
+      if Supports(LIOTAEditor, IOTASourceEditor, LIOTASourceEditor) then
       begin
-        Self.ListFilesAdd(LIOTAEditor.FileName);
-        Break;
+        if LIOTASourceEditor.EditViewCount > 0 then
+        begin
+          Self.ListFilesAdd(LIOTAEditor.FileName);
+          Break;
+        end;
       end;
     end;
   end;
-
-//  for LContModule := 0 to Pred(LIOTAModuleServices.ModuleCount) do
-//  begin
-//    LIOTAModule := LIOTAModuleServices.Modules[LContModule];
-//    LIOTAEditor := LIOTAModule.CurrentEditor;
-//    if LIOTAEditor = nil then
-//      Continue;
-//
-//    if LIOTAEditor.GetModule = nil then
-//      Continue;
-//
-//    Self.ListFilesAdd(LIOTAEditor.FileName);
-//  end;
 end;
 
 procedure TC4DWizardModelFilesLoop.GetFileCurrent;

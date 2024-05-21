@@ -348,44 +348,32 @@ end;
 
 class function TC4DWizardUtilsOTA.FileIsOpenInIDE(const APathFile: string): Boolean;
 var
+  LIOTAModuleServices: IOTAModuleServices;
   LIOTAModule: IOTAModule;
-  LIOTAEditor: IOTAEditor;
+  LIOTASourceEditor: IOTASourceEditor;
   i: Integer;
 begin
   Result := False;
   if(APathFile.Trim.IsEmpty)then
     Exit;
 
-  LIOTAModule := Self.GetModule(APathFile);
-  if(not Assigned(LIOTAModule))then
-    Exit;
-
-  for i := 0 to Pred(LIOTAModule.GetModuleFileCount) do
+  LIOTAModuleServices := Self.GetIOTAModuleServices;
+  for i := 0 to Pred(LIOTAModuleServices.ModuleCount) do
   begin
-    LIOTAEditor := LIOTAModule.GetModuleFileEditor(i);
-    if(not Assigned(LIOTAEditor))then
+    LIOTAModule := LIOTAModuleServices.Modules[i];
+
+    LIOTASourceEditor := TC4DWizardUtilsOTA.GetIOTASourceEditor(LIOTAModule);
+    if LIOTASourceEditor = nil then
       Continue;
 
-    Result := SameFileName(APathFile, LIOTAEditor.FileName);
+    if LIOTASourceEditor.EditViewCount <= 0 then
+      Continue;
+
+    Result := SameFileName(APathFile, LIOTAModule.FileName);
     if(Result)then
       Exit;
   end;
 end;
-
-{class function TC4DWizardUtilsOTA.FileIsOpenInIDE(const APathFile: string): Boolean;
- var
- LIOTAModuleServices: IOTAModuleServices;
- i: Integer;
- begin
- Result := False;
- LIOTAModuleServices := Self.GetIOTAModuleServices;
- if(LIOTAModuleServices = nil)then
- Exit;
-
- for i := 0 to Pred(LIOTAModuleServices.ModuleCount) do
- if(LIOTAModuleServices.Modules[i].FileName = APathFile)then
- Exit(True);
- end;}
 
 class function TC4DWizardUtilsOTA.CheckIfExistFileInCurrentsProjectGroups(const ANameFileWithExtension: string): Boolean;
 var
