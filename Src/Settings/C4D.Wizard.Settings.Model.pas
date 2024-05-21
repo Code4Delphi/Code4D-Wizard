@@ -27,6 +27,8 @@ type
     FShortcutReplaceFiles: string;
     FShortcutNotesUse: Boolean;
     FShortcutNotes: string;
+    FShortcutVsCodeIntegrationOpenUse: Boolean;
+    FShortcutVsCodeIntegrationOpen: string;
     FShortcutGitHubDesktopUse: Boolean;
     FShortcutGitHubDesktop: string;
     FBlockKeyInsert: Boolean;
@@ -55,6 +57,9 @@ type
     C_ShortcutNotesUse = 'ShortcutNotesUse';
     C_ShortcutNotes = 'ShortcutNotes';
     C_ShortcutNotesDefu = 'Ctrl + Shift + Alt + N';
+    C_ShortcutVsCodeIntegrationOpenUse = 'ShortcutVsCodeIntegrationOpenUse';
+    C_ShortcutVsCodeIntegrationOpen = 'ShortcutVsCodeIntegrationOpen';
+    C_ShortcutVsCodeIntegrationOpenDefu = 'Ctrl + Shift + Alt + V';
     C_ShortcutGitHubDesktopUse = 'ShortcutGitHubDesktopUse';
     C_ShortcutGitHubDesktop = 'ShortcutGitHubDesktop';
     C_ShortcutGitHubDesktopDefu = 'Ctrl + Shift + Alt + G';
@@ -99,6 +104,11 @@ type
     function ShortcutNotesUse(Value: Boolean): IC4DWizardSettingsModel; overload;
     function ShortcutNotes: string; overload;
     function ShortcutNotes(Value: string): IC4DWizardSettingsModel; overload;
+
+    function ShortcutVsCodeIntegrationOpenUse: Boolean; overload;
+    function ShortcutVsCodeIntegrationOpenUse(Value: Boolean): IC4DWizardSettingsModel; overload;
+    function ShortcutVsCodeIntegrationOpen: string; overload;
+    function ShortcutVsCodeIntegrationOpen(Value: string): IC4DWizardSettingsModel; overload;
 
     function ShortcutGitHubDesktopUse: Boolean; overload;
     function ShortcutGitHubDesktopUse(Value: Boolean): IC4DWizardSettingsModel; overload;
@@ -303,6 +313,28 @@ begin
   FShortcutNotes := TC4DWizardUtils.RemoveSpacesAll(Value);
 end;
 
+function TC4DWizardSettingsModel.ShortcutVsCodeIntegrationOpenUse: Boolean;
+begin
+  Result := FShortcutVsCodeIntegrationOpenUse;
+end;
+
+function TC4DWizardSettingsModel.ShortcutVsCodeIntegrationOpenUse(Value: Boolean): IC4DWizardSettingsModel;
+begin
+  Result := Self;
+  FShortcutVsCodeIntegrationOpenUse := Value;
+end;
+
+function TC4DWizardSettingsModel.ShortcutVsCodeIntegrationOpen: string;
+begin
+  Result := TC4DWizardUtils.RemoveSpacesAll(FShortcutVsCodeIntegrationOpen);
+end;
+
+function TC4DWizardSettingsModel.ShortcutVsCodeIntegrationOpen(Value: string): IC4DWizardSettingsModel;
+begin
+  Result := Self;
+  FShortcutVsCodeIntegrationOpen := TC4DWizardUtils.RemoveSpacesAll(Value);
+end;
+
 function TC4DWizardSettingsModel.ShortcutGitHubDesktopUse: Boolean;
 begin
   Result := FShortcutGitHubDesktopUse;
@@ -385,6 +417,8 @@ begin
   FIniFile.Writestring(C_SESSION, C_ShortcutReplaceFiles, FShortcutReplaceFiles);
   FIniFile.WriteBool(C_SESSION, C_ShortcutNotesUse, FShortcutNotesUse);
   FIniFile.Writestring(C_SESSION, C_ShortcutNotes, FShortcutNotes);
+  FIniFile.WriteBool(C_SESSION, C_ShortcutVsCodeIntegrationOpenUse, FShortcutVsCodeIntegrationOpenUse);
+  FIniFile.Writestring(C_SESSION, C_ShortcutVsCodeIntegrationOpen, FShortcutVsCodeIntegrationOpen);
   FIniFile.WriteBool(C_SESSION, C_ShortcutGitHubDesktopUse, FShortcutGitHubDesktopUse);
   FIniFile.Writestring(C_SESSION, C_ShortcutGitHubDesktop, FShortcutGitHubDesktop);
   FIniFile.WriteBool(C_SESSION, C_ShortcutDefaultFilesInOpeningProjectUse, FShortcutDefaultFilesInOpeningProjectUse);
@@ -409,6 +443,8 @@ begin
   FShortcutReplaceFiles := FIniFile.Readstring(C_SESSION, C_ShortcutReplaceFiles, C_ShortcutReplaceFilesDefu);
   FShortcutNotesUse := FIniFile.ReadBool(C_SESSION, C_ShortcutNotesUse, True);
   FShortcutNotes := FIniFile.Readstring(C_SESSION, C_ShortcutNotes, C_ShortcutNotesDefu);
+  FShortcutVsCodeIntegrationOpenUse := FIniFile.ReadBool(C_SESSION, C_ShortcutVsCodeIntegrationOpenUse, True);
+  FShortcutVsCodeIntegrationOpen := FIniFile.Readstring(C_SESSION, C_ShortcutVsCodeIntegrationOpen, C_ShortcutVsCodeIntegrationOpenDefu);
   FShortcutGitHubDesktopUse := FIniFile.ReadBool(C_SESSION, C_ShortcutGitHubDesktopUse, False);
   FShortcutGitHubDesktop := FIniFile.Readstring(C_SESSION, C_ShortcutGitHubDesktop, C_ShortcutGitHubDesktopDefu);
   FShortcutDefaultFilesInOpeningProjectUse := FIniFile.ReadBool(C_SESSION, C_ShortcutDefaultFilesInOpeningProjectUse, False);

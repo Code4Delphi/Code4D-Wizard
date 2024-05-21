@@ -24,7 +24,6 @@ type
     function GetShortcutIndent: string;
     function GetShortcutReplace: string;
     function GetShortcutNotes: string;
-    function GetShortcutOpenInVsCode: string;
     function GetShortcutFind: string;
     function GetShortcutDefaultFilesInOpeningProject: string;
   protected
@@ -44,7 +43,8 @@ uses
   C4D.Wizard.Settings.Model,
   C4D.Wizard.IDE.MainMenu.OpenExternal,
   C4D.Wizard.IDE.ImageListMain,
-  C4D.Wizard.IDE.MainMenu.Backup;
+  C4D.Wizard.IDE.MainMenu.Backup,
+  C4D.Wizard.IDE.MainMenu.VsCodeIntegration;
 
 var
   Instance: IC4DWizardIDEMainMenu;
@@ -121,11 +121,7 @@ begin
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexNotes,
     Self.GetShortcutNotes);
 
-  Self.CreateSubMenu(TC4DConsts.MENU_IDE_OPEN_IN_VSCODE_NAME,
-    TC4DConsts.MENU_IDE_OPEN_IN_VSCODE_CAPTION,
-    TC4DWizardIDEMainMenuClicks.OpenInVsCodeClick,
-    TC4DWizardIDEImageListMain.GetInstance.ImgIndexVsCode,
-    Self.GetShortcutOpenInVsCode);
+  TC4DWizardIDEMainMenuVsCodeIntegration.New(FMenuItemC4D).Process;
 
   Self.CreateSubMenu('C4DSeparator50', '-', nil);
   Self.CreateSubMenu(TC4DConsts.ITEM_MENU_DefaultFilesInOpeningProject_NAME,
@@ -140,7 +136,7 @@ begin
     TC4DWizardIDEMainMenuClicks.SettingsClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexGear);
 
-  TC4DWizardIDEMainMenuBakcups.New(FMenuItemC4D).Process;
+  TC4DWizardIDEMainMenuBackup.New(FMenuItemC4D).Process;
 
   Self.CreateSubMenu('C4DSeparator70', '-', nil);
   Self.CreateSubMenu(TC4DConsts.ITEM_MENU_OpenInGitHubDesktop_NAME,
@@ -280,13 +276,6 @@ begin
   Result := '';
   if(C4DWizardSettingsModel.ShortcutNotesUse)and(not C4DWizardSettingsModel.ShortcutNotes.Trim.IsEmpty)then
     Result := C4DWizardSettingsModel.ShortcutNotes.Trim;
-end;
-
-function TC4DWizardIDEMainMenu.GetShortcutOpenInVsCode: string;
-begin
-  Result := '';
-//  if(C4DWizardSettingsModel.ShortcutNotesUse)and(not C4DWizardSettingsModel.ShortcutNotes.Trim.IsEmpty)then
-//    Result := C4DWizardSettingsModel.ShortcutNotes.Trim;
 end;
 
 function TC4DWizardIDEMainMenu.GetShortcutDefaultFilesInOpeningProject: string;

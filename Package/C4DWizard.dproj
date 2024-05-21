@@ -293,6 +293,9 @@
         </DCCReference>
         <DCCReference Include="..\Src\Utils\C4D.Wizard.Utils.OTA.Codex.pas"/>
         <DCCReference Include="..\Src\VsCodeIntegration\C4D.Wizard.VsCodeIntegration.pas"/>
+        <DCCReference Include="..\Src\IDE\ToolBars\C4D.Wizard.IDE.ToolBars.VsCodeIntegration.pas"/>
+        <DCCReference Include="..\Src\IDE\ToolBars\C4D.Wizard.IDE.ToolBars.Utils.pas"/>
+        <DCCReference Include="..\Src\IDE\MainMenu\C4D.Wizard.IDE.MainMenu.VsCodeIntegration.pas"/>
         <RcItem Include="Img\C4D_Logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>C4D_Logo</ResourceId>

@@ -3,7 +3,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Code4D - Settings'
-  ClientHeight = 474
+  ClientHeight = 523
   ClientWidth = 686
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -24,15 +24,16 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
     Left = 0
     Top = 0
     Width = 686
-    Height = 439
+    Height = 488
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
+    ExplicitHeight = 439
     object Bevel1: TBevel
       AlignWithMargins = True
       Left = 0
-      Top = 435
+      Top = 484
       Width = 686
       Height = 1
       Margins.Left = 0
@@ -47,10 +48,11 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
       Left = 0
       Top = 0
       Width = 686
-      Height = 281
+      Height = 313
       Align = alTop
       Caption = ' Shortcut '
       TabOrder = 0
+      ExplicitTop = -6
       object ckShortcutUsesOrganizationUse: TCheckBox
         Left = 48
         Top = 26
@@ -73,12 +75,12 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
       end
       object ckShortcutGitHubDesktopUse: TCheckBox
         Left = 48
-        Top = 231
+        Top = 256
         Width = 97
         Height = 17
         Cursor = crHandPoint
         Caption = 'GitHub Desktop'
-        TabOrder = 12
+        TabOrder = 18
         OnClick = ckShortcutUsesOrganizationUseClick
       end
       object ckShortcutTranslateTextUse: TCheckBox
@@ -121,7 +123,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
       end
       object edtShortcutGitHubDesktop: THotKey
         Left = 226
-        Top = 231
+        Top = 256
         Width = 150
         Height = 19
         Cursor = crArrow
@@ -131,7 +133,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
         Modifiers = []
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 13
+        TabOrder = 19
       end
       object edtShortcutTranslateText: THotKey
         Left = 226
@@ -221,17 +223,17 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
       end
       object ckShortcutDefaultFilesInOpeningProjectUse: TCheckBox
         Left = 48
-        Top = 205
+        Top = 230
         Width = 174
         Height = 17
         Cursor = crHandPoint
         Caption = 'Default Files In Opening Project'
-        TabOrder = 14
+        TabOrder = 16
         OnClick = ckShortcutUsesOrganizationUseClick
       end
       object edtShortcutDefaultFilesInOpeningProject: THotKey
         Left = 226
-        Top = 205
+        Top = 230
         Width = 150
         Height = 19
         Cursor = crArrow
@@ -241,7 +243,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
         Modifiers = []
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 15
+        TabOrder = 17
       end
       object ckShortcutNotesUse: TCheckBox
         Left = 48
@@ -250,7 +252,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
         Height = 17
         Cursor = crHandPoint
         Caption = 'Notes'
-        TabOrder = 16
+        TabOrder = 12
         OnClick = ckShortcutUsesOrganizationUseClick
       end
       object edtShortcutNotes: THotKey
@@ -265,12 +267,36 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
         Modifiers = []
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 17
+        TabOrder = 13
+      end
+      object ckShortcutVsCodeIntegrationOpenUse: TCheckBox
+        Left = 48
+        Top = 205
+        Width = 101
+        Height = 17
+        Cursor = crHandPoint
+        Caption = 'Open In VS Code'
+        TabOrder = 14
+        OnClick = ckShortcutUsesOrganizationUseClick
+      end
+      object edtShortcutVsCodeIntegrationOpen: THotKey
+        Left = 226
+        Top = 205
+        Width = 150
+        Height = 19
+        Cursor = crArrow
+        Hint = 'Customize Shortcut'
+        HotKey = 0
+        InvalidKeys = [hcNone]
+        Modifiers = []
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 15
       end
     end
     object gboxData: TGroupBox
       Left = 0
-      Top = 377
+      Top = 426
       Width = 686
       Height = 58
       Align = alBottom
@@ -279,6 +305,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
       Padding.Top = 5
       Padding.Bottom = 3
       TabOrder = 2
+      ExplicitTop = 377
       object btnOpenDataFolder: TButton
         Left = 4
         Top = 20
@@ -293,12 +320,14 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
     end
     object gBoxSettings: TGroupBox
       Left = 0
-      Top = 281
+      Top = 313
       Width = 686
-      Height = 96
+      Height = 113
       Align = alClient
       Caption = ' Settings '
       TabOrder = 1
+      ExplicitTop = 281
+      ExplicitHeight = 96
       object ckBlockKeyInsert: TCheckBox
         Left = 48
         Top = 48
@@ -321,7 +350,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
   end
   object Panel1: TPanel
     Left = 0
-    Top = 439
+    Top = 488
     Width = 686
     Height = 35
     Align = alBottom
@@ -333,6 +362,7 @@ object C4DWizardSettingsView: TC4DWizardSettingsView
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 439
     object Label4: TLabel
       Left = 8
       Top = 3

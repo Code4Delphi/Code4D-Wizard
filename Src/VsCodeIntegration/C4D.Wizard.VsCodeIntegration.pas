@@ -9,9 +9,9 @@ uses
 type
   TC4DWizardVsCodeIntegration = class
   private
-
   public
     class procedure Open;
+    class procedure InstallDelphiLSP;
   end;
 
 implementation
@@ -57,10 +57,16 @@ begin
 
   LCursorPos := LIOTAEditView.CursorPos;
 
-  //LComand := Format('"code --install-extension %s --force"', ['embarcaderotechnologies.delphilsp']);
-
   //REFERENCE: https://code.visualstudio.com/docs/editor/command-line
   LComand := Format('"code -r %s -g %s:%d:%d"', [LFilePathProject, LFileNameModule, LCursorPos.Line, LCursorPos.Col]);
+  TC4DWizardProcessDelphi.RunCommand([LComand]);
+end;
+
+class procedure TC4DWizardVsCodeIntegration.InstallDelphiLSP;
+var
+  LComand: string;
+begin
+  LComand := Format('"code --install-extension %s --force"', ['embarcaderotechnologies.delphilsp']);
   TC4DWizardProcessDelphi.RunCommand([LComand]);
 end;
 

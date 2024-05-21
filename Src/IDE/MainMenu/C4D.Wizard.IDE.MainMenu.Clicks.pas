@@ -21,7 +21,8 @@ type
     class procedure FindClick(Sender: TObject);
     class procedure ReplaceClick(Sender: TObject);
     class procedure NotesClick(Sender: TObject);
-    class procedure OpenInVsCodeClick(Sender: TObject);
+    class procedure VsCodeIntegrationOpenInVsCodeClick(Sender: TObject);
+    class procedure VsCodeIntegrationInstallDelphiLSPClick(Sender: TObject);
     class procedure DefaultFilesInOpeningProjectClick(Sender: TObject);
     class procedure BackupExportClick(Sender: TObject);
     class procedure BackupImportClick(Sender: TObject);
@@ -134,9 +135,14 @@ begin
   C4D.Wizard.Notes.View.C4DWizardNotesViewShowDockableForm;
 end;
 
-class procedure TC4DWizardIDEMainMenuClicks.OpenInVsCodeClick(Sender: TObject);
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationOpenInVsCodeClick(Sender: TObject);
 begin
   TC4DWizardVsCodeIntegration.Open;
+end;
+
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallDelphiLSPClick(Sender: TObject);
+begin
+  TC4DWizardVsCodeIntegration.InstallDelphiLSP;
 end;
 
 class procedure TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick(Sender: TObject);

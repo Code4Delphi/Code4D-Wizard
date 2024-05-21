@@ -131,6 +131,9 @@ contains
   C4D.Wizard.FormatSource.View in '..\Src\FormatSource\C4D.Wizard.FormatSource.View.pas' {C4DWizardFormatSourceView},
   C4D.Wizard.Notes.View in '..\Src\Notes\C4D.Wizard.Notes.View.pas' {C4DWizardNotesView},
   C4D.Wizard.Utils.OTA.Codex in '..\Src\Utils\C4D.Wizard.Utils.OTA.Codex.pas',
-  C4D.Wizard.VsCodeIntegration in '..\Src\VsCodeIntegration\C4D.Wizard.VsCodeIntegration.pas';
+  C4D.Wizard.VsCodeIntegration in '..\Src\VsCodeIntegration\C4D.Wizard.VsCodeIntegration.pas',
+  C4D.Wizard.IDE.ToolBars.VsCodeIntegration in '..\Src\IDE\ToolBars\C4D.Wizard.IDE.ToolBars.VsCodeIntegration.pas',
+  C4D.Wizard.IDE.ToolBars.Utils in '..\Src\IDE\ToolBars\C4D.Wizard.IDE.ToolBars.Utils.pas',
+  C4D.Wizard.IDE.MainMenu.VsCodeIntegration in '..\Src\IDE\MainMenu\C4D.Wizard.IDE.MainMenu.VsCodeIntegration.pas';
 
 end.

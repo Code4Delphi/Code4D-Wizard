@@ -22,16 +22,12 @@ type
     FCont: Integer;
     FINTAServices: INTAServices;
     FToolBarUtilities: TToolBar;
-    FToolButtonOpenInVsCode: TToolButton;
     FToolButtonUnitInReadOnly: TToolButton;
     FList: TObjectList<TC4DWizardOpenExternal>;
     procedure NewToolBarUtilities;
-    procedure OnC4DToolButtonOpenInVsCodeClick(Sender: TObject);
     procedure OnC4DToolButtonUnitInReadOnlyClick(Sender: TObject);
     procedure RemoveToolBarUtilities;
-    procedure AddButtonOpenInVsCode;
     procedure AddButtonUnitInReadOnly;
-    function GetReferenceToolBar: string;
     function GetIniFile: TIniFile;
     procedure ProcessRefreshUnitInReadOnly;
     procedure ConfigButtonUnitInReadOnly(const AInReadOnly: Boolean);
@@ -62,10 +58,10 @@ uses
   C4D.Wizard.Consts,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA,
+  C4D.Wizard.IDE.ToolBars.Utils,
   C4D.Wizard.IDE.ImageListMain,
   C4D.Wizard.OpenExternal.Model,
-  C4D.Wizard.OpenExternal.Utils,
-  C4D.Wizard.VsCodeIntegration;
+  C4D.Wizard.OpenExternal.Utils;
 
 procedure RegisterSelf;
 begin
@@ -95,9 +91,7 @@ procedure TC4DWizardIDEToolBarsUtilities.NewToolBarUtilities;
 begin
   Self.RemoveToolBarUtilities;
   FToolBarUtilities := FINTAServices.NewToolbar(TC4DConsts.TOOL_BAR_UTILITIES_NAME,
-    TC4DConsts.TOOL_BAR_UTILITIES_CAPTION,
-    Self.GetReferenceToolBar,
-    True);
+    TC4DConsts.TOOL_BAR_UTILITIES_CAPTION, TC4DWizardIDEToolBarsUtils.GetReferenceToolbarName, True);
   FToolBarUtilities.Visible := False;
   FToolBarUtilities.Flat := True;
   FToolBarUtilities.Images := TC4DWizardUtilsOTA.GetINTAServices.ImageList;
@@ -113,7 +107,6 @@ begin
   Self.OpenExternalFillList;
   Self.OpenExternalCreateButtonList;
   Self.AddButtonUnitInReadOnly;
-  Self.AddButtonOpenInVsCode;
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.RefreshButtons;
@@ -167,61 +160,6 @@ function TC4DWizardIDEToolBarsUtilities.GetVisibleInINI: Boolean;
 begin
   Result := Self.GetIniFile.ReadBool(TC4DConsts.TOOL_BAR_UTILITIES_NAME,
     TC4DConsts.TOOL_BAR_UTILITIES_INI_Visible, True);
-end;
-
-function TC4DWizardIDEToolBarsUtilities.GetReferenceToolBar: string;
-var
-  LStandardToolBar: TToolBar;
-  LControlBar: TControlBar;
-  LControl: TControl;
-  i: Integer;
-  LBiggerLeft: Integer;
-begin
-  Result := sBrowserToolbar;
-
-  if(FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_BRANCH_NAME] <> nil)then
-    Result := TC4DConsts.TOOL_BAR_BRANCH_NAME;
-
-  LStandardToolBar := FINTAServices.ToolBar[sStandardToolBar];
-  if(not Assigned(LStandardToolBar))then
-    Exit;
-  LControlBar := LStandardToolBar.Parent as TControlBar;
-
-  LBiggerLeft := 0;
-  for i := 0 to Pred(LControlBar.ControlCount) do
-  begin
-    LControl := LControlBar.Controls[i];
-    if(LControl.Visible)and(LControl.Left > LBiggerLeft)then
-    begin
-      Result := LControl.Name;
-      LBiggerLeft := LControl.Left;
-    end;
-  end;
-end;
-
-procedure TC4DWizardIDEToolBarsUtilities.AddButtonOpenInVsCode;
-begin
-  FToolButtonOpenInVsCode := TToolButton(FToolBarUtilities.FindComponent(TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_OpenInVsCode_NAME));
-  if(FToolButtonOpenInVsCode <> nil)then
-    FToolButtonOpenInVsCode.Free;
-
-  FToolButtonOpenInVsCode := TToolButton.Create(FToolBarUtilities);
-  FToolButtonOpenInVsCode.Parent := FToolBarUtilities;
-  FToolButtonOpenInVsCode.Caption := TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_OpenInVsCode_CAPTION;
-  FToolButtonOpenInVsCode.Hint := FToolButtonOpenInVsCode.Caption;
-  FToolButtonOpenInVsCode.ShowHint := True;
-  FToolButtonOpenInVsCode.Name := TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_OpenInVsCode_NAME;
-  FToolButtonOpenInVsCode.Style := tbsButton;
-  FToolButtonOpenInVsCode.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexVsCode;
-  FToolButtonOpenInVsCode.Visible := True;
-  FToolButtonOpenInVsCode.OnClick := OnC4DToolButtonOpenInVsCodeClick;
-  FToolButtonOpenInVsCode.AutoSize := True;
-  FToolButtonOpenInVsCode.Left := 0;
-end;
-
-procedure TC4DWizardIDEToolBarsUtilities.OnC4DToolButtonOpenInVsCodeClick(Sender: TObject);
-begin
-  TC4DWizardVsCodeIntegration.Open;
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.AddButtonUnitInReadOnly;
