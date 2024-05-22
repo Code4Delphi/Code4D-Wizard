@@ -9,8 +9,10 @@ uses
 type
   TC4DWizardVsCodeIntegration = class
   private
+    class procedure RunCommandInstallExtension(const AIdentifierExtension: string);
   public
     class procedure Open;
+    class procedure InstallGithubCopilot;
     class procedure InstallDelphiLSP;
   end;
 
@@ -46,8 +48,8 @@ begin
   if LIOTAEditView = nil then
     TC4DWizardUtils.ShowMsgAndAbort('Editor view cannot be located');
 
-  LFileNameModule := LIOTAModule.FileName;
 
+  LFileNameModule := LIOTAModule.FileName;
   LIOTAProject := LIOTAModuleServices.GetActiveProject;
   if LIOTAProject = nil then
     TC4DWizardUtils.ShowMsgAndAbort('No active projects were found');
@@ -58,16 +60,33 @@ begin
   LCursorPos := LIOTAEditView.CursorPos;
 
   //REFERENCE: https://code.visualstudio.com/docs/editor/command-line
-  LComand := Format('"code -r %s -g %s:%d:%d"', [LFilePathProject, LFileNameModule, LCursorPos.Line, LCursorPos.Col]);
+  LComand := Format('"code -n %s -g %s:%d:%d"', [LFilePathProject, LFileNameModule, LCursorPos.Line, LCursorPos.Col]);
+  TC4DWizardUtils.ShowMsg(LComand);
+  Exit;
   TC4DWizardProcessDelphi.RunCommand([LComand]);
 end;
 
+class procedure TC4DWizardVsCodeIntegration.InstallGithubCopilot;
+begin
+  Self.RunCommandInstallExtension('github.copilot');
+end;
+
 class procedure TC4DWizardVsCodeIntegration.InstallDelphiLSP;
+begin
+  Self.RunCommandInstallExtension('embarcaderotechnologies.delphilsp');
+end;
+
+class procedure TC4DWizardVsCodeIntegration.RunCommandInstallExtension(const AIdentifierExtension: string);
 var
   LComand: string;
 begin
-  LComand := Format('"code --install-extension %s --force"', ['embarcaderotechnologies.delphilsp']);
+  if AIdentifierExtension.Trim.IsEmpty then
+    Exit;
+
+  LComand := Format('"code --install-extension %s --force"', [AIdentifierExtension]);
   TC4DWizardProcessDelphi.RunCommand([LComand]);
+
+  TC4DWizardUtils.ShowMsg('Extension installation pushed to VS Code!');
 end;
 
 end.

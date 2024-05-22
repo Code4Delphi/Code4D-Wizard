@@ -19,8 +19,9 @@ type
     FMenuItemVsCodeIntegration: TMenuItem;
     procedure AddMenuVsCodeIntegration;
     procedure AddSubMenuItemOpen;
-    procedure AddSubMenuInstallDelphiLSP;
     procedure AddSeparator(AName: string);
+    procedure AddSubMenuInstallGithubCopilot;
+    procedure AddSubMenuInstallDelphiLSP;
     function GetShortcutOpenInVsCode: string;
   protected
     function Process: IC4DWizardIDEMainMenuVsCodeIntegration;
@@ -53,6 +54,7 @@ begin
   Self.AddMenuVsCodeIntegration;
   Self.AddSubMenuItemOpen;
   Self.AddSeparator('C4DVsCodeIntegrationSeparator01');
+  Self.AddSubMenuInstallGithubCopilot;
   Self.AddSubMenuInstallDelphiLSP;
 end;
 
@@ -87,6 +89,18 @@ begin
   LMenuItem.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexVsCode;
   LMenuItem.OnClick := TC4DWizardIDEMainMenuClicks.VsCodeIntegrationOpenInVsCodeClick;
   LMenuItem.ShortCut := TextToShortCut(TC4DWizardUtils.RemoveSpacesAll(Self.GetShortcutOpenInVsCode));
+  FMenuItemVsCodeIntegration.Add(LMenuItem);
+end;
+
+procedure TC4DWizardIDEMainMenuVsCodeIntegration.AddSubMenuInstallGithubCopilot;
+var
+  LMenuItem: TMenuItem;
+begin
+  LMenuItem := TMenuItem.Create(FMenuItemVsCodeIntegration);
+  LMenuItem.Name := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_NAME;
+  LMenuItem.Caption := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_CAPTION;
+  LMenuItem.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexImport;
+  LMenuItem.OnClick := TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallGithubCopilotClick;
   FMenuItemVsCodeIntegration.Add(LMenuItem);
 end;
 
