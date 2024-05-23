@@ -46,11 +46,12 @@ type
   end;
 
   TC4DWizardOpenExternalKindHelper = record helper for TC4DWizardOpenExternalKind
-    function Tostring: string;
+    function ToString: string;
   end;
 
   TC4DExtensionsFilesHelper = record helper for TC4DExtensionsFiles
-    function Tostring: string;
+    function ToString: string;
+    function ToStringWithPoint: string;
   end;
 
   TC4DExtensionsOfFilesHelper = record helper for TC4DExtensionsOfFiles
@@ -77,7 +78,7 @@ begin
 end;
 
 {TC4DWizardOpenExternalKindHelper}
-function TC4DWizardOpenExternalKindHelper.Tostring: string;
+function TC4DWizardOpenExternalKindHelper.ToString: string;
 begin
   if(Self = TC4DWizardOpenExternalKind.CMD)then
     Exit(TC4DConsts.STR_CMD_COMMANDS)
@@ -88,9 +89,14 @@ begin
 end;
 
 { TC4DExtensionsFilesHelper }
-function TC4DExtensionsFilesHelper.Tostring: string;
+function TC4DExtensionsFilesHelper.ToString: string;
 begin
   Result := GetEnumName(TypeInfo(TC4DExtensionsFiles), Integer(Self)).ToLower;
+end;
+
+function TC4DExtensionsFilesHelper.ToStringWithPoint: string;
+begin
+  Result := '.' + Self.ToString;
 end;
 
 { TC4DExtensionsOfFilesHelper }

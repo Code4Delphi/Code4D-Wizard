@@ -202,9 +202,9 @@ begin
         LListItem := ListViewHistory.Items.Add;
         LListItem.Caption := AC4DWizardOpenExternal.Description;
         LListItem.ImageIndex := -1;
-        LListItem.SubItems.Add(AC4DWizardOpenExternal.Order.Tostring);
+        LListItem.SubItems.Add(AC4DWizardOpenExternal.Order.ToString);
         LListItem.SubItems.Add(AC4DWizardOpenExternal.Shortcut);
-        LListItem.SubItems.Add(AC4DWizardOpenExternal.Kind.Tostring);
+        LListItem.SubItems.Add(AC4DWizardOpenExternal.Kind.ToString);
         LListItem.SubItems.Add(TC4DWizardUtils.BoolToStrC4D(AC4DWizardOpenExternal.Visible));
         LListItem.SubItems.Add(TC4DWizardUtils.BoolToStrC4D(AC4DWizardOpenExternal.VisibleInToolBarUtilities));
         LListItem.SubItems.Add(AC4DWizardOpenExternal.Path);
@@ -262,9 +262,9 @@ begin
     Exit;
 
   LKind := ListViewHistory.Items[AItem.Index].SubItems[C_INDEX_SUBITEM_Kind];
-  if(LKind = TC4DWizardOpenExternalKind.CMD.Tostring)then
+  if(LKind = TC4DWizardOpenExternalKind.CMD.ToString)then
     btnOpenRun.Caption := 'Run command'
-  else if(LKind = TC4DWizardOpenExternalKind.Separators.Tostring)then
+  else if(LKind = TC4DWizardOpenExternalKind.Separators.ToString)then
     btnOpenRun.Enabled := False;
 end;
 
@@ -367,7 +367,7 @@ begin
 
   LParameters := LItem.SubItems[C_INDEX_SUBITEM_Parameters];
   LKind := LItem.SubItems[C_INDEX_SUBITEM_Kind];
-  if(LKind = TC4DWizardOpenExternalKind.CMD.Tostring)then
+  if(LKind = TC4DWizardOpenExternalKind.CMD.ToString)then
     TC4DWizardProcessDelphi.RunCommand(TC4DWizardOpenExternalUtils.ProcessTags(LParameters))
   else
     TC4DWizardUtils.ShellExecuteC4D(TC4DWizardOpenExternalUtils.ProcessTags(LPath),

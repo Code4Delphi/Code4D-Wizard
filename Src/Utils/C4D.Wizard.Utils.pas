@@ -457,8 +457,8 @@ begin
 
     if(ADefaultExt <> TC4DExtensionsFiles.All)then
     begin
-      LOpenDialog.DefaultExt := ADefaultExt.Tostring;
-      LOpenDialog.Filter := Format('Arquivo %s|*.%s', [ADefaultExt.Tostring.ToUpper, ADefaultExt.Tostring]);
+      LOpenDialog.DefaultExt := ADefaultExt.ToString;
+      LOpenDialog.Filter := Format('Arquivo %s|*.%s', [ADefaultExt.ToString.ToUpper, ADefaultExt.ToString]);
     end;
 
     if(not LOpenDialog.Execute)then
@@ -634,7 +634,7 @@ class function TC4DWizardUtils.GetPathImageOpenExternal(AGuid: string): string;
 begin
   Result := Self.GetPathFolderRoot +
     TC4DConsts.OPEN_EXTERNAL_INI_PREFIX_IMG +
-    Self.GuidToFileName(AGuid, '.' + TC4DExtensionsFiles.Bmp.Tostring);
+    Self.GuidToFileName(AGuid, '.' + TC4DExtensionsFiles.Bmp.ToString);
 end;
 
 class function TC4DWizardUtils.GetPathFileNotes: string;
@@ -803,12 +803,12 @@ end;
 
 class function TC4DWizardUtils.ChangeExtensionToPAS(AFilePath: string): string;
 begin
-  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.PAS.Tostring);
+  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.PAS.ToString);
 end;
 
 class function TC4DWizardUtils.ChangeExtensionToDFM(AFilePath: string): string;
 begin
-  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.DFM.Tostring);
+  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.DFM.ToString);
 end;
 
 class function TC4DWizardUtils.ChangeExtensionToExe(AFilePath: string): string;
@@ -818,12 +818,12 @@ end;
 
 class function TC4DWizardUtils.ChangeExtensionToDPR(AFilePath: string): string;
 begin
-  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.DPR.Tostring);
+  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.DPR.ToString);
 end;
 
 class function TC4DWizardUtils.ChangeExtensionToDPK(AFilePath: string): string;
 begin
-  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.DPK.Tostring);
+  Result := Self.ChangeExtension(AFilePath, '.' + TC4DExtensionsFiles.DPK.ToString);
 end;
 
 class function TC4DWizardUtils.ChangeExtension(AFilePath: string; ANewExtension: string): string;
@@ -863,7 +863,7 @@ var
   LExtension: string;
 begin
   LExtension := GetExtensionNoPoint(AFilePath);
-  Result := LExtension = TC4DExtensionsFiles.DPROJ.Tostring;
+  Result := LExtension = TC4DExtensionsFiles.DPROJ.ToString;
 end;
 
 class function TC4DWizardUtils.IsDPR(const AFilePath: string): Boolean;
@@ -871,7 +871,7 @@ var
   LExtension: string;
 begin
   LExtension := GetExtensionNoPoint(AFilePath);
-  Result := LExtension = TC4DExtensionsFiles.DPR.Tostring;
+  Result := LExtension = TC4DExtensionsFiles.DPR.ToString;
 end;
 
 class function TC4DWizardUtils.IsDPK(const AFilePath: string): Boolean;
@@ -879,7 +879,7 @@ var
   LExtension: string;
 begin
   LExtension := GetExtensionNoPoint(AFilePath);
-  Result := LExtension = TC4DExtensionsFiles.DPK.Tostring;
+  Result := LExtension = TC4DExtensionsFiles.DPK.ToString;
 end;
 
 class function TC4DWizardUtils.IsProjectGroup(const AFilePath: string): Boolean;

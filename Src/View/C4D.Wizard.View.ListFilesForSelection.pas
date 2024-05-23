@@ -199,7 +199,7 @@ begin
               LListItem.Caption := ExtractFileName(LItemFilePath);
               LListItem.ImageIndex := -1;
               LListItem.SubItems.Add(LItemFilePath);
-              LListItem.SubItems.Add(TC4DWizardUtilsOTA.FileIsOpenInIDE(LItemFilePath).Tostring(TUseBoolStrs.True));
+              LListItem.SubItems.Add(TC4DWizardUtilsOTA.FileIsOpenInIDE(LItemFilePath).ToString(TUseBoolStrs.True));
             end;
           end);
       finally
@@ -370,10 +370,10 @@ begin
   lbCountDestiny.Caption := '0';
 
   if(ListViewOrigin.Items.Count > 0)then
-    lbCountOrigin.Caption := ListViewOrigin.Items.Count.Tostring;
+    lbCountOrigin.Caption := ListViewOrigin.Items.Count.ToString;
 
   if(ListViewDestiny.Items.Count > 0)then
-    lbCountDestiny.Caption := ListViewDestiny.Items.Count.Tostring;
+    lbCountDestiny.Caption := ListViewDestiny.Items.Count.ToString;
 end;
 
 function TC4DWizardViewListFilesForSelection.GetPathListInstring(const ASeparator: string): string;

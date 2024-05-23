@@ -365,8 +365,8 @@ var
   LMsg: string;
 begin
   LMsg := 'Replace complete: %s' +
-    FC4DWizardReplaceFilesModel.GetCountReplace.Tostring +' replacement in ' +
-    FC4DWizardReplaceFilesModel.GetCountArqReplace.Tostring + ' files';
+    FC4DWizardReplaceFilesModel.GetCountReplace.ToString +' replacement in ' +
+    FC4DWizardReplaceFilesModel.GetCountArqReplace.ToString + ' files';
 
   if(FC4DWizardReplaceFilesModel.GetCountReplace <= 0)then
   begin
@@ -396,8 +396,8 @@ procedure TC4DWizardReplaceFilesView.ProcessMsgCancel;
 var
   LMsg: string;
 begin
-  LMsg := FC4DWizardReplaceFilesModel.GetCountReplace.Tostring +' replacement in ' +
-    FC4DWizardReplaceFilesModel.GetCountArqReplace.Tostring + ' files';
+  LMsg := FC4DWizardReplaceFilesModel.GetCountReplace.ToString +' replacement in ' +
+    FC4DWizardReplaceFilesModel.GetCountArqReplace.ToString + ' files';
   TC4DWizardMessageCustom.GetInstance
     .Clear
     .GroupName(FC4DWizardReplaceFilesModel.GetGroupNameMsg)

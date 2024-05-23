@@ -284,7 +284,7 @@ begin
     LMsg := Self.AddContrastInSubstr(LMsg, FSubstrContrast);
 
   if(not FFileName.IsEmpty)then
-    LMsg := FFileName + '('+ FLine.Tostring +'): ' + LMsg;
+    LMsg := FFileName + '('+ FLine.ToString +'): ' + LMsg;
 
   if(not FPrefix.IsEmpty)then
     LMsg := '['+ FPrefix +'] ' + LMsg;

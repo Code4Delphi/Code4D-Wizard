@@ -281,7 +281,7 @@ var
   LNameButton: string;
   LToolButton: TToolButton;
 begin
-  LNameButton := 'C4DToolBarsUtilities' + TC4DWizardUtils.IncInt(FCont).Tostring;
+  LNameButton := 'C4DToolBarsUtilities' + TC4DWizardUtils.IncInt(FCont).ToString;
   LToolButton := TToolButton(FToolBarUtilities.FindComponent(LNameButton));
   if(LToolButton <> nil)then
     LToolButton.Free;

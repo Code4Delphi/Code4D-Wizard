@@ -42,27 +42,24 @@ begin
     TC4DWizardUtils.ShowMsgAndAbort('No current module');
 
   if not Supports(LIOTAModule.CurrentEditor, IOTASourceEditor, LIOTASourceEditor) then
-    TC4DWizardUtils.ShowMsgAndAbort('Interface (IOTASourceEditor) not supported by current module');
+    TC4DWizardUtils.ShowMsgAndAbort('Feature not currently supported');
 
   LIOTAEditView := LIOTASourceEditor.GetEditView(0);
   if LIOTAEditView = nil then
     TC4DWizardUtils.ShowMsgAndAbort('Editor view cannot be located');
 
-
-  LFileNameModule := LIOTAModule.FileName;
   LIOTAProject := LIOTAModuleServices.GetActiveProject;
   if LIOTAProject = nil then
     TC4DWizardUtils.ShowMsgAndAbort('No active projects were found');
   LFilePathProject := ExtractFilePath(LIOTAProject.FileName);
 
+  LFileNameModule := TC4DWizardUtilsOTA.GetFileNameDprOrDpkIfDproj(LIOTAModule);
+
   TC4DWizardUtilsOTA.SaveAllModifiedModules;
 
   LCursorPos := LIOTAEditView.CursorPos;
-
   //REFERENCE: https://code.visualstudio.com/docs/editor/command-line
   LComand := Format('"code -n %s -g %s:%d:%d"', [LFilePathProject, LFileNameModule, LCursorPos.Line, LCursorPos.Col]);
-  TC4DWizardUtils.ShowMsg(LComand);
-  Exit;
   TC4DWizardProcessDelphi.RunCommand([LComand]);
 end;
 

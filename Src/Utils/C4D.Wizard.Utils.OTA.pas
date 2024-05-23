@@ -72,7 +72,8 @@ type
     class function GetCurrentProjectGroup: IOTAProjectGroup;
     class function GetCurrentProject: IOTAProject;
     class function GetCurrentProjectFileName: string;
-    class Function GetProjectName(const AIOTAProject: IOTAProject): string;
+    class function GetProjectName(const AIOTAProject: IOTAProject): string;
+    class function GetFileNameDprOrDpkIfDproj(const AIOTAModule: IOTAModule): string;
     class function GetCurrentProjectOptions: IOTAProjectOptions;
     class function GetCurrentOutputDir: string;
     class function GetCurrentProjectOptionsConfigurations: IOTAProjectOptionsConfigurations;
@@ -746,10 +747,7 @@ begin
     Result := LIOTAProject.FileName.Trim;
 end;
 
-class Function TC4DWizardUtilsOTA.GetProjectName(const AIOTAProject: IOTAProject): string;
-const
-  EXT_dpr = '.dpr';
-  EXT_DPK = '.dpk';
+class function TC4DWizardUtilsOTA.GetProjectName(const AIOTAProject: IOTAProject): string;
 var
   i: Integer;
   LExt: string;
@@ -758,10 +756,31 @@ begin
   for i := 0 to Pred(AIOTAProject.ModuleFileCount) do
   begin
     LExt := LowerCase(ExtractFileExt(AIOTAProject.ModuleFileEditors[i].FileName));
-    if(LExt = EXT_dpr)Or(LExt = EXT_DPK) Then
+    if(LExt = TC4DExtensionsFiles.DPR.ToString)or(LExt = TC4DExtensionsFiles.DPK.ToString) Then
     begin
       Result := ChangeFileExt(Result, LExt);
       Break;
+    end;
+  end;
+end;
+
+class function TC4DWizardUtilsOTA.GetFileNameDprOrDpkIfDproj(const AIOTAModule: IOTAModule): string;
+var
+  i: Integer;
+  LExt: string;
+  LFileName: string;
+begin
+  Result := AIOTAModule.FileName;
+
+  if ExtractFileExt(Result) = TC4DExtensionsFiles.DPROJ.ToStringWithPoint then
+  begin
+    for i := 0 to Pred(AIOTAModule.ModuleFileCount) do
+    begin
+      LFileName := AIOTAModule.ModuleFileEditors[i].FileName;
+      LExt := ExtractFileExt(LFileName);
+
+      if(LExt = TC4DExtensionsFiles.DPR.ToStringWithPoint)or(LExt = TC4DExtensionsFiles.DPK.ToStringWithPoint)then
+        Result := LFileName;
     end;
   end;
 end;

@@ -41,7 +41,7 @@ begin
 
   LLink := Copy(LStringClick, 1, pos(LSeparator, LStringClick) - 1);
   LParameters := Copy(LStringClick, (pos(LSeparator, LStringClick) + LSeparator.Length), LStringClick.Length);
-  if(LLink = TC4DWizardOpenExternalKind.CMD.Tostring)then
+  if(LLink = TC4DWizardOpenExternalKind.CMD.ToString)then
     TC4DWizardProcessDelphi.RunCommand(TC4DWizardOpenExternalUtils.ProcessTags(LParameters))
   else
     TC4DWizardUtils.ShellExecuteC4D(TC4DWizardOpenExternalUtils.ProcessTags(LLink),

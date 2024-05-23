@@ -308,7 +308,7 @@ var
   LMsg: string;
 begin
   LMsg := 'Uses organization complete. %s' +
-    'Organization in ' + FC4DWizardUsesOrganization.CountAlterFiles.Tostring + ' files';
+    'Organization in ' + FC4DWizardUsesOrganization.CountAlterFiles.ToString + ' files';
 
   TC4DWizardUtils.ShowV(Format(LMsg, [sLineBreak]));
 
@@ -327,7 +327,7 @@ procedure TC4DWizardUsesOrganizationView.ProcessMsgCancel;
 begin
   TC4DWizardMessagesSimple.New
     .GroupName(FC4DWizardUsesOrganization.GetGroupNameMsg)
-    .Msg('Organization in ' + FC4DWizardUsesOrganization.CountAlterFiles.Tostring + ' files')
+    .Msg('Organization in ' + FC4DWizardUsesOrganization.CountAlterFiles.ToString + ' files')
     .AddMsg
     .Msg('Organization canceled before completion')
     .AddMsg
