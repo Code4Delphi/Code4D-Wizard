@@ -143,6 +143,11 @@ type
     function ShortcutNotes: string; overload;
     function ShortcutNotes(Value: string): IC4DWizardSettingsModel; overload;
 
+    function ShortcutVsCodeIntegrationOpenUse: Boolean; overload;
+    function ShortcutVsCodeIntegrationOpenUse(Value: Boolean): IC4DWizardSettingsModel; overload;
+    function ShortcutVsCodeIntegrationOpen: string; overload;
+    function ShortcutVsCodeIntegrationOpen(Value: string): IC4DWizardSettingsModel; overload;
+
     function ShortcutGitHubDesktopUse: Boolean; overload;
     function ShortcutGitHubDesktopUse(Value: Boolean): IC4DWizardSettingsModel; overload;
     function ShortcutGitHubDesktop: string; overload;

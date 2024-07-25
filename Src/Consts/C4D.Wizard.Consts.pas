@@ -103,6 +103,16 @@ type
     MENU_IDE_FormatSource_CAPTION = 'Format Source';
     MENU_IDE_NOTES_NAME = 'C4DWizarNotes1';
     MENU_IDE_NOTES_CAPTION = 'Notes';
+    MENU_IDE_VSCODE_INTEGRATION_NAME = 'C4DWizarVsCodeIntegration1';
+    MENU_IDE_VSCODE_INTEGRATION_CAPTION = 'Vs Code Integration';
+    MENU_IDE_VSCODE_INTEGRATION_OPEN_NAME = 'C4DWizarVsCodeIntegrationOpen1';
+    MENU_IDE_VSCODE_INTEGRATION_OPEN_CAPTION = 'Open In VS Code';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_DELPHILSP_NAME = 'C4DWizarVsCodeIntegrationInstallDelphiLSP1';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_DELPHILSP_CAPTION = 'Install DelphiLSP extension in VS Code';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_NAME = 'C4DWizarVsCodeIntegrationInstallGithubCopilot1';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_CAPTION = 'Install GitHub Copilot extension in VS Code';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_Supermaven_NAME = 'C4DWizarVsCodeIntegrationInstallSupermaven1';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_Supermaven_CAPTION = 'Install GitHub Supermaven extension in VS Code';
 
     //FILE .INI REOPEN
     REOPEN_INI_Favorite = 'Favorite';
@@ -170,6 +180,14 @@ type
     TOOL_BAR_UTILITIES_TOOL_BUTTON_GithubDesktop_NAME = 'C4DToolButtonUtilitiesGithubDesktop';
     //TOOLBAR UTILITIES INI
     TOOL_BAR_UTILITIES_INI_Visible = 'Visible';
+
+    //TOOLBAR VS Code Integration
+    TOOL_BAR_VsCodeIntegration_NAME = 'C4DToolBarVsCodeIntegration';
+    TOOL_BAR_VsCodeIntegration_CAPTION = 'C4D VS Code Integration';
+    TOOL_BAR_VsCodeIntegration_TOOL_BUTTON_OpenInVsCode_NAME = 'C4DToolButtoVsCodeIntegrationOpen';
+    TOOL_BAR_VsCodeIntegration_TOOL_BUTTON_OpenInVsCode_CAPTION = 'Open In VS Code';
+    //TOOLBAR VS Code Integration INI
+    TOOL_BAR_VsCodeIntegration_INI_Visible = 'Visible';
 
     EXTENSIONS_PERMITTED_BACKUP_EXPORT: TC4DExtensionsOfFiles = [TC4DExtensionsFiles.INI,
       TC4DExtensionsFiles.BMP];

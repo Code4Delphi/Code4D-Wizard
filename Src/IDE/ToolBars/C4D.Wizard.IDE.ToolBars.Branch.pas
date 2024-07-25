@@ -133,9 +133,7 @@ procedure TC4DWizardIDEToolBarsBranch.NewToolBarC4D;
 begin
   Self.RemoveToolBarC4D;
   FToolBarBranch := FINTAServices.NewToolbar(TC4DConsts.TOOL_BAR_BRANCH_NAME,
-    TC4DConsts.TOOL_BAR_BRANCH_CAPTION,
-    Self.GetReferenceToolBar,
-    True);
+    TC4DConsts.TOOL_BAR_BRANCH_CAPTION, Self.GetReferenceToolBar, True);
   FToolBarBranch.Visible := False;
   FToolBarBranch.EdgeInner := esNone;
   FToolBarBranch.EdgeOuter := esNone;

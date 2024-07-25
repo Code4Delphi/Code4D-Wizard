@@ -5,6 +5,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
+  ToolsAPI,
   Vcl.Controls,
   Vcl.ExtCtrls,
   Vcl.Forms,
@@ -122,19 +123,8 @@ begin
 end;
 
 procedure TC4DWizardViewAbout.btnTesteClick(Sender: TObject);
-const
-  MSG = 'Carregando conteúdo.';
-var
-  LMsg: string;
 begin
-  LMsg := 'Acesse nosso canal no ' +
-    'YouTube e acompanhe nossos ' +
-    'cursos: ' + sLineBreak +
-    '@code4delphi';
-
-  ShowMessage(LMsg);
-
-  ShowMessage(MSG + ' Aguarde...');
+  //
 end;
 
 end.

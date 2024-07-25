@@ -45,6 +45,8 @@ type
     ckBeforeCompilingCheckRunning: TCheckBox;
     ckShortcutNotesUse: TCheckBox;
     edtShortcutNotes: THotKey;
+    ckShortcutVsCodeIntegrationOpenUse: TCheckBox;
+    edtShortcutVsCodeIntegrationOpen: THotKey;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnCloseClick(Sender: TObject);
@@ -113,6 +115,7 @@ begin
   edtShortcutFindInFiles.Enabled := ckShortcutFindInFilesUse.Checked;
   edtShortcutReplaceFiles.Enabled := ckShortcutReplaceFilesUse.Checked;
   edtShortcutNotes.Enabled := ckShortcutNotesUse.Checked;
+  edtShortcutVsCodeIntegrationOpen.Enabled := ckShortcutVsCodeIntegrationOpenUse.Checked;
   edtShortcutDefaultFilesInOpeningProject.Enabled := ckShortcutDefaultFilesInOpeningProjectUse.Checked;
   edtShortcutGitHubDesktop.Enabled := ckShortcutGitHubDesktopUse.Checked;
 end;
@@ -134,6 +137,8 @@ begin
   edtShortcutReplaceFiles.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutReplaceFiles);
   ckShortcutNotesUse.Checked := C4DWizardSettingsModel.ShortcutNotesUse;
   edtShortcutNotes.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutNotes);
+  ckShortcutVsCodeIntegrationOpenUse.Checked := C4DWizardSettingsModel.ShortcutVsCodeIntegrationOpenUse;
+  edtShortcutVsCodeIntegrationOpen.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutVsCodeIntegrationOpen);
   ckShortcutDefaultFilesInOpeningProjectUse.Checked := C4DWizardSettingsModel.ShortcutDefaultFilesInOpeningProjectUse;
   edtShortcutDefaultFilesInOpeningProject.HotKey := TextToShortCut(C4DWizardSettingsModel.ShortcutDefaultFilesInOpeningProject);
   ckShortcutGitHubDesktopUse.Checked := C4DWizardSettingsModel.ShortcutGitHubDesktopUse;
@@ -159,6 +164,8 @@ begin
     .ShortcutReplaceFiles(ShortCutToText(edtShortcutReplaceFiles.HotKey))
     .ShortcutNotesUse(ckShortcutNotesUse.Checked)
     .ShortcutNotes(ShortCutToText(edtShortcutNotes.HotKey))
+    .ShortcutVsCodeIntegrationOpenUse(ckShortcutVsCodeIntegrationOpenUse.Checked)
+    .ShortcutVsCodeIntegrationOpen(ShortCutToText(edtShortcutVsCodeIntegrationOpen.HotKey))
     .ShortcutDefaultFilesInOpeningProjectUse(ckShortcutDefaultFilesInOpeningProjectUse.Checked)
     .ShortcutDefaultFilesInOpeningProject(ShortCutToText(edtShortcutDefaultFilesInOpeningProject.HotKey))
     .ShortcutGitHubDesktopUse(ckShortcutGitHubDesktopUse.Checked)

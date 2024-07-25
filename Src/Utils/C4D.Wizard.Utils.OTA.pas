@@ -17,12 +17,13 @@ uses
 type
   TC4DWizardUtilsOTA = class
   private
-    class function EditorAsstring(AIOTAModule: IOTAModule): string;
+    class function EditorAsString(AIOTAModule: IOTAModule): string;
     class procedure DoCloseFile(AInfoFile: TC4DWizardInfoFile);
   public
     class function CleanCurrentProject: Boolean;
     class function CurrentProjectIsC4DWizardDPROJ: Boolean;
     class function CurrentModuleIsReadOnly: Boolean;
+    class procedure SaveAllModifiedModules;
     class procedure CloseFilesOpened(AC4DWizardExtensions: TC4DExtensionsOfFiles);
     class function AddImgIDEResourceName(AResourceName: string): Integer;
     class function AddImgIDEFilePath(AFilePath: string): Integer;
@@ -48,8 +49,11 @@ type
     class function GetIOTAWizardServices: IOTAWizardServices;
     class function GetIOTAEditView(AIOTAModule: IOTAModule): IOTAEditView; overload;
     class function GetIOTAEditView(AIOTASourceEditor: IOTASourceEditor): IOTAEditView; overload;
+    ///<summary> Get the active source editor (Tab selected in editor) </summary>
     class function GetIOTASourceEditor(AIOTAModule: IOTAModule): IOTASourceEditor; overload;
+    ///<summary> Get the active source editor (Tab selected in editor) </summary>
     class function GetIOTASourceEditor(AIOTAEditor: IOTAEditor): IOTASourceEditor; overload;
+    ///<summary> Get the active source editor (Tab selected in editor) </summary>
     class function GetIOTASourceEditor(AIOTAModule: IOTAModule; const AFileName: string): IOTASourceEditor; overload;
     class function GetIOTAEditBufferCurrentModule: IOTAEditBuffer;
     class function GetIOTAEditBuffer(AIOTAModule: IOTAModule): IOTAEditBuffer;
@@ -68,7 +72,8 @@ type
     class function GetCurrentProjectGroup: IOTAProjectGroup;
     class function GetCurrentProject: IOTAProject;
     class function GetCurrentProjectFileName: string;
-    class Function GetProjectName(const AIOTAProject: IOTAProject): string;
+    class function GetProjectName(const AIOTAProject: IOTAProject): string;
+    class function GetFileNameDprOrDpkIfDproj(const AIOTAModule: IOTAModule): string;
     class function GetCurrentProjectOptions: IOTAProjectOptions;
     class function GetCurrentOutputDir: string;
     class function GetCurrentProjectOptionsConfigurations: IOTAProjectOptionsConfigurations;
@@ -123,6 +128,26 @@ begin
   Result := LIOTAEditBuffer.IsReadOnly;
 end;
 
+class procedure TC4DWizardUtilsOTA.SaveAllModifiedModules;
+var
+  LIOTAModuleServices: IOTAModuleServices;
+  I: Integer;
+  LIOTAModule: IOTAModule;
+  LIOTAEditor: IOTAEditor;
+begin
+  LIOTAModuleServices := Self.GetIOTAModuleServices;
+  for I := 0 to Pred(LIOTAModuleServices.ModuleCount) do
+  begin
+    LIOTAModule := LIOTAModuleServices.Modules[I];
+    LIOTAEditor := LIOTAModule.CurrentEditor;
+    if LIOTAEditor = nil then
+      continue;
+
+    if LIOTAEditor.Modified then
+      LIOTAModule.Save(False, True);
+  end;
+end;
+
 class procedure TC4DWizardUtilsOTA.CloseFilesOpened(AC4DWizardExtensions: TC4DExtensionsOfFiles);
 begin
   TC4DWizardModelFilesLoop.New
@@ -143,13 +168,13 @@ var
   LMaskColor: TColor;
 begin
   Result := -1;
-  if(FindResource(hInstance, PChar(AResourceName), RT_BITMAP) <= 0)then
+  if(FindResource(HInstance, PChar(AResourceName), RT_BITMAP) <= 0)then
     Exit;
 
   LBitmap := TBitmap.Create;
   try
     try
-      LBitmap.LoadFromResourceName(hInstance, AResourceName);
+      LBitmap.LoadFromResourceName(HInstance, AResourceName);
       {$IF CompilerVersion = 35} //Alexandria
         LMaskColor := clLime;
       {$ELSE}
@@ -200,14 +225,14 @@ class function TC4DWizardUtilsOTA.EditorAsStringList(AIOTAModule: IOTAModule): T
 begin
   Result := TStringList.Create;
   try
-    Result.Text := Self.EditorAsstring(AIOTAModule);
+    Result.Text := Self.EditorAsString(AIOTAModule);
   except
     Result.Free;
     raise;
   end;
 end;
 
-class function TC4DWizardUtilsOTA.EditorAsstring(AIOTAModule: IOTAModule): string;
+class function TC4DWizardUtilsOTA.EditorAsString(AIOTAModule: IOTAModule): string;
 const
   BUFFER_SIZE: Integer = 1024;
 var
@@ -324,44 +349,32 @@ end;
 
 class function TC4DWizardUtilsOTA.FileIsOpenInIDE(const APathFile: string): Boolean;
 var
+  LIOTAModuleServices: IOTAModuleServices;
   LIOTAModule: IOTAModule;
-  LIOTAEditor: IOTAEditor;
+  LIOTASourceEditor: IOTASourceEditor;
   i: Integer;
 begin
   Result := False;
   if(APathFile.Trim.IsEmpty)then
     Exit;
 
-  LIOTAModule := Self.GetModule(APathFile);
-  if(not Assigned(LIOTAModule))then
-    Exit;
-
-  for i := 0 to Pred(LIOTAModule.GetModuleFileCount) do
+  LIOTAModuleServices := Self.GetIOTAModuleServices;
+  for i := 0 to Pred(LIOTAModuleServices.ModuleCount) do
   begin
-    LIOTAEditor := LIOTAModule.GetModuleFileEditor(i);
-    if(not Assigned(LIOTAEditor))then
+    LIOTAModule := LIOTAModuleServices.Modules[i];
+
+    LIOTASourceEditor := TC4DWizardUtilsOTA.GetIOTASourceEditor(LIOTAModule);
+    if LIOTASourceEditor = nil then
       Continue;
 
-    Result := SameFileName(APathFile, LIOTAEditor.FileName);
+    if LIOTASourceEditor.EditViewCount <= 0 then
+      Continue;
+
+    Result := SameFileName(APathFile, LIOTAModule.FileName);
     if(Result)then
       Exit;
   end;
 end;
-
-{class function TC4DWizardUtilsOTA.FileIsOpenInIDE(const APathFile: string): Boolean;
- var
- LIOTAModuleServices: IOTAModuleServices;
- i: Integer;
- begin
- Result := False;
- LIOTAModuleServices := Self.GetIOTAModuleServices;
- if(LIOTAModuleServices = nil)then
- Exit;
-
- for i := 0 to Pred(LIOTAModuleServices.ModuleCount) do
- if(LIOTAModuleServices.Modules[i].FileName = APathFile)then
- Exit(True);
- end;}
 
 class function TC4DWizardUtilsOTA.CheckIfExistFileInCurrentsProjectGroups(const ANameFileWithExtension: string): Boolean;
 var
@@ -509,7 +522,7 @@ begin
   if(LIOTASourceEditor = nil)then
     Exit;
 
-  LIOTAEditView := GetIOTAEditView(LIOTASourceEditor);
+  LIOTAEditView := Self.GetIOTAEditView(LIOTASourceEditor);
   if(LIOTAEditView = nil)then
     Exit;
   //LIOTASourceEditor.Show;
@@ -734,10 +747,7 @@ begin
     Result := LIOTAProject.FileName.Trim;
 end;
 
-class Function TC4DWizardUtilsOTA.GetProjectName(const AIOTAProject: IOTAProject): string;
-const
-  EXT_dpr = '.dpr';
-  EXT_DPK = '.dpk';
+class function TC4DWizardUtilsOTA.GetProjectName(const AIOTAProject: IOTAProject): string;
 var
   i: Integer;
   LExt: string;
@@ -746,10 +756,31 @@ begin
   for i := 0 to Pred(AIOTAProject.ModuleFileCount) do
   begin
     LExt := LowerCase(ExtractFileExt(AIOTAProject.ModuleFileEditors[i].FileName));
-    if(LExt = EXT_dpr)Or(LExt = EXT_DPK) Then
+    if(LExt = TC4DExtensionsFiles.DPR.ToString)or(LExt = TC4DExtensionsFiles.DPK.ToString) Then
     begin
       Result := ChangeFileExt(Result, LExt);
       Break;
+    end;
+  end;
+end;
+
+class function TC4DWizardUtilsOTA.GetFileNameDprOrDpkIfDproj(const AIOTAModule: IOTAModule): string;
+var
+  i: Integer;
+  LExt: string;
+  LFileName: string;
+begin
+  Result := AIOTAModule.FileName;
+
+  if ExtractFileExt(Result) = TC4DExtensionsFiles.DPROJ.ToStringWithPoint then
+  begin
+    for i := 0 to Pred(AIOTAModule.ModuleFileCount) do
+    begin
+      LFileName := AIOTAModule.ModuleFileEditors[i].FileName;
+      LExt := ExtractFileExt(LFileName);
+
+      if(LExt = TC4DExtensionsFiles.DPR.ToStringWithPoint)or(LExt = TC4DExtensionsFiles.DPK.ToStringWithPoint)then
+        Result := LFileName;
     end;
   end;
 end;

@@ -57,7 +57,7 @@ begin
     LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Description, AC4DWizardOpenExternal.Description);
     LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Path, AC4DWizardOpenExternal.Path);
     LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Parameters, AC4DWizardOpenExternal.Parameters);
-    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Kind, AC4DWizardOpenExternal.Kind.Tostring);
+    LIniFile.Writestring(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Kind, AC4DWizardOpenExternal.Kind.ToString);
     LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Visible, AC4DWizardOpenExternal.Visible);
     LIniFile.WriteBool(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_VisibleInToolBarUtilities, AC4DWizardOpenExternal.VisibleInToolBarUtilities);
     LIniFile.WriteInteger(AC4DWizardOpenExternal.Guid, TC4DConsts.OPEN_EXTERNAL_INI_Order, AC4DWizardOpenExternal.Order);

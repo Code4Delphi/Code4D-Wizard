@@ -165,26 +165,29 @@ var
   LIOTASourceEditor: IOTASourceEditor;
   LContModule: Integer;
   LContFile: Integer;
+  LIOTAModule: IOTAModule;
 begin
   LIOTAModuleServices := TC4DWizardUtilsOTA.GetIOTAModuleServices;
   if(not Assigned(LIOTAModuleServices))then
     raise Exception.Create('No Units Opened was found');
 
-  if(LIOTAModuleServices.GetModuleCount = 1)then
-  begin
+  if(LIOTAModuleServices.ModuleCount = 1)then
     if(LIOTAModuleServices.GetModule(0).FileName = TC4DConsts.DEFAULT_HTM)then
       raise Exception.Create('No Units Opened was found.');
-  end;
 
-  for LContModule := 0 to pred(LIOTAModuleServices.GetModuleCount) do
+  for LContModule := 0 to Pred(LIOTAModuleServices.ModuleCount) do
   begin
-    for LContFile := 0 to pred(LIOTAModuleServices.GetModule(LContModule).GetModuleFileCount)do
+    LIOTAModule := LIOTAModuleServices.GetModule(LContModule);
+    for LContFile := 0 to Pred(LIOTAModule.GetModuleFileCount)do
     begin
-      LIOTAEditor := LIOTAModuleServices.GetModule(LContModule).GetModuleFileEditor(LContFile);
-      if(Supports(LIOTAEditor, IOTASourceEditor, LIOTASourceEditor))then
+      LIOTAEditor := LIOTAModule.GetModuleFileEditor(LContFile);
+      if Supports(LIOTAEditor, IOTASourceEditor, LIOTASourceEditor) then
       begin
-        Self.ListFilesAdd(LIOTAEditor.FileName);
-        Break;
+        if LIOTASourceEditor.EditViewCount > 0 then
+        begin
+          Self.ListFilesAdd(LIOTAEditor.FileName);
+          Break;
+        end;
       end;
     end;
   end;
@@ -249,15 +252,15 @@ procedure TC4DWizardModelFilesLoop.ProcessEscope;
 begin
   case(FEscope)of
     TC4DWizardEscope.FilesInGroup:
-    Self.GetFilesGroup;
+      Self.GetFilesGroup;
     TC4DWizardEscope.FilesInProject:
-    Self.GetFilesProject(TC4DWizardUtilsOTA.GetCurrentProject);
+      Self.GetFilesProject(TC4DWizardUtilsOTA.GetCurrentProject);
     TC4DWizardEscope.FilesOpened:
-    Self.GetFilesOpened;
+      Self.GetFilesOpened;
     TC4DWizardEscope.FileCurrent:
-    Self.GetFileCurrent;
+      Self.GetFileCurrent;
     TC4DWizardEscope.FilesInDirectories:
-    Self.GetFilesInDirectories;
+      Self.GetFilesInDirectories;
   end;
 end;
 

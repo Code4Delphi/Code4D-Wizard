@@ -28,7 +28,6 @@ type
     procedure OnC4DToolButtonUnitInReadOnlyClick(Sender: TObject);
     procedure RemoveToolBarUtilities;
     procedure AddButtonUnitInReadOnly;
-    function GetReferenceToolBar: string;
     function GetIniFile: TIniFile;
     procedure ProcessRefreshUnitInReadOnly;
     procedure ConfigButtonUnitInReadOnly(const AInReadOnly: Boolean);
@@ -59,6 +58,7 @@ uses
   C4D.Wizard.Consts,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA,
+  C4D.Wizard.IDE.ToolBars.Utils,
   C4D.Wizard.IDE.ImageListMain,
   C4D.Wizard.OpenExternal.Model,
   C4D.Wizard.OpenExternal.Utils;
@@ -91,9 +91,7 @@ procedure TC4DWizardIDEToolBarsUtilities.NewToolBarUtilities;
 begin
   Self.RemoveToolBarUtilities;
   FToolBarUtilities := FINTAServices.NewToolbar(TC4DConsts.TOOL_BAR_UTILITIES_NAME,
-    TC4DConsts.TOOL_BAR_UTILITIES_CAPTION,
-    Self.GetReferenceToolBar,
-    True);
+    TC4DConsts.TOOL_BAR_UTILITIES_CAPTION, TC4DWizardIDEToolBarsUtils.GetReferenceToolbarName, True);
   FToolBarUtilities.Visible := False;
   FToolBarUtilities.Flat := True;
   FToolBarUtilities.Images := TC4DWizardUtilsOTA.GetINTAServices.ImageList;
@@ -164,36 +162,6 @@ begin
     TC4DConsts.TOOL_BAR_UTILITIES_INI_Visible, True);
 end;
 
-function TC4DWizardIDEToolBarsUtilities.GetReferenceToolBar: string;
-var
-  LStandardToolBar: TToolBar;
-  LControlBar: TControlBar;
-  LControl: TControl;
-  i: Integer;
-  LBiggerLeft: Integer;
-begin
-  Result := sBrowserToolbar;
-
-  if(FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_BRANCH_NAME] <> nil)then
-    Result := TC4DConsts.TOOL_BAR_BRANCH_NAME;
-
-  LStandardToolBar := FINTAServices.ToolBar[sStandardToolBar];
-  if(not Assigned(LStandardToolBar))then
-    Exit;
-  LControlBar := LStandardToolBar.Parent as TControlBar;
-
-  LBiggerLeft := 0;
-  for i := 0 to Pred(LControlBar.ControlCount) do
-  begin
-    LControl := LControlBar.Controls[i];
-    if(LControl.Visible)and(LControl.Left > LBiggerLeft)then
-    begin
-      Result := LControl.Name;
-      LBiggerLeft := LControl.Left;
-    end;
-  end;
-end;
-
 procedure TC4DWizardIDEToolBarsUtilities.AddButtonUnitInReadOnly;
 begin
   FToolButtonUnitInReadOnly := TToolButton(FToolBarUtilities.FindComponent(TC4DConsts.TOOL_BAR_UTILITIES_TOOL_BUTTON_UnitInReadOnly_NAME));
@@ -209,10 +177,9 @@ begin
   FToolButtonUnitInReadOnly.Style := tbsButton;
   FToolButtonUnitInReadOnly.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexLockOFF;
   FToolButtonUnitInReadOnly.Visible := True;
-  FToolButtonUnitInReadOnly.Left := 0;
   FToolButtonUnitInReadOnly.OnClick := OnC4DToolButtonUnitInReadOnlyClick;
   FToolButtonUnitInReadOnly.AutoSize := True;
-  //FToolButtonUnitInReadOnly.Enabled  := False;
+  FToolButtonUnitInReadOnly.Left := 0;
 end;
 
 procedure TC4DWizardIDEToolBarsUtilities.OnC4DToolButtonUnitInReadOnlyClick(Sender: TObject);
@@ -314,7 +281,7 @@ var
   LNameButton: string;
   LToolButton: TToolButton;
 begin
-  LNameButton := 'C4DToolBarsUtilities' + TC4DWizardUtils.IncInt(FCont).Tostring;
+  LNameButton := 'C4DToolBarsUtilities' + TC4DWizardUtils.IncInt(FCont).ToString;
   LToolButton := TToolButton(FToolBarUtilities.FindComponent(LNameButton));
   if(LToolButton <> nil)then
     LToolButton.Free;

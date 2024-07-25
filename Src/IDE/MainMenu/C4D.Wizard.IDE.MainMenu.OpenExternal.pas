@@ -196,7 +196,7 @@ var
   LMenuItem: TMenuItem;
 begin
   LMenuItem := TMenuItem.Create(AMenuItemParent);
-  LMenuItem.Name := 'C4DOpenExternalItemMenu' + TC4DWizardUtils.IncInt(FCont).Tostring;
+  LMenuItem.Name := 'C4DOpenExternalItemMenu' + TC4DWizardUtils.IncInt(FCont).ToString;
   LMenuItem.Caption := AC4DWizardOpenExternal.Description;
   LMenuItem.OnClick := Self.ItemMenuClick;
   LMenuItem.Hint := AC4DWizardOpenExternal.Path + TC4DConsts.OPEN_EXTERNAL_Separator_PARAMETERS + AC4DWizardOpenExternal.Parameters;

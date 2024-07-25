@@ -43,7 +43,8 @@ uses
   C4D.Wizard.Settings.Model,
   C4D.Wizard.IDE.MainMenu.OpenExternal,
   C4D.Wizard.IDE.ImageListMain,
-  C4D.Wizard.IDE.MainMenu.Backup;
+  C4D.Wizard.IDE.MainMenu.Backup,
+  C4D.Wizard.IDE.MainMenu.VsCodeIntegration;
 
 var
   Instance: IC4DWizardIDEMainMenu;
@@ -120,6 +121,8 @@ begin
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexNotes,
     Self.GetShortcutNotes);
 
+  TC4DWizardIDEMainMenuVsCodeIntegration.New(FMenuItemC4D).Process;
+
   Self.CreateSubMenu('C4DSeparator50', '-', nil);
   Self.CreateSubMenu(TC4DConsts.ITEM_MENU_DefaultFilesInOpeningProject_NAME,
     TC4DConsts.ITEM_MENU_DefaultFilesInOpeningProject_CAPTION,
@@ -133,7 +136,7 @@ begin
     TC4DWizardIDEMainMenuClicks.SettingsClick,
     TC4DWizardIDEImageListMain.GetInstance.ImgIndexGear);
 
-  TC4DWizardIDEMainMenuBakcups.New(FMenuItemC4D).Process;
+  TC4DWizardIDEMainMenuBackup.New(FMenuItemC4D).Process;
 
   Self.CreateSubMenu('C4DSeparator70', '-', nil);
   Self.CreateSubMenu(TC4DConsts.ITEM_MENU_OpenInGitHubDesktop_NAME,

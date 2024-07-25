@@ -114,10 +114,10 @@ end;
 procedure TC4DWizardOpenExternalAddEditView.FormShow(Sender: TObject);
 begin
   edtDescription.Text := FC4DWizardOpenExternal.Description;
-  cBoxKind.ItemIndex := cBoxKind.Items.IndexOf(FC4DWizardOpenExternal.Kind.Tostring);
+  cBoxKind.ItemIndex := cBoxKind.Items.IndexOf(FC4DWizardOpenExternal.Kind.ToString);
   edtPath.Text := FC4DWizardOpenExternal.Path;
   edtParameters.Text := FC4DWizardOpenExternal.Parameters;
-  edtOrder.Text := FC4DWizardOpenExternal.Order.Tostring;
+  edtOrder.Text := FC4DWizardOpenExternal.Order.ToString;
   edtShortcut.HotKey := TextToShortCut(FC4DWizardOpenExternal.Shortcut);
   ckVisible.Checked := FC4DWizardOpenExternal.Visible;
   ckVisibleInToolBarUtilities.Checked := FC4DWizardOpenExternal.VisibleInToolBarUtilities;
@@ -207,7 +207,7 @@ begin
   LDefaultPath := edtPath.Text;
   if(LDefaultPath.Trim.IsEmpty)then
     LDefaultPath := ExtractFilePath(FC4DWizardOpenExternal.Path);
-  if(cBoxKind.Text = TC4DWizardOpenExternalKind.Folders.Tostring)then
+  if(cBoxKind.Text = TC4DWizardOpenExternalKind.Folders.ToString)then
     edtPath.Text := TC4DWizardUtils.SelectFolder(LDefaultPath)
   else
     edtPath.Text := TC4DWizardUtils.SelectFile(LDefaultPath);
@@ -262,12 +262,12 @@ begin
   edtPath.Enabled := True;
   edtParameters.Enabled := True;
   edtShortcut.Enabled := True;
-  btnBath.Enabled := (cBoxKind.Text = TC4DWizardOpenExternalKind.Files.Tostring)
-    or(cBoxKind.Text = TC4DWizardOpenExternalKind.Folders.Tostring);
+  btnBath.Enabled := (cBoxKind.Text = TC4DWizardOpenExternalKind.Files.ToString)
+    or(cBoxKind.Text = TC4DWizardOpenExternalKind.Folders.ToString);
   lbParameters.Caption := 'Parameters';
   cBoxMenuMaster.Enabled := True;
 
-  if(cBoxKind.Text = TC4DWizardOpenExternalKind.Separators.Tostring)then
+  if(cBoxKind.Text = TC4DWizardOpenExternalKind.Separators.ToString)then
   begin
     FLastDescription := edtDescription.Text;
     edtDescription.Text := '-';
@@ -281,7 +281,7 @@ begin
     edtShortcut.HotKey := $0000;
     edtShortcut.Enabled := False;
   end
-  else if(cBoxKind.Text = TC4DWizardOpenExternalKind.MenuMasterOnly.Tostring)then
+  else if(cBoxKind.Text = TC4DWizardOpenExternalKind.MenuMasterOnly.ToString)then
   begin
     if(edtDescription.Text = '-')and(not FLastDescription.Trim.IsEmpty)then
       edtDescription.Text := FLastDescription;
@@ -299,13 +299,13 @@ begin
     cBoxMenuMaster.ItemIndex := 0;
     cBoxMenuMaster.Enabled := False;
   end
-  else if(cBoxKind.Text = TC4DWizardOpenExternalKind.CMD.Tostring)then
+  else if(cBoxKind.Text = TC4DWizardOpenExternalKind.CMD.ToString)then
   begin
     if(edtDescription.Text = '-')and(not FLastDescription.Trim.IsEmpty)then
       edtDescription.Text := FLastDescription;
 
     FLastPath := edtPath.Text;
-    edtPath.Text := TC4DWizardOpenExternalKind.CMD.Tostring;
+    edtPath.Text := TC4DWizardOpenExternalKind.CMD.ToString;
     edtPath.Enabled := False;
 
     if(Trim(edtParameters.Text).IsEmpty)then
@@ -325,7 +325,7 @@ begin
       edtParameters.Text := FLastParameters;
   end;
 
-  if(cBoxKind.Text <> TC4DWizardOpenExternalKind.MenuMasterOnly.Tostring)then
+  if(cBoxKind.Text <> TC4DWizardOpenExternalKind.MenuMasterOnly.ToString)then
   begin
     if(cBoxMenuMaster.ItemIndex <= 0)then
       cBoxMenuMaster.ItemIndex := FLastItemIndexMenuMaster;

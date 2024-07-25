@@ -101,8 +101,8 @@ const
 
 procedure TC4DWizardViewListFilesForSelection.FormCreate(Sender: TObject);
 begin
-  Self.Width := Screen.Width - 100;
-  Self.Height := Screen.Height - 200;
+  Self.Width := Screen.Width - 200;
+  Self.Height := Screen.Height - 250;
   pnOrigin.Width := (Self.Width div 2) - 10;
   TC4DWizardUtilsOTA.IDEThemingAll(TC4DWizardViewListFilesForSelection, Self);
 
@@ -181,8 +181,7 @@ begin
       LStrings := TStringList.Create;
       try
         TC4DWizardUtilsOTA.GetAllFilesFromProjectGroup(LStrings,
-          FFilePathProjectOrGroupForFilter,
-          [TC4DExtensionsFiles.PAS, TC4DExtensionsFiles.DPR]);
+          FFilePathProjectOrGroupForFilter, [TC4DExtensionsFiles.PAS, TC4DExtensionsFiles.DPR]);
 
         TThread.Synchronize(nil,
           procedure
@@ -200,7 +199,7 @@ begin
               LListItem.Caption := ExtractFileName(LItemFilePath);
               LListItem.ImageIndex := -1;
               LListItem.SubItems.Add(LItemFilePath);
-              LListItem.SubItems.Add(TC4DWizardUtilsOTA.FileIsOpenInIDE(LItemFilePath).Tostring(TUseBoolStrs.True));
+              LListItem.SubItems.Add(TC4DWizardUtilsOTA.FileIsOpenInIDE(LItemFilePath).ToString(TUseBoolStrs.True));
             end;
           end);
       finally
@@ -371,10 +370,10 @@ begin
   lbCountDestiny.Caption := '0';
 
   if(ListViewOrigin.Items.Count > 0)then
-    lbCountOrigin.Caption := ListViewOrigin.Items.Count.Tostring;
+    lbCountOrigin.Caption := ListViewOrigin.Items.Count.ToString;
 
   if(ListViewDestiny.Items.Count > 0)then
-    lbCountDestiny.Caption := ListViewDestiny.Items.Count.Tostring;
+    lbCountDestiny.Caption := ListViewDestiny.Items.Count.ToString;
 end;
 
 function TC4DWizardViewListFilesForSelection.GetPathListInstring(const ASeparator: string): string;

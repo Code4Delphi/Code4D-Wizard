@@ -28,7 +28,8 @@ uses
   C4D.Wizard.Consts,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA,
-  C4D.Wizard.Settings.Model;
+  C4D.Wizard.Settings.Model,
+  C4D.Wizard.ProcessDelphi;
 
 var
   IndexNotifier: Integer = -1;
@@ -53,6 +54,7 @@ procedure TC4DWizardIDECompileNotifier.ProjectCompileStarted(const Project: IOTA
 var
   LIOTAProject: IOTAProject;
   LCurrentBinaryPath: string;
+  LCommand: string;
 begin
   if(not C4DWizardSettingsModel.BeforeCompilingCheckRunning)then
     Exit;
@@ -67,8 +69,12 @@ begin
   begin
     if(TC4DWizardUtils.ProcessWindowsExists(ExtractFileName(LCurrentBinaryPath), LCurrentBinaryPath))then
     begin
-      if(not TC4DWizardUtils.ShowQuestion2('The application is already running, do you wish to continue?'))then
+      if(not TC4DWizardUtils.ShowQuestion2('The application is already running, do you wish to continue (Kills current process)?'))then
         Abort;
+
+      LCommand := 'taskkill /f /IM ' + ExtractFileName(Project.ProjectOptions.TargetName);
+      TC4DWizardProcessDelphi.RunCommand([LCommand]);
+      Sleep(1000);
     end;
   end;
 end;

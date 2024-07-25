@@ -28,7 +28,6 @@ type
     procedure RemoveToolBarBuild;
     procedure AddComboBoxBuild;
     procedure FillComboBoxBuild;
-    function GetReferenceToolBar: string;
     function GetIniFile: TIniFile;
     procedure ComboBoxClick(Sender: TObject);
     procedure AddButtonBuildAllGroup;
@@ -59,6 +58,7 @@ uses
   C4D.Wizard.Consts,
   C4D.Wizard.Utils,
   C4D.Wizard.Utils.OTA,
+  C4D.Wizard.IDE.ToolBars.Utils,
   C4D.Wizard.IDE.ImageListMain;
 
 const
@@ -108,43 +108,11 @@ begin
     True);
 end;
 
-function TC4DWizardIDEToolBarsBuild.GetReferenceToolBar: string;
-var
-  LStandardToolBar: TToolBar;
-  LControlBar: TControlBar;
-  LControl: TControl;
-  i: integer;
-  LBiggerLeft: integer;
-begin
-  Result := sBrowserToolbar;
-
-  if(FINTAServices.ToolBar[TC4DConsts.TOOL_BAR_BRANCH_NAME] <> nil)then
-    Result := TC4DConsts.TOOL_BAR_BRANCH_NAME;
-
-  LStandardToolBar := FINTAServices.ToolBar[sStandardToolBar];
-  if(not Assigned(LStandardToolBar))then
-    Exit;
-  LControlBar := LStandardToolBar.Parent as TControlBar;
-
-  LBiggerLeft := 0;
-  for i := 0 to Pred(LControlBar.ControlCount) do
-  begin
-    LControl := LControlBar.Controls[i];
-    if(LControl.Visible)and(LControl.Left > LBiggerLeft)then
-    begin
-      Result := LControl.Name;
-      LBiggerLeft := LControl.Left;
-    end;
-  end;
-end;
-
 procedure TC4DWizardIDEToolBarsBuild.NewToolBarBuild;
 begin
   Self.RemoveToolBarBuild;
   FToolBarBuild := FINTAServices.NewToolbar(TC4DConsts.TOOL_BAR_BUILD_NAME,
-    TC4DConsts.TOOL_BAR_BUILD_CAPTION,
-    Self.GetReferenceToolBar,
-    True);
+    TC4DConsts.TOOL_BAR_BUILD_CAPTION, TC4DWizardIDEToolBarsUtils.GetReferenceToolbarName, True);
   FToolBarBuild.Visible := False;
   FToolBarBuild.Flat := True;
   FToolBarBuild.Images := TC4DWizardUtilsOTA.GetINTAServices.ImageList;

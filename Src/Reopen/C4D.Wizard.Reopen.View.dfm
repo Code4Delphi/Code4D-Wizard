@@ -93,6 +93,7 @@ object C4DWizardReopenView: TC4DWizardReopenView
         Images = ImageList1
         TabOrder = 0
         OnClick = btnSearchClick
+        ExplicitLeft = 807
       end
       object edtSearch: TEdit
         AlignWithMargins = True

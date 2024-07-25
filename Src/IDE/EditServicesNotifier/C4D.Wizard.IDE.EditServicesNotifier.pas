@@ -80,9 +80,9 @@ end;
 procedure TC4DWizardIDEEditServicesNotifier.EditorViewModified(const EditWindow: INTAEditWindow; const EditView: IOTAEditView);
 begin
 //  AddLogInternal('EditorViewModified: ' +
-//    ' Linha atual: ' + EditView.Buffer.EditPosition.Row.Tostring +
-//    ' Coluna atual: ' + EditView.Buffer.EditPosition.Column.Tostring +
-//    ' Ultima linha: ' + EditView.Buffer.EditPosition.LastRow.Tostring);
+//    ' Linha atual: ' + EditView.Buffer.EditPosition.Row.ToString +
+//    ' Coluna atual: ' + EditView.Buffer.EditPosition.Column.ToString +
+//    ' Ultima linha: ' + EditView.Buffer.EditPosition.LastRow.ToString);
 end;
 
 procedure TC4DWizardIDEEditServicesNotifier.WindowActivated(const EditWindow: INTAEditWindow);
@@ -92,7 +92,7 @@ end;
 
 procedure TC4DWizardIDEEditServicesNotifier.WindowCommand(const EditWindow: INTAEditWindow; Command, Param: Integer; var Handled: Boolean);
 begin
-  //AddLogInternal('WindowCommand: Command: ' + Command.Tostring +  ' - Param: '   + Param.Tostring);
+  //AddLogInternal('WindowCommand: Command: ' + Command.ToString +  ' - Param: '   + Param.ToString);
   //if(Command = 22)then
   //begin
   //  ShowMessage('Você teclou Ctrl + C e essa opção não é permitida');

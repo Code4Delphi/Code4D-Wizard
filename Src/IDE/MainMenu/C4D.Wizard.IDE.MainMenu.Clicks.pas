@@ -21,6 +21,10 @@ type
     class procedure FindClick(Sender: TObject);
     class procedure ReplaceClick(Sender: TObject);
     class procedure NotesClick(Sender: TObject);
+    class procedure VsCodeIntegrationOpenInVsCodeClick(Sender: TObject);
+    class procedure VsCodeIntegrationInstallDelphiLSPClick(Sender: TObject);
+    class procedure VsCodeIntegrationInstallGithubCopilotClick(Sender: TObject);
+    class procedure VsCodeIntegrationInstallSupermavenClick(Sender: TObject);
     class procedure DefaultFilesInOpeningProjectClick(Sender: TObject);
     class procedure BackupExportClick(Sender: TObject);
     class procedure BackupImportClick(Sender: TObject);
@@ -52,7 +56,8 @@ uses
   C4D.Wizard.View.About,
   C4D.Wizard.DefaultFilesInOpeningProject,
   C4D.Wizard.FormatSource.View,
-  C4D.Wizard.Notes.View;
+  C4D.Wizard.Notes.View,
+  C4D.Wizard.VsCodeIntegration;
 
 class procedure TC4DWizardIDEMainMenuClicks.UsesOrganizationClick(Sender: TObject);
 var
@@ -132,11 +137,30 @@ begin
   C4D.Wizard.Notes.View.C4DWizardNotesViewShowDockableForm;
 end;
 
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationOpenInVsCodeClick(Sender: TObject);
+begin
+  TC4DWizardVsCodeIntegration.Open;
+end;
+
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallDelphiLSPClick(Sender: TObject);
+begin
+  TC4DWizardVsCodeIntegration.InstallDelphiLSP;
+end;
+
+
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallGithubCopilotClick(Sender: TObject);
+begin
+  TC4DWizardVsCodeIntegration.InstallGithubCopilot;
+end;
+
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallSupermavenClick(Sender: TObject);
+begin
+  TC4DWizardVsCodeIntegration.InstallSupermaven;
+end;
+
 class procedure TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick(Sender: TObject);
 begin
-  TC4DWizardDefaultFilesInOpeningProject
-    .New(Self.GetFileNameCurrentProject)
-    .SelectionFilesForDefaultOpening;
+  TC4DWizardDefaultFilesInOpeningProject.New(Self.GetFileNameCurrentProject).SelectionFilesForDefaultOpening;
 end;
 
 class procedure TC4DWizardIDEMainMenuClicks.BackupExportClick(Sender: TObject);

@@ -9,7 +9,7 @@ uses
   C4D.Wizard.Backup.Interfaces;
 
 type
-  TC4DWizardIDEMainMenuBakcups = class(TInterfacedObject, IC4DWizardIDEMainMenuBackup)
+  TC4DWizardIDEMainMenuBackup = class(TInterfacedObject, IC4DWizardIDEMainMenuBackup)
   private
     FMenuItemC4D: TMenuItem;
     FMenuItemSave: TMenuItem;
@@ -30,24 +30,24 @@ uses
   C4D.Wizard.IDE.ImageListMain,
   C4D.Wizard.IDE.MainMenu.Clicks;
 
-class function TC4DWizardIDEMainMenuBakcups.New(AMenuItemParent: TMenuItem): IC4DWizardIDEMainMenuBackup;
+class function TC4DWizardIDEMainMenuBackup.New(AMenuItemParent: TMenuItem): IC4DWizardIDEMainMenuBackup;
 begin
   Result := Self.Create(AMenuItemParent);
 end;
 
-constructor TC4DWizardIDEMainMenuBakcups.Create(AMenuItemParent: TMenuItem);
+constructor TC4DWizardIDEMainMenuBackup.Create(AMenuItemParent: TMenuItem);
 begin
   FMenuItemC4D := AMenuItemParent;
 end;
 
-function TC4DWizardIDEMainMenuBakcups.Process: IC4DWizardIDEMainMenuBackup;
+function TC4DWizardIDEMainMenuBackup.Process: IC4DWizardIDEMainMenuBackup;
 begin
   Self.AddMenuItemSave;
   Self.AddMenuItemExport;
   Self.AddMenuItemImport;
 end;
 
-procedure TC4DWizardIDEMainMenuBakcups.AddMenuItemSave;
+procedure TC4DWizardIDEMainMenuBackup.AddMenuItemSave;
 begin
   FMenuItemSave := TMenuItem.Create(FMenuItemC4D);
   FMenuItemSave.Name := TC4DConsts.MENU_IDE_BACKUP_NAME;
@@ -56,7 +56,7 @@ begin
   FMenuItemC4D.Add(FMenuItemSave);
 end;
 
-procedure TC4DWizardIDEMainMenuBakcups.AddMenuItemExport;
+procedure TC4DWizardIDEMainMenuBackup.AddMenuItemExport;
 var
   LItemExport: TMenuItem;
 begin
@@ -68,7 +68,7 @@ begin
   FMenuItemSave.Add(LItemExport);
 end;
 
-procedure TC4DWizardIDEMainMenuBakcups.AddMenuItemImport;
+procedure TC4DWizardIDEMainMenuBackup.AddMenuItemImport;
 var
   LItemImport: TMenuItem;
 begin

@@ -2092,6 +2092,7 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
     Padding.Right = 2
     Padding.Bottom = 2
     TabOrder = 1
+    ExplicitTop = 265
     object btnOK: TButton
       Left = 522
       Top = 2
@@ -2111,7 +2112,6 @@ object C4DWizardViewAbout: TC4DWizardViewAbout
       Align = alLeft
       Caption = 'Teste'
       TabOrder = 1
-      Visible = False
       OnClick = btnTesteClick
     end
   end
