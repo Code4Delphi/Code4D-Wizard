@@ -111,6 +111,8 @@ type
     MENU_IDE_VSCODE_INTEGRATION_INSTALL_DELPHILSP_CAPTION = 'Install DelphiLSP extension in VS Code';
     MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_NAME = 'C4DWizarVsCodeIntegrationInstallGithubCopilot1';
     MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_CAPTION = 'Install GitHub Copilot extension in VS Code';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_Supermaven_NAME = 'C4DWizarVsCodeIntegrationInstallSupermaven1';
+    MENU_IDE_VSCODE_INTEGRATION_INSTALL_Supermaven_CAPTION = 'Install GitHub Supermaven extension in VS Code';
 
     //FILE .INI REOPEN
     REOPEN_INI_Favorite = 'Favorite';

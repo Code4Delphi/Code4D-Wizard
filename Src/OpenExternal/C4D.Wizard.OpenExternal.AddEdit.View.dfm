@@ -103,7 +103,6 @@ object C4DWizardOpenExternalAddEditView: TC4DWizardOpenExternalAddEditView
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = -3
     DesignSize = (
       676
       412)

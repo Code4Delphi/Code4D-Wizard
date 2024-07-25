@@ -350,7 +350,7 @@ begin
   LColorStr := Item.SubItems[C_INDEX_SUBITEM_Color].Trim;
   if(not LColorStr.IsEmpty)then
   begin
-    LColor := TC4DWizardUtils.stringToColorDef(LColorStr);
+    LColor := TC4DWizardUtils.StringToColorDef(LColorStr);
     if(LColor <> clBlack)then
       Sender.Canvas.Font.Color := LColor
   end;

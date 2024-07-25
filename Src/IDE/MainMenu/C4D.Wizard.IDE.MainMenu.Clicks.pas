@@ -22,8 +22,9 @@ type
     class procedure ReplaceClick(Sender: TObject);
     class procedure NotesClick(Sender: TObject);
     class procedure VsCodeIntegrationOpenInVsCodeClick(Sender: TObject);
-    class procedure VsCodeIntegrationInstallGithubCopilotClick(Sender: TObject);
     class procedure VsCodeIntegrationInstallDelphiLSPClick(Sender: TObject);
+    class procedure VsCodeIntegrationInstallGithubCopilotClick(Sender: TObject);
+    class procedure VsCodeIntegrationInstallSupermavenClick(Sender: TObject);
     class procedure DefaultFilesInOpeningProjectClick(Sender: TObject);
     class procedure BackupExportClick(Sender: TObject);
     class procedure BackupImportClick(Sender: TObject);
@@ -141,14 +142,20 @@ begin
   TC4DWizardVsCodeIntegration.Open;
 end;
 
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallDelphiLSPClick(Sender: TObject);
+begin
+  TC4DWizardVsCodeIntegration.InstallDelphiLSP;
+end;
+
+
 class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallGithubCopilotClick(Sender: TObject);
 begin
   TC4DWizardVsCodeIntegration.InstallGithubCopilot;
 end;
 
-class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallDelphiLSPClick(Sender: TObject);
+class procedure TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallSupermavenClick(Sender: TObject);
 begin
-  TC4DWizardVsCodeIntegration.InstallDelphiLSP;
+  TC4DWizardVsCodeIntegration.InstallSupermaven;
 end;
 
 class procedure TC4DWizardIDEMainMenuClicks.DefaultFilesInOpeningProjectClick(Sender: TObject);

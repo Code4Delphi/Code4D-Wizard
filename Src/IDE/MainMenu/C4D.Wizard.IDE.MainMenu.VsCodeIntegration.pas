@@ -20,8 +20,9 @@ type
     procedure AddMenuVsCodeIntegration;
     procedure AddSubMenuItemOpen;
     procedure AddSeparator(AName: string);
-    procedure AddSubMenuInstallGithubCopilot;
     procedure AddSubMenuInstallDelphiLSP;
+    procedure AddSubMenuInstallGithubCopilot;
+    procedure AddSubMenuInstallSupermaven;
     function GetShortcutOpenInVsCode: string;
   protected
     function Process: IC4DWizardIDEMainMenuVsCodeIntegration;
@@ -54,8 +55,9 @@ begin
   Self.AddMenuVsCodeIntegration;
   Self.AddSubMenuItemOpen;
   Self.AddSeparator('C4DVsCodeIntegrationSeparator01');
-  Self.AddSubMenuInstallGithubCopilot;
   Self.AddSubMenuInstallDelphiLSP;
+  Self.AddSubMenuInstallGithubCopilot;
+  Self.AddSubMenuInstallSupermaven;
 end;
 
 procedure TC4DWizardIDEMainMenuVsCodeIntegration.AddSeparator(AName: string);
@@ -92,18 +94,6 @@ begin
   FMenuItemVsCodeIntegration.Add(LMenuItem);
 end;
 
-procedure TC4DWizardIDEMainMenuVsCodeIntegration.AddSubMenuInstallGithubCopilot;
-var
-  LMenuItem: TMenuItem;
-begin
-  LMenuItem := TMenuItem.Create(FMenuItemVsCodeIntegration);
-  LMenuItem.Name := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_NAME;
-  LMenuItem.Caption := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_CAPTION;
-  LMenuItem.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexImport;
-  LMenuItem.OnClick := TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallGithubCopilotClick;
-  FMenuItemVsCodeIntegration.Add(LMenuItem);
-end;
-
 procedure TC4DWizardIDEMainMenuVsCodeIntegration.AddSubMenuInstallDelphiLSP;
 var
   LMenuItem: TMenuItem;
@@ -116,11 +106,35 @@ begin
   FMenuItemVsCodeIntegration.Add(LMenuItem);
 end;
 
+procedure TC4DWizardIDEMainMenuVsCodeIntegration.AddSubMenuInstallGithubCopilot;
+var
+  LMenuItem: TMenuItem;
+begin
+  LMenuItem := TMenuItem.Create(FMenuItemVsCodeIntegration);
+  LMenuItem.Name := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_NAME;
+  LMenuItem.Caption := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_GithubCopilot_CAPTION;
+  LMenuItem.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexImport;
+  LMenuItem.OnClick := TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallGithubCopilotClick;
+  FMenuItemVsCodeIntegration.Add(LMenuItem);
+end;
+
 function TC4DWizardIDEMainMenuVsCodeIntegration.GetShortcutOpenInVsCode: string;
 begin
   Result := '';
   if(C4DWizardSettingsModel.ShortcutVsCodeIntegrationOpenUse)and(not C4DWizardSettingsModel.ShortcutVsCodeIntegrationOpen.Trim.IsEmpty)then
     Result := C4DWizardSettingsModel.ShortcutVsCodeIntegrationOpen.Trim;
+end;
+
+procedure TC4DWizardIDEMainMenuVsCodeIntegration.AddSubMenuInstallSupermaven;
+var
+  LMenuItem: TMenuItem;
+begin
+  LMenuItem := TMenuItem.Create(FMenuItemVsCodeIntegration);
+  LMenuItem.Name := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_Supermaven_NAME;
+  LMenuItem.Caption := TC4DConsts.MENU_IDE_VSCODE_INTEGRATION_INSTALL_Supermaven_CAPTION;
+  LMenuItem.ImageIndex := TC4DWizardIDEImageListMain.GetInstance.ImgIndexImport;
+  LMenuItem.OnClick := TC4DWizardIDEMainMenuClicks.VsCodeIntegrationInstallSupermavenClick;
+  FMenuItemVsCodeIntegration.Add(LMenuItem);
 end;
 
 end.

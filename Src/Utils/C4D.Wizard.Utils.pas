@@ -55,7 +55,7 @@ type
     class function SelectFile(const ADefaultExt: TC4DExtensionsFiles): string; overload;
     class function SelectFile(const ADefaultFile: string; const ADefaultExt: TC4DExtensionsFiles): string; overload;
     class function SelectFolder(const ADefaultFolder: string; const ADefaultFolderIfCancel: Boolean = True): string;
-    class function stringToColorDef(AValue: string; AColorDefault: TColor = clBlack): TColor;
+    class function StringToColorDef(AValue: string; AColorDefault: TColor = clBlack): TColor;
     class function DateTimeToStrEmpty(AValue: TDateTime): string;
     class function IncInt(var AValue: Integer): Integer;
     class procedure OpenFile(AFilePath: string);
@@ -498,10 +498,10 @@ begin
 end;
 {$WARN SYMBOL_PLATFORM ON}
 
-class function TC4DWizardUtils.stringToColorDef(AValue: string; AColorDefault: TColor = clBlack): TColor;
+class function TC4DWizardUtils.StringToColorDef(AValue: string; AColorDefault: TColor = clBlack): TColor;
 begin
   try
-    Result := stringToColor(AValue)
+    Result := StringToColor(AValue)
   except
     Result := AColorDefault;
   end;

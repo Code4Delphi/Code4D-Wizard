@@ -168,13 +168,13 @@ var
   LMaskColor: TColor;
 begin
   Result := -1;
-  if(FindResource(hInstance, PChar(AResourceName), RT_BITMAP) <= 0)then
+  if(FindResource(HInstance, PChar(AResourceName), RT_BITMAP) <= 0)then
     Exit;
 
   LBitmap := TBitmap.Create;
   try
     try
-      LBitmap.LoadFromResourceName(hInstance, AResourceName);
+      LBitmap.LoadFromResourceName(HInstance, AResourceName);
       {$IF CompilerVersion = 35} //Alexandria
         LMaskColor := clLime;
       {$ELSE}

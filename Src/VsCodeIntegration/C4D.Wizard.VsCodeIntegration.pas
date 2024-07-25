@@ -12,8 +12,9 @@ type
     class procedure RunCommandInstallExtension(const AIdentifierExtension: string);
   public
     class procedure Open;
-    class procedure InstallGithubCopilot;
     class procedure InstallDelphiLSP;
+    class procedure InstallGithubCopilot;
+    class procedure InstallSupermaven;
   end;
 
 implementation
@@ -33,7 +34,7 @@ var
   LIOTAProject: IOTAProject;
   LFilePathProject: string;
   LCursorPos: TOTAEditPos;
-  LComand: string;
+  LCommand: string;
 begin
   LIOTAModuleServices := TC4DWizardUtilsOTA.GetIOTAModuleServices;
 
@@ -59,13 +60,8 @@ begin
 
   LCursorPos := LIOTAEditView.CursorPos;
   //REFERENCE: https://code.visualstudio.com/docs/editor/command-line
-  LComand := Format('"code -n %s -g %s:%d:%d"', [LFilePathProject, LFileNameModule, LCursorPos.Line, LCursorPos.Col]);
-  TC4DWizardProcessDelphi.RunCommand([LComand]);
-end;
-
-class procedure TC4DWizardVsCodeIntegration.InstallGithubCopilot;
-begin
-  Self.RunCommandInstallExtension('github.copilot');
+  LCommand := Format('"code -n %s -g %s:%d:%d"', [LFilePathProject, LFileNameModule, LCursorPos.Line, LCursorPos.Col]);
+  TC4DWizardProcessDelphi.RunCommand([LCommand]);
 end;
 
 class procedure TC4DWizardVsCodeIntegration.InstallDelphiLSP;
@@ -73,15 +69,25 @@ begin
   Self.RunCommandInstallExtension('embarcaderotechnologies.delphilsp');
 end;
 
+class procedure TC4DWizardVsCodeIntegration.InstallGithubCopilot;
+begin
+  Self.RunCommandInstallExtension('github.copilot');
+end;
+
+class procedure TC4DWizardVsCodeIntegration.InstallSupermaven;
+begin
+  Self.RunCommandInstallExtension('supermaven.supermaven');
+end;
+
 class procedure TC4DWizardVsCodeIntegration.RunCommandInstallExtension(const AIdentifierExtension: string);
 var
-  LComand: string;
+  LCommand: string;
 begin
   if AIdentifierExtension.Trim.IsEmpty then
     Exit;
 
-  LComand := Format('"code --install-extension %s --force"', [AIdentifierExtension]);
-  TC4DWizardProcessDelphi.RunCommand([LComand]);
+  LCommand := Format('"code --install-extension %s --force"', [AIdentifierExtension]);
+  TC4DWizardProcessDelphi.RunCommand([LCommand]);
 
   TC4DWizardUtils.ShowMsg('Extension installation pushed to VS Code!');
 end;

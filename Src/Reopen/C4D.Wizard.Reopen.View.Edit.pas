@@ -100,7 +100,7 @@ var
   LFolderGit: string;
 begin
   mmFilePath.Lines.Text := FC4DWizardReopenData.FilePath;
-  ColorBox1.Selected := TC4DWizardUtils.stringToColorDef(FC4DWizardReopenData.Color);
+  ColorBox1.Selected := TC4DWizardUtils.StringToColorDef(FC4DWizardReopenData.Color);
 
   edtNickname.Text := FC4DWizardReopenData.Nickname;
   if(Trim(edtNickname.Text).IsEmpty)then
@@ -120,7 +120,7 @@ end;
 procedure TC4DWizardReopenViewEdit.btnConfirmClick(Sender: TObject);
 begin
   FC4DWizardReopenData.Nickname := edtNickname.Text;
-  FC4DWizardReopenData.Color := ColorTostring(ColorBox1.Selected);
+  FC4DWizardReopenData.Color := ColorToString(ColorBox1.Selected);
   FC4DWizardReopenData.FolderGit := Trim(edtFolderGit.Text);
   if(cBoxGroup.ItemIndex >= 0)then
     FC4DWizardReopenData.GuidGroup := TC4DWizardGroups(cBoxGroup.Items.Objects[cBoxGroup.ItemIndex]).Guid;
