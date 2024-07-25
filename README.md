@@ -32,7 +32,7 @@ Code4D-Wizard is a wizard/plugin designed to be used in the Delphi IDE. It adds 
 
 ## ⚙️ Installation
 
-1 - Download Delphi AI Developer. You can download the .zip file or clone the project on your PC.
+1 - Download Code4D-Wizard. You can download the .zip file or clone the project on your PC.
 
 2 - In your Delphi, access the menu File > Open and select the file: Package/C4DWizard.dpk
 
