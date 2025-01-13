@@ -12,14 +12,12 @@ object C4DWizardReopenView: TC4DWizardReopenView
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object pnTudo: TPanel
     Left = 0
@@ -93,7 +91,6 @@ object C4DWizardReopenView: TC4DWizardReopenView
         Images = ImageList1
         TabOrder = 0
         OnClick = btnSearchClick
-        ExplicitLeft = 807
       end
       object edtSearch: TEdit
         AlignWithMargins = True

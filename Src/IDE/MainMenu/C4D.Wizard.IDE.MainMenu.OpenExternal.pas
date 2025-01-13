@@ -64,7 +64,7 @@ function TC4DWizardIDEMainMenuOpenExternal.CreateMenusOpenExternal: IC4DWizardID
 begin
   Self.CreateItemMenuMain;
   Self.CreateSubMenu(FMenuItemOpenExternal, 'C4DOpenExternalMenuItemCad1', 'Customize...', Self.CustomizeClick);
-  Self.CreateSubMenu(FMenuItemOpenExternal, 'C4DOpenExternalSeparator01', '-', {$IF CompilerVersion = 30.0} TNotifyEvent(nil) {$ELSE} nil {$ENDIF});
+  Self.CreateSubMenu(FMenuItemOpenExternal, 'C4DOpenExternalSeparator01', '-', {$IF CompilerVersion = 30} TNotifyEvent(nil) {$ELSE} nil {$ENDIF});
 
   FList.Clear;
   TC4DWizardOpenExternalModel.New.ReadIniFile(

@@ -12,13 +12,11 @@ object C4DWizardNotesView: TC4DWizardNotesView
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poScreenCenter
   ShowHint = True
   OnActivate = FormActivate
   OnClose = FormClose
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object pnBack: TPanel
     Left = 0
@@ -64,8 +62,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       PopupMenu = PopupMenu1
       ScrollBars = ssVertical
       TabOrder = 0
-      Zoom = 100
-      ExplicitTop = 3
     end
   end
   object pnTop: TPanel
@@ -85,8 +81,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
     Padding.Right = 2
     Padding.Bottom = 2
     TabOrder = 1
-    ExplicitLeft = -5
-    ExplicitTop = 494
     object Bevel2: TBevel
       AlignWithMargins = True
       Left = 326
@@ -132,7 +126,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 0
       OnClick = btnColorClick
-      ExplicitLeft = 83
     end
     object cBoxSizeFont: TComboBox
       AlignWithMargins = True
@@ -166,7 +159,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
         '48'
         '72'
         '96')
-      ExplicitLeft = 132
     end
     object btnAlignmentLeft: TButton
       AlignWithMargins = True
@@ -186,7 +178,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 3
       OnClick = btnAlignmentLeftClick
-      ExplicitLeft = 329
     end
     object btnAlignmentCenter: TButton
       AlignWithMargins = True
@@ -206,7 +197,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 2
       OnClick = btnAlignmentCenterClick
-      ExplicitLeft = 354
     end
     object btnAlignmentRight: TButton
       AlignWithMargins = True
@@ -226,7 +216,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 4
       OnClick = btnAlignmentRightClick
-      ExplicitLeft = 379
     end
     object btnUnderline: TButton
       AlignWithMargins = True
@@ -247,7 +236,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 5
       OnClick = btnUnderlineClick
-      ExplicitLeft = 274
     end
     object btnItalic: TButton
       AlignWithMargins = True
@@ -267,7 +255,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 6
       OnClick = btnItalicClick
-      ExplicitLeft = 249
     end
     object btnBold: TButton
       AlignWithMargins = True
@@ -287,7 +274,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 7
       OnClick = btnBoldClick
-      ExplicitLeft = 224
     end
     object btnFont: TButton
       AlignWithMargins = True
@@ -308,7 +294,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 8
       OnClick = btnFontClick
-      ExplicitLeft = 108
     end
     object btnOpen: TButton
       AlignWithMargins = True
@@ -386,7 +371,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 12
       OnClick = btnStrikethroughClick
-      ExplicitLeft = 299
     end
     object btnFontSizeDecrease: TButton
       AlignWithMargins = True
@@ -406,7 +390,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 13
       OnClick = btnFontSizeDecreaseClick
-      ExplicitLeft = 169
     end
     object btnFontSizeIncrease: TButton
       AlignWithMargins = True
@@ -426,7 +409,6 @@ object C4DWizardNotesView: TC4DWizardNotesView
       ShowHint = True
       TabOrder = 14
       OnClick = btnFontSizeIncreaseClick
-      ExplicitLeft = 194
     end
   end
   object ImageList1: TImageList

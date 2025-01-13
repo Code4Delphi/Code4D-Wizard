@@ -179,7 +179,7 @@ end;
 
 function TC4DWizardIDEPopupMenuNotifier.AddItemInMenu(const ACaption: string): IOTAProjectManagerMenu;
 begin
-  Result := TC4DWizardIDEPopupMenuItem.New({$IF CompilerVersion = 30.0} TC4DWizardMenuContextList(nil) {$ELSE} nil {$ENDIF});
+  Result := TC4DWizardIDEPopupMenuItem.New({$IF CompilerVersion = 30} TC4DWizardMenuContextList(nil) {$ELSE} nil {$ENDIF});
   Result.Caption := ACaption;
   Result.Verb := ACaption;
   Result.Parent := '';

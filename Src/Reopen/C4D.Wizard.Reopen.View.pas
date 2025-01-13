@@ -204,6 +204,7 @@ end;
 
 procedure TC4DWizardReopenView.FormCreate(Sender: TObject);
 begin
+  inherited;
   FtvGroupWidthExpanded := IfThen(tvGroup.Width > 2, tvGroup.Width, 130);
   FpnOpenPeriodWidthExpanded := IfThen(pnOpenPeriod.Width > 2, pnOpenPeriod.Width, 268);
   FUtilsListView := TC4DWizardUtilsListView.New(ListViewHistory);
@@ -272,6 +273,7 @@ end;
 procedure TC4DWizardReopenView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Self.GroupClear;
+  inherited;
 end;
 
 procedure TC4DWizardReopenView.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

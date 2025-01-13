@@ -153,6 +153,7 @@ end;
 
 procedure TC4DWizardNotesView.FormActivate(Sender: TObject);
 begin
+  //inherited;
   //RichEdit.Font.Color := TC4DWizardUtilsOTA.ActiveThemeColorDefaul;
   //Self.ReadFromFile;
 end;
