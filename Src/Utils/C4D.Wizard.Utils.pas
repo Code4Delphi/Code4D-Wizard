@@ -994,8 +994,8 @@ var
 begin
   LC4DWizardViewMemo := TC4DWizardViewMemo.Create(Nil);
   try
-    LC4DWizardViewMemo.mmMensagem.Lines.Clear;
-    LC4DWizardViewMemo.mmMensagem.Lines.Add(AText);
+    LC4DWizardViewMemo.mmMessage.Lines.Clear;
+    LC4DWizardViewMemo.mmMessage.Lines.Add(AText);
     LC4DWizardViewMemo.ShowModal;
   finally
     LC4DWizardViewMemo.Free

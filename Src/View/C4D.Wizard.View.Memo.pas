@@ -16,16 +16,14 @@ type
     pnMemo: TPanel;
     pnButtons: TPanel;
     btnOK: TButton;
-    mmMensagem: TMemo;
+    mmMessage: TMemo;
     procedure btnOKClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
-    procedure mmMensagemKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure mmMessageKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
   protected
-
   public
-
   end;
 
 implementation
@@ -43,20 +41,20 @@ end;
 
 procedure TC4DWizardViewMemo.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  case(Key)of
+  case Key of
     VK_F4:
-    if(ssAlt in Shift)then
-      Key := 0;
+      if ssAlt in Shift then
+        Key := 0;
     VK_ESCAPE:
-    if(Shift = [])then
-      btnOK.Click;
+      if Shift = [] then
+        btnOK.Click;
   end;
 end;
 
-procedure TC4DWizardViewMemo.mmMensagemKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TC4DWizardViewMemo.mmMessageKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  if(Key = $41)and(Shift = [ssCtrl])then
-    mmMensagem.SelectAll;
+  if (Key = $41) and (Shift = [ssCtrl]) then
+    mmMessage.SelectAll;
 end;
 
 procedure TC4DWizardViewMemo.btnOKClick(Sender: TObject);

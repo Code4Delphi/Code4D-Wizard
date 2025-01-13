@@ -18,7 +18,7 @@ uses
   C4D.Wizard.IDE.ShortCut.KeyboardBinding,
   C4D.Wizard.Notes.View;
 
-procedure Register;
+procedure register;
 
 implementation
 
@@ -35,7 +35,7 @@ begin
   C4D.Wizard.Notes.View.RegisterSelf;
 end;
 
-procedure Register;
+procedure register;
 begin
   RegisterAll;
 end;

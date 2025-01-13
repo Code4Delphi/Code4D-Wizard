@@ -29,7 +29,7 @@ object C4DWizardViewMemo: TC4DWizardViewMemo
     Color = clWindow
     ParentBackground = False
     TabOrder = 0
-    object mmMensagem: TMemo
+    object mmMessage: TMemo
       AlignWithMargins = True
       Left = 10
       Top = 10
@@ -49,7 +49,7 @@ object C4DWizardViewMemo: TC4DWizardViewMemo
       ParentFont = False
       ScrollBars = ssVertical
       TabOrder = 0
-      OnKeyDown = mmMensagemKeyDown
+      OnKeyDown = mmMessageKeyDown
       ExplicitLeft = 18
       ExplicitTop = 9
     end
@@ -70,7 +70,6 @@ object C4DWizardViewMemo: TC4DWizardViewMemo
     Padding.Bottom = 2
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 317
     object btnOK: TButton
       Left = 723
       Top = 2
