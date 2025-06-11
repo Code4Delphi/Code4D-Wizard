@@ -12,12 +12,10 @@ object C4DWizardUsesOrganizationView: TC4DWizardUsesOrganizationView
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Bevel1: TBevel
     AlignWithMargins = True

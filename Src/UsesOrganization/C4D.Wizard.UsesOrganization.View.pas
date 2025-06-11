@@ -128,7 +128,7 @@ begin
     .Write(ckOneUsesPerLine)
     .Write(ckGroupUnitsByNamespaces)
     .Write(ckLineBreakBetweenNamespaces)
-    .Write(rdGroupScope)
+    //.Write(rdGroupScope)
     .Write(edtOneUsesLineNumColBefore)
     .Write(edtMaxCharactersPerLine)
     .Write(ckShowConfimationBeforeReplace)

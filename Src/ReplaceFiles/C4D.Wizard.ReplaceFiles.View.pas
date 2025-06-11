@@ -103,6 +103,7 @@ begin
   FC4DWizardReplaceFilesModel := TC4DWizardReplaceFilesModel.New;
   FC4DWizardModelFilesLoop := TC4DWizardModelFilesLoop.New;
   TC4DWizardUtils.ExtensionFillTStringsWithValid(rdGroupScope.Items);
+  rdGroupScope.ItemIndex := 0;
 end;
 
 procedure TC4DWizardReplaceFilesView.FormShow(Sender: TObject);
@@ -185,7 +186,7 @@ begin
     .Read(ckExtensionFMX, False)
     .Read(ckExtensionDPRandDPK, False)
     .Read(ckExtensionDPROJ, False)
-    .Read(rdGroupScope, 0)
+    //.Read(rdGroupScope, 0)
     .Read(ckShowConfimationBeforeReplace, True)
     .Read(ckSearchForAndReplaceByEverEqualsInShow, False)
     .Read(cBoxSearchDirectory, '')
