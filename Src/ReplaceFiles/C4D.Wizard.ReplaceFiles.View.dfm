@@ -12,12 +12,10 @@ object C4DWizardReplaceFilesView: TC4DWizardReplaceFilesView
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -340,7 +338,6 @@ object C4DWizardReplaceFilesView: TC4DWizardReplaceFilesView
           ShowHint = True
           State = cbChecked
           TabOrder = 3
-          ExplicitTop = 54
         end
         object ckDisplayAccountant: TCheckBox
           Left = 12
@@ -354,8 +351,6 @@ object C4DWizardReplaceFilesView: TC4DWizardReplaceFilesView
           ParentShowHint = False
           ShowHint = True
           TabOrder = 2
-          ExplicitLeft = 20
-          ExplicitTop = 62
         end
       end
       object gBoxExtension: TGroupBox
@@ -372,8 +367,6 @@ object C4DWizardReplaceFilesView: TC4DWizardReplaceFilesView
         Padding.Bottom = 5
         ParentCtl3D = False
         TabOrder = 1
-        ExplicitTop = 86
-        ExplicitHeight = 147
         object ckExtensionPas: TCheckBox
           Left = 12
           Top = 20
